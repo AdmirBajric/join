@@ -1,0 +1,63 @@
+:root {
+  --btnBackgroundColor: #2a3647;
+  --inputColor: #d1d1d1;
+  --inactive: #cdcdcd;
+  --backgroundColor: #f6f7f8;
+  --lightBlue: #29abe2;
+  --black: #000000;
+  --white: #ffffff;
+  --design: #ff7a00;
+  --media: #ffc701;
+  --sales: #fc71ff;
+  --backOffice: #1fd7c1;
+  --marketing: #0038ff;
+  --development: ##f44336;
+  --contactOne: #0190e0;
+  --contactTwo: #ee00d6;
+  --contactThree: #02cf2f;
+  --contactFour: #ffa800;
+  --contactFive: #9327ff;
+  --contactSix: #ff5c00;
+  --contactSeven: #4e963d;
+  --contactEight: #32daff;
+  --contactNine: #007cee;
+  --contactTen: #0223cf;
+  --contactEleven: #cb02cf;
+  --contactTwelve: #462f8a;
+  --contactThirteen: #ffc700;
+  --contactFourteen: #af1616;
+  --weight1: 100;
+  --weight2: 200;
+  --weight3: 300;
+  --weight4: 400;
+  --weight5: 500;
+  --weight6: 600;
+  --weight7: 700;
+  --weight8: 800;
+  --weight9: 900;
+  --fontFamily: "Inter", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  user-select: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: var(--fontFamily);
+}
