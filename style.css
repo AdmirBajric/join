@@ -1,8 +1,9 @@
+/* Global CSS variables; */
 :root {
   --btnBackgroundColor: #2a3647;
   --inputColor: #d1d1d1;
   --inactive: #cdcdcd;
-  --backgroundColor: #f6f7f8;
+  --bgColor: #f6f7f8;
   --lightBlue: #29abe2;
   --black: #000000;
   --white: #ffffff;
@@ -38,6 +39,7 @@
   --fontFamily: "Inter", sans-serif;
 }
 
+/* Reset margin padding ...; */
 *,
 *::after,
 *::before {
@@ -46,18 +48,176 @@
   box-sizing: inherit;
 }
 
+/* Remove underline from links; */
 a {
   text-decoration: none;
 }
 
+/* Base font 62.5%; disable user selection; enable smooth scrolling behavior; */
 html {
   font-size: 62.5%;
   user-select: none;
   scroll-behavior: smooth;
 }
 
+/* Body properties; */
 body {
-  height: 100vh;
-  box-sizing: border-box;
-  font-family: var(--fontFamily);
+  height: 100vh; /* Set body height to 100% of viewport height */
+  box-sizing: border-box; /* Use border-box model for sizing calculations */
+  font-family: var(--fontFamily); /* Set font family using CSS variable */
+  position: relative; /* Position body element relative to its normal position */
+  background-color: var(
+    --bgColor
+  ); /* Set background color using CSS variable */
 }
+
+/* Onload JOIN start */
+
+/* JOIN start image; */
+#join-start-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-out;
+  display: none;
+}
+
+/* JOIN logo; */
+#join-img-small-fixed {
+  width: 10rem;
+  height: 12.1rem;
+  position: absolute;
+  top: 8rem;
+  left: 7.7rem;
+}
+
+/* Sign up container; */
+#sign-up-container {
+  width: 28.7rem;
+  height: 5.1rem;
+  position: absolute;
+  top: 6.7rem;
+  right: 11.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sign up text; */
+#sign-up-txt {
+  font-size: 2.1rem;
+  line-height: 2.5rem;
+  font-weight: var(--weight4);
+  color: var(--black);
+}
+
+/* Sign up btn; */
+#sign-up-btn {
+  outline: none;
+  border: unset;
+  width: 9.1rem;
+  height: 5.1rem;
+  border-radius: 0.8rem;
+  padding: 0.4rem 1.6rem 0.4rem 1.6rem;
+  background-color: var(--btnBackgroundColor);
+  color: var(--white);
+  font-weight: var(--weight7);
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  cursor: pointer;
+}
+
+/* Sign up btn hover; */
+#sign-up-btn:hover {
+  background-color: var(--lightBlue);
+  transition: all 125ms ease-in-out;
+}
+
+/* Onload JOIN end */
+
+/* Login Container start */
+#login-container {
+  width: 65.2rem;
+  height: 51.3rem;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 3rem;
+  box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.04);
+}
+
+#login-header {
+  margin-top: 3.5rem;
+  width: 31.5rem;
+  height: 9.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+#login-header p {
+  font-size: 6.1rem;
+  font-weight: var(--weight7);
+  line-height: 7.3rem;
+}
+
+#login-divider {
+  width: 15rem;
+  height: 0.3rem;
+  background-color: var(--lightBlue);
+}
+
+#login-form {
+  width: 42.2rem;
+  height: 17.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#login-email,
+#login-password {
+  width: 42.2rem;
+  height: 5.1rem;
+  border: unset;
+  border: 0.1rem solid var(--inputColor);
+  border-radius: 1rem;
+  padding: 1.3rem 2.1rem;
+  outline: none;
+}
+
+.login-email,
+.login-password {
+  width: 38rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  border: unset;
+  outline: none;
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 2.5rem;
+}
+
+.login-input::placeholder {
+  color: var(--inputColor);
+}
+
+.login-form-img {
+  width: 2rem;
+  height: 1.8rem;
+}
+/* Login Container end */

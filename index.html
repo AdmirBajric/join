@@ -14,8 +14,81 @@
     <link rel="stylesheet" href="responsive.css" />
     <title>Join Log In</title>
   </head>
-  <body>
-    <img id="join-start-img" src="./assets/img/join-big.svg" alt="Join Image" />
-    <h1>Admir</h1>
+  <body onload="loading()">
+    <!-- Onload animation JOIN start -->
+    <img
+      id="join-start-img"
+      src="./assets/img/join-big.svg"
+      alt="Join image big"
+    />
+    <img
+      id="join-img-small-fixed"
+      src="./assets/img/join-small.svg"
+      alt="Join image small"
+    />
+    <div id="sign-up-container">
+      <p id="sign-up-txt">Not a Join user?</p>
+      <button id="sign-up-btn">Sign up</button>
+    </div>
+    <!--  Onload animation JOIN end -->
+
+    <!-- Login start -->
+    <div id="login-container">
+      <div id="login-header">
+        <p>Log in</p>
+        <div id="login-divider"></div>
+      </div>
+      <div id="login-form">
+        <div id="login-email">
+          <div class="login-email">
+            <input
+              class="login-input"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/email.svg"
+              alt="Email image"
+            />
+          </div>
+        </div>
+
+        <div id="login-password">
+          <div class="login-password">
+            <input
+              class="login-input"
+              required
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/password.svg"
+              alt="Password image"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="login-options">
+        <div id="login-remember">
+          <input id="login-check-box" type="checkbox" name="checkbox" />
+          <p>Remember me</p>
+        </div>
+        <div id="login-forgot-password">
+          <p>Forgot my password</p>
+        </div>
+      </div>
+      <div id="login-buttons">
+        <button id="login">Log in</button>
+        <button id="guest-login">Guest Log in</button>
+      </div>
+    </div>
+    <!-- Login end -->
+
+    <script src="script.js"></script>
   </body>
 </html>
