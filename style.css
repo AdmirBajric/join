@@ -75,12 +75,26 @@ body {
 
 /* JOIN start image; */
 #join-start-img {
+  width: 27.4rem;
+  height: 33.4rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.5s ease-out;
-  display: none;
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    top: 14rem;
+    left: 12.6rem;
+    width: 10rem;
+    height: 12.1rem;
+    opacity: 1;
+  }
 }
 
 /* JOIN logo; */
@@ -90,6 +104,17 @@ body {
   position: absolute;
   top: 8rem;
   left: 7.7rem;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Sign up container; */
@@ -102,6 +127,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeIn 2s ease-in-out forwards;
 }
 
 /* Sign up text; */
@@ -154,6 +180,7 @@ body {
   background-color: var(--white);
   border-radius: 3rem;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
+  animation: fadeIn 2s ease-in-out forwards;
 }
 
 #login-header {
