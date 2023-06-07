@@ -1,3 +1,4 @@
 const loading = () => {
-  console.log("Development");
+  const loginContainer = document.querySelector("#login-container");
+  loginContainer.style.display = "none";
 };
