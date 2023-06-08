@@ -1,4 +1,5 @@
 const loading = () => {
+
   const loginContainer = document.querySelectorAll(".login-container");
   const forgotPasswordContainer = document.querySelector(
     "#forgot-password-container"
