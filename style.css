@@ -167,7 +167,7 @@ body {
 /* Onload JOIN end */
 
 /* Login Container start */
-#login-container {
+.login-container {
   width: 65.2rem;
   height: 51.3rem;
   position: absolute;
@@ -177,14 +177,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   background-color: var(--white);
   border-radius: 3rem;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
   animation: fadeIn 2s ease-in-out forwards;
 }
 
+#signup-container {
+  width: 65.2rem !important;
+  height: 55.9rem !important;
+}
+
+#forgot-password-container {
+  width: 82.6rem !important;
+  height: 46.2rem !important;
+  justify-content: space-evenly !important;
+}
+
+#forgot-password-info {
+  width: 65.6rem;
+  height: 5rem;
+  font-weight: var(--weight4);
+  font-size: 2.1rem;
+  line-height: 120%;
+  text-align: center;
+}
+
+.forgot-password-form {
+  width: 42.2rem !important;
+  height: 7.1rem !important;
+}
+
+#arrow-back {
+  position: absolute;
+  top: 3.5rem;
+  left: 3.1rem;
+  width: 3.7rem;
+  height: 3.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #login-header {
-  margin-top: 3.5rem;
   width: 31.5rem;
   height: 9.7rem;
   display: flex;
@@ -199,6 +235,11 @@ body {
   line-height: 7.3rem;
 }
 
+.login-header {
+  width: 62.6rem !important;
+  height: 9.7rem !important;
+}
+
 #login-divider {
   width: 15rem;
   height: 0.3rem;
@@ -210,11 +251,17 @@ body {
   height: 17.1rem;
   display: flex;
   flex-direction: column;
-  margin-top: 3.5rem;
+  justify-content: space-around;
+}
+
+.signup-form {
+  width: 42.2rem !important;
+  height: 27.1rem !important;
 }
 
 #login-email,
-#login-password {
+#login-password,
+#login-user {
   width: 42.2rem;
   height: 5.1rem;
   border: unset;
@@ -222,14 +269,13 @@ body {
   border-radius: 1rem;
   padding: 1.3rem 2.1rem;
   outline: none;
-}
-
-#login-password {
-  margin-top: 4rem;
+  display: flex;
+  align-self: flex-start;
 }
 
 .login-email,
-.login-password {
+.login-password,
+.login-user {
   width: 38rem;
   height: 2.5rem;
   display: flex;
@@ -260,7 +306,6 @@ body {
   height: 1.9rem;
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
 }
 
 #login-remember {
@@ -296,10 +341,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3.5rem;
 }
 
-#login {
+#login,
+#signup,
+#forgot-password {
   width: 14.5rem;
   height: 5.1rem;
   border: unset;
@@ -308,6 +354,10 @@ body {
   font-size: 2.1rem;
   line-height: 2.5rem;
   font-weight: var(--weight7);
+}
+
+#forgot-password {
+  width: 26.4rem !important;
 }
 
 #guest-login {
@@ -330,7 +380,9 @@ body {
 }
 
 #login,
-#guest-login {
+#signup,
+#guest-login,
+#arrow-back img {
   cursor: pointer;
 }
 /* Login Container end */

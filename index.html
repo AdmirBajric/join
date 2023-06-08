@@ -27,8 +27,8 @@
     </div>
     <!--  Onload animation JOIN end -->
 
-    <!-- Login start -->
-    <div id="login-container">
+    <!-- Log in start -->
+    <div class="login-container">
       <div id="login-header">
         <p>Log in</p>
         <div id="login-divider"></div>
@@ -82,7 +82,110 @@
         <button id="guest-login">Guest Log in</button>
       </div>
     </div>
-    <!-- Login end -->
+    <!-- Log in end -->
+
+    <!-- Sign up start -->
+    <div class="login-container" id="signup-container">
+      <div id="arrow-back">
+        <img src="./assets/img/arrow-left.svg" alt="" Arrow back />
+      </div>
+      <div id="login-header">
+        <p>Sign up</p>
+        <div id="login-divider"></div>
+      </div>
+      <div id="login-form" class="signup-form">
+        <div id="login-user">
+          <div class="login-user">
+            <input
+              class="login-input"
+              required
+              type="text"
+              name="text"
+              placeholder="Name"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/user.svg"
+              alt="User image"
+            />
+          </div>
+        </div>
+        <div id="login-email">
+          <div class="login-email">
+            <input
+              class="login-input"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/email.svg"
+              alt="Email image"
+            />
+          </div>
+        </div>
+
+        <div id="login-password">
+          <div class="login-password">
+            <input
+              class="login-input"
+              required
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/password.svg"
+              alt="Password image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button id="signup" class="btn-blue">Sign up</button>
+    </div>
+    <!-- Sign up end -->
+
+    <!-- Forgot password start -->
+    <div class="login-container" id="forgot-password-container">
+      <div id="arrow-back">
+        <img src="./assets/img/arrow-left.svg" alt="" Arrow back />
+      </div>
+      <div id="login-header" class="login-header">
+        <p>I forgot my password</p>
+        <div id="login-divider"></div>
+      </div>
+      <div id="forgot-password-info">
+        <p>
+          Don't worry! We will send you an email with the instructions to reset
+          your password.
+        </p>
+      </div>
+      <div id="login-form" class="forgot-password-form">
+        <div id="login-email">
+          <div class="login-email">
+            <input
+              class="login-input"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+            <img
+              class="login-form-img"
+              src="./assets/img/email.svg"
+              alt="Email image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button id="forgot-password" class="btn-blue">Send me the email</button>
+    </div>
+    <!-- Forgot password end -->
 
     <script src="script.js"></script>
   </body>
