@@ -166,7 +166,7 @@ body {
 
 /* Onload JOIN end */
 
-/* Login Container start */
+/* Log in, Sign up, Forgot password, Reset password Container start */
 .login-container {
   width: 65.2rem;
   height: 51.3rem;
@@ -195,6 +195,11 @@ body {
   justify-content: space-evenly !important;
 }
 
+#reset-password-container {
+  width: 82.6rem !important;
+  height: 53.7rem !important;
+}
+
 #forgot-password-info {
   width: 65.6rem;
   height: 5rem;
@@ -207,6 +212,11 @@ body {
 .forgot-password-form {
   width: 42.2rem !important;
   height: 7.1rem !important;
+}
+
+.reset-password-form {
+  width: 42.2rem !important;
+  height: 17.1rem !important;
 }
 
 #arrow-back {
@@ -257,6 +267,22 @@ body {
 .signup-form {
   width: 42.2rem !important;
   height: 27.1rem !important;
+}
+
+.reset-password-header {
+  width: 62.7rem !important;
+}
+
+#reset-password-info {
+  width: 58.9rem !important;
+  height: 2.5rem !important;
+}
+
+#reset-password-info p {
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+  text-align: center;
 }
 
 #login-email,
@@ -345,7 +371,8 @@ body {
 
 #login,
 #signup,
-#forgot-password {
+#forgot-password,
+#reset-password {
   width: 14.5rem;
   height: 5.1rem;
   border: unset;
@@ -381,8 +408,10 @@ body {
 
 #login,
 #signup,
+#forgot-password,
+#reset-password,
 #guest-login,
 #arrow-back img {
   cursor: pointer;
 }
-/* Login Container end */
+/* Log in, Sign up, Forgot password, Reset password Container start */
