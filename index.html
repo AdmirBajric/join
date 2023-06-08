@@ -32,20 +32,23 @@
     <!--  Onload animation JOIN end -->
 
     <!-- Log in start -->
-    <div class="login-container">
+    <div class="login-container" id="login-container">
       <div id="login-header">
         <p>Log in</p>
         <div id="login-divider"></div>
       </div>
-      <div id="login-form">
+      <form id="login-form" onsubmit="register(); return false;">
         <div id="login-email">
           <div class="login-email">
             <input
+              autofocus
+              autocomplete="off"
               class="login-input"
               required
               type="email"
               name="email"
               placeholder="Email"
+              id="email"
             />
             <img
               class="login-form-img"
@@ -58,11 +61,14 @@
         <div id="login-password">
           <div class="login-password">
             <input
+              minlength="8"
+              autocomplete="off"
               class="login-input"
               required
               type="password"
               name="password"
               placeholder="Password"
+              id="password"
             />
             <img
               class="login-form-img"
@@ -71,7 +77,7 @@
             />
           </div>
         </div>
-      </div>
+      </form>
       <div id="login-options">
         <div id="login-remember">
           <input id="login-check-box" type="checkbox" name="checkbox" />
@@ -82,7 +88,9 @@
         </div>
       </div>
       <div id="login-buttons">
-        <button id="login" class="btn-blue">Log in</button>
+        <button type="submit" form="login-form" id="login" class="btn-blue">
+          Log in
+        </button>
         <button id="guest-login">Guest Log in</button>
       </div>
     </div>
@@ -232,6 +240,23 @@
       <button id="reset-password" class="btn-blue">Continue</button>
     </div>
     <!-- Reset password end -->
+
+    <!-- Success Reset password message start -->
+    <button id="confirmation-of-reset-password">You reset your password</button>
+    <!-- Success Reset password message end -->
+
+    <!-- Send message confirmation start -->
+    <button id="sent-confirmation-message">
+      <div id="sent-message-img">
+        <img src="./assets/img/email-send.svg" alt="Email send img" />
+        <img
+          src="./assets/img/email-send-check.svg"
+          alt="Email send check img"
+        />
+      </div>
+      An E-Mail has been sent to you
+    </button>
+    <!-- Send message confirmation end -->
 
     <script src="script.js"></script>
   </body>
