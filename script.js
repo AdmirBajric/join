@@ -4,8 +4,12 @@ const loading = () => {
   const forgotPasswordContainer = document.querySelector(
     "#forgot-password-container"
   );
+  const resetPasswordContainer = document.querySelector(
+    "#reset-password-container"
+  );
   loginContainer.forEach((element) => {
     element.style.display = "none";
   });
-  forgotPasswordContainer.style.display = "flex";
+  forgotPasswordContainer.style.display = "none";
+  resetPasswordContainer.style.display = "flex";
 };
