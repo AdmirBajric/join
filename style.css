@@ -1,12 +1,13 @@
 /* Global CSS variables; */
 :root {
-  --btnBackgroundColor: #2a3647;
+  --btnBackgroundColor: #2A3647;
   --inputColor: #d1d1d1;
   --inactive: #cdcdcd;
   --bgColor: #f6f7f8;
   --lightBlue: #29abe2;
   --black: #000000;
   --white: #ffffff;
+  --input-border: #A8A8A8;
   --design: #ff7a00;
   --media: #ffc701;
   --sales: #fc71ff;
