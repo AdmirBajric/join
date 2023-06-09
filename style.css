@@ -419,21 +419,50 @@ body {
 
 /* Reset password message start */
 #confirmation-of-reset-password,
-#sent-confirmation-message {
+#sent-confirmation-message,
+#show-error-message {
   position: absolute;
-  top: 97%;
+  top: -20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  /* animation: fadeSendMessage 2s ease-in-out forwards; */
+  opacity: 1;
 }
 
-@keyframes fadeSendMessage {
+#show-error-message {
+  width: 35rem;
+  padding: 2rem;
+  background-color: var(--btnBackgroundColor);
+  color: var(--white);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: var(--weight5);
+  border-radius: 1rem;
+}
+
+#show-error-message span {
+  color: var(--lightBlue);
+}
+
+#show-error-message span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes fadeSendMessageIn {
   0% {
-    top: 150%;
+    top: -20%;
   }
   100% {
-    top: 50%;
+    top: 15%;
+  }
+}
+
+@keyframes fadeSendMessageOut {
+  0% {
+    top: 15%;
+  }
+  100% {
+    top: -20%;
   }
 }
 
