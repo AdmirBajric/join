@@ -1,11 +1,11 @@
 .board {
   background-color: var(--bgColor);
+  height: 91vh;
 }
 .header-board {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 3.2rem;
   margin-left: 7rem;
   margin-right: 6rem;
   margin-top: 8.2rem;
@@ -68,15 +68,40 @@
 .board-body {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-left: 7rem;
   margin-right: 6rem;
   margin-top: 8.2rem;
 }
 
 .board-header h3 {
-  font-size: 3.1rem;
+  font-size: 2.1rem;
   font-weight: var(--weight7);
   color: var(--btnBackgroundColor);
+}
+
+.board-header .plus-button {
+  background-image: url("assets/img/plus-button.svg");
+  background-size: cover;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.board-header .plus-button:hover {
+  background-image: url("assets/img/plus-hover.svg");
+  transition: ease-in-out 225ms;
+}
+
+.prof-pic-board{
+  display: flex;
+}
+
+.prof-pic-board img{
+  flex:none;
+  order:0;
+  flex-grow:0;
+  margin:0-0.6rem;
 }
 
 .board-header {
@@ -91,7 +116,7 @@
   min-height: 23.9rem;
   padding: 1.8rem 1.9rem;
   background: #ffffff;
-  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3rem;
   display: flex;
   flex-direction: column;
