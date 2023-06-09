@@ -6,3 +6,41 @@
     font-weight: 700;
     font-size: 6.1rem;
 }
+
+.task-detail{
+    margin-left: 7rem;
+    margin-right: 6rem;
+    margin-top: 2.2rem;
+}
+
+.task-detail h3{
+    margin-bottom: 0.8rem;
+    font-size: 2.1rem;
+    font-weight: 400;
+}
+
+.task-detail input{
+    padding: 1.3rem 2.1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--inputColor);
+    min-width: 42.2rem;
+    height: 5.1rem;
+    font-size: 2.1rem;
+}
+
+.task-detail input::placeholder{
+    font-size: 2.1rem;
+    font-weight: var(--weight4);
+}
+
+.description{
+    margin-top: 3.3rem;
+}
+
+.description input{
+    min-height: 11.9rem;
+    isolation: isolate;
+    display: flex; 
+    
+}
+
