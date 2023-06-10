@@ -1,5 +1,6 @@
 .board {
   background-color: var(--bgColor);
+  height: 92vh;
 }
 .header-board {
   display: flex;
