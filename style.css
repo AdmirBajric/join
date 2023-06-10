@@ -105,7 +105,7 @@ body {
   position: absolute;
   top: 8rem;
   left: 7.7rem;
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
@@ -128,7 +128,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 /* Sign up text; */
@@ -182,21 +182,24 @@ body {
   background-color: var(--white);
   border-radius: 3rem;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 #signup-container {
+  display: none;
   width: 65.2rem !important;
   height: 55.9rem !important;
 }
 
 #forgot-password-container {
+  display: none;
   width: 82.6rem !important;
   height: 46.2rem !important;
   justify-content: space-evenly !important;
 }
 
 #reset-password-container {
+  display: none;
   width: 82.6rem !important;
   height: 53.7rem !important;
 }
@@ -210,12 +213,12 @@ body {
   text-align: center;
 }
 
-.forgot-password-form {
+#forgot-password-form {
   width: 42.2rem !important;
   height: 7.1rem !important;
 }
 
-.reset-password-form {
+#reset-password-form {
   width: 42.2rem !important;
   height: 17.1rem !important;
 }
@@ -257,7 +260,7 @@ body {
   background-color: var(--lightBlue);
 }
 
-#login-form {
+.login-form {
   width: 42.2rem;
   height: 17.1rem;
   display: flex;
@@ -265,7 +268,7 @@ body {
   justify-content: space-around;
 }
 
-.signup-form {
+#signup-form {
   width: 42.2rem !important;
   height: 27.1rem !important;
 }
@@ -420,7 +423,10 @@ body {
 /* Reset password message start */
 #confirmation-of-reset-password,
 #sent-confirmation-message,
-#show-error-message {
+#show-error-message,
+#password-failed-message,
+#successfully-registered,
+#account-exist {
   position: absolute;
   top: -20%;
   left: 50%;
@@ -428,7 +434,12 @@ body {
   opacity: 1;
 }
 
-#show-error-message {
+#show-error-message,
+#sent-confirmation-message,
+#confirmation-of-reset-password,
+#password-failed-message,
+#successfully-registered,
+#account-exist {
   width: 35rem;
   padding: 2rem;
   background-color: var(--btnBackgroundColor);
@@ -437,6 +448,23 @@ body {
   font-size: 2rem;
   font-weight: var(--weight5);
   border-radius: 1rem;
+}
+
+#sent-confirmation-message {
+  width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#sent-message-img {
+  position: relative;
+}
+
+#email-send-check {
+  position: absolute;
+  top: 2.3rem;
+  left: 2.3rem;
 }
 
 #show-error-message span {
