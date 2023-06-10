@@ -13,7 +13,7 @@
   --sales: #fc71ff;
   --backOffice: #1fd7c1;
   --marketing: #0038ff;
-  --development: ##f44336;
+  --development: #f44336;
   --contactOne: #0190e0;
   --contactTwo: #ee00d6;
   --contactThree: #02cf2f;
@@ -493,5 +493,30 @@ body {
     top: -20%;
   }
 }
-
 /* Reset password message end */
+
+/* Scrollbar start */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 20px;
+  border: 3px solid #f5f5f5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #808080;
+}
+/* Scrollbar end */
