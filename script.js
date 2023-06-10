@@ -21,7 +21,7 @@ const loginUser = (e) => {
   if (false) {
     // If condition please replace with "if the user is logged in"
     // If user logged successfully redirect to summary.html
-    window.location.replace("http://127.0.0.1:5500/summary.html");
+    window.location.replace("https://admirbajric.github.io/join/summary.html");
   } else {
     errorMessage.style.opacity = 1;
     errorMessage.style.animation = "fadeSendMessageIn 1s ease-in-out forwards";
@@ -99,7 +99,7 @@ const userResetPassword = () => {
     setTimeout(() => {
       confirmMessage.style.animation =
         "fadeSendMessageOut 1s ease-in-out forwards";
-      window.location.replace("http://127.0.0.1:5500/index.html");
+      window.location.replace("https://admirbajric.github.io/join/index.html");
     }, 2000);
   } else {
     const passwordFailed = document.querySelector("#password-failed-message");
@@ -129,7 +129,7 @@ const userSignUp = () => {
     }, 1000);
 
     setTimeout(() => {
-      window.location.replace("http://127.0.0.1:5500/index.html");
+      window.location.replace("https://admirbajric.github.io/join/index.html");
     }, 2000);
   } else {
     // If user not exist in database, save the user in database. Show message "You have successfully registered" and redirect to login screen.
@@ -142,7 +142,7 @@ const userSignUp = () => {
     }, 1000);
 
     setTimeout(() => {
-      window.location.replace("http://127.0.0.1:5500/index.html");
+      window.location.replace("https://admirbajric.github.io/join/index.html");
     }, 2000);
   }
 };
