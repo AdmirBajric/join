@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=+, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="add_task.css">
+    <script src="addTask.js"></script>
+    <script
+
+    ></script>
     <title>Add Task</title>
 </head>
 <body class="add-task">
@@ -23,6 +27,41 @@
             <h3>Description</h3>
             <input type="text" placeholder="Enter a Description">
         </div>
+
+        <div class="category">
+            <h3>
+                Category
+            </h3>
+            <div class="dropdown-category">
+                <div class="dropdown-title">
+                    <span>Select task category</span>
+                    <img src="assets/img/arrow-down.svg" alt="">
+                </div>
+                <div class="dropdown-content-cat">
+                    <a href="">New category </span></a>
+                    <a href="">Sales<span class="dot-red"></span></a>
+                    <a href="" class="zero-padding">Backoffice<span class="dot-red"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="assigned">
+            <h3>
+                Assigned to
+            </h3>
+            <div class="dropdown-category">
+                <div class="dropdown-title">
+                    <span>Select contacts to assign</span>
+                    <img src="assets/img/arrow-down.svg" alt="">
+                </div>
+                <div class="dropdown-content-con">
+                    <a href="">You <input type="checkbox"></span></a>
+                    <a href="">Maximilian Vogel <input type="checkbox"></span></a>
+                    <a href="" class="zero-padding">Invite new contact</span></a>
+                </div>
+            </div>
+        </div>
     </div>
+    <vr>
 </body>
 </html>
