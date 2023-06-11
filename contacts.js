@@ -1,3 +1,5 @@
+const addContact = document.querySelector("#add-contact");
+
 // Count for colors
 let count = 0;
 
@@ -104,7 +106,42 @@ const render = (id) => {
         </div>
     </div>
   </div>
+
+  <div class="contact-information">
+      <div class="contact-information-header">
+        <p>Contact Information</p>
+      </div>
+      
+      <div class="edit-contact">
+        <img src="./assets/img/contact-pencil.svg" alt="Pencil" />
+        <p onclick="editContact(${id})">Edit Contact</p>
+      </div>
+  </div>
+
+  <div class="contact-email-phone">
+      <div class="contact-email">
+          <p class="contact-email-header">Email</p>
+          <p class="contact-email-address">${users[id].email}</p>
+      </div>
+      <div class="contact-phone">
+          <p class="contact-phone-header">Phone</p>
+          <p class="contact-phone-number">${users[id].phone}</p>
+      </div>
+  </div>
   `;
 
   contactContainer.innerHTML = html;
+};
+
+const openAddContact = () => {
+  addContact.style.animation = "addFadeIn 1s ease-in-out forwards";
+  addContact.style.opacity = 1;
+};
+
+const closeAddContact = () => {
+  addContact.style.animation = "addFadeOut 1s ease-in-out forwards";
+};
+
+const editContact = (id) => {
+  const contact = users[id];
 };

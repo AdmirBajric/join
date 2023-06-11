@@ -33,10 +33,80 @@
             <p>Better with a team</p>
           </div>
           <div id="contact-container"></div>
-          <div id="new-contact">
+          <button onclick="openAddContact()" id="new-contact">
             <p>New contact</p>
             <img src="./assets/img/add-contact.svg" alt="User img " />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="add-contact">
+      <div id="add-header-container">
+        <img src="./assets/img/add-contact-join.svg" alt="Join image" />
+        <p class="add-header">Add contact</p>
+        <p class="add-tasks">Tasks are better with a team!</p>
+        <div class="add-divider"></div>
+      </div>
+
+      <div id="add-form-container">
+        <img
+          onclick="closeAddContact()"
+          class="add-form-close-img"
+          src="./assets/img/close.svg"
+          alt="Close image"
+        />
+        <div class="add-form-user-img">
+          <img src="./assets/img/user-white.svg" alt="User image" />
+        </div>
+        <div id="add-form">
+          <div id="add-form-name">
+            <div>
+              <input
+                autofocus
+                minlength="4"
+                type="text"
+                name="text"
+                required
+                placeholder="Name"
+              />
+              <img src="./assets/img/user.svg" alt="User image" />
+            </div>
           </div>
+          <div id="add-form-email">
+            <div>
+              <input
+                minlength="4"
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+              />
+              <img src="./assets/img/email.svg" alt="Email image" />
+            </div>
+          </div>
+          <div id="add-form-phone">
+            <div>
+              <input
+                minlength="4"
+                type="tel"
+                name="tel"
+                required
+                placeholder="Phone"
+              />
+              <img src="./assets/img/phone.svg" alt="Phone image" />
+            </div>
+          </div>
+        </div>
+        <div id="add-buttons">
+          <button onclick="closeAddContact()" id="add-buttons-cancel">
+            <p>Cancel</p>
+            <p>X</p>
+          </button>
+          <button id="add-buttons-create">
+            <p>Create contact</p>
+            <img src="./assets/img/done.svg" alt="Done image" />
+          </button>
         </div>
       </div>
     </div>
