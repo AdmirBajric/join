@@ -3,6 +3,8 @@
   height: 100vh;
   display: flex;
   background-color: var(--bgColor);
+  position: relative;
+  overflow: hidden;
 }
 
 #sidebar {
@@ -153,7 +155,6 @@
   left: 6.5rem;
   width: 46.1rem;
   height: 36.4rem;
-  background-color: rgb(225, 230, 230);
 }
 
 #new-contact {
@@ -244,11 +245,311 @@
   height: 1.5rem;
 }
 
-.user-contact-add-task:hover img {
-  /* Add any desired styles for the <img> element on hover */
-  font-weight: var(--weight6);
-}
-
 .user-contact-add-task p {
   margin-left: 1.3rem;
+}
+
+.contact-information {
+  width: 100%;
+  height: 7.4rem;
+  margin-top: 2.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.contact-information-header {
+  width: 20.7rem;
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+}
+
+.edit-contact {
+  width: 12.7rem;
+  height: 2.9rem;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 5.9rem;
+  color: var(--lightBlue);
+}
+
+.edit-contact p {
+  font-size: 1.6rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+}
+
+.edit-contact:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.contact-email-phone {
+  width: 14rem;
+  height: 12.8rem;
+  margin-top: 2.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-email {
+  width: 14rem;
+  height: 5.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-phone {
+  width: 12.4rem;
+  height: 5.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-email-header,
+.contact-phone-header {
+  font-size: 1.6rem;
+  font-weight: var(--weight7);
+  line-height: 120%;
+}
+
+.contact-email-address {
+  font-size: 1.6rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+  color: var(--lightBlue);
+}
+
+.contact-phone-number {
+  font-size: 1.6rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+}
+
+#add-contact {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  width: 121.2rem;
+  height: 59.4rem;
+  border-radius: 3rem;
+  display: flex;
+  background-color: var(--white);
+  animation: addFadeOut 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes addFadeIn {
+  0% {
+    left: 150%;
+  }
+  100% {
+    left: 50%;
+  }
+}
+
+@keyframes addFadeOut {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+#add-header-container {
+  width: 46.3rem;
+  height: 59.4rem;
+  background-color: var(--btnBackgroundColor);
+  border-radius: 2.8rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+}
+
+#add-header-container img {
+  position: absolute;
+  top: 15.4rem;
+  left: 4.6rem;
+}
+
+.add-header {
+  font-weight: var(--weight7);
+  font-size: 6.1rem;
+  line-height: 120%;
+  color: var(--white);
+  position: absolute;
+  top: 23.2rem;
+  left: 4.6rem;
+}
+
+.add-tasks {
+  font-weight: var(--weight4);
+  font-size: 2.7rem;
+  line-height: 120%;
+  color: var(--white);
+  position: absolute;
+  top: 31.7rem;
+  left: 4.6rem;
+}
+
+.add-divider {
+  width: 9rem;
+  height: 0.3rem;
+  background-color: var(--lightBlue);
+  position: absolute;
+  top: 36.1rem;
+  left: 4.6rem;
+}
+
+#add-form-container {
+  width: 74.9rem;
+  height: 59.4rem;
+  position: relative;
+}
+
+.add-form-close-img {
+  position: absolute;
+  top: 2.6rem;
+  right: 5.5rem;
+}
+
+.add-form-user-img {
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  top: 20.4rem;
+  left: 7rem;
+  border-radius: 50%;
+  background-color: var(--inputColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.3rem solid var(--white);
+  box-shadow: 0rem 0rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+.add-form-user-img img {
+  width: 6.2rem;
+  height: 6.2rem;
+}
+
+.add-form-close-img:hover {
+  cursor: pointer;
+}
+
+#add-form {
+  width: 42.2rem;
+  height: 27.1rem;
+  position: absolute;
+  top: 12.9rem;
+  left: 27.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#add-form-name,
+#add-form-email,
+#add-form-phone {
+  width: 42.2rem;
+  height: 7.1rem;
+}
+
+#add-form-name div,
+#add-form-email div,
+#add-form-phone div {
+  width: 42.2rem;
+  height: 5.1rem;
+  padding: 1.3rem 2.1rem;
+  border: 0.1rem solid var(--inputColor);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#add-form-name input,
+#add-form-email input,
+#add-form-phone input {
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+  border: unset;
+  outline: none;
+}
+
+#add-form-name input::placeholder,
+#add-form-email input::placeholder,
+#add-form-phone input::placeholder {
+  color: var(--inputColor);
+}
+
+#add-buttons {
+  width: 37.9rem;
+  height: 5.5rem;
+  position: absolute;
+  top: 43.5rem;
+  left: 27.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-buttons-cancel {
+  width: 13.6rem;
+  height: 5.5rem;
+  border: 0.1rem solid var(--btnBackgroundColor);
+  border-radius: 1rem;
+  padding: 1.8rem 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  color: var(--btnBackgroundColor);
+}
+
+#add-buttons-cancel p {
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+}
+
+#add-buttons-cancel p:nth-child(0) {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+#add-buttons-create {
+  padding: 1.8rem 1.5rem;
+  width: 21.8rem;
+  height: 5.5rem;
+  background-color: var(--btnBackgroundColor);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#add-buttons-create p {
+  font-weight: var(--weight7);
+  font-size: 2.1rem;
+  line-height: 120%;
+  color: var(--white);
+}
+
+#add-buttons-cancel:hover {
+  cursor: pointer;
+  box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.2);
+  color: var(--lightBlue);
+  border: 0.2rem solid var(--lightBlue);
+}
+
+#add-buttons-create:hover {
+  cursor: pointer;
+  border: none;
+  background-color: var(--lightBlue);
 }
