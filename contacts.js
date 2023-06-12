@@ -1,4 +1,9 @@
 const addContact = document.querySelector("#add-contact");
+const editUserContact = document.querySelector("#edit-contact");
+const editFormUserImg = document.querySelector(".edit-form-user-img");
+const editInputName = document.querySelector("#edit-input-name");
+const editInputEmail = document.querySelector("#edit-input-email");
+const editInputPhone = document.querySelector("#edit-input-phone");
 
 // Count for colors
 let count = 0;
@@ -29,7 +34,7 @@ const colors = [
 
 // Sample JSON data
 const jsonData =
-  '[{"fullName": "Andy Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Barbara Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Anto Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Candy Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Thomas Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Rudolf Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Inga Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Irma Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Sara Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Daniela Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Emily Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Fahrija Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Google Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Hundi Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Kerstin Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Candy Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}]';
+  '[{"fullName": "Andy Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Barbara Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Anto Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Candy Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Thomas Miller", "email": "thomasmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Rudolf Miller", "email": "rudolfmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Inga Miller", "email": "ingamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Irma Miller", "email": "irmamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Sara Miller", "email": "saramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Daniela Miller", "email": "danielamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Emily Miller", "email": "emilymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Hans Miller", "email": "hansmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Ingrid Miller", "email": "ingridmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Frank Miller", "email": "frankmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Kerstin Miller", "email": "kerstinmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Frederic Miller", "email": "fredericmiller@gmail.com", "phone": "015750943212"}]';
 
 // Parse the JSON data into an array of objects
 const users = JSON.parse(jsonData);
@@ -142,6 +147,27 @@ const closeAddContact = () => {
   addContact.style.animation = "addFadeOut 1s ease-in-out forwards";
 };
 
+const closeEditContact = () => {
+  editUserContact.style.animation = "addFadeOut 1s ease-in-out forwards";
+};
+
 const editContact = (id) => {
-  const contact = users[id];
+  editUserContact.style.animation = "addFadeIn 1s ease-in-out forwards";
+  editUserContact.style.opacity = 1;
+
+  const { email, fullName, phone } = users[id];
+
+  editInputName.value = fullName;
+  editInputEmail.value = email;
+  editInputPhone.value = phone;
+
+  const firstNameLetter = users[id].fullName.split(" ")[0].charAt(0);
+  const firstLastLetter = users[id].fullName.split(" ")[1].charAt(0);
+
+  editFormUserImg.innerHTML = `<p>${firstNameLetter}</p> <p>${firstLastLetter}</p>`;
+  editFormUserImg.style.backgroundColor = colors[id];
+};
+
+const deleteContact = () => {
+  console.log("Delete Contact");
 };
