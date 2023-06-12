@@ -329,7 +329,8 @@
   line-height: 120%;
 }
 
-#add-contact {
+#add-contact,
+#edit-contact {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -361,7 +362,8 @@
   }
 }
 
-#add-header-container {
+#add-header-container,
+#edit-header-container {
   width: 46.3rem;
   height: 59.4rem;
   background-color: var(--btnBackgroundColor);
@@ -371,23 +373,26 @@
   position: relative;
 }
 
-#add-header-container img {
+#add-header-container img,
+#edit-header-container img {
   position: absolute;
   top: 15.4rem;
   left: 4.6rem;
 }
 
-.add-header {
+.add-header,
+.edit-header {
   font-weight: var(--weight7);
   font-size: 6.1rem;
   line-height: 120%;
   color: var(--white);
   position: absolute;
-  top: 23.2rem;
+  top: 25.4rem;
   left: 4.6rem;
 }
 
-.add-tasks {
+.add-tasks,
+.edit-tasks {
   font-weight: var(--weight4);
   font-size: 2.7rem;
   line-height: 120%;
@@ -397,7 +402,8 @@
   left: 4.6rem;
 }
 
-.add-divider {
+.add-divider,
+.edit-divider {
   width: 9rem;
   height: 0.3rem;
   background-color: var(--lightBlue);
@@ -406,19 +412,27 @@
   left: 4.6rem;
 }
 
-#add-form-container {
+.edit-divider {
+  top: 33.9rem;
+  left: 4.6rem;
+}
+
+#add-form-container,
+#edit-form-container {
   width: 74.9rem;
   height: 59.4rem;
   position: relative;
 }
 
-.add-form-close-img {
+.add-form-close-img,
+.edit-form-close-img {
   position: absolute;
   top: 2.6rem;
   right: 5.5rem;
 }
 
-.add-form-user-img {
+.add-form-user-img,
+.edit-form-user-img {
   width: 12rem;
   height: 12rem;
   position: absolute;
@@ -433,16 +447,28 @@
   box-shadow: 0rem 0rem 0.4rem rgba(0, 0, 0, 0.1);
 }
 
+.edit-form-user-img {
+  color: var(--white);
+  font-size: 4.7rem;
+  font-weight: var(--weight5);
+  line-height: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .add-form-user-img img {
   width: 6.2rem;
   height: 6.2rem;
 }
 
-.add-form-close-img:hover {
+.add-form-close-img:hover,
+.edit-form-close-img:hover {
   cursor: pointer;
 }
 
-#add-form {
+#add-form,
+#edit-form {
   width: 42.2rem;
   height: 27.1rem;
   position: absolute;
@@ -455,14 +481,20 @@
 
 #add-form-name,
 #add-form-email,
-#add-form-phone {
+#add-form-phone,
+#edit-form-name,
+#edit-form-email,
+#edit-form-phone {
   width: 42.2rem;
   height: 7.1rem;
 }
 
 #add-form-name div,
 #add-form-email div,
-#add-form-phone div {
+#add-form-phone div,
+#edit-form-name div,
+#edit-form-email div,
+#edit-form-phone div {
   width: 42.2rem;
   height: 5.1rem;
   padding: 1.3rem 2.1rem;
@@ -475,7 +507,10 @@
 
 #add-form-name input,
 #add-form-email input,
-#add-form-phone input {
+#add-form-phone input,
+#edit-form-name input,
+#edit-form-email input,
+#edit-form-phone input {
   font-size: 2.1rem;
   font-weight: var(--weight4);
   line-height: 120%;
@@ -485,11 +520,15 @@
 
 #add-form-name input::placeholder,
 #add-form-email input::placeholder,
-#add-form-phone input::placeholder {
+#add-form-phone input::placeholder,
+#edit-form-name input::placeholder,
+#edit-form-email input::placeholder,
+#edit-form-phone input::placeholder {
   color: var(--inputColor);
 }
 
-#add-buttons {
+#add-buttons,
+#edit-buttons {
   width: 37.9rem;
   height: 5.5rem;
   position: absolute;
@@ -499,7 +538,18 @@
   justify-content: space-between;
 }
 
-#add-buttons-cancel {
+#edit-buttons {
+  top: 43.5rem;
+  left: 40.2rem;
+}
+
+#edit-buttons {
+  width: 28.2rem !important;
+  height: 5.5rem !important;
+}
+
+#add-buttons-cancel,
+#edit-buttons-cancel {
   width: 13.6rem;
   height: 5.5rem;
   border: 0.1rem solid var(--btnBackgroundColor);
@@ -512,18 +562,26 @@
   color: var(--btnBackgroundColor);
 }
 
-#add-buttons-cancel p {
+#edit-buttons-cancel {
+  width: 10.4rem !important;
+  height: 5.5rem !important;
+}
+
+#add-buttons-cancel p,
+#edit-buttons-cancel p {
   font-size: 2.1rem;
   font-weight: var(--weight4);
   line-height: 120%;
 }
 
-#add-buttons-cancel p:nth-child(0) {
+#add-buttons-cancel p:nth-child(0),
+#edit-buttons-cancel p:nth-child(0) {
   width: 2.4rem;
   height: 2.4rem;
 }
 
-#add-buttons-create {
+#add-buttons-create,
+#edit-buttons-create {
   padding: 1.8rem 1.5rem;
   width: 21.8rem;
   height: 5.5rem;
@@ -534,21 +592,29 @@
   align-items: center;
 }
 
-#add-buttons-create p {
+#edit-buttons-create {
+  width: 15.3rem !important;
+  height: 5.5rem !important;
+}
+
+#add-buttons-create p,
+#edit-buttons-create p {
   font-weight: var(--weight7);
   font-size: 2.1rem;
   line-height: 120%;
   color: var(--white);
 }
 
-#add-buttons-cancel:hover {
+#add-buttons-cancel:hover,
+#edit-buttons-cancel:hover {
   cursor: pointer;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.2);
   color: var(--lightBlue);
   border: 0.2rem solid var(--lightBlue);
 }
 
-#add-buttons-create:hover {
+#add-buttons-create:hover,
+#edit-buttons-create:hover {
   cursor: pointer;
   border: none;
   background-color: var(--lightBlue);

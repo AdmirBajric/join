@@ -110,6 +110,74 @@
         </div>
       </div>
     </div>
+
+    <div id="edit-contact">
+      <div id="edit-header-container">
+        <img src="./assets/img/add-contact-join.svg" alt="Join image" />
+        <p class="edit-header">Edit contact</p>
+        <div class="edit-divider"></div>
+      </div>
+
+      <div id="edit-form-container">
+        <img
+          onclick="closeEditContact()"
+          class="edit-form-close-img"
+          src="./assets/img/close.svg"
+          alt="Close image"
+        />
+        <div class="edit-form-user-img"></div>
+        <div id="edit-form">
+          <div id="edit-form-name">
+            <div>
+              <input
+                autofocus
+                minlength="4"
+                type="text"
+                name="text"
+                required
+                placeholder="Name"
+                id="edit-input-name"
+              />
+              <img src="./assets/img/user.svg" alt="User image" />
+            </div>
+          </div>
+          <div id="edit-form-email">
+            <div>
+              <input
+                minlength="4"
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                id="edit-input-email"
+              />
+              <img src="./assets/img/email.svg" alt="Email image" />
+            </div>
+          </div>
+          <div id="edit-form-phone">
+            <div>
+              <input
+                minlength="4"
+                type="tel"
+                name="tel"
+                required
+                placeholder="Phone"
+                id="edit-input-phone"
+              />
+              <img src="./assets/img/phone.svg" alt="Phone image" />
+            </div>
+          </div>
+        </div>
+        <div id="edit-buttons">
+          <button onclick="deleteContact()" id="edit-buttons-cancel">
+            <p>Delete</p>
+          </button>
+          <button id="edit-buttons-create">
+            <p>Save</p>
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="contacts.js"></script>
   </body>
 </html>
