@@ -57,44 +57,68 @@
     background-color: var(--white);
     border: 1px solid var(--inputColor);
     border-radius:1rem ;
-    padding: 1.3rem 2.1rem;
 }
 
 .dropdown-category span{
     background-color: var(--white);
     font-size: 2.1rem;
+
 }
 
 .dropdown-content-cat{
     display: flex;
     flex-direction: column;
     font-size: 2.1rem;
-    margin-top: 2rem;
 }
 
 .dropdown-title{
     display: flex;
     justify-content: space-between;
+    margin: 1rem 2rem;
 }
 
-.zero-padding{
-    padding-bottom:0 !important;
+input:focus{
+    outline:none;
 }
 
 .dropdown-content-cat a{
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
+    padding: 1rem 2.1rem;
     color: var(--black);
+    padding-left: 2.1rem;
+}
+
+.dropdown-content-cat a:hover{
+background-color: var(--inputColor);
+}
+
+.dropdown-content-cat span {
+    margin: 0;
+}
+
+.dot {
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 2rem !important;
 }
 
 .dot-red{
-    height: 2rem;
-    width: 2rem;
     background-color: red !important;
-    border-radius: 50%;
-    display: inline-block;
+}
+
+.dot-blue{
+    background-color: var(--lightBlue) !important;
+}
+
+.dot-orange{
+    background-color: var(--design) !important;
+}
+
+.dot-pink{
+    background-color:var(--contactTwo) !important;
 }
 
 .dropdown-content-con{
@@ -111,7 +135,13 @@
     gap: 1.5rem;
     padding-bottom: 2rem;
     color: var(--black);
+    padding: 1.3rem 2.1rem;
 }
+
+.dropdown-content-con a:hover{
+    background-color: var(--inputColor);
+}
+
 
 .dropdown-content-con a input{
     width: 1rem;
@@ -150,6 +180,8 @@
 
 .prio-button  button:hover{
     cursor: pointer;
+    height:5.3rem;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
 }
 
 .subtask-check{
@@ -180,18 +212,13 @@
 
 .add-clear-btn{
     display: flex;
+    align-self: flex-end;
     gap: 0.4rem;
-    position: absolute;
-    margin-right: 10.8rem;
-    margin-bottom: 8rem;
-    width: 348px;
     height: 55px;
-    left: 984px;
-    top: 889px;
+    margin-top: 30rem;
 }
 
 .add-clear-btn button {
-
     height: 5.5rem;
     font-size: 2.1rem;
     padding: 18px 15px;
@@ -237,4 +264,8 @@
 
 .hide{
     display: none;
+}
+
+hr{
+    color: var(--inputColor)
 }

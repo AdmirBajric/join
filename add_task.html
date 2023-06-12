@@ -41,8 +41,8 @@
                 </div>
                 <div class="dropdown-content-cat hide">
                     <a href="">New category </span></a>
-                    <a href="">Sales<span class="dot-red"></span></a>
-                    <a href="" class="zero-padding">Backoffice<span class="dot-red"></span></a>
+                    <a href="">Sales<span class="dot dot-red"></span></a>
+                    <a href="" class="zero-padding">Backoffice<span class="dot dot-pink"></span></a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span>Select contacts to assign</span>
-                    <img src="assets/img/arrow-down.svg" alt="">
+                    <img src="assets/img/arrow-down.svg" alt="" onclick="showAssingedTo()">
                 </div>
                 <div class="dropdown-content-con hide">
                     <a href="">You <input type="checkbox"></span></a>
@@ -64,6 +64,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="task-right">
         <div class="due-date">
             <h3>
@@ -92,17 +93,18 @@
             <p>Subtask 1</p>
         </div>
     </div>
+    <div class="add-clear-btn">
+        <button id="clear-task">
+            Clear
+            <img src="assets/img/close.svg" alt="">
+        </button> 
+        <button id="create-task">
+            Create Task
+            <img src="assets/img/check.svg" alt="">
+        </button>
+    </div>
 </div>
-<div class="add-clear-btn">
-    <button id="clear-task">
-        Clear
-        <img src="assets/img/close.svg" alt="">
-    </button> 
-    <button id="create-task">
-        Create Task
-        <img src="assets/img/check.svg" alt="">
-    </button>
-</div>
+
 </div>
 
 </body>
