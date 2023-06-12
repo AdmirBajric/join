@@ -37,9 +37,9 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span>Select task category</span>
-                    <img src="assets/img/arrow-down.svg" alt="">
+                    <img src="assets/img/arrow-down.svg" alt="" onclick="showCategory()">
                 </div>
-                <div class="dropdown-content-cat">
+                <div class="dropdown-content-cat hide">
                     <a href="">New category </span></a>
                     <a href="">Sales<span class="dot-red"></span></a>
                     <a href="" class="zero-padding">Backoffice<span class="dot-red"></span></a>
@@ -56,7 +56,7 @@
                     <span>Select contacts to assign</span>
                     <img src="assets/img/arrow-down.svg" alt="">
                 </div>
-                <div class="dropdown-content-con">
+                <div class="dropdown-content-con hide">
                     <a href="">You <input type="checkbox"></span></a>
                     <a href="">Maximilian Vogel <input type="checkbox"></span></a>
                     <a href="" class="zero-padding">Invite new contact</span></a>
@@ -92,6 +92,16 @@
             <p>Subtask 1</p>
         </div>
     </div>
+</div>
+<div class="add-clear-btn">
+    <button id="clear-task">
+        Clear
+        <img src="assets/img/close.svg" alt="">
+    </button> 
+    <button id="create-task">
+        Create Task
+        <img src="assets/img/check.svg" alt="">
+    </button>
 </div>
 </div>
 

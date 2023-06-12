@@ -176,3 +176,61 @@
     right: 20.2rem;
     top: 37.4rem;
 }
+
+
+.add-clear-btn{
+    display: flex;
+    gap: 0.4rem;
+    position: absolute;
+    margin-right: 10.8rem;
+    margin-bottom: 8rem;
+    width: 348px;
+    height: 55px;
+    left: 984px;
+    top: 889px;
+}
+
+.add-clear-btn button {
+
+    height: 5.5rem;
+    font-size: 2.1rem;
+    padding: 18px 15px;
+}
+
+#clear-task{
+    background-color: transparent;
+    border: 1px solid var(--btnBackgroundColor);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13.6rem;
+}
+
+#create-task{
+    width: 18.7rem;
+    background-color: var(--btnBackgroundColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    border: none;
+    color: white;
+}
+
+#clear-task:hover{
+    border: 1px solid var(--lightBlue);
+    cursor: pointer;
+    color:var(--lightBlue);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+#create-task:hover{
+    background-color: var(--lightBlue);
+    cursor: pointer;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hide{
+    display: none;
+}
