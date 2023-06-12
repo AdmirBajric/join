@@ -1,6 +1,7 @@
 /* Global CSS variables; */
 :root {
   --btnBackgroundColor: #2a3647;
+  --background: #F5F5F5;
   --inputColor: #d1d1d1;
   --inactive: #cdcdcd;
   --bgColor: #f6f7f8;

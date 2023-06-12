@@ -1,5 +1,6 @@
 .add-task{
     height: 90vh;
+    background: var(--background);
 }
 
 .header-add-task{
@@ -15,6 +16,8 @@
     margin-left: 7rem;
     margin-right: 6rem;
     margin-top: 2.2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .task-detail h3{
@@ -115,6 +118,61 @@
     height: 1rem;
 }
 
-.assigned{
+.assigned,.prio,.subtasks{
     margin-top:3.3rem ;
+}
+
+.task-right{
+    display: flex;
+    flex-direction: column;
+    margin-right: 12.3rem;
+}
+
+.prio-button{
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.prio-button  button{
+    width:13.6rem;
+    height:5.1rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    border: none;
+    font-size: 2.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+}
+
+.prio-button  button:hover{
+    cursor: pointer;
+}
+
+.subtask-check{
+    display: flex;
+    gap:1.5rem;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: var(--weight4);
+}
+
+.subtask-check input{
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    border: 0.1rem solid #000000;
+    border-radius: 0.3rem;
+    width: 1.4rem;
+}
+
+#new-subtask{
+    position: relative;
+}
+
+.subtasks img{
+    position: absolute;
+    right: 20.2rem;
+    top: 37.4rem;
 }
