@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="add_task.css">
     <link rel="shortcut icon" href="./assets/img/join-small.svg" type="image/x-icon">
-    <script src="addTask.js"></script>
+    <script src="addTask.js" defer></script>
     <script
 
     ></script>
@@ -37,7 +37,7 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span>Select task category</span>
-                    <img src="assets/img/arrow-down.svg" alt="" onclick="showCategory()">
+                    <img src="assets/img/arrow-down.svg" alt="" id="showCategory">
                 </div>
                 <div class="dropdown-content-cat hide">
                     <a href="">New category </span></a>
@@ -54,7 +54,7 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span>Select contacts to assign</span>
-                    <img src="assets/img/arrow-down.svg" alt="" onclick="showAssingedTo()">
+                    <img src="assets/img/arrow-down.svg" alt="" id="showAssignedTo">
                 </div>
                 <div class="dropdown-content-con hide">
                     <a href="">You <input type="checkbox"></span></a>
@@ -78,9 +78,9 @@
             Prio
         </h3>
         <div class="prio-button">
-            <button>Urgent<img src="assets/img/urgent-prio.svg"></button>
-            <button>Medium<img src="assets/img/medium-prio.png"></button>
-            <button>Low <img src="assets/img/low-prio.svg" alt=""></button>
+            <button id="urgent" onclick="urgentPrio()">Urgent<img src="assets/img/urgent-prio.svg"></button>
+            <button id="medium">Medium<img src="assets/img/medium-prio.png"></button>
+            <button id="low">Low <img src="assets/img/low-prio.svg" alt=""></button>
         </div>
     </div>
 

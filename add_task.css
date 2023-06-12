@@ -269,3 +269,30 @@ background-color: var(--inputColor);
 hr{
     color: var(--inputColor)
 }
+
+.urgent-color{
+    background-color: var(--development);
+}
+
+.medium-color{
+    background-color: var(--contactFour);
+}
+
+.low-color{
+    background-color: var(--contactThree);
+}
+
+.animate-dropdown {
+    animation: slideUpDown 0.3s ease-in-out;
+}
+
+@keyframes slideUpDown {
+0% {
+    transform: translateY(-10px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
