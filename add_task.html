@@ -22,12 +22,12 @@
         <div class="task-left">
         <div class="title">
             <h3>Title</h3>
-            <input type="text" placeholder="Enter a Title">
+            <input type="text" placeholder="Enter a Title" required>
         </div>
         
         <div class="description">
             <h3>Description</h3>
-            <textarea placeholder="Enter a Description"></textarea>
+            <textarea placeholder="Enter a Description" required></textarea>
         </div>
 
         <div class="category">
@@ -36,13 +36,13 @@
             </h3>
             <div class="dropdown-category">
                 <div class="dropdown-title">
-                    <span>Select task category</span>
+                    <span id="selectedCategory">Select task category</span>
                     <img src="assets/img/arrow-down.svg" alt="" id="showCategory">
                 </div>
                 <div class="dropdown-content-cat hide">
                     <a href="">New category </span></a>
-                    <a href="">Sales<span class="dot dot-red"></span></a>
-                    <a href="" class="zero-padding">Backoffice<span class="dot dot-pink"></span></a>
+                    <a href="" id="sales">Sales<span class="dot dot-red"></span></a>
+                    <a href="" class="zero-padding" id="backOffice">Backoffice<span class="dot dot-pink"></span></a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             </h3>
             <div class="dropdown-category">
                 <div class="dropdown-title">
-                    <span>Select contacts to assign</span>
+                    <span id="selected-contacts">Select contacts to assign</span>
                     <img src="assets/img/arrow-down.svg" alt="" id="showAssignedTo">
                 </div>
                 <div class="dropdown-content-con hide">

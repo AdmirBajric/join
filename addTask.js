@@ -5,6 +5,8 @@ const ddContact = document.querySelector('.dropdown-content-con');
 const urgentButton = document.getElementById('urgent');
 const mediumButton = document.getElementById('medium');
 const lowButton = document.getElementById('low');
+const salesLink = document.getElementById('sales');
+const backOfficeLink = document.getElementById('backOffice');
 
 function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
@@ -48,3 +50,18 @@ function lowButtonColor(){
 });
 }
 lowButtonColor();
+
+// Add event listeners to the links
+salesLink.addEventListener('click', selectCategory);
+backOfficeLink.addEventListener('click', selectCategory);
+
+// Function to handle the click event
+function selectCategory(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    const selectedCategory = document.getElementById('selectedCategory');
+
+    // Update the selected category text
+    selectedCategory.textContent = event.target.textContent;
+    }
+
