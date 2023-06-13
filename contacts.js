@@ -4,6 +4,10 @@ const editFormUserImg = document.querySelector(".edit-form-user-img");
 const editInputName = document.querySelector("#edit-input-name");
 const editInputEmail = document.querySelector("#edit-input-email");
 const editInputPhone = document.querySelector("#edit-input-phone");
+const editButtonsCancel = document.querySelector("#edit-buttons-cancel");
+const editButtonsCreate = document.querySelector("#edit-buttons-create");
+const renderContacts = document.querySelector("#render-contacts");
+let contactContainer = document.querySelector("#contact-container");
 
 // Count for colors
 let count = 0;
@@ -37,34 +41,38 @@ const jsonData =
   '[{"fullName": "Andy Miller", "email": "andymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Barbara Miller", "email": "barbaramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Anto Miller", "email": "antomiller@gmail.com", "phone": "015750943212"}, {"fullName": "Candy Miller", "email": "candymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Thomas Miller", "email": "thomasmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Rudolf Miller", "email": "rudolfmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Inga Miller", "email": "ingamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Irma Miller", "email": "irmamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Sara Miller", "email": "saramiller@gmail.com", "phone": "015750943212"}, {"fullName": "Daniela Miller", "email": "danielamiller@gmail.com", "phone": "015750943212"}, {"fullName": "Emily Miller", "email": "emilymiller@gmail.com", "phone": "015750943212"}, {"fullName": "Hans Miller", "email": "hansmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Ingrid Miller", "email": "ingridmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Frank Miller", "email": "frankmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Kerstin Miller", "email": "kerstinmiller@gmail.com", "phone": "015750943212"}, {"fullName": "Frederic Miller", "email": "fredericmiller@gmail.com", "phone": "015750943212"}]';
 
 // Parse the JSON data into an array of objects
-const users = JSON.parse(jsonData);
-
-// Sort the array alphabetically by the fullName property
-users.sort((a, b) => a.fullName.localeCompare(b.fullName));
+let users = JSON.parse(jsonData);
 
 // Create an object to hold the grouped names
-const groupedNames = {};
+let groupedNames = [];
 
-// Group the names by their starting letters
-users.forEach((user) => {
-  const firstLetter = user.fullName.charAt(0).toUpperCase();
-  if (!groupedNames[firstLetter]) {
-    groupedNames[firstLetter] = [];
-  }
-  groupedNames[firstLetter].push(user);
-});
+const renderHTML = () => {
+  groupedNames = [];
+  count = 0;
 
-// Generate the HTML output
-let htmlOutput = "";
-for (const letter in groupedNames) {
-  htmlOutput += `<h2 class="contact-letter">${letter}</h2>`;
-  htmlOutput += `<div class="contact-divider"></div>`;
+  // Sort the array alphabetically by the fullName property
+  users.sort((a, b) => a.fullName.localeCompare(b.fullName));
 
-  groupedNames[letter].forEach((user) => {
-    const firstNameLetter = user.fullName.split(" ")[0].charAt(0);
-    const firstLastLetter = user.fullName.split(" ")[1].charAt(0);
+  // Group the names by their starting letters
+  users.forEach((user) => {
+    const firstLetter = user.fullName.charAt(0).toUpperCase();
+    if (!groupedNames[firstLetter]) {
+      groupedNames[firstLetter] = [];
+    }
+    groupedNames[firstLetter].push(user);
+  });
 
-    htmlOutput += `
+  // Generate the HTML output
+  let htmlOutput = "";
+  for (const letter in groupedNames) {
+    htmlOutput += `<h2 class="contact-letter">${letter}</h2>`;
+    htmlOutput += `<div class="contact-divider"></div>`;
+
+    groupedNames[letter].forEach((user) => {
+      const firstNameLetter = user.fullName.split(" ")[0].charAt(0);
+      const firstLastLetter = user.fullName.split(" ")[1].charAt(0);
+
+      htmlOutput += `
     <div onclick="render(${count})" class="contact-user">
         <div style="background-color: ${colors[count]}" class="contact-user-init">
             <p>${firstNameLetter}</p>
@@ -77,20 +85,21 @@ for (const letter in groupedNames) {
     </div>
     `;
 
-    if (count < 19) {
-      count++;
-    } else {
-      count = 0;
-    }
-  });
-}
+      if (count < 19) {
+        count++;
+      } else {
+        count = 0;
+      }
+    });
+  }
 
-// Display the HTML output
-const renderContacts = document.querySelector("#render-contacts");
-renderContacts.innerHTML = htmlOutput;
+  // Display the HTML output
+  renderContacts.innerHTML = htmlOutput;
+};
+
+renderHTML();
 
 const render = (id) => {
-  let contactContainer = document.querySelector("#contact-container");
   contactContainer.innerHTML = "";
 
   const firstNameLetter = users[id].fullName.split(" ")[0].charAt(0);
@@ -166,8 +175,66 @@ const editContact = (id) => {
 
   editFormUserImg.innerHTML = `<p>${firstNameLetter}</p> <p>${firstLastLetter}</p>`;
   editFormUserImg.style.backgroundColor = colors[id];
+
+  editButtonsCancel.setAttribute("onclick", `deleteContact(${id})`);
+  editButtonsCreate.setAttribute("onclick", `saveEditedContact(${id})`);
 };
 
-const deleteContact = () => {
-  console.log("Delete Contact");
+const deleteContact = (id) => {
+  const user = users[id];
+  const filteredUser = users.filter((u) => {
+    if (u.email !== user.email) {
+      return u;
+    }
+  });
+
+  users = filteredUser;
+  contactContainer.innerHTML = "";
+  renderContacts.innerHTML = "";
+  closeEditContact();
+  renderHTML();
+};
+
+const saveEditedContact = (id) => {
+  const user = users[id];
+  const name = document.querySelector("#edit-input-name");
+  const email = document.querySelector("#edit-input-email");
+  const phone = document.querySelector("#edit-input-phone");
+
+  users.filter((r) => {
+    if (user.email === r.email) {
+      r.fullName = name.value;
+      r.email = email.value;
+      r.phone = phone.value;
+    }
+  });
+
+  renderContacts.innerHTML = "";
+  closeEditContact();
+  renderHTML();
+  const index = users.findIndex((o) => o.email === user.email);
+  render(index);
+};
+
+const createContact = () => {
+  const addFormNameInput = document.querySelector("#add-form-name-input");
+  const addFormEmailInput = document.querySelector("#add-form-email-input");
+  const addFormPhoneInput = document.querySelector("#add-form-phone-input");
+
+  const newUser = {
+    fullName: addFormNameInput.value,
+    email: addFormEmailInput.value,
+    phone: addFormPhoneInput.value,
+  };
+
+  users = [...users, newUser];
+
+  renderContacts.innerHTML = "";
+  closeAddContact();
+  addFormNameInput.value = "";
+  addFormEmailInput.value = "";
+  addFormPhoneInput.value = "";
+  renderHTML();
+  const index = users.findIndex((o) => o.email === newUser.email);
+  render(index);
 };
