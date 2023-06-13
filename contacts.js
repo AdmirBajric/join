@@ -5,7 +5,7 @@ const editInputName = document.querySelector("#edit-input-name");
 const editInputEmail = document.querySelector("#edit-input-email");
 const editInputPhone = document.querySelector("#edit-input-phone");
 const editButtonsCancel = document.querySelector("#edit-buttons-cancel");
-const editButtonsCreate = document.querySelector("#edit-buttons-create");
+const editButtonsCreate = document.querySelector("#edit-form");
 const renderContacts = document.querySelector("#render-contacts");
 let contactContainer = document.querySelector("#contact-container");
 
@@ -196,7 +196,10 @@ const editContact = (id) => {
   editFormUserImg.style.backgroundColor = colors[id];
 
   editButtonsCancel.setAttribute("onclick", `deleteContact(${id})`);
-  editButtonsCreate.setAttribute("onclick", `saveEditedContact(${id})`);
+  editButtonsCreate.setAttribute(
+    "onsubmit",
+    `saveEditedContact(${id}); return false;`
+  );
 };
 
 const deleteContact = (id) => {
