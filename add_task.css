@@ -186,10 +186,15 @@ background-color: var(--inputColor);
 
 .subtask-check{
     display: flex;
-    gap:1.5rem;
-    align-items: center;
+    flex-direction: column;
     font-size: 1.6rem;
     font-weight: var(--weight4);
+}
+
+.sub-container-task{
+    display: flex;
+    align-items: center;
+    gap:1rem;
 }
 
 .subtask-check input{
@@ -291,4 +296,9 @@ textarea{
     height: 11.9rem;
     padding: 18px 21px;
     font-family: var(--fontFamily);
+}
+
+.required{
+    color:var(--development);
+    padding-left:  1.3rem;
 }
