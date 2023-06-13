@@ -19,20 +19,32 @@ function toggleDropdownCon(){
 }
 showAssingedTo.addEventListener('click', toggleDropdownCon);
 
-urgentButton.addEventListener('click', function() {
-urgentButton.style.backgroundColor = 'var(--development)';
-mediumButton.style.backgroundColor = '';
-lowButton.style.backgroundColor = '';
-});
 
-mediumButton.addEventListener('click', function() {
-urgentButton.style.backgroundColor = '';
-mediumButton.style.backgroundColor = 'var(--contactFour)';
-lowButton.style.backgroundColor = '';
-});
 
-lowButton.addEventListener('click', function() {
-urgentButton.style.backgroundColor = '';
-mediumButton.style.backgroundColor = '';
-lowButton.style.backgroundColor = 'var(--contactThree)';
+
+function urgentButtonColor(){
+    urgentButton.addEventListener('click', function() {
+    urgentButton.style.backgroundColor = 'var(--development)';
+    mediumButton.style.backgroundColor = '';
+    lowButton.style.backgroundColor = '';
+    });
+}
+urgentButtonColor();
+
+function mediumButtonColor(){
+    mediumButton.addEventListener('click', function() {
+    urgentButton.style.backgroundColor = '';
+    mediumButton.style.backgroundColor = 'var(--contactFour)';
+    lowButton.style.backgroundColor = '';
+    });
+}
+mediumButtonColor();
+
+function lowButtonColor(){
+    lowButton.addEventListener('click', function() {
+    urgentButton.style.backgroundColor = '';
+    mediumButton.style.backgroundColor = '';
+    lowButton.style.backgroundColor = 'var(--contactThree)';
 });
+}
+lowButtonColor();
