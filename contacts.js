@@ -115,8 +115,7 @@ const render = (id) => {
     <div class="user-contact-info">
         <p class="user-contact-info-name">${users[id].fullName}</p>
         <div class="user-contact-add-task">
-            <img src="./assets/img/plus-sign.svg" alt="Plus image" />
-            <p>Add Task</p>
+            <img class="user-contact-add-task-img" src="./assets/img/add-task-blue.svg" alt="Plus image" />
         </div>
     </div>
   </div>
@@ -126,9 +125,8 @@ const render = (id) => {
         <p>Contact Information</p>
       </div>
       
-      <div class="edit-contact">
-        <img src="./assets/img/contact-pencil.svg" alt="Pencil" />
-        <p onclick="editContact(${id})">Edit Contact</p>
+      <div onclick="editContact(${id})" class="edit-contact">
+        <img class="edit-contact-img" src="./assets/img/edit-contact-black.svg" alt="Pencil" />
       </div>
   </div>
 
@@ -145,6 +143,27 @@ const render = (id) => {
   `;
 
   contactContainer.innerHTML = html;
+
+  const editContactImg = document.querySelector(".edit-contact-img");
+  const userContactAddTaskImg = document.querySelector(
+    ".user-contact-add-task-img"
+  );
+
+  editContactImg.addEventListener("mouseover", () => {
+    editContactImg.src = "./assets/img/edit-contact-blue.svg";
+  });
+
+  editContactImg.addEventListener("mouseout", () => {
+    editContactImg.src = "./assets/img/edit-contact-black.svg";
+  });
+
+  userContactAddTaskImg.addEventListener("mouseover", () => {
+    userContactAddTaskImg.src = "./assets/img/add-task-blue-bold.svg";
+  });
+
+  userContactAddTaskImg.addEventListener("mouseout", () => {
+    userContactAddTaskImg.src = "./assets/img/add-task-blue.svg";
+  });
 };
 
 const openAddContact = () => {
