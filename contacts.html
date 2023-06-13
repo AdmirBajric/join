@@ -59,7 +59,7 @@
         <div class="add-form-user-img">
           <img src="./assets/img/user-white.svg" alt="User image" />
         </div>
-        <div id="add-form">
+        <form onsubmit="createContact(); return false;" id="add-form">
           <div id="add-form-name">
             <div>
               <input
@@ -69,6 +69,7 @@
                 name="text"
                 required
                 placeholder="Name"
+                id="add-form-name-input"
               />
               <img src="./assets/img/user.svg" alt="User image" />
             </div>
@@ -81,6 +82,7 @@
                 name="email"
                 required
                 placeholder="Email"
+                id="add-form-email-input"
               />
               <img src="./assets/img/email.svg" alt="Email image" />
             </div>
@@ -93,17 +95,18 @@
                 name="tel"
                 required
                 placeholder="Phone"
+                id="add-form-phone-input"
               />
               <img src="./assets/img/phone.svg" alt="Phone image" />
             </div>
           </div>
-        </div>
+        </form>
         <div id="add-buttons">
           <button onclick="closeAddContact()" id="add-buttons-cancel">
             <p>Cancel</p>
             <p>X</p>
           </button>
-          <button id="add-buttons-create">
+          <button type="submit" form="add-form" id="add-buttons-create">
             <p>Create contact</p>
             <img src="./assets/img/done.svg" alt="Done image" />
           </button>
@@ -169,7 +172,7 @@
           </div>
         </div>
         <div id="edit-buttons">
-          <button onclick="deleteContact()" id="edit-buttons-cancel">
+          <button id="edit-buttons-cancel">
             <p>Delete</p>
           </button>
           <button id="edit-buttons-create">
