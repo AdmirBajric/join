@@ -25,6 +25,11 @@ body {
 
 .p-px {
     padding-left: 30px;
+    font-size: 17px;
+}
+
+.p-px1 {
+    font-size: 17px;
 }
 
 .nummer {
