@@ -16,16 +16,25 @@
     <title>Contacts</title>
   </head>
   <body id="contacts-body">
+    <!-- Sidebar start -->
     <div id="sidebar"></div>
+    <!-- Sidebar end -->
 
+    <!-- Contacts screen start -->
     <div id="nav-contacts-container">
+      <!-- Nav Menu start -->
       <div id="nav"></div>
+      <!-- Nav Menu end -->
 
+      <!-- Contacts container start -->
       <div id="contacts-container">
+        <!-- Contacts List start -->
         <div id="contacts-list">
           <div id="render-contacts"></div>
         </div>
+        <!-- Contacts List end -->
 
+        <!-- Contacts Add Edit Delete start -->
         <div id="crud-contacts">
           <div id="contacts-header">
             <h2>Contacts</h2>
@@ -38,9 +47,13 @@
             <img src="./assets/img/add-contact.svg" alt="User img " />
           </button>
         </div>
+        <!-- Contacts Add Edit Delete start -->
       </div>
+      <!-- Contacts container start -->
     </div>
+    <!-- Contacts screen end -->
 
+    <!-- Add Contact Modal start -->
     <div id="add-contact">
       <div id="add-header-container">
         <img src="./assets/img/add-contact-join.svg" alt="Join image" />
@@ -113,7 +126,9 @@
         </div>
       </div>
     </div>
+    <!-- Add Contact Modal end -->
 
+    <!-- Edit Contact Modal start -->
     <div id="edit-contact">
       <div id="edit-header-container">
         <img src="./assets/img/add-contact-join.svg" alt="Join image" />
@@ -181,6 +196,13 @@
         </div>
       </div>
     </div>
+    <!-- Edit Contact Modal end -->
+
+    <!-- Javascript start -->
+    <script src="data.js"></script>
+    <script src="helper.js"></script>
+    <script src="contactTemplate.js"></script>
     <script src="contacts.js"></script>
+    <!-- Javascript end -->
   </body>
 </html>
