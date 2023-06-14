@@ -30,3 +30,19 @@ body {
 .Profile {
     cursor: pointer;
 }
+
+.log-img {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: -155px;
+    cursor: pointer;
+}
+
+.log-img:hover {
+    transform: scale(1.05);  
+    transition: all 100ms ease-in-out;
+}
+
+.d-none {
+    display: none !important;
+}
