@@ -1,0 +1,89 @@
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="summary.css">
+    <script src="summary.js"></script>
+    <title>Summary-join</title>
+
+<body onload="load()">
+    
+    <div w3-include-html="header_sidebar.html"></div>
+
+    <!--Summary on-->
+    <div class="on-top">
+    <div class="container-right">
+
+        <div class="summary-container">
+            <div class="all-in-summary">
+                <div class="summary">
+                    Summary
+                </div>
+                <img class="img-summary" src="img-summary/Vector 5 (2).png">
+                <div class="text">
+                    Everything in a nutshell!
+                </div>
+            </div>
+        </div>
+
+        <div class="three-container">
+            <div class="container-tasks" onclick="toBoard()">
+                <div class="tasks-board" id="tasks-board">3</div>
+                <div class="text-tasks">Tasks in<br>Board</div>
+            </div>
+            <div class="container-tasks" onclick="toBoard()">
+                <div class="tasks-progress" id="tasks-progress">3</div>
+                <div class="text-tasks">Tasks in<br>Progress</div>
+            </div>
+            <div class="container-tasks" onclick="toBoard()">
+                <div class="awaiting-feedback" id="awaiting-feedback">3</div>
+                <div class="text-tasks">Awaiting<br>Feedback</div>
+            </div>
+        </div>
+
+        <div class="long-dueContainer">
+            <div class="long-div" onclick="toBoard()">
+                <div class="urgent">
+                    <div class="img-urgent">
+                        <img class="urgent-imgimg" src="img-summary/Frame 59 (6).png">
+                    </div>
+                    <div class="urgent-nummber">
+                        <div class="sum-urgent" id="sum-urgent">3</div>
+                        <div class="text-urgent">Urgent</div>
+                    </div>
+                </div>
+                <img class="icon-img" src="img-summary/Vector 5 (3).png">
+                <div class="deadline-container">
+                    <div class="dateContainer" id="dateContainer">Juni 9, 2023</div>
+                    <div class="deadline-text">Upcoming Deadline</div>
+                </div>
+            </div>
+            <div class="greet-container" id="greet-container">
+                <div class="greet-text">Good morning,</div>
+                <div class="greet-name">Dear Guest</div>
+            </div>
+        </div>
+
+        <div class="to-do-Container">
+            <div class="to-do-div" onclick="toBoard()">
+                <div class="center">
+                <img class="img-stift" src="img-summary/Frame 59 (7).png">
+                <div class="to-do-summe">
+                    <div class="sum-todo" id="sum-todo">2</div>
+                    <div class="text-todo">To-do</div>
+                </div>
+                </div>
+            </div>
+            <div class="done-div" onclick="toBoard()">
+                <div class="center">
+                <img class="iconDone-img" src="img-summary/Frame 59 (8).png">
+                <div class="sum-done-container">
+                    <div class="sum-done" id="sum-done">2</div>
+                    <div class="text-done">Done</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!--Summary off-->
+</body>
