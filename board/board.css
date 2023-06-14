@@ -1,3 +1,6 @@
+body{
+  display: unset !important;
+}
 .board {
   background-color: var(--bgColor);
 }
@@ -80,7 +83,7 @@
 }
 
 .board-header .plus-button {
-  background-image: url("assets/img/plus-button.svg");
+  background-image: url("/assets/img/plus-button.svg");
   background-size: cover;
   width: 3rem;
   height: 3rem;
@@ -88,7 +91,7 @@
 }
 
 .board-header .plus-button:hover {
-  background-image: url("assets/img/plus-hover.svg");
+  background-image: url("/assets/img/plus-hover.svg");
   transition: ease-in-out 225ms;
 }
 
@@ -169,4 +172,34 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+}
+
+#popup-add-task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -10rem;
+    left: 10rem;
+    z-index: 999;
+}
+
+.subtasks img{
+  position: absolute;
+  right: 14.2rem !important;
+  top: 43.6rem !important;
+}
+.animate-dropdown {
+    animation: slideUpDown 0.3s ease-in-out;
+}
+
+@keyframes slideUpDown {
+0% {
+    transform: translateY(-10px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
 }

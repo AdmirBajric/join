@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="add_task.css">
     <link rel="shortcut icon" href="./assets/img/join-small.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/templates/task_form.css">
     <script src="addTask.js" defer></script>
     <script src="add_task_check.js" defer></script>
+    <script src="/assets/templates/html_temp.js"></script>
     <script
 
     ></script>
@@ -40,7 +42,7 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span id="selectedCategory">Select task category</span>
-                    <img src="assets/img/arrow-down.svg" alt="" id="showCategory">
+                    <img src="/assets/img/arrow-down.svg" alt="" id="showCategory">
                 </div>
                 <div class="dropdown-content-cat hide">
                     <a href="">New category </span></a>
@@ -57,12 +59,12 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span id="selected-contacts">Select contacts to assign</span>
-                    <img src="assets/img/arrow-down.svg" alt="" id="showAssignedTo">
+                    <img src="/assets/img/arrow-down.svg" alt="" id="showAssignedTo">
                 </div>
                 <div class="dropdown-content-con hide">
                     <a id="firstContact">You <input type="checkbox"></span></a>
                     <a id="secondContact">Maximilian Vogel <input type="checkbox"></span></a>
-                    <a class="zero-padding" id="new-contact" onclick="addNewContact()">Invite new contact<img src="assets/img/contacts.svg"></span></a>
+                    <a class="zero-padding" id="new-contact" onclick="addNewContact()">Invite new contact<img src="/assets/img/contacts.svg"></span></a>
                 </div>
             </div>
         </div>
@@ -81,30 +83,31 @@
             Prio
         </h3>
         <div class="prio-button">
-            <button id="urgent">Urgent<img src="assets/img/urgent-prio.svg"></button>
-            <button id="medium">Medium<img src="assets/img/medium-prio.png"></button>
-            <button id="low">Low <img src="assets/img/low-prio.svg" alt=""></button>
+            <button id="urgent">Urgent<img src="/assets/img/urgent-prio.svg"></button>
+            <button id="medium">Medium<img src="/assets/img/medium-prio.png"></button>
+            <button id="low">Low <img src="/assets/img/low-prio.svg" alt=""></button>
         </div>
     </div>
 
     <div class="subtasks">
         <h3>Subtasks</h3>
         <input type="text" placeholder="Add new Subtasks" id="new-subtask">
+
         <div onclick="addSubtasks()">
-            <img src="assets/img/plus-sign.svg">
+            <img src="/assets/img/plus-sign.svg">
         </div>
         <div class="subtask-check" id="added-subtasks">
 
         </div>
     </div>
     <div class="add-clear-btn">
-        <button id="clear-task">
+        <button id="clear-task" onclick="clearTask()">
             Clear
-            <img src="assets/img/close.svg" alt="">
+            <img src="/assets/img/close.svg" alt="">
         </button> 
-        <button id="create-task">
+        <button id="create-task" onclick="createTask();">
             Create Task
-            <img src="assets/img/check.svg" alt="">
+            <img src="/assets/img/check.svg" alt="">
         </button>
     </div>
 </div>

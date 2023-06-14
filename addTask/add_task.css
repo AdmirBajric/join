@@ -1,3 +1,7 @@
+body{
+    display: unset !important;
+}
+
 .add-task{
     height: 90vh;
     background: var(--background);

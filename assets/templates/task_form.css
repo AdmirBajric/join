@@ -1,7 +1,8 @@
-body{
+.popup-task{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 .popup-background{
     background-color: var(--white);

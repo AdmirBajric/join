@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="task_form.css">
-    <script src="task_form.js" defer></script>
-    <link rel="shortcut icon" href="/assets/img/join-small.svg" type="image/x-icon">
-    <title>Add Task</title>
-</head>
-<body>
+function addSubTaskTempHtml(i){
+    return`
+    <div class="sub-container-task">
+        <input type="checkbox" name="Subtask ${i + 1}">
+        <p>${newAddedSubtasks[i]}</p>
+    </div>
+    `
+}
+
+function popupAddTaskHtml(){
+    return`
     <div class="popup-task">
         <div class="popup-background">
             <h2 class="header-task">
@@ -103,5 +102,19 @@
 
     </div>
 </div>
-</body>
-</html>
+    `
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
