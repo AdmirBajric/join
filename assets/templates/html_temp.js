@@ -111,10 +111,12 @@ function showNewCategoryHTML(){
             <div class="dropdown-title-new">
                 <input id="new-cat-value" class="input-color" placeholder="New Category Name"></input>
                 <div class="add-delete-new">
-                    <div onclick="addNewCategoryToArray()">
+                    <div onclick="addNewCategory()">
                         <i class="fa-solid fa-check"></i>
                     </div>
-                    <img src="../assets/img/close.svg" id= "cross">
+                    <div onclick="clearNewCategory()">
+                        <img src="../assets/img/close.svg" id= "cross" >
+                    </div>
                 </div>
         </div>
     `
@@ -124,9 +126,9 @@ function showNewContactHTML(){
     return`
     <div class="dropdown-category-con">
     <div class="dropdown-title-new">
-        <input id="new-con-value" class="input-color" placeholder="Contact Email"></input>
+        <input id="new-con-value" class="input-color" placeholder="Contact Email" type="email"></input>
         <div class="add-delete-new">
-            <div>
+            <div onclick="createNewContact()">
                 <i class="fa-solid fa-check"></i>
             </div>
             <img src="../assets/img/close.svg" id= "cross">

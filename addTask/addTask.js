@@ -18,6 +18,10 @@ let addSubtasksToBoard = [];
 let newCategory = [];
 let newContacts = [];
 
+// Store the selected color
+let selectedColor = '';
+let selectedCategory = 'Select task category';
+
 function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
     ddCategory.classList.toggle('animate-dropdown');
@@ -92,6 +96,8 @@ function checkInputValue(newTitle,newDescription){
     }
 }
 
+// category
+
 function clearTask(){
     let newTitle = document.getElementById('new_task_title');
     let newDescription = document.getElementById('new_task_description');
@@ -121,20 +127,111 @@ function showNewContact(){
     newCon.innerHTML = showNewContactHTML();
 }
 
-function addNewCategoryToArray() {
-    let getNewCat = document.getElementById('new-cat-value');
-    let displayNewCat = document.getElementById('display-new-cat');
-    newCategory.push(getNewCat.value);
+function clearNewCategory(){
+    let newCat = document.querySelector('.add-new-cat');
+    let dropdownCat = document.querySelector('.dropdown-category');
+    let colorPicker = document.querySelector('.color');
+    newCat.classList.add('hide');
+    dropdownCat.classList.remove('hide');
+    colorPicker.classList.add('hide');
+}
 
-    getNewCat.value = '';
 
-    displayNewCat.innerHTML = '';
-    for (let i = 0; i < newCategory.length; i++) {
-        displayNewCat.innerHTML += `${newCategory[i]}`
+// Add event listeners to color dots
+const colorDots = document.querySelectorAll('.color .dot');
+colorDots.forEach((dot) => {
+    dot.addEventListener('click', (event) => {
+    const clickedDot = event.target;
+    const colorName = clickedDot.classList[1]; // Assuming the second class name represents the color
+
+    // Remove the border from all color dots
+    colorDots.forEach((dot) => {
+        dot.style.border = 'none';
+    });
+
+    // Add border to the clicked color dot
+    clickedDot.style.border = '2px solid black';
+
+    // Update the selected color
+    selectedColor = colorName;
+
+    // Update the newCatValue and dropdown category
+    const newCatValue = document.getElementById('new-cat-value');
+    const selectedCategoryElem = document.getElementById('selectedCategory');
+
+    newCatValue.value = ''; // Clear the previous value
+    newCatValue.style.backgroundColor = selectedColor; // Set the background color of the newCatValue input field
+
+    // Create a dot element with the selected color and append it to newCatValue
+    const colorDot = document.createElement('span');
+    colorDot.classList.add('dot', selectedColor);
+    colorDot.style.backgroundColor = selectedColor;
+    newCatValue.innerHTML = '';
+    newCatValue.appendChild(colorDot);
+
+    selectedCategoryElem.innerHTML = `<span class="dot ${selectedColor}" style="background-color: ${selectedColor};"></span> ${selectedCategory}`; // Update the selectedCategory with the selected category and its color
+  });
+});
+
+// Update addNewCategory function
+function addNewCategory() {
+    const newCatValue = document.getElementById('new-cat-value').value;
+    const ddCategory = document.querySelector('.dropdown-content-cat');
+
+    if (newCatValue && selectedColor) { // Check if both newCatValue and selectedColor have valid values
+    const newCategoryElement = document.createElement('div');
+    newCategoryElement.classList.add('cat-list');
+    newCategoryElement.textContent = newCatValue;
+
+    // Set the color dot for the new category
+    const colorDot = document.createElement('span');
+    colorDot.classList.add('dot', selectedColor);
+    colorDot.style.backgroundColor = selectedColor; // Set the background color of the color dot
+    newCategoryElement.appendChild(colorDot);
+
+    // Add click event listener to the new category
+    newCategoryElement.addEventListener('click', () => {
+        selectedCategory = newCatValue; // Update the selected category variable
+        selectedColor = colorDot.classList[1]; // Update the selected color variable
+
+        const selectedCategoryElem = document.getElementById('selectedCategory');
+        selectedCategoryElem.innerHTML = `<span class="dot ${selectedColor}" style="background-color: ${selectedColor};"></span> ${selectedCategory}`; // Update the selectedCategory with the new category and its color
+    });
+
+    ddCategory.appendChild(newCategoryElement);
+
+    // Clear the input value
+    document.getElementById('new-cat-value').value = '';
+    }
     }
 
-    document.querySelector('.dropdown-category').classList.remove('hide');
-    document.querySelector('.color').classList.add('hide');
-    document.querySelector('.add-new-cat').classList.add('hide');
-    }
+// Update click event listener for sales
+const salesOption = document.getElementById('sales');
+salesOption.addEventListener('click', () => {
+    const selectedCategory = document.getElementById('selectedCategory');
+    const selectedColorDot = salesOption.querySelector('.dot');
+    const selectedColor = selectedColorDot.classList[1];
 
+  selectedCategory.innerHTML = `<span class="dot ${selectedColor}" style="background-color: ${selectedColor};"></span> Sales`; // Update the selectedCategory with the sales category and its color
+});
+
+// ... previous code ...
+
+// Update click event listener for backOffice
+const backOfficeOption = document.getElementById('backOffice');
+backOfficeOption.addEventListener('click', () => {
+    const selectedCategory = document.getElementById('selectedCategory');
+    const selectedColorDot = backOfficeOption.querySelector('.dot');
+    const selectedColor = selectedColorDot.classList[1];
+
+  selectedCategory.innerHTML = `<span class="dot ${selectedColor}" style="background-color: ${selectedColor};"></span> Backoffice`; // Update the selectedCategory with the backoffice category and its color
+});
+
+// Assigned to
+
+function createNewContact(){
+    let newContactValue = document.getElementById('new-con-value');
+    newContacts.push(newContactValue.value);
+
+    console.log(newContacts)
+}
