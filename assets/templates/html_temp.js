@@ -33,7 +33,7 @@ function popupAddTaskHtml(){
                         <div class="dropdown-category">
                             <div class="dropdown-title">
                                 <span>Select task category</span>
-                                <img src="/assets/img/arrow-down.svg" alt="" id="showCategory">
+                                <img src="../assets/img/arrow-down.svg" alt="" id="showCategory">
                             </div>
                             <div class="dropdown-content-cat hide">
                                 <a href="">New category </span></a>
@@ -48,7 +48,7 @@ function popupAddTaskHtml(){
                             <div class="dropdown-category">
                                 <div class="dropdown-title">
                                     <span>Select contacts to assign</span>
-                                    <img src="/assets/img/arrow-down.svg" alt="" id="showAssignedTo">
+                                    <img src="../assets/img/arrow-down.svg" alt="" id="showAssignedTo">
                                 </div>
                                 <div class="dropdown-content-con hide">
                                     <a href="">You <input type="checkbox"></span></a>
@@ -73,16 +73,16 @@ function popupAddTaskHtml(){
                     Prio
                 </h3>
                 <div class="prio-button">
-                    <button id="urgent">Urgent<img src="/assets/img/urgent-prio.svg"></button>
-                    <button id="medium">Medium<img src="/assets/img/medium-prio.png"></button>
-                    <button id="low">Low <img src="/assets/img/low-prio.svg" alt=""></button>
+                    <button id="urgent">Urgent<img src="../assets/img/urgent-prio.svg"></button>
+                    <button id="medium">Medium<img src="../assets/img/medium-prio.png"></button>
+                    <button id="low">Low <img src="../assets/img/low-prio.svg" alt=""></button>
                 </div>
             </div>
         
             <div class="subtasks">
                 <h3>Subtasks</h3>
                 <input type="text" placeholder="Add new Subtasks" id="new-subtask">
-                <img src="/assets/img/plus-sign.svg">
+                <img src="../assets/img/plus-sign.svg">
                 <div class="subtask-check">
                     <input type="checkbox" name="Subtask 1" id="" >
                     <p>Subtask 1</p>
@@ -91,11 +91,11 @@ function popupAddTaskHtml(){
             <div class="add-clear-btn">
                 <button id="clear-task">
                     Clear
-                    <img src="/assets/img/close.svg" alt="">
+                    <img src="../assets/img/close.svg" alt="">
                 </button> 
                 <button id="create-task">
                     Create Task
-                    <img src="/assets/img/check.svg" alt="">
+                    <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
             </div>
@@ -107,19 +107,34 @@ function popupAddTaskHtml(){
 
 function showNewCategoryHTML(){
     return`
-        <div class="dropdown-category">
+        <div class="dropdown-category-cat">
             <div class="dropdown-title-new">
-                <input id="selectedCategory" class="input-color" placeholder="New Category Name"></input>
+                <input id="new-cat-value" class="input-color" placeholder="New Category Name"></input>
                 <div class="add-delete-new">
-                    <i class="fa-solid fa-check"></i>
-                    <img src="/assets/img/close.svg" id= "cross">
+                    <div onclick="addNewCategoryToArray()">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <img src="../assets/img/close.svg" id= "cross">
                 </div>
         </div>
     `
 }
 
-
-
+function showNewContactHTML(){
+    return`
+    <div class="dropdown-category-con">
+    <div class="dropdown-title-new">
+        <input id="new-con-value" class="input-color" placeholder="Contact Email"></input>
+        <div class="add-delete-new">
+            <div>
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <img src="../assets/img/close.svg" id= "cross">
+        </div>
+    </div>
+</div> 
+    `
+}
 
 
 
