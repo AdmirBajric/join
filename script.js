@@ -9,6 +9,15 @@ const forgotPassword = document.querySelector("#forgot-password-container");
 const resetPassword = document.querySelector("#reset-password-container");
 const forgotPasswordInput = document.querySelector("#forgot-password-input");
 const accountExist = document.querySelector("#account-exist");
+const passwordFailed = document.querySelector("#password-failed-message");
+const signupName = document.querySelector("#signup-name");
+const signupEmail = document.querySelector("#signup-email");
+const signupPassword = document.querySelector("#signup-password");
+const newPassword = document.querySelector("#new-password");
+const confirmPassword = document.querySelector("#confirm-password");
+const confirmMessage = document.querySelector(
+  "#confirmation-of-reset-password"
+);
 const successfullyRegistered = document.querySelector(
   "#successfully-registered"
 );
@@ -82,72 +91,78 @@ const sendEmail = () => {
 };
 
 const userResetPassword = () => {
-  const newPassword = document.querySelector("#new-password");
-  const confirmPassword = document.querySelector("#confirm-password");
-  const confirmMessage = document.querySelector(
-    "#confirmation-of-reset-password"
-  );
   if (newPassword.value === confirmPassword.value) {
     // Password matches - Change password on database
     // Open success message and redirect to login
     confirmMessage.style.animation =
       "fadeSendMessageIn 600ms ease-in-out forwards";
-    setTimeout(() => {
-      resetPassword.style.display = "none";
-    }, 1000);
-
-    setTimeout(() => {
-      confirmMessage.style.animation =
-        "fadeSendMessageOut 1s ease-in-out forwards";
-      window.location.replace("https://admirbajric.github.io/join/index.html");
-    }, 2000);
+    passwordSuccessReset();
   } else {
-    const passwordFailed = document.querySelector("#password-failed-message");
-    passwordFailed.style.animation =
-      "fadeSendMessageIn 600ms ease-in-out forwards";
-
-    setTimeout(() => {
-      passwordFailed.style.animation =
-        "fadeSendMessageOut 2s ease-in-out forwards";
-    }, 1000);
+    passwordResetFailed();
   }
 };
 
-const userSignUp = () => {
-  const signupName = document.querySelector("#signup-name");
-  const signupEmail = document.querySelector("#signup-email");
-  const signupPassword = document.querySelector("#signup-password");
+const passwordResetFailed = () => {
+  passwordFailed.style.animation =
+    "fadeSendMessageIn 600ms ease-in-out forwards";
 
+  setTimeout(() => {
+    passwordFailed.style.animation =
+      "fadeSendMessageOut 2s ease-in-out forwards";
+  }, 1000);
+};
+
+const passwordSuccessReset = () => {
+  setTimeout(() => {
+    resetPassword.style.display = "none";
+  }, 1000);
+
+  setTimeout(() => {
+    confirmMessage.style.animation =
+      "fadeSendMessageOut 1s ease-in-out forwards";
+    window.location.replace("https://admirbajric.github.io/join/index.html");
+  }, 2000);
+};
+
+const userSignUp = () => {
   if (false) {
-    // If User exists in database, show message "You are already registered. Click here to login in". If click to "here" then redirect to login screen too.
+    // If User exists in database, show message "You are already registered. Click here to login in". If click "here" then redirect to login screen too.
     accountExist.style.animation =
       "fadeSendMessageIn 600ms ease-in-out forwards";
 
-    setTimeout(() => {
-      accountExist.style.animation =
-        "fadeSendMessageIn 600ms ease-in-out forwards";
-    }, 1000);
-
-    setTimeout(() => {
-      window.location.replace("https://admirbajric.github.io/join/index.html");
-    }, 2000);
+    userExistOnSignUp();
   } else {
     // If user not exist in database, save the user in database. Show message "You have successfully registered" and redirect to login screen.
     successfullyRegistered.style.animation =
       "fadeSendMessageIn 600ms ease-in-out forwards";
 
-    setTimeout(() => {
-      successfullyRegistered.style.animation =
-        "fadeSendMessageOut 1s ease-in-out forwards";
-    }, 1000);
-
-    setTimeout(() => {
-      window.location.replace("https://admirbajric.github.io/join/index.html");
-    }, 2000);
+    userNotExistOnSignUp();
   }
+};
+
+const userNotExistOnSignUp = () => {
+  setTimeout(() => {
+    successfullyRegistered.style.animation =
+      "fadeSendMessageOut 1s ease-in-out forwards";
+  }, 1000);
+
+  setTimeout(() => {
+    window.location.replace("https://admirbajric.github.io/join/index.html");
+  }, 2000);
+};
+
+const userExistOnSignUp = () => {
+  setTimeout(() => {
+    accountExist.style.animation =
+      "fadeSendMessageIn 600ms ease-in-out forwards";
+  }, 1000);
+
+  setTimeout(() => {
+    window.location.replace("https://admirbajric.github.io/join/index.html");
+  }, 2000);
 };
 
 const guestLogin = () => {
   // Redirect to summary.html
-  console.log("Redirect to summary.html as Guest");
+  window.location.replace("https://admirbajric.github.io/join/summary.html");
 };
