@@ -223,6 +223,22 @@ body {
     cursor: pointer;
 }
 
+.to-do-div:hover .icon-stift_one {
+    background-image: url(img-summary/imgFrame.png);
+    background-size: 75%;
+    width: 80px;
+    cursor: pointer;
+}
+
+.icon-stift_one {
+    width: 72px;
+    height: 119px;
+    background-image: url(img-summary/FrameStift.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    margin-top: 60px;
+}
+
 .done-div {
     display: flex;
     justify-content: center;
@@ -242,9 +258,20 @@ body {
     cursor: pointer;
 }
 
-.img-stift {
-    width: 53px;
-    height: 53px;  
+.done-div:hover .icon-stift_two {
+    background-image: url(img-summary/Frame.png);
+    background-size: 75%;
+    width: 80px;
+    cursor: pointer;
+}
+
+.icon-stift_two {
+    width: 72px;
+    height: 119px;
+    background-image: url(img-summary/FrameHaken.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    margin-top: 60px;
 }
 
 .to-do-summe {
