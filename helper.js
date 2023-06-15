@@ -1,4 +1,4 @@
-const selectedElements = () => {
+const contactsSelectedElements = () => {
   const addContact = document.querySelector("#add-contact");
   const editUserContact = document.querySelector("#edit-contact");
   const editFormUserImg = document.querySelector(".edit-form-user-img");
@@ -21,6 +21,58 @@ const selectedElements = () => {
     editButtonsCreate,
     renderContacts,
     contactContainer,
+  ];
+};
+
+const indexSelectedElements = () => {
+  const login = document.querySelector("#login-container");
+  const errorMessage = document.querySelector("#show-error-message");
+  const email = document.querySelector("#email");
+  const password = document.querySelector("#password");
+  const checkBox = document.querySelector("#login-check-box");
+  const signUp = document.querySelector("#signup-container");
+  const signUpContainer = document.querySelector("#sign-up-container");
+  const forgotPassword = document.querySelector("#forgot-password-container");
+  const resetPassword = document.querySelector("#reset-password-container");
+  const forgotPasswordInput = document.querySelector("#forgot-password-input");
+  const accountExist = document.querySelector("#account-exist");
+  const passwordFailed = document.querySelector("#password-failed-message");
+  const signupName = document.querySelector("#signup-name");
+  const signupEmail = document.querySelector("#signup-email");
+  const signupPassword = document.querySelector("#signup-password");
+  const newPassword = document.querySelector("#new-password");
+  const confirmPassword = document.querySelector("#confirm-password");
+  const confirmMessage = document.querySelector(
+    "#confirmation-of-reset-password"
+  );
+  const successfullyRegistered = document.querySelector(
+    "#successfully-registered"
+  );
+  const sentConfirmationMessage = document.querySelector(
+    "#sent-confirmation-message"
+  );
+
+  return [
+    login,
+    errorMessage,
+    email,
+    password,
+    checkBox,
+    signUp,
+    signUpContainer,
+    forgotPassword,
+    resetPassword,
+    forgotPasswordInput,
+    accountExist,
+    passwordFailed,
+    signupName,
+    signupEmail,
+    signupPassword,
+    confirmPassword,
+    confirmMessage,
+    newPassword,
+    successfullyRegistered,
+    sentConfirmationMessage,
   ];
 };
 

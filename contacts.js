@@ -9,7 +9,7 @@ const [
   editButtonsCreate,
   renderContacts,
   contactContainer,
-] = selectedElements();
+] = contactsSelectedElements();
 
 // Count for colors
 let count = 0;
