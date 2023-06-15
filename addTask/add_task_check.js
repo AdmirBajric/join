@@ -25,3 +25,7 @@ let errorText = document.getElementById('description_error');
 // Event listener for textarea description
 var inputDescription = document.getElementById('new_task_description');
 inputDescription.addEventListener('input', checkDescription);
+
+
+
+

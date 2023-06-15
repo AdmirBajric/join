@@ -12,6 +12,7 @@ let addDescriptionToBoard = [];
 let addCategoryToBoard = [];
 let addContactsToBoard = [];
 let addPrioToBoard = [];
+let addSubtasksToBoard = [];
 
 function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
@@ -70,10 +71,21 @@ function addSubtasks() {
 function createTask(){
     let newTitle = document.getElementById('new_task_title');
     let newDescription = document.getElementById('new_task_description');
-    let newSubtasks = document.getElementById('added-subtasks');
+    let boardCard = document.getElementById('board-card');
+    // let newSubtasks = document.getElementById('added-subtasks');
+    checkInputValue(newTitle,newDescription);
+    pushedTaskToBoard(newTitle,newDescription);
+}
 
-
-    clearTask();
+function checkInputValue(newTitle,newDescription){
+    if(newTitle.value <= 0 || newDescription.value<=0){
+        console.log('NONONO')
+    }else{    
+        addTtitleToBoard.push(newTitle.value);
+        addDescriptionToBoard.push(newDescription.value);
+        console.log(addTtitleToBoard,addDescriptionToBoard);
+        clearTask();
+    }
 }
 
 function clearTask(){
@@ -86,82 +98,20 @@ function clearTask(){
     newSubtasks.innerHTML = '';
 }
 
+function showNewCategory(){
+    let newCat = document.querySelector('.add-new-cat');
+    document.querySelector('.dropdown-category').classList.add('hide')
+    document.querySelector('.color').classList.remove('hide');
 
+    newCat.innerHTML = '';
 
+    newCat.innerHTML = showNewCategoryHTML();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// function selectCategory(category, color) {
-//         var selectedCategory = document.getElementById("selectedCategory");
-//         var dot = document.createElement("span");
-//         dot.className = "dot " + color;
-        
-//         selectedCategory.innerHTML = "";
-//         // Set the category text
-//         selectedCategory.textContent = category;
-//         // Append the dot element
-//         selectedCategory.appendChild(dot);
-//         var dropdownContent = document.querySelector(".dropdown-content-cat");
-//         dropdownContent.classList.add("hide");
-//         }
-//         // Event listener for Sales category
-//     var salesCategory = document.getElementById("sales");
-//         salesCategory.addEventListener("click", function(event) {
-//         event.preventDefault(); // Prevent the default link behavior
-//         selectCategory("Sales", "dot-red");
-//     });
-//     // Event listener for Backoffice category
-//     var backofficeCategory = document.getElementById("backOffice");
-//         backofficeCategory.addEventListener("click", function(event) {
-//         event.preventDefault(); // Prevent the default link behavior
-//         selectCategory("Backoffice", "dot-pink");
-//     });
-    
-//     // JavaScript function to handle contact selection and close the dropdown
-// function selectContacts() {
-//     var selectedContacts = [];
-//     var checkboxes = document.querySelectorAll(".dropdown-content-con input[type='checkbox']");
-    
-//     // Loop through the checkboxes
-//     checkboxes.forEach(function(checkbox) {
-//         if (checkbox.checked) {
-//         selectedContacts.push(checkbox.parentNode.textContent.trim());
-//         }
-//     });
-
-// var selectedContactsElement = document.getElementById("selected-contacts");
-// selectedContactsElement.textContent = "Selected contacts: " + selectedContacts.join(", ");
-
-// // Hide the dropdown content
-// var dropdownContent = document.querySelector(".dropdown-content-con");
-// dropdownContent.classList.add("hide");
-// }
-
-// // Event listeners for contact checkboxes
-// var checkboxes = document.querySelectorAll(".dropdown-content-con input[type='checkbox']");
-// checkboxes.forEach(function(checkbox) {
-// checkbox.addEventListener("change", function() {
-//     selectContacts();
-// });
-// });
-
-
-
-
-
-
-
-
-
+function showNewContact(){
+    let newCon = document.querySelector('.add-new-con');
+    document.querySelector('.dropdown-category').classList.add('hide')
+    newCon.innerHTML = '';
+}
 
 

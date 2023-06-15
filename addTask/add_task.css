@@ -63,6 +63,10 @@ body{
     border-radius:1rem ;
 }
 
+.dropdown-category-new{
+    display: flex;
+}
+
 .dropdown-category span{
     background-color: var(--white);
     font-size: 2.1rem;
@@ -78,14 +82,25 @@ body{
 .dropdown-title{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem 2rem;
+}
+
+.color{
+    margin-top:0.5rem;
+}
+
+.dropdown-title-new{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 input:focus{
     outline:none;
 }
 
-.dropdown-content-cat a{
+.dropdown-content-cat div{
     display: flex;
     align-items: center;
     padding: 1rem 2.1rem;
@@ -93,8 +108,9 @@ input:focus{
     padding-left: 2.1rem;
 }
 
-.dropdown-content-cat a:hover{
-background-color: var(--inputColor);
+.dropdown-content-cat div:hover{
+    background-color: var(--inputColor);
+    cursor: pointer;
 }
 
 .dropdown-content-cat span {
@@ -107,6 +123,10 @@ background-color: var(--inputColor);
     border-radius: 50%;
     display: inline-block;
     margin-left: 2rem !important;
+}
+
+.dot:hover{
+    cursor: pointer;
 }
 
 .dot-red{
@@ -125,6 +145,10 @@ background-color: var(--inputColor);
     background-color:var(--contactTwo) !important;
 }
 
+.dot-yellow{
+    background-color: var(--contactThirteen);
+}
+
 .dropdown-content-con{
     display: flex;
     flex-direction: column;
@@ -132,7 +156,7 @@ background-color: var(--inputColor);
     margin-top: 2rem;
 }
 
-.dropdown-content-con a{
+.dropdown-content-con div{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -142,12 +166,17 @@ background-color: var(--inputColor);
     padding: 1.3rem 2.1rem;
 }
 
-.dropdown-content-con a:hover{
+.dropdown-content-con div:hover{
     background-color: var(--inputColor);
+    cursor: pointer;
+}
+
+.input-color{
+    color: var(--inputColor);
 }
 
 
-.dropdown-content-con a input{
+.dropdown-content-con div input{
     width: 1rem;
     height: 1rem;
 }
@@ -212,11 +241,6 @@ background-color: var(--inputColor);
     position: relative;
 }
 
-.subtasks img{
-    position: absolute;
-    right: 20.2rem;
-    top: 37.4rem;
-}
 
 
 .add-clear-btn{
@@ -305,4 +329,36 @@ textarea{
 .required{
     color:var(--development);
     padding-left:  1.3rem;
+}
+
+.input-subtask-con{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-subtask-con img{
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
+.add-delete-new{
+    display: flex;
+    align-items: center;
+    gap:1rem
+}
+
+.fa-check{
+    font-size: 2.1rem;
+    border-right: 1px solid var(--inputColor);
+    padding: 1rem;
+}
+
+.fa-check:hover,#cross{
+    cursor: pointer;
+}
+
+#selectedCategory{
+    border: none;
 }

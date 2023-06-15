@@ -105,6 +105,18 @@ function popupAddTaskHtml(){
     `
 }
 
+function showNewCategoryHTML(){
+    return`
+        <div class="dropdown-category">
+            <div class="dropdown-title-new">
+                <input id="selectedCategory" class="input-color" placeholder="New Category Name"></input>
+                <div class="add-delete-new">
+                    <i class="fa-solid fa-check"></i>
+                    <img src="/assets/img/close.svg" id= "cross">
+                </div>
+        </div>
+    `
+}
 
 
 
