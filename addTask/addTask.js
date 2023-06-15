@@ -14,6 +14,10 @@ let addContactsToBoard = [];
 let addPrioToBoard = [];
 let addSubtasksToBoard = [];
 
+// new category && new Contacts array
+let newCategory = [];
+let newContacts = [];
+
 function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
     ddCategory.classList.toggle('animate-dropdown');
@@ -102,6 +106,7 @@ function showNewCategory(){
     let newCat = document.querySelector('.add-new-cat');
     document.querySelector('.dropdown-category').classList.add('hide')
     document.querySelector('.color').classList.remove('hide');
+    document.querySelector('.add-new-cat').classList.remove('hide');
 
     newCat.innerHTML = '';
 
@@ -110,8 +115,26 @@ function showNewCategory(){
 
 function showNewContact(){
     let newCon = document.querySelector('.add-new-con');
-    document.querySelector('.dropdown-category').classList.add('hide')
+    document.querySelector('.dropdown-category-con').classList.add('hide')
     newCon.innerHTML = '';
+
+    newCon.innerHTML = showNewContactHTML();
 }
 
+function addNewCategoryToArray() {
+    let getNewCat = document.getElementById('new-cat-value');
+    let displayNewCat = document.getElementById('display-new-cat');
+    newCategory.push(getNewCat.value);
+
+    getNewCat.value = '';
+
+    displayNewCat.innerHTML = '';
+    for (let i = 0; i < newCategory.length; i++) {
+        displayNewCat.innerHTML += `${newCategory[i]}`
+    }
+
+    document.querySelector('.dropdown-category').classList.remove('hide');
+    document.querySelector('.color').classList.add('hide');
+    document.querySelector('.add-new-cat').classList.add('hide');
+    }
 
