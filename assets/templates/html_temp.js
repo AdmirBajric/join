@@ -131,7 +131,9 @@ function showNewContactHTML(){
             <div onclick="createNewContact()">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <img src="../assets/img/close.svg" id= "cross">
+            <div onclick="clearNewContact()">
+                <img src="../assets/img/close.svg" id= "cross">
+            </div>
         </div>
     </div>
 </div> 

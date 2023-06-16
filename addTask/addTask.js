@@ -6,13 +6,17 @@ const urgentButton = document.getElementById('urgent');
 const mediumButton = document.getElementById('medium');
 const lowButton = document.getElementById('low');
 
-let newAddedSubtasks = [];
-let addTtitleToBoard = [];
-let addDescriptionToBoard = [];
-let addCategoryToBoard = [];
-let addContactsToBoard = [];
-let addPrioToBoard = [];
-let addSubtasksToBoard = [];
+let tasksToBoard = [
+    {
+        'title': '',
+        'description': '',
+        'category': '',
+        'assigned': '',
+        'date':'',
+        'prio': '',
+        'subtasks':'',
+    }
+]
 
 // new category && new Contacts array
 let newCategory = [];
@@ -84,18 +88,6 @@ function createTask(){
     checkInputValue(newTitle,newDescription);
     pushedTaskToBoard(newTitle,newDescription);
 }
-
-function checkInputValue(newTitle,newDescription){
-    if(newTitle.value <= 0 || newDescription.value<=0){
-        console.log('NONONO')
-    }else{    
-        addTtitleToBoard.push(newTitle.value);
-        addDescriptionToBoard.push(newDescription.value);
-        console.log(addTtitleToBoard,addDescriptionToBoard);
-        clearTask();
-    }
-}
-
 // category
 
 function clearTask(){
@@ -117,14 +109,6 @@ function showNewCategory(){
     newCat.innerHTML = '';
 
     newCat.innerHTML = showNewCategoryHTML();
-}
-
-function showNewContact(){
-    let newCon = document.querySelector('.add-new-con');
-    document.querySelector('.dropdown-category-con').classList.add('hide')
-    newCon.innerHTML = '';
-
-    newCon.innerHTML = showNewContactHTML();
 }
 
 function clearNewCategory(){
@@ -229,9 +213,37 @@ backOfficeOption.addEventListener('click', () => {
 
 // Assigned to
 
+function showNewContact() {
+    let newCon = document.querySelector('.add-new-con');
+    document.querySelector('.dropdown-category-con').classList.add('hide');
+    newCon.innerHTML = '';
+
+    newCon.innerHTML = showNewContactHTML();
+}
+
+function clearNewContact() {
+    let newContactValue = document.getElementById('new-con-value');
+    newContactValue.value = ''; // Clear the value of the new contact input field
+  
+    let dropdownCon = document.querySelector('.dropdown-category-con');
+    dropdownCon.classList.remove('hide'); // Show the dropdown for selecting contacts
+  }
+
 function createNewContact(){
     let newContactValue = document.getElementById('new-con-value');
     newContacts.push(newContactValue.value);
 
     console.log(newContacts)
 }
+// Push to array for board
+
+// function checkInputValue(newTitle,newDescription){
+//     if(newTitle.value <= 0 || newDescription.value<=0){
+//         console.log('NONONO')
+//     }else{    
+//         addTtitleToBoard.push(newTitle.value);
+//         addDescriptionToBoard.push(newDescription.value);
+//         console.log(addTtitleToBoard,addDescriptionToBoard);
+//         clearTask();
+//     }
+// }
