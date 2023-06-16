@@ -15,7 +15,6 @@
 }
 
 .legal-notice{
-    margin-left: 7rem;
     margin-right: 6rem;
     margin-top: 8.2rem;
 }
@@ -35,4 +34,9 @@
 
 .subtitle p{
     font-size: 1.6rem;
+}
+
+.all_right {
+    padding-left: 31rem;
+    padding-top: 50px;
 }

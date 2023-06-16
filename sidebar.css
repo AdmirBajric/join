@@ -117,3 +117,7 @@ nav{
     gap: 15px;
     cursor: pointer;
 }
+
+.px {
+    font-size: 18px;
+}

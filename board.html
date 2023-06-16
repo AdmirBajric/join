@@ -15,9 +15,15 @@
       src="https://kit.fontawesome.com/aa0c350945.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <script src="header_sidebar.js"></script>
     <title>Board</title>
   </head>
-  <body class="board">
+  <body onload="includeLoad()" class="board">
+
+    <div w3-include-html="header_sidebar.html"></div>
+
     <div class="header-board">
       <h2>Board</h2>
       <div class="search-add-task">

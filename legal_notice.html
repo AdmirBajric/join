@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=+, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="legal_notice.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <script src="header_sidebar.js"></script>
     <script
     src="https://kit.fontawesome.com/aa0c350945.js"
     crossorigin="anonymous"
     ></script>
     <title>Add Task</title>
 </head>
-<body class="legal-notice">
+<body onload="includeLoad()" class="legal-notice">
+
+    <div w3-include-html="header_sidebar.html"></div>
+
+<div class="all_right">
     <div class="header-legal-notice">
         <h2>Legal Notice</h2>
         <img src="assets/img/arrow-left.svg" alt="">
@@ -27,5 +34,6 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit tempore unde architecto ipsum dolores, earum, id veritatis voluptates iusto magni quos ducimus incidunt itaque culpa consequatur similique eaque atque sequi!</p>
 
     </div>
+</div>
 </body>
 </html>

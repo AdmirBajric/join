@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="add_task.css">
     <link rel="shortcut icon" href="./assets/img/join-small.svg" type="image/x-icon">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <script src="header_sidebar.js"></script>
     <script src="addTask.js" defer></script>
     <script
 
     ></script>
     <title>Add Task</title>
 </head>
-<body class="add-task">
+<body onload="includeLoad()" class="add-task">
+
+    <div w3-include-html="header_sidebar.html"></div>
+
     <h2 class="header-add-task">
         Add Task
     </h2>

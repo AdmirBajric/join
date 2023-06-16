@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 7rem;
+  margin-left: 30rem;
   margin-right: 6rem;
   margin-top: 8.2rem;
 }
@@ -68,7 +68,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-left: 7rem;
+  margin-left: 30rem;
   margin-right: 6rem;
   margin-top: 8.2rem;
 }
