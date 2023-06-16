@@ -21,7 +21,7 @@ const [
   sentConfirmationMessage,
 ] = indexSelectedElements();
 
-const loginUser = (e) => {
+const loginUser = () => {
   hideErrorMessages();
   if (false) {
     // If condition please replace with "if the user is logged in"
