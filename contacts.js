@@ -112,7 +112,7 @@ const renderContact = (id) => {
     contactContainer.innerHTML = html;
     editContactHover();
     userContactHover();
-  }, 500);
+  }, 300);
 };
 
 const editContactHover = () => {
