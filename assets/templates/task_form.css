@@ -232,12 +232,17 @@ textarea{
 
 #new-subtask{
     position: relative;
+
+}
+
+.subtask-field{
+    position: relative;
 }
 
 .subtasks img{
     position: absolute;
-    right: 32.2rem;
-    top: 46.4rem;
+    right: 2rem;
+    top: 1.5rem;
 }
 
 

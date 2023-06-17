@@ -18,6 +18,8 @@ let tasksToBoard = [
     }
 ]
 
+let newAddedSubtasks = [];
+
 // new category && new Contacts array
 let newCategory = [];
 let newContacts = [];
@@ -224,14 +226,17 @@ function showNewContact() {
 function clearNewContact() {
     let newContactValue = document.getElementById('new-con-value');
     newContactValue.value = ''; // Clear the value of the new contact input field
-  
+
     let dropdownCon = document.querySelector('.dropdown-category-con');
     dropdownCon.classList.remove('hide'); // Show the dropdown for selecting contacts
-  }
+    }
 
 function createNewContact(){
     let newContactValue = document.getElementById('new-con-value');
     newContacts.push(newContactValue.value);
+    newContactValue.value = '';
+    document.querySelector('.dropdown-category-con').classList.remove('hide');
+    document.querySelector('.add-new-con').classList.add('hide');
 
     console.log(newContacts)
 }
