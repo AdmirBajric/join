@@ -93,7 +93,8 @@ const renderHTML = () => {
   renderContacts.innerHTML = htmlOutput;
 };
 
-const render = (id) => {
+const renderContact = (id) => {
+  contactContainer.style.animation = "fadeOutContact 50ms ease-in-out forwards";
   contactContainer.innerHTML = "";
 
   const [firstNameLetter, firstLastLetter] = splitNameLastName(users[id]);
@@ -106,10 +107,12 @@ const render = (id) => {
     users
   );
 
-  contactContainer.innerHTML = html;
-
-  editContactHover();
-  userContactHover();
+  setTimeout(() => {
+    contactContainer.style.animation = "fadeInContact 1s ease-in-out forwards";
+    contactContainer.innerHTML = html;
+    editContactHover();
+    userContactHover();
+  }, 500);
 };
 
 const editContactHover = () => {
@@ -209,7 +212,7 @@ const saveEditedContact = (id) => {
   closeEditContact();
   renderHTML();
   const index = users.findIndex((o) => o.email === user.email);
-  render(index);
+  renderContact(index);
 };
 
 const filterTheUsers = (user) => {
@@ -247,7 +250,7 @@ const createContact = () => {
   closeAddContact();
   renderHTML();
   const index = users.findIndex((o) => o.email === newUser.email);
-  render(index);
+  renderContact(index);
 };
 
 const clearInputsInnerHtml = (name, email, phone) => {

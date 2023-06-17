@@ -149,9 +149,32 @@
 #contact-container {
   position: absolute;
   top: 20.3rem;
-  left: 6.5rem;
+  /* left: 6.5rem; */
   width: 46.1rem;
   height: 36.4rem;
+}
+
+@keyframes fadeInContact {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+    left: 30rem;
+  }
+  100% {
+    opacity: 1;
+    left: 6.5rem;
+  }
+}
+
+@keyframes fadeOutContact {
+  0% {
+    opacity: 1;
+    left: 6.5rem;
+  }
+  100% {
+    left: 30rem;
+    opacity: 0;
+  }
 }
 
 #new-contact {
