@@ -368,6 +368,7 @@ body {
   background-color: var(--white);
   animation: addFadeOut 1s ease-in-out forwards;
   opacity: 0;
+  z-index: 2;
 }
 
 @keyframes addFadeIn {

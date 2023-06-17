@@ -10,6 +10,7 @@ const [
   editButtonsCreate,
   renderContacts,
   contactContainer,
+  newContact,
 ] = contactsSelectedElements();
 
 // Count for colors
@@ -161,23 +162,26 @@ const userContactHover = () => {
 
 const openAddContact = () => {
   contactBody.style.opacity = 0.3;
+  contactBody.style.zIndex = -1;
   animateToggle("fadeIn", addContact);
   addContact.style.opacity = 1;
 };
 
 const closeAddContact = () => {
   contactBody.style.opacity = 1;
+  contactBody.style.zIndex = 1;
   animateToggle("fadeOut", addContact);
 };
 
 const closeEditContact = () => {
   contactBody.style.opacity = 1;
+  contactBody.style.zIndex = 1;
   animateToggle("fadeOut", editUserContact);
 };
 
 const editContact = (id) => {
   contactBody.style.opacity = 0.3;
-
+  contactBody.style.zIndex = -1;
   animateToggle("fadeIn", editUserContact);
   editUserContact.style.opacity = 1;
 

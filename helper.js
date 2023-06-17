@@ -10,6 +10,7 @@ const contactsSelectedElements = () => {
   const editButtonsCreate = document.querySelector("#edit-form");
   const renderContacts = document.querySelector("#render-contacts");
   const contactContainer = document.querySelector("#contact-container");
+  const newContact = document.querySelector("#new-contact");
 
   return [
     contactBody,
@@ -23,6 +24,7 @@ const contactsSelectedElements = () => {
     editButtonsCreate,
     renderContacts,
     contactContainer,
+    newContact,
   ];
 };
 
