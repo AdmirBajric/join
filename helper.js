@@ -1,4 +1,5 @@
 const contactsSelectedElements = () => {
+  const contactBody = document.querySelector("#contacts-body");
   const addContact = document.querySelector("#add-contact");
   const editUserContact = document.querySelector("#edit-contact");
   const editFormUserImg = document.querySelector(".edit-form-user-img");
@@ -11,6 +12,7 @@ const contactsSelectedElements = () => {
   const contactContainer = document.querySelector("#contact-container");
 
   return [
+    contactBody,
     addContact,
     editUserContact,
     editFormUserImg,

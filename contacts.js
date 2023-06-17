@@ -1,4 +1,5 @@
 const [
+  contactBody,
   addContact,
   editUserContact,
   editFormUserImg,
@@ -94,6 +95,9 @@ const renderHTML = () => {
 };
 
 const renderContact = (id) => {
+  clearActiveState();
+  toggleActiveState(id);
+
   contactContainer.style.animation = "fadeOutContact 50ms ease-in-out forwards";
   contactContainer.innerHTML = "";
 
@@ -113,6 +117,21 @@ const renderContact = (id) => {
     editContactHover();
     userContactHover();
   }, 100);
+};
+
+const clearActiveState = () => {
+  const contactUser = document.querySelectorAll(".contact-user-active");
+  contactUser.forEach((a) => {
+    a.classList.remove("contact-user-active");
+    a.classList.add("contact-user");
+  });
+};
+
+const toggleActiveState = (id) => {
+  const contactUser = document.querySelector(`.contact-user-${id}`);
+
+  contactUser.classList.add("contact-user-active");
+  contactUser.classList.remove("contact-user");
 };
 
 const editContactHover = () => {
@@ -141,19 +160,24 @@ const userContactHover = () => {
 };
 
 const openAddContact = () => {
+  contactBody.style.opacity = 0.3;
   animateToggle("fadeIn", addContact);
   addContact.style.opacity = 1;
 };
 
 const closeAddContact = () => {
+  contactBody.style.opacity = 1;
   animateToggle("fadeOut", addContact);
 };
 
 const closeEditContact = () => {
+  contactBody.style.opacity = 1;
   animateToggle("fadeOut", editUserContact);
 };
 
 const editContact = (id) => {
+  contactBody.style.opacity = 0.3;
+
   animateToggle("fadeIn", editUserContact);
   editUserContact.style.opacity = 1;
 

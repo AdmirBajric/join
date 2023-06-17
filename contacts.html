@@ -18,37 +18,40 @@
     <script src="header_sidebar.js"></script>
     <title>Contacts</title>
   </head>
-  <body onload="includeLoad()" id="contacts-body">
-    <div w3-include-html="header_sidebar.html"></div>
+  <body onload="includeLoad()">
+    <div id="contacts-body">
+      <div w3-include-html="header_sidebar.html"></div>
 
-    <!-- Contacts screen start -->
-    <div id="nav-contacts-container">
-      <!-- Contacts container start -->
-      <div id="contacts-container">
-        <!-- Contacts List start -->
-        <div id="contacts-list">
-          <div id="render-contacts"></div>
-        </div>
-        <!-- Contacts List end -->
-
-        <!-- Contacts Add Edit Delete start -->
-        <div id="crud-contacts">
-          <div id="contacts-header">
-            <h2>Contacts</h2>
-            <div id="divider"></div>
-            <p>Better with a team</p>
+      <!-- Contacts screen start -->
+      <div id="nav-contacts-container">
+        <!-- Contacts container start -->
+        <div id="contacts-container">
+          <!-- Contacts List start -->
+          <div id="contacts-list">
+            <div id="render-contacts"></div>
           </div>
-          <div id="contact-container"></div>
-          <button onclick="openAddContact()" id="new-contact">
-            <p>New contact</p>
-            <img src="./assets/img/add-contact.svg" alt="User img " />
-          </button>
+          <!-- Contacts List end -->
+
+          <!-- Contacts Add Edit Delete start -->
+          <div id="crud-contacts">
+            <div id="contacts-header">
+              <h2>Contacts</h2>
+              <div id="divider"></div>
+              <p>Better with a team</p>
+            </div>
+            <div id="contact-container"></div>
+            <button onclick="openAddContact()" id="new-contact">
+              <p>New contact</p>
+              <img src="./assets/img/add-contact.svg" alt="User img " />
+            </button>
+          </div>
+          <!-- Contacts Add Edit Delete start -->
         </div>
-        <!-- Contacts Add Edit Delete start -->
+        <!-- Contacts container start -->
       </div>
-      <!-- Contacts container start -->
+      <!-- Contacts screen end -->
     </div>
-    <!-- Contacts screen end -->
+    <!-- Edit Contact Modal end -->
 
     <!-- Add Contact Modal start -->
     <div id="add-contact">
@@ -193,7 +196,6 @@
         </div>
       </div>
     </div>
-    <!-- Edit Contact Modal end -->
 
     <!-- Javascript start -->
     <script src="data.js"></script>
