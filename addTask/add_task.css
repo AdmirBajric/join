@@ -237,11 +237,20 @@ input:focus{
     width: 1.4rem;
 }
 
+.urgent{
+    background-color: var(--development);
+}
+.medium{
+    background-color: var(--contactFour);
+}
+
+.low{
+    background-color: var(--contactThree);
+}
+
 #new-subtask{
     position: relative;
 }
-
-
 
 .add-clear-btn{
     display: flex;
@@ -392,4 +401,8 @@ textarea{
 .add-delete-new{
     position: absolute;
     right: 0;
+}
+
+.white-svg {
+    filter: invert(100%);
 }
