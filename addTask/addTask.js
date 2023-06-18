@@ -312,21 +312,21 @@ function createTask() {
         }
     }
 
-    // Check if the title and description are not empty
-    if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
-        let task = {
-        title: newTitle.value,
-        description: newDescription.value,
-        category: category,
-        assigned: assignedTo,
-        date: date,
-        priority: selectedPriority,
-        subtasks: subtaskValues,
-        };
-        tasksToBoard.push(task);
-        console.log(tasksToBoard);
-        clearTask();
-    } else {
-        console.log('Title and description cannot be empty');
-    }
-    }
+// Check if the title and description are not empty
+if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
+    let task = {
+    title: newTitle.value,
+    description: newDescription.value,
+    category: category,
+    assigned: assignedTo,
+    date: date,
+    priority: selectedPriority,
+    subtasks: subtaskValues,
+    };
+    tasksToBoard.push(task);
+    console.log(tasksToBoard);
+    clearTask();
+} else {
+    console.log('Title and description cannot be empty');
+}
+}
