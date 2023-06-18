@@ -385,3 +385,11 @@ textarea{
 .category-item{
     padding: 0 !important;
 }
+
+.dropdown-category-con-new,.dropdown-category-cat{
+    position: relative;
+}
+.add-delete-new{
+    position: absolute;
+    right: 0;
+}

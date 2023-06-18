@@ -134,6 +134,7 @@ function showNewContactHTML(){
                 <div onclick="clearNewContact()">
                     <img src="../assets/img/close.svg" id= "cross">
                 </div>
+            </div>
         </div>
     </div> 
     `
