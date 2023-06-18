@@ -8,15 +8,18 @@ const lowButton = document.getElementById('low');
 
 let tasksToBoard = [
     {
-        'title': '',
-        'description': '',
-        'category': '',
-        'assigned': '',
-        'date':'',
-        'prio': '',
-        'subtasks':'',
-    }
-]
+    'title': '',
+    'description': '',
+    'category': '',
+    'assigned': '',
+    'date': '',
+    'prio': {
+    'text': '',
+    'svg': ''
+    },
+    'subtasks': ''
+}
+];
 
 let newAddedSubtasks = [];
 
@@ -257,45 +260,69 @@ document.addEventListener('click', function (event) {
     }
     });
 // Push to array for board
+let selectedPriority = null;
+
+function selectPriority(button) {
+  if (selectedPriority) {
+    selectedPriority.classList.remove('selected');
+  }
+  
+  selectedPriority = button;
+  selectedPriority.classList.add('selected');
+}
 
 function createTask() {
-    let newTitle = document.getElementById('new_task_title');
-    let newDescription = document.getElementById('new_task_description');
-    let category = document.getElementById('selectedCategory').textContent.trim();
+  let newTitle = document.getElementById('new_task_title');
+  let newDescription = document.getElementById('new_task_description');
+  let category = document.getElementById('selectedCategory').textContent.trim();
 
-    // Retrieve the values for assigned to, date, priority, and subtasks
-    let selectedPriority = document.querySelector('.prio-button button.selected');
-    console.log(selectedPriority)
-    let assignedTo = document.getElementById('selected-contacts').textContent.trim();
-    let date = document.getElementById('date').value;
+  // Retrieve the values for assigned to, date, and subtasks
+  let assignedTo = document.getElementById('selected-contacts').textContent.trim();
+  let date = document.getElementById('date').value;
 
-    let subtasks = document.getElementById('new-subtask');
-    let subtaskValues = [];
-    for (let i = 0; i < subtasks.length; i++) {
-        let subtaskValue = subtasks[i].value;
-        if (subtaskValue.trim() !== '') {
-        subtaskValues.push(subtaskValue);
-        }
+  let subtasks = document.getElementById('new-subtask');
+  let subtaskValues = [];
+  for (let i = 0; i < subtasks.length; i++) {
+    let subtaskValue = subtasks[i].value;
+    if (subtaskValue.trim() !== '') {
+      subtaskValues.push(subtaskValue);
     }
+  }
 
-// Check if the title and description are not empty
-if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
+  let priority = '';
+  let priorityText = '';
+  let prioritySVG = '';
+
+  if (selectedPriority) {
+    priority = selectedPriority.id;
+    priorityText = selectedPriority.innerText.trim();
+    prioritySVG = selectedPriority.querySelector('img').getAttribute('src');
+  }
+
+  // Check if the title and description are not empty
+  if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
     let task = {
-    title: newTitle.value,
-    description: newDescription.value,
-    category: category,
-    assigned: assignedTo,
-    date: date,
-    // priority: selectedPriority,
-    subtasks: subtaskValues,
+      title: newTitle.value,
+      description: newDescription.value,
+      category: category,
+      assigned: assignedTo,
+      date: date,
+      prio: {
+        text: priorityText,
+        svg: prioritySVG
+      },
+      subtasks: subtaskValues
     };
-    tasksToBoard.push(task);
+    tasksToBoard[0] = task; // Replace the existing object in the array
     console.log(tasksToBoard);
     clearTask();
-} else {
+  } else {
     console.log('Title and description cannot be empty');
+  }
 }
-}
+
+
+
 
 function changeButtonBackgroundColor(priority) {
     var urgentButton = document.getElementById('urgent');
@@ -307,24 +334,32 @@ function changeButtonBackgroundColor(priority) {
     mediumButton.style.backgroundColor = '';
     lowButton.style.backgroundColor = '';
 
+    // Reset the SVG image color of all buttons
+    urgentButton.querySelector('img').style.filter = '';
+    mediumButton.querySelector('img').style.filter = '';
+    lowButton.querySelector('img').style.filter = '';
+
     switch (priority) {
         case 'urgent':
-        urgentButton.style.backgroundColor = 'var(--development)';
+        urgentButton.style.backgroundColor = 'red';
+        urgentButton.querySelector('img').style.filter = 'brightness(0) invert(1)';
         break;
 
         case 'medium':
-        mediumButton.style.backgroundColor = 'var(--contactFour)';
+        mediumButton.style.backgroundColor = 'yellow';
+        mediumButton.querySelector('img').style.filter = 'brightness(0) invert(1)';
         break;
 
         case 'low':
-        lowButton.style.backgroundColor = 'var(--contactThree)';
+        lowButton.style.backgroundColor = 'green';
+        lowButton.querySelector('img').style.filter = 'brightness(0) invert(1)';
         break;
 
         default:
         // No priority selected, do nothing
         break;
-}
-}
+    }
+    }
 
 document.getElementById('urgent').addEventListener('click', function() {
 changeButtonBackgroundColor('urgent');
