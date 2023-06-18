@@ -42,32 +42,6 @@ function toggleDropdownCon(){
 }
 showAssingedTo.addEventListener('click', toggleDropdownCon);
 
-function urgentButtonColor(){
-    urgentButton.addEventListener('click', function() {
-    urgentButton.style.backgroundColor = 'var(--development)';
-    mediumButton.style.backgroundColor = '';
-    lowButton.style.backgroundColor = '';
-    });
-}
-urgentButtonColor();
-
-function mediumButtonColor(){
-    mediumButton.addEventListener('click', function() {
-    urgentButton.style.backgroundColor = '';
-    mediumButton.style.backgroundColor = 'var(--contactFour)';
-    lowButton.style.backgroundColor = '';
-    });
-}
-mediumButtonColor();
-
-function lowButtonColor(){
-    lowButton.addEventListener('click', function() {
-    urgentButton.style.backgroundColor = '';
-    mediumButton.style.backgroundColor = '';
-    lowButton.style.backgroundColor = 'var(--contactThree)';
-});
-}
-lowButtonColor();
 
 function addSubtasks() {
     let newSubtasks = document.getElementById('new-subtask');
@@ -282,9 +256,6 @@ document.addEventListener('click', function (event) {
         }
     }
     });
-
-
-
 // Push to array for board
 
 function createTask() {
@@ -293,16 +264,11 @@ function createTask() {
     let category = document.getElementById('selectedCategory').textContent.trim();
 
     // Retrieve the values for assigned to, date, priority, and subtasks
+    let selectedPriority = document.querySelector('.prio-button button.selected');
+    console.log(selectedPriority)
     let assignedTo = document.getElementById('selected-contacts').textContent.trim();
     let date = document.getElementById('date').value;
-    let priorityButtons = document.getElementsByClassName('prio-button');
-    let selectedPriority = '';
-    for (let i = 0; i < priorityButtons.length; i++) {
-        if (priorityButtons[i].classList.contains('active')) {
-        selectedPriority = priorityButtons[i].textContent;
-        break;
-        }
-    }
+
     let subtasks = document.getElementById('new-subtask');
     let subtaskValues = [];
     for (let i = 0; i < subtasks.length; i++) {
@@ -320,7 +286,7 @@ if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
     category: category,
     assigned: assignedTo,
     date: date,
-    priority: selectedPriority,
+    // priority: selectedPriority,
     subtasks: subtaskValues,
     };
     tasksToBoard.push(task);
@@ -330,3 +296,44 @@ if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
     console.log('Title and description cannot be empty');
 }
 }
+
+function changeButtonBackgroundColor(priority) {
+    var urgentButton = document.getElementById('urgent');
+    var mediumButton = document.getElementById('medium');
+    var lowButton = document.getElementById('low');
+
+    // Reset the background color of all buttons
+    urgentButton.style.backgroundColor = '';
+    mediumButton.style.backgroundColor = '';
+    lowButton.style.backgroundColor = '';
+
+    switch (priority) {
+        case 'urgent':
+        urgentButton.style.backgroundColor = 'var(--development)';
+        break;
+
+        case 'medium':
+        mediumButton.style.backgroundColor = 'var(--contactFour)';
+        break;
+
+        case 'low':
+        lowButton.style.backgroundColor = 'var(--contactThree)';
+        break;
+
+        default:
+        // No priority selected, do nothing
+        break;
+}
+}
+
+document.getElementById('urgent').addEventListener('click', function() {
+changeButtonBackgroundColor('urgent');
+});
+
+document.getElementById('medium').addEventListener('click', function() {
+changeButtonBackgroundColor('medium');
+});
+
+document.getElementById('low').addEventListener('click', function() {
+changeButtonBackgroundColor('low');
+});
