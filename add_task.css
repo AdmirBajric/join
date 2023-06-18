@@ -1,19 +1,23 @@
+body{
+    display: unset !important;
+}
+
 .add-task{
     height: 90vh;
     background: var(--background);
 }
 
 .header-add-task{
-    margin-left: 30rem;
+    margin-left: 7rem;
     margin-right: 6rem;
-    margin-top: 14.4rem;
+    margin-top: 8.2rem;
     font-family: var(--fontFamily);
     font-weight: 700;
     font-size: 6.1rem;
 }
 
 .task-detail{
-    margin-left: 30rem;
+    margin-left: 7rem;
     margin-right: 6rem;
     margin-top: 2.2rem;
     display: flex;
@@ -52,14 +56,18 @@
     width: 42.2rem;
 }
 
-.dropdown-category{
+.dropdown-category, .dropdown-category-con,.dropdown-category-cat{
     width: 42.2rem;
     background-color: var(--white);
     border: 1px solid var(--inputColor);
     border-radius:1rem ;
 }
 
-.dropdown-category span{
+.dropdown-category-new{
+    display: flex;
+}
+
+.dropdown-category, .dropdown-category-con, .dropdown-category-cat span{
     background-color: var(--white);
     font-size: 2.1rem;
 
@@ -74,14 +82,25 @@
 .dropdown-title{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem 2rem;
+}
+
+.color{
+    margin-top:0.5rem;
+}
+
+.dropdown-title-new{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 input:focus{
     outline:none;
 }
 
-.dropdown-content-cat a{
+.dropdown-content-cat div{
     display: flex;
     align-items: center;
     padding: 1rem 2.1rem;
@@ -89,8 +108,9 @@ input:focus{
     padding-left: 2.1rem;
 }
 
-.dropdown-content-cat a:hover{
-background-color: var(--inputColor);
+.dropdown-content-cat div:hover{
+    background-color: var(--inputColor);
+    cursor: pointer;
 }
 
 .dropdown-content-cat span {
@@ -103,6 +123,10 @@ background-color: var(--inputColor);
     border-radius: 50%;
     display: inline-block;
     margin-left: 2rem !important;
+}
+
+.dot:hover{
+    cursor: pointer;
 }
 
 .dot-red{
@@ -121,6 +145,10 @@ background-color: var(--inputColor);
     background-color:var(--contactTwo) !important;
 }
 
+.dot-yellow{
+    background-color: var(--contactThirteen);
+}
+
 .dropdown-content-con{
     display: flex;
     flex-direction: column;
@@ -128,7 +156,7 @@ background-color: var(--inputColor);
     margin-top: 2rem;
 }
 
-.dropdown-content-con a{
+.dropdown-content-con div{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -138,12 +166,17 @@ background-color: var(--inputColor);
     padding: 1.3rem 2.1rem;
 }
 
-.dropdown-content-con a:hover{
+.dropdown-content-con div:hover{
     background-color: var(--inputColor);
+    cursor: pointer;
+}
+
+.input-color{
+    color: var(--inputColor);
 }
 
 
-.dropdown-content-con a input{
+.dropdown-content-con div input{
     width: 1rem;
     height: 1rem;
 }
@@ -186,10 +219,15 @@ background-color: var(--inputColor);
 
 .subtask-check{
     display: flex;
-    gap:1.5rem;
-    align-items: center;
+    flex-direction: column;
     font-size: 1.6rem;
     font-weight: var(--weight4);
+}
+
+.sub-container-task{
+    display: flex;
+    align-items: center;
+    gap:1rem;
 }
 
 .subtask-check input{
@@ -203,11 +241,6 @@ background-color: var(--inputColor);
     position: relative;
 }
 
-.subtasks img{
-    position: absolute;
-    right: 20.2rem;
-    top: 37.4rem;
-}
 
 
 .add-clear-btn{
@@ -263,23 +296,11 @@ background-color: var(--inputColor);
 }
 
 .hide{
-    display: none;
+    display: none !important;
 }
 
 hr{
     color: var(--inputColor)
-}
-
-.urgent-color{
-    background-color: var(--development);
-}
-
-.medium-color{
-    background-color: var(--contactFour);
-}
-
-.low-color{
-    background-color: var(--contactThree);
 }
 
 .animate-dropdown {
@@ -295,4 +316,80 @@ hr{
     transform: translateY(0);
     opacity: 1;
 }
+}
+
+textarea{
+    font-size: 2.1rem;
+    width: 42.2rem;
+    height: 11.9rem;
+    padding: 18px 21px;
+    font-family: var(--fontFamily);
+}
+
+.required{
+    color:var(--development);
+    padding-left:  1.3rem;
+}
+
+.input-subtask-con{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-subtask-con img{
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
+.add-delete-new{
+    display: flex;
+    align-items: center;
+    gap:1rem
+}
+
+.fa-check{
+    font-size: 2.1rem;
+    border-right: 1px solid var(--inputColor);
+    padding: 1rem;
+}
+
+.fa-check:hover,#cross{
+    cursor: pointer;
+}
+
+#new-cat-value, #new-con-value{
+    border: none;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.category-list div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.category-list div .dot {
+    margin-left: 5px;
+}
+
+#display-new-cat{
+    display: flex;
+    align-items: unset;
+}
+
+.category-item{
+    padding: 0 !important;
+}
+
+.dropdown-category-con-new,.dropdown-category-cat{
+    position: relative;
+}
+.add-delete-new{
+    position: absolute;
+    right: 0;
 }
