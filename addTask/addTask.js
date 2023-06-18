@@ -23,6 +23,7 @@ let newAddedSubtasks = [];
 // new category && new Contacts array
 let newCategory = [];
 let newContacts = [];
+let selectedContactEmails = []; // Create an array to store selected contact emails
 
 // Store the selected color
 let selectedColor = '';
@@ -80,15 +81,6 @@ function addSubtasks() {
         displayAddedSubtask.innerHTML += addSubTaskTempHtml(i);        
     }
     newSubtasks.value = '';
-}
-
-function createTask(){
-    let newTitle = document.getElementById('new_task_title');
-    let newDescription = document.getElementById('new_task_description');
-    let boardCard = document.getElementById('board-card');
-    // let newSubtasks = document.getElementById('added-subtasks');
-    checkInputValue(newTitle,newDescription);
-    pushedTaskToBoard(newTitle,newDescription);
 }
 // category
 
@@ -219,7 +211,7 @@ function showNewContact() {
     let newCon = document.querySelector('.add-new-con');
     document.querySelector('.dropdown-category-con').classList.add('hide');
     newCon.innerHTML = '';
-
+    document.querySelector('.add-new-con').classList.remove('hide');
     newCon.innerHTML = showNewContactHTML();
 }
 
@@ -229,26 +221,112 @@ function clearNewContact() {
 
     let dropdownCon = document.querySelector('.dropdown-category-con');
     dropdownCon.classList.remove('hide'); // Show the dropdown for selecting contacts
+
+    let newConDropdown = document.querySelector('.add-new-con');
+    newConDropdown.classList.add('hide');
     }
 
-function createNewContact(){
+function isValidEmail(email) {
+    // Regular expression pattern for email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+    }
+    
+function createNewContact() {
     let newContactValue = document.getElementById('new-con-value');
-    newContacts.push(newContactValue.value);
+    let newContactEmail = newContactValue.value;
+    
+    // Validate the email
+    if (!isValidEmail(newContactEmail)) {
+        // Display an error or take appropriate action for an invalid email
+        alert('Please enter a valid email address.');
+        return;
+    }
+    
+    // Add the new contact to the dropdown
+    let dropdownContent = document.querySelector('.dropdown-content-con');
+    let newContactDiv = document.createElement('div');
+    newContactDiv.innerHTML = `${newContactEmail} <input type="checkbox">`;
+    dropdownContent.insertBefore(newContactDiv, document.getElementById('new-contact'));
+    
+    // Clear the value of the new contact input field
     newContactValue.value = '';
-    document.querySelector('.dropdown-category-con').classList.remove('hide');
-    document.querySelector('.add-new-con').classList.add('hide');
+    }
+    
+    
 
-    console.log(newContacts)
-}
+// Event listener for clicking on existing contacts
+document.addEventListener('click', function (event) {
+    let target = event.target;
+
+    // Check if the clicked element is an existing contact checkbox
+    if (target.tagName === 'INPUT' && target.parentNode.tagName === 'DIV') {
+        let contactEmail = target.parentNode.textContent.trim(); // Get the email of the clicked contact
+
+        // Toggle the selection of the contact
+        if (target.checked) {
+        selectedContactEmails.push(contactEmail); // Add the selected contact to the array
+        } else {
+        let index = selectedContactEmails.indexOf(contactEmail);
+        if (index > -1) {
+            selectedContactEmails.splice(index, 1); // Remove the unselected contact from the array
+        }
+        }
+
+        // Show the selected contacts in the #selected-contacts element
+        let selectedContacts = document.getElementById('selected-contacts');
+        if (selectedContactEmails.length > 0) {
+        selectedContacts.textContent = selectedContactEmails.join(', '); // Display selected contact emails separated by commas
+        } else {
+        selectedContacts.textContent = 'Select contacts to assign'; // Display default text when no contacts are selected
+        }
+    }
+    });
+
+
+
 // Push to array for board
 
-// function checkInputValue(newTitle,newDescription){
-//     if(newTitle.value <= 0 || newDescription.value<=0){
-//         console.log('NONONO')
-//     }else{    
-//         addTtitleToBoard.push(newTitle.value);
-//         addDescriptionToBoard.push(newDescription.value);
-//         console.log(addTtitleToBoard,addDescriptionToBoard);
-//         clearTask();
-//     }
-// }
+function createTask() {
+    let newTitle = document.getElementById('new_task_title');
+    let newDescription = document.getElementById('new_task_description');
+    let category = document.getElementById('selectedCategory').textContent.trim();
+
+    // Retrieve the values for assigned to, date, priority, and subtasks
+    let assignedTo = document.getElementById('selected-contacts').textContent.trim();
+    let date = document.getElementById('date').value;
+    let priorityButtons = document.getElementsByClassName('prio-button');
+    let selectedPriority = '';
+    for (let i = 0; i < priorityButtons.length; i++) {
+        if (priorityButtons[i].classList.contains('active')) {
+        selectedPriority = priorityButtons[i].textContent;
+        break;
+        }
+    }
+    let subtasks = document.getElementById('new-subtask');
+    let subtaskValues = [];
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtaskValue = subtasks[i].value;
+        if (subtaskValue.trim() !== '') {
+        subtaskValues.push(subtaskValue);
+        }
+    }
+
+    // Check if the title and description are not empty
+    if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
+        let task = {
+        title: newTitle.value,
+        description: newDescription.value,
+        category: category,
+        assigned: assignedTo,
+        date: date,
+        priority: selectedPriority,
+        subtasks: subtaskValues,
+        };
+        tasksToBoard.push(task);
+        console.log(tasksToBoard);
+        clearTask();
+    } else {
+        console.log('Title and description cannot be empty');
+    }
+    }
