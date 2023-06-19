@@ -28,11 +28,12 @@
         Add Task
     </h2>
 
+<form onsubmit="createTask()">
     <div class="task-detail">
         <div class="task-left">
         <div class="title">
             <h3>Title</h3>
-            <input id="new_task_title" type="text" placeholder="Enter a Title">
+            <input id="new_task_title" type="text" placeholder="Enter a Title" required>
             <span id="title_error"></span>
         </div>
         
@@ -135,6 +136,7 @@
         </button>
     </div>
 </div>
+</form>
 
 
 
