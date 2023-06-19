@@ -10,7 +10,7 @@ body{
   align-items: center;
   margin-left: 7rem;
   margin-right: 6rem;
-  margin-top: 8.2rem;
+  padding-top: 8.2rem;
 }
 
 .header-board h2 {
@@ -123,6 +123,7 @@ body{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .board-card h2 {
@@ -175,13 +176,13 @@ body{
 }
 
 #popup-add-task{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: -10rem;
-    left: 10rem;
-    z-index: 999;
+  width: 100%;
+  min-height:100vh ;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
 .subtasks img{
@@ -203,3 +204,73 @@ body{
     opacity: 1;
 }
 }
+
+.low-opacity{
+  opacity:0.2;
+}
+
+.hide{
+  display: none !important;
+}
+
+.popup-board-body{
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-board-popup,.display-editable-board{
+  width: 62.3rem;
+  height:82.4rem;
+  background-color: var(--white);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding:5rem;
+}
+
+.category-popup span{
+  font-size: 2.7rem;
+  padding: 0.4rem 3.65rem;
+  background-color: #FC71FF;
+  border-radius: 0.8rem;
+  color: white;
+}
+
+.title-popup{
+  width: 523px;
+  margin-top: 2.5rem;
+}
+
+.title-popup h2{
+  font-size: 6.1rem;
+  color: var(--btnBackgroundColor);
+}
+
+.description-popup,.priority-popup,.due-date-popup,.assigned-popup{
+  margin-top: 2.5rem;
+}
+
+.description-popup span{
+  font-size: 2.1rem;
+}
+
+.bold{
+  font-weight: var(--weight7);
+  font-size: 2.1rem;
+}
+
+.edit-delete-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-btn img:hover{
+
+  cursor: pointer;
+}
+
+.edit-btn img:hover{
+  cursor: pointer;
+}
+

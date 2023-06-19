@@ -5,7 +5,6 @@ const ddContact = document.querySelector('.dropdown-content-con');
 const urgentButton = document.getElementById('urgent');
 const mediumButton = document.getElementById('medium');
 const lowButton = document.getElementById('low');
-let allTasks = [];
 
 let tasksToBoard = [
     {
@@ -23,7 +22,7 @@ let tasksToBoard = [
 ];
 
 let newAddedSubtasks = [];
-
+loadAllTasks();
 // new category && new Contacts array
 let newCategory = [];
 let newContacts = [];
@@ -38,7 +37,6 @@ function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
     ddCategory.classList.toggle('animate-dropdown');
 }
-
 showCategory.addEventListener('click', toggleDropdownCat);
 
 function toggleDropdownCon(){
@@ -122,19 +120,16 @@ colorDots.forEach((dot) => {
     // Update the newCatValue and dropdown category
     const newCatValue = document.getElementById('new-cat-value');
     const selectedCategoryElem = document.getElementById('selectedCategory');
-
     newCatValue.value = ''; // Clear the previous value
     newCatValue.style.backgroundColor = selectedColor; // Set the background color of the newCatValue input field
-
     // Create a dot element with the selected color and append it to newCatValue
     const colorDot = document.createElement('span');
     colorDot.classList.add('dot', selectedColor);
     colorDot.style.backgroundColor = selectedColor;
     newCatValue.innerHTML = '';
     newCatValue.appendChild(colorDot);
-
     selectedCategoryElem.innerHTML = `<span class="dot ${selectedColor}" style="background-color: ${selectedColor};"></span> ${selectedCategory}`; // Update the selectedCategory with the selected category and its color
-  });
+    });
 });
 
 // Update addNewCategory function
@@ -166,7 +161,6 @@ function addNewCategory() {
 
     // Clear the input value
     document.getElementById('new-cat-value').value = '';
-    allTasks.push(tasksToBoard)
     }
     }
 
@@ -285,63 +279,61 @@ function createTask() {
     let newTitle = document.getElementById('new_task_title');
     let newDescription = document.getElementById('new_task_description');
     let category = document.getElementById('selectedCategory').textContent.trim();
-
+    
     // Retrieve the values for assigned to, date, and subtasks
     let assignedTo = document.getElementById('selected-contacts').textContent.trim();
     let date = document.getElementById('date').value;
-
+    
     let subtasks = document.getElementById('new-subtask');
     let subtaskValues = [];
-
+    
     for (let i = 0; i < subtasks.length; i++) {
-    let subtaskValue = subtasks[i].value;
-    if (subtaskValue.trim() !== '') {
+        let subtaskValue = subtasks[i].value;
+        if (subtaskValue.trim() !== '') {
         subtaskValues.push(subtaskValue);
+        }
     }
-}
-
+    
     let priority = '';
     let priorityText = '';
     let prioritySVG = '';
-
+    
     if (selectedPriority) {
-    priority = selectedPriority.id;
-    priorityText = selectedPriority.innerText.trim();
-    prioritySVG = selectedPriority.querySelector('img').getAttribute('src');
+        priority = selectedPriority.id;
+        priorityText = selectedPriority.innerText.trim();
+        prioritySVG = selectedPriority.querySelector('img').getAttribute('src');
     }
-
+    
     // Check if the title and description are not empty
     if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
-    let task = {
+        let task = {
         title: newTitle.value,
         description: newDescription.value,
         category: category,
         assigned: assignedTo,
         date: date,
         prio: {
-        text: priorityText,
-        svg: prioritySVG
+            text: priorityText,
+            svg: prioritySVG
         },
         subtasks: subtaskValues
-    };
-    tasksToBoard[0] = task; // Replace the existing object in the array
-    console.log(tasksToBoard);
-    clearTask();
-    } else {
-    console.log('Title and description cannot be empty');
+        };
+        tasksToBoard.push(task); // Append the news task to the array
+        console.log(tasksToBoard,task)
+        clearTask();
+        saveTasksToLocalStorage();
+    } 
     }
-    saveTaskAsString();
+    
+
+function saveTasksToLocalStorage() {
+    let tasksAsString = JSON.stringify(tasksToBoard);
+    localStorage.setItem('tasks', tasksAsString);
     }
 
-function saveTaskAsString(){
-    let allTasksAsString = JSON.stringify(tasksToBoard);
-    localStorage.setItem('allTasks',allTasksAsString)
-}
-
-function loadAllTasks(){
-    let allTasksAsString = localStorage.getItem('allTasks');
-    allTasks = JSON.parse(allTasksAsString);
-
+function loadAllTasks() {
+    let tasksAsString = localStorage.getItem('tasks');
+    tasksToBoard = JSON.parse(tasksAsString);
 }
 
 function changeButtonBackgroundColor(priority) {

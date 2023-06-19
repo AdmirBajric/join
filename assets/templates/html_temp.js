@@ -141,8 +141,9 @@ function showNewContactHTML(){
 }
 
 function boardCardHtml(task){
+    console.log(task)
     return`
-    <div class="board-card">
+    <div class="board-card" draggable="true" ondragstart="startDragging()">
         <h2>${task.category}</h2>
         <h3>${task.title}</h3>
         <p>${task.description}</p>
@@ -160,6 +161,57 @@ function boardCardHtml(task){
             <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
         </div>
     </div>
+    `
+}
+
+function popupBoardHTML(){
+    return`
+    <div class="popup-board-body">
+    <div class="display-board-popup">
+        <div class="popup-board-bg">
+            <div class="category-popup">
+                <span>Sales</span>
+            </div>
+            <div class="title-popup">
+                <h2>Call potential clients</h2>
+            </div>
+            <div class="description-popup">
+                <span>
+                    Make the product presentation to prospective buyers
+                </span>
+            </div>
+            <div class="due-date-popup">
+                <p class="bold">
+                    Due date:
+                </p>
+            </div>
+            <div class="priority-popup">
+                <p class="bold">
+                    Due date:
+                </p>
+            </div>
+            <div class="assigned-popup">
+                <p class="bold">
+                    Assigned To:
+                </p>
+                <div class="assigned-to-individual">
+                    <img>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+            <div class="edit-delete-btn">
+                <div class="delete-btn">
+                    <img src="../assets/img/delete-btn.svg" alt="">
+                </div>
+                <div class="edit-btn" onclick="editPopupBoard()">
+                    <img src="../assets/img/edit-btn.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     `
 }
 

@@ -23,8 +23,12 @@
     <script src="/assets/templates/html_temp.js" defer></script>
     <title>Board</title>
   </head>
-  <body class="board" onload="renderBoardTask()">
-    <div id="popup-add-task"></div>
+  <body class="board" onload="loadAllTasks();">
+    <div id="popup-add-task" class="hide">
+
+    </div>
+    <div id="popup-board">
+    </div>
     <div class="header-board">
       <h2>Board</h2>
       <div class="search-add-task">
@@ -53,7 +57,7 @@
           <h3>In progress</h3>
           <div class="plus-button" onclick="popupAddTask()"></div>
         </div>
-        <div class="board-card">
+        <div class="board-card" onclick="popupBoard()">
           <h2>Design</h2>
           <h3>Website redesign</h3>
           <p>Modify the contents of the main website</p>
