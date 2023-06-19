@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="import" href="/board/board.html">
     <!-- css -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="add_task.css">
-    <link rel="shortcut icon" href="../assets/img/join-small.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/join-small.svg" type="image/x-icon">
     <!-- script -->
     <script src="addTask.js" defer></script>
     <script src="add_task_check.js" defer></script>
-    <script src="../assets/templates/html_temp.js" defer></script>
+    <script src="assets/templates/html_temp.js" defer></script>
     <script
     src="https://kit.fontawesome.com/aa0c350945.js"
     crossorigin="anonymous"
@@ -59,7 +58,7 @@
             <div class="dropdown-category">
                 <div class="dropdown-title">
                     <span id="selectedCategory">Select task category</span>
-                    <img src="../assets/img/arrow-down.svg" alt="" id="showCategory">
+                    <img src="assets/img/arrow-down.svg" alt="" id="showCategory">
                 </div>
                 <div class="dropdown-content-cat hide">
                     <div onclick="showNewCategory()">New category </div>
@@ -80,7 +79,7 @@
             <div class="dropdown-category-con">
                 <div class="dropdown-title">
                     <span id="selected-contacts" >Select contacts to assign</span>
-                    <img src="../assets/img/arrow-down.svg" alt="" id="showAssignedTo">
+                    <img src="assets/img/arrow-down.svg" alt="" id="showAssignedTo">
                 </div>
                 <div class="dropdown-content-con hide">
                     <div id="firstContact">You <input type="checkbox"></div>
@@ -105,9 +104,9 @@
             Prio
         </h3>
         <div class="prio-button">
-            <button id="urgent">Urgent<img src="../assets/img/urgent-prio.svg"></button>
-            <button id="medium">Medium<img src="../assets/img/medium-prio.png"></button>
-            <button id="low">Low <img src="../assets/img/low-prio.svg" alt=""></button>
+            <button id="urgent">Urgent<img src="assets/img/urgent-prio.svg"></button>
+            <button id="medium">Medium<img src="assets/img/medium-prio.png"></button>
+            <button id="low">Low <img src="assets/img/low-prio.svg" alt=""></button>
         </div>
     </div>
 
@@ -117,7 +116,7 @@
             <input type="text" placeholder="Add new Subtasks" id="new-subtask">
 
             <div onclick="addSubtasks()">
-                <img src="../assets/img/plus-sign.svg">
+                <img src="assets/img/plus-sign.svg">
             </div>
         </div>
         <div class="subtask-check" id="added-subtasks">
@@ -127,11 +126,11 @@
     <div class="add-clear-btn">
         <button id="clear-task" onclick="clearTask()">
             Clear
-            <img src="../assets/img/close.svg" alt="">
+            <img src="assets/img/close.svg" alt="">
         </button> 
         <button id="create-task" onclick="createTask();">
             Create Task
-            <img src="../assets/img/check.svg" alt="">
+            <img src="assets/img/check.svg" alt="">
         </button>
     </div>
 </div>
