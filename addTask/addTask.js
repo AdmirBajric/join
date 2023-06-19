@@ -5,6 +5,7 @@ const ddContact = document.querySelector('.dropdown-content-con');
 const urgentButton = document.getElementById('urgent');
 const mediumButton = document.getElementById('medium');
 const lowButton = document.getElementById('low');
+let allTasks = [];
 
 let tasksToBoard = [
     {
@@ -31,6 +32,7 @@ let selectedContactEmails = []; // Create an array to store selected contact ema
 // Store the selected color
 let selectedColor = '';
 let selectedCategory = 'Select task category';
+let selectedPriority = null;
 
 function toggleDropdownCat() {
     ddCategory.classList.toggle('hide');
@@ -65,10 +67,17 @@ function clearTask(){
     let newTitle = document.getElementById('new_task_title');
     let newDescription = document.getElementById('new_task_description');
     let newSubtasks = document.getElementById('added-subtasks');
+    let newDate = document.getElementById('date');
+    let catContent = document.querySelector('.dropdown-content-cat');
+    let conContent = document.querySelector('.dropdown-content-con');
+    let prio = document.querySelector('.prio-button button')
 
     newTitle.value = '';
     newDescription.value = '';
     newSubtasks.innerHTML = '';
+    newDate.value = '';
+    catContent.classList.add('hide');
+    conContent.classList.add('hide');
 }
 
 function showNewCategory(){
@@ -157,6 +166,7 @@ function addNewCategory() {
 
     // Clear the input value
     document.getElementById('new-cat-value').value = '';
+    allTasks.push(tasksToBoard)
     }
     }
 
@@ -260,75 +270,81 @@ document.addEventListener('click', function (event) {
     }
     });
 // Push to array for board
-let selectedPriority = null;
+
 
 function selectPriority(button) {
-  if (selectedPriority) {
+    if (selectedPriority) {
     selectedPriority.classList.remove('selected');
-  }
-  
-  selectedPriority = button;
-  selectedPriority.classList.add('selected');
-}
+    }
+
+    selectedPriority = button;
+    selectedPriority.classList.add('selected');
+    }
 
 function createTask() {
-  let newTitle = document.getElementById('new_task_title');
-  let newDescription = document.getElementById('new_task_description');
-  let category = document.getElementById('selectedCategory').textContent.trim();
+    let newTitle = document.getElementById('new_task_title');
+    let newDescription = document.getElementById('new_task_description');
+    let category = document.getElementById('selectedCategory').textContent.trim();
 
-  // Retrieve the values for assigned to, date, and subtasks
-  let assignedTo = document.getElementById('selected-contacts').textContent.trim();
-  let date = document.getElementById('date').value;
+    // Retrieve the values for assigned to, date, and subtasks
+    let assignedTo = document.getElementById('selected-contacts').textContent.trim();
+    let date = document.getElementById('date').value;
 
-  let subtasks = document.getElementById('new-subtask');
-  let subtaskValues = [];
-  for (let i = 0; i < subtasks.length; i++) {
+    let subtasks = document.getElementById('new-subtask');
+    let subtaskValues = [];
+
+    for (let i = 0; i < subtasks.length; i++) {
     let subtaskValue = subtasks[i].value;
     if (subtaskValue.trim() !== '') {
-      subtaskValues.push(subtaskValue);
+        subtaskValues.push(subtaskValue);
     }
-  }
+}
 
-  let priority = '';
-  let priorityText = '';
-  let prioritySVG = '';
+    let priority = '';
+    let priorityText = '';
+    let prioritySVG = '';
 
-  if (selectedPriority) {
+    if (selectedPriority) {
     priority = selectedPriority.id;
     priorityText = selectedPriority.innerText.trim();
     prioritySVG = selectedPriority.querySelector('img').getAttribute('src');
-  }
+    }
 
-  // Check if the title and description are not empty
-  if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
+    // Check if the title and description are not empty
+    if (newTitle.value.trim() !== '' && newDescription.value.trim() !== '') {
     let task = {
-      title: newTitle.value,
-      description: newDescription.value,
-      category: category,
-      assigned: assignedTo,
-      date: date,
-      prio: {
+        title: newTitle.value,
+        description: newDescription.value,
+        category: category,
+        assigned: assignedTo,
+        date: date,
+        prio: {
         text: priorityText,
         svg: prioritySVG
-      },
-      subtasks: subtaskValues
+        },
+        subtasks: subtaskValues
     };
     tasksToBoard[0] = task; // Replace the existing object in the array
     console.log(tasksToBoard);
     clearTask();
-  } else {
+    } else {
     console.log('Title and description cannot be empty');
-  }
+    }
+    saveTaskAsString();
+    }
+
+function saveTaskAsString(){
+    let allTasksAsString = JSON.stringify(tasksToBoard);
+    localStorage.setItem('allTasks',allTasksAsString)
 }
 
+function loadAllTasks(){
+    let allTasksAsString = localStorage.getItem('allTasks');
+    allTasks = JSON.parse(allTasksAsString);
 
-
+}
 
 function changeButtonBackgroundColor(priority) {
-    var urgentButton = document.getElementById('urgent');
-    var mediumButton = document.getElementById('medium');
-    var lowButton = document.getElementById('low');
-
     // Reset the background color of all buttons
     urgentButton.style.backgroundColor = '';
     mediumButton.style.backgroundColor = '';
@@ -338,7 +354,10 @@ function changeButtonBackgroundColor(priority) {
     urgentButton.querySelector('img').style.filter = '';
     mediumButton.querySelector('img').style.filter = '';
     lowButton.querySelector('img').style.filter = '';
+    switchPriority(priority);
+}
 
+function switchPriority(priority){
     switch (priority) {
         case 'urgent':
         urgentButton.style.backgroundColor = 'red';
@@ -361,6 +380,7 @@ function changeButtonBackgroundColor(priority) {
     }
     }
 
+
 document.getElementById('urgent').addEventListener('click', function() {
 changeButtonBackgroundColor('urgent');
 });
@@ -372,3 +392,5 @@ changeButtonBackgroundColor('medium');
 document.getElementById('low').addEventListener('click', function() {
 changeButtonBackgroundColor('low');
 });
+
+

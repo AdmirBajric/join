@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/join-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/board/board.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/assets/templates/task_form.css" />
+    <link rel="import" href="/addTask/add_task.html" />
+    <script
+      src="https://kit.fontawesome.com/aa0c350945.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="/board/board.js" defer></script>
+    <script src="../addTask/addTask.js"></script>
+    <script src="/assets/templates/html_temp.js" defer></script>
+    <title>Board</title>
+  </head>
+  <body class="board" onload="renderBoardTask()">
+    <div id="popup-add-task"></div>
+    <div class="header-board">
+      <h2>Board</h2>
+      <div class="search-add-task">
+        <div class="search">
+          <input type="search" placeholder="Find Task" id="search-input" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button id="addTask" onclick="popupAddTask()">Add task +</button>
+      </div>
+    </div>
+
+    <!-- <div class="board-tasks"> -->
+    <div class="board-body">
+      <div class="board-body-one">
+        <div class="board-header">
+          <h3>To do</h3>
+          <div class="plus-button" onclick="popupAddTask()"></div>
+        </div>
+
+        <div id="board-card">
+        </div>
+      </div>
+
+      <div class="board-body-two">
+        <div class="board-header">
+          <h3>In progress</h3>
+          <div class="plus-button" onclick="popupAddTask()"></div>
+        </div>
+        <div class="board-card">
+          <h2>Design</h2>
+          <h3>Website redesign</h3>
+          <p>Modify the contents of the main website</p>
+          <div class="show-count">
+            <div class="bar-count"></div>
+            <p class="bar-no">1/2 Done</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="prof-pic-board">
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+            </div>
+            <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
+          </div>
+        </div>
+      </div>
+      <div class="board-body-three">
+        <div class="board-header">
+          <h3>Awaiting Feedback</h3>
+          <div class="plus-button" onclick="popupAddTask()"></div>
+        </div>
+        <div class="board-card">
+          <h2>Design</h2>
+          <h3>Website redesign</h3>
+          <p>Modify the contents of the main website</p>
+          <div class="show-count">
+            <div class="bar-count"></div>
+            <p class="bar-no">1/2 Done</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="prof-pic-board">
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+            </div>
+            <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
+          </div>
+        </div>
+      </div>
+      <div class="board-body-four">
+        <div class="board-header">
+          <h3>Done</h3>
+          <div class="plus-button" onclick="popupAddTask()"></div>
+        </div>
+        <div class="board-card">
+          <h2>Design</h2>
+          <h3>Website redesign</h3>
+          <p>Modify the contents of the main website</p>
+          <div class="show-count">
+            <div class="bar-count"></div>
+            <p class="bar-no">1/2 Done</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="prof-pic-board">
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+              <img src="/assets/img/contact_pp.svg" alt="" />
+            </div>
+            <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </body>
+</html>

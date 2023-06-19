@@ -140,7 +140,28 @@ function showNewContactHTML(){
     `
 }
 
+function boardCardHtml(task){
+    return`
+    <div class="board-card">
+        <h2>${task.category}</h2>
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <div class="show-count">
+            <div class="bar-count"></div>
+            <p class="bar-no">1/2 Done</p>
+        </div>
 
+        <div class="card-footer">
+            <div class="prof-pic-board">
+            <img src="/assets/img/contact_pp.svg" alt="" />
+            <img src="/assets/img/contact_pp.svg" alt="" />
+            <img src="/assets/img/contact_pp.svg" alt="" />
+            </div>
+            <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
+        </div>
+    </div>
+    `
+}
 
 
 
