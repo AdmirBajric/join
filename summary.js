@@ -24,6 +24,17 @@ function alldayGreeting() {
   }
 
 
+/*
+function greet() {
+  const greetingElement = document.getElementById('greeting');
+  let currentUser = decodeURIComponent(window.location.search.split('=')[1]);
+  greetingElement.innerHTML = getGreeting();
+  let greetUser = document.getElementById('user');
+  greetUser.innerHTML = currentUser;
+}
+*/
+
+
 
 /*date today*/
 function dateContainer() {
@@ -41,24 +52,8 @@ function getMonthContainer(i){
     return date.toLocaleString('en-us', {month: 'short'});
   }
 
-
-
-/*header log out*/
-function Logout() {
-    if(document.getElementById('log-img').classList.contains('d-none')) {
-        document.getElementById('log-img').classList.remove('d-none')
-    }else{
-        document.getElementById('log-img').classList.add('d-none')
-    }
-}
-
-function Logoutout() {
-  //  localStorage.removeItem("");
-    window.location.href = "index.html";
-}
-
-
-
+  
+  
 // linked in all directions from here
 function toBoard() {
     window.location.href = "board.html";
