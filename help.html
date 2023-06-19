@@ -2,77 +2,11 @@
 <link rel="stylesheet" href="sidebar.css">
 <link rel="stylesheet" href="help.css">
 <script src="summary.js"></script>
+<script src="header_sidebar.js"></script>
+<script src="log-out.js"></script>
 
-<!--header on-->
-<header class="head">
-
-    <p>Kanban Poject Managment Tool</p>
-
-    <div class="right-header">
-
-      <a class="help-img" href="help.html">
-         <img class="frage-img" src="imgH/Vector (3).png">
-      </a>
-
-      <div class="Profile" onclick="Logout()">
-         <img src="imgH/Frame 35.png">
-      </div>
-      
-    </div>
-
-</header>
-
-<div class="htmlHelp" id="htmlHelp">
-    
-</div>
-<!--header off-->
-
-<!--sidebar on-->
-<nav class="side-bar">
-    <div class="side-container">
-     <img class="side-logo" src="sidebarimg/Capa 1.png">
-
-     <div class="side-navigation">
-
-         <div class="box" onclick="gotoSummary()">
-         <div class="side-summary">
-             <img class="side-img" src="sidebarimg/Vector.png">
-             <span>Summary</span>
-         </div>
-         </div>
-
-         <div class="box" onclick="gotoBoard()">
-         <div class="side-board">
-             <img class="side-img" src="sidebarimg/Vector (1).png">
-             <span>Board</span>
-         </div>
-         </div>
-
-         <div class="box" onclick="gotoAddTask()">
-         <div class="side-addtask">
-             <img class="side-img" src="sidebarimg/Group 1.png">
-             <span>Add Task</span>
-         </div>
-         </div>
-
-         <div class="box" onclick="gotoContacts()">
-         <div class="side-contacts">
-             <img class="side-img" src="sidebarimg/Vector (2).png">
-             <span>Contacts</span>
-         </div>
-         </div>
-
-     </div>
-         <div class="box1" onclick="gotoLegalNotice()">
-         <div class="side-legal">
-             <img class="side-img" src="sidebarimg/Group 4.png">
-             <span>Legal Notice</span>
-         </div>
-         </div>
-    </div>
- </nav>
-<!--sidebar off-->
-
+<body onload="includeLoad()">
+    <div w3-include-html="header_sidebar.html"></div>
 <!--help on-->
 <div class="right-help-Container">
     <div class="right-Notiz">
@@ -104,3 +38,4 @@
     </div>
 </div>
 <!--help off-->
+</body>
