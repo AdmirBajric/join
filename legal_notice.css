@@ -40,5 +40,11 @@
 .all_right {
     padding-left: 31rem;
     padding-top: 50px;
+    padding-bottom: 130px;
     font-size: 1.7vh;
+}
+
+.all-in-daten {
+    width: 90%;
+    text-align: justify;
 }
