@@ -21,22 +21,23 @@ body {
     display: flex;
     margin-top: 35px;
     margin-bottom: 40px;
+    margin-left: 48px;
     align-items: center;
 }
 
 .summary {
-    font-size: 35px;
+    font-size: 45px;
     padding-bottom: 10px;
     font-weight: bold;
 }
 
 .img-summary {
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .text {
-    font-size: 20px;
+    font-size: 23px;
     white-space: nowrap;
 }
 
@@ -183,18 +184,18 @@ body {
 }
 
 .greet-text {
-    font-size: 40px;
+    font-size: 50px;
     color: #2a3647;
 }
 
 .greet-name {
-    font-size: 55px;
+    font-size: 65px;
     font-weight: bold;
     color: #29abe2; 
 }
 
 .greet-container {
-    margin-left: 100px;
+    margin-left: 135px;
 }
 
 .to-do-Container {
@@ -319,4 +320,75 @@ body {
 .text-done {
     font-size: 20px;
     color: #2a3647; 
+}
+
+
+
+@media (max-width: 1440px) {
+
+    .greet-container {
+        margin-left: 15px;
+    }
+
+}
+
+@media (max-width: 1323px) {
+
+    .greet-container {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .container-right {
+        margin-left: 35px;
+    }
+
+}
+
+@media (max-width: 670px) {
+
+    .all-in-summary {
+        margin-left: 0px;
+    }
+
+    .container-tasks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        width: 133px;
+        height: 155px;
+        border-radius: 15%;
+        padding: 22px;
+        background-color: white;
+        border: 1px solid #e3e1e1;
+    }
+
+    .long-div {
+        width: 484px;
+    }
+
+    .to-do-div {
+        width: 195px;
+    }
+
+    .done-div {
+        width: 195px;
+    }
+
+    .tasks-progress {
+        font-size: 50px;
+    }
+
+    .awaiting-feedback {
+        font-size: 50px;
+    }
+
+    .tasks-board {
+        font-size: 50px;
+    }
+
 }

@@ -46,3 +46,33 @@ body {
 .d-none {
     display: none !important;
 }
+
+.img-mini {
+    display: none;
+}
+
+
+
+@media (max-width: 1000px) {
+
+    .text-p {
+        margin-left: -275px;
+    }
+
+}
+
+@media (max-width: 670px) {
+
+    .img-mini {
+        display: flex;
+    }
+
+    .text-p {
+        display: none;
+    }
+
+    .head {
+        padding-left: 36px;
+    }
+
+}
