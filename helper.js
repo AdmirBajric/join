@@ -80,6 +80,14 @@ const indexSelectedElements = () => {
   ];
 };
 
+const signUpInputs = () => {
+  const signupNameInput = document.querySelector("#signup-name");
+  const signupEmailInput = document.querySelector("#signup-email");
+  const signupPasswordInput = document.querySelector("#signup-password");
+
+  return [signupNameInput, signupEmailInput, signupPasswordInput];
+};
+
 const colorsMix = () => {
   return [
     "#ff7a00",

@@ -266,6 +266,7 @@ const inputFields = () => {
 const createContact = () => {
   const [addFormNameInput, addFormEmailInput, addFormPhoneInput] =
     formInputFields();
+
   const newUser = {
     fullName: addFormNameInput.value,
     email: addFormEmailInput.value,
@@ -294,6 +295,10 @@ const formInputFields = () => {
   const addFormPhoneInput = document.querySelector("#add-form-phone-input");
 
   return [addFormNameInput, addFormEmailInput, addFormPhoneInput];
+};
+
+const addTask = (id) => {
+  console.log("Test");
 };
 
 renderHTML();

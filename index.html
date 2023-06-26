@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="index-responsive.css" />
     <title>Join Log In</title>
   </head>
-  <body>
+  <body onload="init()">
     <!-- Onload animation JOIN start -->
     <img
       id="join-start-img"
@@ -93,7 +93,7 @@
         <button type="submit" form="login-form" id="login" class="btn-blue">
           Log in
         </button>
-        <button onclick="guestLogin()" id="guest-login">Guest Log in</button>
+        <button onclick="guestLogin(0)" id="guest-login">Guest Log in</button>
       </div>
     </div>
     <!-- Log in end -->
@@ -125,8 +125,9 @@
               required
               type="text"
               name="text"
-              placeholder="Name"
+              placeholder="Name and Last name"
               id="signup-name"
+              pattern="^[a-zA-Z]+ [a-zA-Z]+$"
             />
             <img
               class="login-form-img"
@@ -334,7 +335,10 @@
     <!-- Show failed login message end -->
 
     <!-- Show message successfully registered user start -->
-    <div id="successfully-registered">You have successfully registered !</div>
+    <div id="successfully-registered">
+      You have successfully registered ! <br />
+      Please Log in!
+    </div>
     <!-- Show message successfully registered user end -->
 
     <!-- Show message account exist start -->
@@ -345,6 +349,9 @@
     <!-- Show message account exist end -->
 
     <script src="helper.js"></script>
+    <script src="storage.js"></script>
+    <script src="register.js"></script>
+    <script src="guestLogIn.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

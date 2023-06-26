@@ -35,8 +35,8 @@ const userContactPreview = (
   
       <div class="user-contact-info">
           <p class="user-contact-info-name">${users[id].fullName}</p>
-          <div class="user-contact-add-task">
-              <img class="user-contact-add-task-img" src="./assets/img/add-task-blue.svg" alt="Plus image" />
+          <div onclick="addTask(${id})" class="user-contact-add-task">
+              <img class="user-contact-add-task-img" src="./assets/img/add-task-blue.svg" alt="Add task image" />
           </div>
       </div>
     </div>
