@@ -42,7 +42,7 @@ function dateContainer() {
     containerDay = containerDay.slice(0, 10);
     let containerDayArray = containerDay.split(".");
     let containerMonth = getMonthContainer(containerDayArray[1]);
-    containerDay = containerMonth + " " + containerDayArray[0] + ", " + containerDayArray[2];
+    containerDay = `${containerMonth} ${containerDayArray[0]}, ${containerDayArray[2]}`;
     document.getElementById('dateContainer').innerHTML = `<strong>${containerDay}</strong>`;
 }
 
@@ -53,8 +53,8 @@ function getMonthContainer(i){
   }
 
   
-  
-// linked in all directions from here
+
+  //go to Board
 function toBoard() {
     window.location.href = "board.html";
 }

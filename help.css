@@ -54,3 +54,37 @@ h1 {
     transform: scale(1.08);  
     transition: all 150ms ease-in-out;
 }
+
+
+
+@media (max-width: 1000px) {
+
+    .right-help-Container {
+        margin-left: 0px;
+    }
+
+    .right-Notiz {
+        margin-left: 50px;
+    } 
+
+    .p-px1 {
+        font-size: 15px;
+    }
+
+    .p-px {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width: 685px) {
+    .right-help-Container {
+        margin-top: 55px;
+    }
+}
+
+@media (max-width: 580px) {
+    .content {
+        padding-bottom: 80px;
+    }
+}
