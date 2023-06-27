@@ -392,3 +392,35 @@ body {
     }
 
 }
+
+@media (max-width: 530px) {
+
+    .img-summary {
+        display: none;
+    }
+
+    .text {
+        display: none;
+    }
+
+    .three-container {
+        gap: 10px;
+    }
+
+    .long-div {
+        width: 420px;
+    }
+
+    .to-do-Container {
+        gap: 10px;
+    }
+
+    .to-do-div {
+        width: 180px;
+    }
+
+    .done-div {
+        width: 180px;
+    }
+
+}

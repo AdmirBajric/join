@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="add_task.css">
     <link rel="shortcut icon" href="assets/img/join-small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="sidebar.css" />
+    <script src="header_sidebar.js"></script>
+    <script src="log-out.js"></script>
     <!-- script -->
     <script src="addTask.js" defer></script>
     <script src="add_task_check.js" defer></script>
@@ -21,7 +26,10 @@
     ></script>
     <title>Add Task</title>
 </head>
-<body class="add-task">
+<body class="add-task" onload="includeLoad()">
+
+    <div w3-include-html="header_sidebar.html"></div>
+
     <h2 class="header-add-task">
         Add Task
     </h2>
