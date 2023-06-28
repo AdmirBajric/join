@@ -173,6 +173,7 @@ nav{
 
     .side-around {
         display: flex;
+        padding-right: 3px;
     }
     
 }
