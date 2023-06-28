@@ -25,7 +25,7 @@ const guestLogin = async (id) => {
   localStorage.setItem("userTasks", JSON.stringify(userTasks));
   localStorage.setItem("userContacts", JSON.stringify(userContacts));
 
-  location.href = "http://127.0.0.1:5500/summary.html";
+  location.href = "summary.html";
 };
 
 // Templates

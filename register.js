@@ -42,7 +42,7 @@ const userNotExistOnSignUp = async () => {
   }, 1000);
 
   setTimeout(() => {
-    location.href = "http://127.0.0.1:5500";
+    location.href = "index.html";
   }, 2000);
 };
 
@@ -52,7 +52,7 @@ const userExistOnSignUp = () => {
   }, 1000);
 
   setTimeout(() => {
-    location.href = "http://127.0.0.1:5500";
+    location.href = "index.html";
   }, 2000);
 };
 
