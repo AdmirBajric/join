@@ -1,143 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="./assets/img/join-small.svg"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="board.css"/>
-    <link rel="stylesheet" href="style.css"/>
-    <script
-      src="https://kit.fontawesome.com/aa0c350945.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="sidebar.css">
-    <script src="header_sidebar.js"></script>
-    <script src="log-out.js"></script>
     <title>Board</title>
-  </head>
-  <body onload="includeLoad()" class="board">
+    <link rel="icon" type="image/png" href="./assets_task_board/img/favicon.png" />
 
-    <div w3-include-html="header_sidebar.html"></div>
+    <link rel="stylesheet" href="./css/board.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/board-edit-popup.css" />
+    <link rel="stylesheet" href="./css/board-task-popup.css" />
 
-    <div class="header-board">
-      <h2>Board</h2>
-      <div class="search-add-task">
-        <div class="search">
-          <input type="search" placeholder="Find Task" id="search-input" />
-          <i class="fa-solid fa-magnifying-glass"></i>
+
+    <script src="./js/navbar.js"></script>
+    <script src="./storage.js"></script>
+    <script src="./js/board_template.js"></script>
+    <script src="./js/tasks.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/board_drag_drop.js"></script>
+</head>
+
+<body onload="initBoard()">
+  
+  <div w3-include-html="header_sidebar.html"></div>
+    <div class="overlay-bg d-none" id="overlay"></div>
+
+    <div class="board-main-container inner-content">
+        <span id="headline-mobile" class="headline-text-mobile">Kanban Project Management Tool</span
+      >
+      <div class="headline-container">
+        <div class="headline-left">
+          <span class="headline-text headline-text-container">Board</span>
+        <div onclick="redirectToAddTask()" id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
+            <button>
+              <img src="./assets_task_board/img/plus-icon.svg" alt="" />
+            </button>
         </div>
-        <button id="addTask">Add task +</button>
-      </div>
+    </div>
+    <div class="board-headline-right">
+        <div class="subtask-container">
+            <input id="search-input" oninput="searchForTaskByInput()" placeholder="Search..." />
+
+            <div id="search-input-images" style="display: flex">
+                <div class="border-subtask"></div>
+                <img src="./assets_task_board/img/search-icon.png" id="finishEditingSubtask" />
+            </div>
+        </div>
+
+        <div onclick="redirectToAddTask()" id="add-task-btn-board" class="add-task-btn-board">
+            <button>Add Task</button>
+            <img src="./assets_task_board/img/plus-icon.svg" alt="" />
+        </div>
+    </div>
     </div>
 
-    <!-- <div class="board-tasks"> -->
-    <div class="board-body">
-      <div class="board-body-one">
-        <div class="board-header">
-          <h3>To do</h3>
-          <div class="plus-button"></div>
-        </div>
-        
-
-        <div class="board-card">
-          <h2>Design</h2>
-          <h3>Website redesign</h3>
-          <p>Modify the contents of the main website</p>
-          <div class="show-count">
-            <div class="bar-count"></div>
-            <p class="bar-no">1/2 Done</p>
-          </div>
-
-          <div class="card-footer">
-            <div class="prof-pic-board">
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
+    <div class="board-content">
+        <div class="board-content-element" id="toDoContainer">
+            <div class="task-type">
+                <span>To Do</span>
+                <svg onclick="redirectToAddTask()" class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
             </div>
-            <img src="assets/img/low-prio.svg" alt="" class="speed-todo" />
-          </div>
-        </div>
-      </div>
-
-      <div class="board-body-two">
-        <div class="board-header">
-            <h3>In progress</h3>
-            <div class="plus-button"></div>
-        </div>
-        <div class="board-card">
-          <h2>Design</h2>
-          <h3>Website redesign</h3>
-          <p>Modify the contents of the main website</p>
-          <div class="show-count">
-            <div class="bar-count"></div>
-            <p class="bar-no">1/2 Done</p>
-          </div>
-
-          <div class="card-footer">
-            <div class="prof-pic-board">
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
+            <div class="drop-area" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+                <!--DropArea TO DO-->
             </div>
-            <img src="assets/img/low-prio.svg" alt="" class="speed-todo" />
-          </div>
         </div>
-      </div>
-      <div class="board-body-three">
-        <div class="board-header">
-            <h3>Awaiting Feedback</h3>
-            <div class="plus-button"></div>
-        </div>
-        <div class="board-card">
-          <h2>Design</h2>
-          <h3>Website redesign</h3>
-          <p>Modify the contents of the main website</p>
-          <div class="show-count">
-            <div class="bar-count"></div>
-            <p class="bar-no">1/2 Done</p>
-          </div>
 
-          <div class="card-footer">
-            <div class="prof-pic-board">
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
+        <div class="board-content-element" id="progressContainer">
+            <div class="task-type">
+                <span>In progress</span>
+                <svg onclick="redirectToAddTask()" class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
             </div>
-            <img src="assets/img/low-prio.svg" alt="" class="speed-todo" />
-          </div>
-        </div>
-      </div>
-      <div class="board-body-four">
-        <div class="board-header">
-            <h3>Done</h3>
-            <div class="plus-button"></div>
-        </div>
-        <div class="board-card">
-          <h2>Design</h2>
-          <h3>Website redesign</h3>
-          <p>Modify the contents of the main website</p>
-          <div class="show-count">
-            <div class="bar-count"></div>
-            <p class="bar-no">1/2 Done</p>
-          </div>
-
-          <div class="card-footer">
-            <div class="prof-pic-board">
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
-              <img src="assets/img/contact_pp.svg" alt="" />
+            <div class="drop-area" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+                <!--DropArea IN PROGRESS-->
             </div>
-            <img src="assets/img/low-prio.svg" alt="" class="speed-todo" />
-          </div>
         </div>
-      </div>
+        <div class="board-content-element" id="feedbackContainer">
+            <div class="task-type">
+                <span>Awaiting feedback</span>
+                <svg onclick="redirectToAddTask()" class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+            </div>
+            <div class="drop-area" id="feedback" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
+                <!--DropArea FEEDBACK-->
+            </div>
+        </div>
+        <div class="board-content-element" id="doneContainer">
+            <div class="task-type">
+                <span>Done</span>
+                <svg onclick="redirectToAddTask()" class="svg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15 7.5V22.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M22.5 15.1416L7.5 15.1416"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <rect
+                x="1"
+                y="1"
+                width="28"
+                height="28"
+                rx="9"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+            </svg>
+            </div>
+            <div class="drop-area" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                <!--DropArea DONE-->
+            </div>
+        </div>
     </div>
-    <!-- </div> -->
-  </body>
+    </div>
+</body>
+
 </html>
