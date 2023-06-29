@@ -530,11 +530,11 @@ function renderNewCategoryField() {
     <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
 
       <div class="flex-row align-center height-100">
-      <img src="./assets_task_board/img/close-button-addtask.svg" onclick="clearSelections()">
+      <img src="./assets/img/close-button-addtask.svg" onclick="clearSelections()">
 
         <div class="vert-border"></div>
         <button class="newCategory" onclick="checkNewCategory(); stopDropdown(event);" type="button"><img
-        src="assets_task_board/img/check-addtask.svg"></button>
+        src="assets/img/check-addtask.svg"></button>
       </div>
     </div>
   `;
@@ -593,7 +593,7 @@ function renderNormalCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     dropdownField.innerHTML = `
     <span>Select category</span>
-    <img src="./assets_task_board/img/arrow_down_black.svg" alt="">
+    <img src="./assets/img/arrow_down_black.svg" alt="">
   `;
 }
 

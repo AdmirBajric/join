@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
-    <link rel="icon" type="image/png" href="./assets_task_board_task_board/img/favicon.png" />
+    <link rel="icon" type="image/png" href="./assets_task_board/img/favicon.png" />
 
     <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
@@ -16,15 +16,14 @@
 
 
     <script src="./js/navbar.js"></script>
-    <script src="./storage.js"></script>
+    <script src="./storage_new.js"></script>
     <script src="./js/board_template.js"></script>
-    <script src="./js/script.js"></script>
     <script src="./js/tasks.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/board_drag_drop.js"></script>
 </head>
 
-<body onload="includeHTML();initBoard()">
+<body onload="initBoard()">
     <div class="overlay-bg d-none" id="overlay"></div>
 
     <div class="board-main-container inner-content">
