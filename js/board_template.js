@@ -118,19 +118,19 @@ function editTaskHTML(currentTask) {
                 currentTask["prio"] === "up" ? "active" : ""
               }" id="prioUrgent" onclick="TaskButtonUrgent(); setPrioStatus('up')">
                 Urgent
-                <img id="imgUrgent" src="./assets_task_board/img/icon_up.png" alt="" />
+                <img id="imgUrgent" src="./assets_task_board/icon_up.png" alt="" />
               </div>
               <div class="prio-btn ${
                 currentTask["prio"] === "medium" ? "active" : ""
               }" id="prioMedium" onclick="TaskButtonMedium(); setPrioStatus('medium')">
                 Medium
-                <img id="imgMedium" src="./assets_task_board/img/icon_medium.png" alt="" />
+                <img id="imgMedium" src="assets_task_board/img/icon_medium.png" alt="" />
               </div>
               <div class="prio-btn ${
                 currentTask["prio"] === "down" ? "active" : ""
               }" id="prioLow" onclick="TaskButtonLow(); setPrioStatus('down')">
                 Low
-                <img id="imgLow" src="./assets_task_board/img/icon_down.png" alt="" />
+                <img id="imgLow" src="assets_task_board/img/icon_down.png" alt="" />
               </div>
             </div>
   

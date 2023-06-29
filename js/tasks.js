@@ -680,7 +680,7 @@ function updateTaskCardIcons(id) {
     const imgLowTask = document.getElementById("imgLowTask");
 
     if (imgUrgentTask && imgMediumTask && imgLowTask) {
-        // Verstecke alle Icons
+        // hide all icons
         imgUrgentTask.classList.add("d-none");
         imgMediumTask.classList.add("d-none");
         imgLowTask.classList.add("d-none");
