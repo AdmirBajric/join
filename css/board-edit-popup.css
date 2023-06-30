@@ -1,22 +1,16 @@
 body {
     line-height: unset !important;
     overflow-x: hidden;
-    overflow-x: unset;
+    overflow-y: hidden;
 }
-
-/* ********* Scrollbar CSS ********* */
-
-/* Firefox */
 
 .task-card-scroll {
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .task-card-scroll::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .task-card-scroll::-webkit-scrollbar-track {
@@ -25,7 +19,7 @@ body {
 
 .task-card-scroll::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
 
@@ -36,6 +30,17 @@ body {
     /* Spalten nebeneinander */
     justify-content: space-between;
     /* Abstand zwischen Spalten */
+}
+
+.task-card-category{
+    padding: 4px 36.5px;
+    align-items: flex-start;
+    gap: 10px;
+    font-size:2.1rem ;
+}
+
+.inner-content2 span{
+    font-size: 2.1rem;
 }
 
 .column-left,
@@ -50,7 +55,7 @@ body {
 
 .column-left>*+*,
 .column-right>*+* {
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 .task-card {
@@ -60,49 +65,49 @@ body {
     /* Breite der Karte */
     grid-column: 3/11;
     grid-row: 2/11;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 60px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 6rem;
     overflow-x: hidden;
     overflow-y: auto;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 .headline-text {
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 6.1rem;
     line-height: 120%;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .margin-bottom-60 {
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .border {
     border-right: 2px solid #d1d1d1;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 #description {
     resize: vertical;
-    max-height: 200px;
+    max-height: 20rem;
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 18px 21px;
-    gap: 10px;
+    padding: 1.8rem 2.1rem;
+    gap: 1rem;
     isolation: isolate;
-    height: 119px;
+    height: 11.9rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -115,13 +120,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -130,8 +135,8 @@ body {
 
 .prio {
     display: flex;
-    gap: 17px;
-    padding: 10px;
+    gap: 1.7rem;
+    padding: 1rem;
 }
 
 .prio div {
@@ -139,7 +144,7 @@ body {
     justify-content: center;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 1rem;
     border: 1px solid var(--dimmed);
     font-size: 0.8rem;
     border-radius: 7px;
@@ -149,11 +154,11 @@ body {
 }
 
 .prio div:hover {
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 20%);
+    box-shadow: 0px 0.3rem 0.3rem 0px rgba(0, 0, 0, 20%);
 }
 
 .prio div>img {
-    margin-left: 7px;
+    margin-left: 0.7rem;
 }
 
 .newCategory {
@@ -163,28 +168,28 @@ body {
 
 #datePicker {
     box-sizing: border-box;
-    font-size: 21px;
+    font-size: 2.1rem;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 18px 21px;
-    gap: 10px;
+    padding: 1.8rem 2.1rem;
+    gap: 1rem;
     isolation: isolate;
-    height: 51px;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border: 0.1rem solid #d1d1d1;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     flex-grow: 0;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px;
-    height: 20px;
-    margin-left: 250px;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 25rem;
 }
 
 input[type="date"]::-webkit-datetime-edit-fields-wrapper {
@@ -196,7 +201,7 @@ input[type="date"] {
 }
 
 ::placeholder {
-    font-size: 21px;
+    font-size: 2.1rem;
     color: #d1d1d1;
 }
 
@@ -224,12 +229,12 @@ input:focus::placeholder {
 
 input {
     outline: none;
-    font-size: 21px;
+    font-size: 2.1rem;
 }
 
 textarea {
     outline: none;
-    font-size: 21px;
+    font-size: 2.1rem;
 }
 
 .btn {
@@ -253,24 +258,24 @@ textarea {
 }
 
 .subCon {
-    margin-top: 21px;
+    margin-top: 2.1rem;
     font-size: large;
 }
 
 .subtask-container {
     box-sizing: border-box;
-    margin-top: 12px !important;
+    margin-top: 1.2rem !important;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -283,25 +288,25 @@ textarea {
 }
 
 #subtaskOninput img {
-    height: 25px;
+    height: 2.5rem;
     cursor: pointer;
 }
 
 .border-subtask {
     border-right: 2px solid #d1d1d1;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 label {
-    font-size: 21px;
-    margin-top: 18px !important;
+    font-size: 2.1rem;
+    margin-top: 1.8rem !important;
 }
 
 .action-button-container {
     display: flex;
     justify-content: end;
-    margin-top: 130px;
+    margin-top: 13rem;
 }
 
 .action-button-container img {
@@ -322,32 +327,32 @@ label {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 19px 15px;
-    gap: 10px;
+    padding: 1.9rem 1.5rem;
+    gap: 1rem;
     border: 0;
     color: white;
-    right: 60px;
+    right: 6rem;
     background: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     width: 197.77px;
 }
 
 .form-control::placeholder {
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 #colorPicker {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 8px;
+    margin-top: 0.8rem;
 }
 
 .color-option {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
-    margin-right: 10px;
+    margin-right: 1rem;
     cursor: pointer;
     border: 2px solid white;
 }
@@ -359,23 +364,25 @@ label {
 .dropdown-content {
     display: none;
     background-color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .dropdown-content.show {
     display: flex;
     flex-direction: column;
     margin-top: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     border: 1px solid #d1d1d1;
     border-top: unset;
     overflow: auto;
-    max-height: 200px;
+    max-height: 20rem;
 }
 
-/* Flexbox-Stil für den Namen und die Checkbox */
+#editTask{
+    font-size: 2.1rem
+}
 
 .dropdown-object {
     cursor: pointer;
@@ -383,7 +390,7 @@ label {
     align-items: center;
     justify-content: space-between;
     padding: 5px;
-    padding-left: 10px;
+    padding-left: 1rem;
 }
 
 .dropdown-object:hover {
@@ -391,7 +398,7 @@ label {
 }
 
 .dropdown-object input {
-    margin-right: 10px;
+    margin-right: 1rem;
 }
 
 .category-input {
@@ -404,21 +411,21 @@ label {
     display: flex;
     justify-content: space-between;
     background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     border: 1px solid #d1d1d1;
-    font-size: 1rem;
+    font-size: 2.1remrem;
 }
 
 .dropdown-min img {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .dropdown-min.open {
@@ -462,30 +469,30 @@ label {
 }
 
 .select-color-category div {
-    width: 18px;
-    height: 18px;
-    border: 1px solid white;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.1rem solid white;
     border-radius: 100%;
 }
 
 .select-color-category div:hover {
     cursor: pointer;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 
 .selected-color {
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 
 .category-color {
-    width: 18px;
-    height: 18px;
-    border: 1px solid white;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.1rem solid white;
     border-radius: 100%;
 }
 
 .margin-left-10 {
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 /* @media screen and (max-width: 1445px) {
@@ -514,18 +521,18 @@ label {
 
 .add-task-btn {
     position: unset !important;
-    margin-right: 30px !important;
+    margin-right: 3rem !important;
     font-size: larger;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 380px !important;
 }
 
 .column-right {
-    margin-top: 18px !important;
+    margin-top: 1.8rem !important;
 }
 
 .task-card {
@@ -533,26 +540,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
-    margin-left: 330px !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 33rem !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 290px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 250px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 200px !important;
 }
 
@@ -562,8 +569,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .task-card {
     grid-column: 1/11 !important;
-    margin-left: 10px !important;
-    margin-right: 10px !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
     width: 95% !important;
     margin-bottom: 150px !important;
 }
@@ -572,66 +579,70 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-right: 70px;
 }
 
+#prio button{
+    font-size: 2.1rem !important;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 470px !important;
 }
 
 .action-button-container {
-    margin-top: 21px !important;
+    margin-top: 2.1rem !important;
 }
 
 .prio {
-    gap: 10px !important;
+    gap: 1rem !important;
     padding: 0 !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 440px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 380px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 300px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 250px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 200px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-left: 150px !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px !important;
-    height: 20px !important;
-    margin-left: 100px !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 10rem !important;
 }
 
 @media (max-height: 850px) {
     #clearTask {
-        margin-right: 10px;
+        margin-right: 1rem;
     }
     .prio div {
         width: 200px;
