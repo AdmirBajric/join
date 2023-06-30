@@ -5,6 +5,7 @@ let selectedCategory;
 let currentPrioStatus;
 let selectedColor;
 let categories = [];
+let newCategory = [];
 
 /**
  * Initializes the tasks by loading data, rendering assignable contacts, and rendering the category list.
@@ -491,32 +492,49 @@ function toggleCheckbox(checkboxId) {
  * Function to render the category list.
  */
 function renderCategoryList() {
-    let categoryListContainer = document.getElementById(
-        "dropdownCategoryContent"
-    );
+    let categoryListContainer = document.getElementById("dropdownCategoryContent");
     categoryListContainer.innerHTML = "";
+
+    // Add "New category" option
     categoryListContainer.innerHTML += `
-  <div class="dropdown-object" onclick="renderNewCategoryField()">
-    <div id="newCategory">New category</div>  
-  </div>
+        <div class="dropdown-object" onclick="renderNewCategoryField()">
+        <div id="newCategory">New category</div>  
+        </div>
+    `;
 
+    // Add existing categories
+    categoryListContainer.innerHTML += `
+        <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
+        <div class="flex-row">
+            <span>Backoffice</span>
+            <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
+        </div>
+        </div>
 
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
-    <div class="flex-row">
-      <span>Backoffice</span>
-      <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
-    </div>
-  </div>
-  
-  <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
-    <div class="flex-row">
-      <span>Sales</span>
-      <div class="category-color margin-left-10" style="background-color: pink"></div>
-    </div>
-  </div>
-  
-  `;
-}
+        <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
+        <div class="flex-row">
+            <span>Sales</span>
+            <div class="category-color margin-left-10" style="background-color: pink"></div>
+        </div>
+        </div>
+    `;
+
+    // Add new categories
+    for (let i = 0; i < newCategory.length; i++) {
+        const category = newCategory[i];
+        const color = "green"; // Set the desired color for new categories
+
+        categoryListContainer.innerHTML += `
+        <div class="dropdown-object" onclick="saveSelectedCategory(this, '${color}')">
+            <div class="flex-row">
+            <span>${category}</span>
+            <div class="category-color margin-left-10" style="background-color: ${color}"></div>
+            </div>
+        </div>
+        `;
+    }
+    }
+
 
 /**
  * Renders a new category field in the dropdown menu.
@@ -530,17 +548,32 @@ function renderNewCategoryField() {
     <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
 
       <div class="flex-row align-center height-100">
-      <img src="./assets/img/close-button-addtask.svg" onclick="clearSelections()">
+      <img src="./assets_task_board/img/close-button-addtask.svg" onclick="clearSelections()">
 
         <div class="vert-border"></div>
         <button class="newCategory" onclick="checkNewCategory(); stopDropdown(event);" type="button"><img
-        src="assets/img/check-addtask.svg"></button>
+        src="./assets_task_board/img/check-addtask.svg"></button>
       </div>
     </div>
   `;
     toggleDropdownCategory();
 }
 
+function selectColor(color) {
+    selectedColor = color;
+  
+    const colorElements = document.querySelectorAll(".select-color-category > div");
+    colorElements.forEach(element => {
+      element.classList.remove("selected-color");
+    });
+  
+    const selectedElement = document.getElementById(`color${color}`);
+    selectedElement.classList.add("selected-color");
+  
+    const backgroundColor = selectedElement.style.backgroundColor;
+    document.getElementById("newCategory").style.backgroundColor = backgroundColor;
+  }
+  
 /**
  * Stops the propagation of the event to parent elements.
  *
@@ -593,7 +626,7 @@ function renderNormalCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     dropdownField.innerHTML = `
     <span>Select category</span>
-    <img src="./assets/img/arrow_down_black.svg" alt="">
+    <img src="./assets_task_board/img/arrow_down_black.svg" alt="">
   `;
 }
 
@@ -719,21 +752,20 @@ function selectColor(id) {
 function checkNewCategory() {
     const newCategoryInput = document.getElementById("new-category");
     const categoryDisplay = document.getElementById("categoryDisplay");
-    const dataField = document.getElementById("categoryEdit");
-
+  
     if (selectedColor && newCategoryInput.value !== "") {
-        selectedCategory = newCategoryInput.value;
-        dataField.innerText = newCategoryInput.value;
-        displayCategory(selectedCategory);
+      newCategory.push(newCategoryInput.value);
+      renderCategoryList(); // Update the category list
     } else {
-        displayErrorMessage("Please insert a category name and a color!");
+      displayErrorMessage("Please insert a category name and select a color!");
     }
-
+  
     // Clear category display if input is empty
     if (newCategoryInput.value === "") {
-        hideCategoryDisplay(categoryDisplay);
+      hideCategoryDisplay(categoryDisplay);
     }
-}
+  }
+
 
 /**
  * Displays the selected category.
