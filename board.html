@@ -6,37 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
-    <link rel="icon" type="image/png" href="./assets_task_board/img/favicon.png" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <link rel="stylesheet" href="./css/board.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/navbar.css" />
-    <link rel="stylesheet" href="./css/board-edit-popup.css" />
-    <link rel="stylesheet" href="./css/board-task-popup.css" />
+    <link rel="stylesheet" href="./css-board-addtask/board.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css-board-addtask/board-edit-popup.css" />
+    <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
+    <link rel="stylesheet" href="./css-board-addtask/task_form.css">
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="sidebar.css" />
 
-
-    <script src="./js/navbar.js"></script>
     <script src="./storage.js"></script>
-    <script src="./js/board_template.js"></script>
-    <script src="./js/tasks.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/board_drag_drop.js"></script>
+    <script src="./js-board-addtask/board_template.js"></script>
+    <script src="./js-board-addtask/tasks.js"></script>
+    <script src="./js-board-addtask/tasks-html.js"></script>
+    <script src="./js-board-addtask/board.js"></script>
+    <script src="./js-board-addtask/board_drag_drop.js"></script>
+    <script src="header_sidebar.js"></script>
+    <script src="log-out.js"></script>
 </head>
 
-<body onload="initBoard()">
-  
+<body onload="initBoard();includeLoad();" id="body-board">
   <div w3-include-html="header_sidebar.html"></div>
     <div class="overlay-bg d-none" id="overlay"></div>
 
     <div class="board-main-container inner-content">
-        <span id="headline-mobile" class="headline-text-mobile">Kanban Project Management Tool</span
-      >
       <div class="headline-container">
         <div class="headline-left">
           <span class="headline-text headline-text-container">Board</span>
         <div onclick="redirectToAddTask()" id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
             <button>
-              <img src="./assets_task_board/img/plus-icon.svg" alt="" />
+              <img src="./assets/img/plus-button.svg" alt=""/>
             </button>
         </div>
     </div>
@@ -46,13 +46,13 @@
 
             <div id="search-input-images" style="display: flex">
                 <div class="border-subtask"></div>
-                <img src="./assets_task_board/img/search-icon.png" id="finishEditingSubtask" />
+                <img src="./assets/img/search.svg" id="finishEditingSubtask" />
             </div>
         </div>
 
         <div onclick="redirectToAddTask()" id="add-task-btn-board" class="add-task-btn-board">
             <button>Add Task</button>
-            <img src="./assets_task_board/img/plus-icon.svg" alt="" />
+            <img src="./assets/img/plus-button.svg" alt="" />
         </div>
     </div>
     </div>
