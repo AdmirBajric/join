@@ -216,36 +216,36 @@ async function getTaskPrio(task) {
     switch (task["prio"]) {
         case "down":
             prioContainer.innerHTML += `
-      <div
-      class="prio-btn-low" 
+        <div
+        class="prio-btn-low" 
     >
-      Low
-      <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
+        Low
+        <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
     </div>
-      `;
+        `;
             break;
         case "medium":
             prioContainer.innerHTML += `
-      <div
-      class="prio-btn-medium"
+        <div
+        class="prio-btn-medium"
     >
-      Medium
-      <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
+        Medium
+        <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
     </div>
-      `;
+        `;
             break;
         case "up":
             prioContainer.innerHTML += `
-      <div
-      class="prio-btn-urgent"
+        <div
+        class="prio-btn-urgent"
     >
-      Urgent
-      <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
+        Urgent
+        <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
     </div>
-      `;
+        `;
             break;
     }
-}
+    }
 
 /**
  * Renders the assigned contacts of a task in the detail card.
@@ -285,63 +285,63 @@ function redirectToAddTask() {
 function getTaskCardHTML(currentTask, status) {
     return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${
-      currentTask["id"]
+        currentTask["id"]
     },'${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
     currentTask["id"]
-  })" id="${currentTask["id"]}">
-      <div class="task-card-top-div">
+    })" id="${currentTask["id"]}">
+        <div class="task-card-top-div">
         <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
-          currentTask["color"]
+            currentTask["color"]
         }">${currentTask["category"]}</div>
-<div class="dropdown-position" onclick="event.stopPropagation();">
-          <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
+    <div class="dropdown-position" onclick="event.stopPropagation();">
+            <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
             currentTask["id"]
-          }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
+            }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
     currentTask["id"]
-  }, '${status}')">
+    }, '${status}')">
             <option value="toDo" ${
-              status === "toDo" ? "selected" : ""
+                status === "toDo" ? "selected" : ""
             }>To Do</option>
             <option value="inProgress" ${
-              status === "inProgress" ? "selected" : ""
+                status === "inProgress" ? "selected" : ""
             }>In progress</option>
             <option value="feedback" ${
-              status === "feedback" ? "selected" : ""
+                status === "feedback" ? "selected" : ""
             }>Awaiting feedback</option>
             <option value="done" ${
-              status === "done" ? "selected" : ""
+                status === "done" ? "selected" : ""
             }>Done</option>
-          </select>
+            </select>
         </div>
-      </div>
-      <span class="task-card-title" id="taskTitleContainer">${
+        </div>
+        <span class="task-card-title" id="taskTitleContainer">${
         currentTask["title"]
-      }</span>
-      <div class="task-card-description" id="taskDescriptionContainer">${
+        }</span>
+        <div class="task-card-description" id="taskDescriptionContainer">${
         currentTask["description"]
-      }</div>
-      <div class="task-card-bottom-container align-center margin-bottom-10">
+        }</div>
+        <div class="task-card-bottom-container align-center margin-bottom-10">
         <div class="subtasks-border">
-          <div id="subtasksStatus" style="width:${
+            <div id="subtasksStatus" style="width:${
             (currentTask["subtasksClosed"].length /
-              currentTask["taskSub"].length) *
+                currentTask["taskSub"].length) *
             100
-          }%" class="subtasks-status"></div>
+            }%" class="subtasks-status"></div>
         </div>
         <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
     currentTask["taskSub"].length
-  } done</span>
-      </div>
-      <div class="task-card-bottom-container">
+    } done</span>
+        </div>
+        <div class="task-card-bottom-container">
         <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
         <div class="task-card-prio">
-          <img id="imgUrgentTask" src="./assets/img/icon_${
+            <img id="imgUrgentTask" src="./assets/img/icon_${
             currentTask["prio"]
-          }.png" alt="" />
+            }.png" alt="" />
         </div>
-      </div>
+        </div>
     </div>`;
-}
+    }
 
 function closePopup() {
     let overlay = document.getElementById("overlay");
