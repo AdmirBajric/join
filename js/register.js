@@ -1,18 +1,9 @@
 const [signupNameInput, signupEmailInput, signupPasswordInput] = signUpInputs();
 
-let users = [];
-
-const init = () => {
-  loadUsers();
-};
-
-const loadUsers = async () => {
-  users = JSON.parse(await getItem("users"));
-};
+let userExist = false;
 
 const userSignUp = async () => {
   loadUsers();
-  let userExist = false;
 
   users.forEach((a) => {
     if (a.email.toLowerCase() === signupEmailInput.value.toLowerCase()) {
@@ -44,6 +35,7 @@ const userNotExistOnSignUp = async () => {
   setTimeout(() => {
     location.href = "index.html";
   }, 2000);
+  userExist = !userExist;
 };
 
 const userExistOnSignUp = () => {
@@ -54,6 +46,7 @@ const userExistOnSignUp = () => {
   setTimeout(() => {
     location.href = "index.html";
   }, 2000);
+  userExist = !userExist;
 };
 
 const saveUserToDatabase = async () => {
