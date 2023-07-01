@@ -3,7 +3,7 @@ const guestLogin = async (id) => {
   await filterGuestTasks(id);
   await filterGuestContacts(id);
 
-  location.href = "summary.html";
+  location.replace("summary.html");
 };
 
 const filterGuest = async (id) => {
