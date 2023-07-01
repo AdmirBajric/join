@@ -20,10 +20,12 @@ let count = 0;
 const colors = colorsMix();
 
 // Sample JSON data
-const jsonData = userData();
+
+const data = localStorage.getItem("userContacts");
+const jsonData = JSON.parse(data);
 
 // Parse the JSON data into an array of objects
-let users = JSON.parse(jsonData);
+let users = jsonData[0]?.contacts;
 
 // Create an object to hold the grouped names
 let groupedNames = [];
@@ -297,8 +299,6 @@ const formInputFields = () => {
   return [addFormNameInput, addFormEmailInput, addFormPhoneInput];
 };
 
-const addTask = (id) => {
-  console.log("Test");
-};
-
-renderHTML();
+if (jsonData.length > 0) {
+  renderHTML();
+}

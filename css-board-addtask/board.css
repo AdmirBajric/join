@@ -2,8 +2,8 @@
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
+
 #board-link {
-    /* styles for board link */
     background-color: #091931;
 }
 
@@ -14,14 +14,13 @@
 .board-main-container {
     grid-column: 3/11;
     grid-row: 2/11;
-    /*margin-left: 100px;*/
-    /*margin-right: 100px;*/
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
+    margin-left: 28rem;
+    margin-top: 12rem;
 }
 
 .headline-container {
@@ -30,24 +29,24 @@
     flex-direction: column;
     align-items: center;
     width: 90%;
-    gap: 24px;
-    margin-bottom: 60px;
+    gap: 2.4rem;
+    margin-bottom: 6rem;
 }
 
 .headline-text {
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 6.1rem;
     line-height: 120%;
     text-align: center;
 }
 
 .headline-text-mobile {
     width: 90%;
-    margin-bottom: 21px;
+    margin-bottom: 2.1rem;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 120%;
     text-align: center;
 }
@@ -66,26 +65,26 @@
     justify-content: space-between;
     width: 90%;
     height: 100%;
-    gap: 20px;
+    gap: 2rem;
 }
 
 .board-content-element {
     display: flex;
     flex-direction: column;
-    width: calc(20% + 38px);
-    gap: 30px;
+    width: calc(20% + 3.8rem);
+    gap: 3rem;
 }
 
 .task-type {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 10px;
+    padding-right: 1rem;
 }
 
 .task-type span {
-    font-size: 21px;
-    line-height: 25px;
+    font-size: 2.1rem;
+    line-height: 2.5rem;
     font-weight: 500;
 }
 
@@ -103,19 +102,16 @@
 
 .inputTask {
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
-    width: 251px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
+    width: 25.1rem;
     background: #ffffff;
-    /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    /* Inside auto layout */
+    border-radius: 1rem;
     flex: none;
     align-self: stretch;
     flex-grow: 0;
@@ -129,23 +125,20 @@
 }
 
 .add-task-btn-board {
-    /* Secondary plus v1 */
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     cursor: pointer;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    margin-left: 30px;
-    width: 157px;
-    height: 51px;
+    padding: 1.8rem 1rem;
+    gap: 1rem;
+    margin-left: 3rem;
+    width: 15.7rem;
+    height: 5.1rem;
     background: #2a3647;
     border: 1px solid #2a3647;
-    border-radius: 10px;
-    /* Inside auto layout */
+    border-radius: 1rem;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -155,25 +148,22 @@
     color: white;
     cursor: pointer;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 2.1rem;
     background-color: unset;
     border: none;
 }
 
 .add-task-btn-board-mobile {
-    /* Secondary plus v1 */
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     cursor: pointer;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 10px;
+    padding: 1rem 1rem;
     background: #2a3647;
     border: 1px solid #2a3647;
-    border-radius: 10px;
-    /* Inside auto layout */
+    border-radius: 1rem;
     flex: none;
 }
 
@@ -181,15 +171,15 @@
     color: white;
     cursor: pointer;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 2.1rem;
     background-color: unset;
     border: none;
 }
 
 .border-subtask {
     border-right: 2px solid #d1d1d1;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .subtask-container {
@@ -197,12 +187,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
     background: #ffffff;
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     flex: none;
     align-self: stretch;
     flex-grow: 0;
@@ -212,15 +202,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 60px;
+    padding-top: 1rem;
+    padding-bottom: 6rem;
     border: 3px dotted transparent;
     min-height: 1vh;
 }
 
 .add-border {
     border: 3px dotted #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: rgba(0, 0, 0, 0.04);
 }
 
@@ -229,15 +219,15 @@
 }
 
 .dropdown-style {
-    border-radius: 4px;
+    border-radius: 0.4rem;
     background-color: #ffffff;
     color: #333333;
-    font-size: 14px;
-    padding: 8px 16px;
+    font-size: 1.4rem;
+    padding: 0.8rem 1.6rem;
     border: 1px solid #dddddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    width: 172px;
+    width: 17.2rem;
 }
 
 .dropdown-style:hover {
@@ -256,14 +246,10 @@
     color: #333333;
 }
 
-/* ********* Scrollbar CSS ********* */
-
 .scroll {
-    height: 460px;
+    height: 46rem;
     overflow: auto;
 }
-
-/* Firefox */
 
 .inner-content {
     scrollbar-width: auto;
@@ -271,10 +257,8 @@
     overflow-x: hidden;
 }
 
-/* Chrome, Edge, and Safari */
-
 .inner-content::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .inner-content::-webkit-scrollbar-track {
@@ -283,11 +267,9 @@
 
 .inner-content::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
-
-/* Firefox */
 
 .inner-content2 {
     overflow: auto;
@@ -299,10 +281,8 @@
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .inner-content2::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .inner-content2::-webkit-scrollbar-track {
@@ -311,7 +291,7 @@
 
 .inner-content2::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
 
@@ -330,7 +310,7 @@
     justify-content: space-evenly;
     padding: 5px;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: #7ae229;
     color: white;
     width: 25%;
@@ -341,7 +321,7 @@
     justify-content: space-evenly;
     padding: 5px;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: #ffa800;
     color: white;
     width: 25%;
@@ -352,7 +332,7 @@
     justify-content: space-evenly;
     padding: 5px;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: #ff3d00;
     color: white;
     width: 25%;
@@ -369,30 +349,24 @@
 .subtasks-status {
     width: 75%;
     background-color: #29abe2;
-    border-radius: 10px;
+    border-radius: 1rem;
     color: white;
-    height: 10px;
+    height: 1rem;
 }
 
 .subtasks-border {
     width: 80%;
     background-color: lightgray;
-    border-radius: 10px;
+    border-radius: 1rem;
 }
-
-/* ********* Scrollbar CSS ********* */
-
-/* Firefox */
 
 .inner-content {
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .inner-content::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .inner-content::-webkit-scrollbar-track {
@@ -401,21 +375,17 @@
 
 .inner-content::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
-
-/* Firefox */
 
 .task-card-description {
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .task-card-description::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .task-card-description::-webkit-scrollbar-track {
@@ -424,27 +394,22 @@
 
 .task-card-description::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
-
-/*Board-Card Design*/
 
 .board-task-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 18px 19px;
-    margin-bottom: 20px;
+    padding: 1.8rem 1.9rem;
+    margin-bottom: 2rem;
     width: 15vw;
     height: 23vh;
-    /* white */
     background: #ffffff;
-    /* shadoe backlog box */
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
-    /* Inside auto layout */
     flex: none;
     flex-grow: 0;
     transition: all 0.3s ease;
@@ -456,18 +421,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Firefox */
-
 .board-task-card {
     overflow: auto;
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .board-task-card::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .board-task-card::-webkit-scrollbar-track {
@@ -476,15 +437,15 @@
 
 .board-task-card::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
 }
 
 .task-card-category {
     background: red;
-    border-radius: 30px;
-    min-width: 87px;
-    margin-bottom: 10px;
+    border-radius: 3rem;
+    min-width: 8.7rem;
+    margin-bottom: 1rem;
     padding: 5px;
     justify-content: center;
     display: flex;
@@ -494,16 +455,16 @@
 .task-card-title {
     display: flex;
     font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
     color: #2a3647;
 }
 
 .task-card-description {
     display: flex;
-    height: 90px;
-    font-size: 14px;
-    margin-bottom: 15px;
+    height: 9rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
     overflow: auto;
 }
 
@@ -518,13 +479,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35px;
-    height: 35px;
+    width: 3.5rem;
+    height: 3.5rem;
     background: #0190e0;
     border: 1px solid #ffffff;
-    border-radius: 58px;
+    border-radius: 5.8rem;
     margin: 0px -2px;
-    font-size: 13px;
+    font-size: 1.3rem;
     color: white;
 }
 
@@ -579,16 +540,15 @@
 }
 
 .margin-bottom-10 {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .task-card-top-div {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-size: 1.6rem;
 }
-
-/* ********* Breakpoints ********* */
 
 @media only screen and (max-width: 1777px) {
     .drop-area {
@@ -634,8 +594,8 @@
         width: 100%;
     }
     .board-main-container {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
     .headline-text {
         font-size: 52px;

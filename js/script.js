@@ -51,7 +51,7 @@ const forgotScreen = () => {
 };
 
 const sendEmail = () => {
-  // Send resetpassword link to user in the real application
+  // Send resetpassword link to the user in the real application
   // In this project we open the reset screen of course to reset the password immediately
   forgotPassword.style.display = "none";
   forgotPasswordInput.value = "";
@@ -94,6 +94,18 @@ const passwordSuccessReset = () => {
   setTimeout(() => {
     confirmMessage.style.animation =
       "fadeSendMessageOut 1s ease-in-out forwards";
-    window.location.replace("https://admirbajric.github.io/join/index.html");
+    location.replace("https://admirbajric.github.io/join/index.html");
   }, 2000);
 };
+
+const handleUrlChange = (e) => {
+  if (localStorage.getItem("user")) {
+    location.replace("summary.html");
+  }
+};
+
+// Add event listener to detect URL changes
+window.addEventListener("popstate", handleUrlChange);
+
+// Initial call to handleUrlChange in case the page is loaded with a specific URL
+handleUrlChange();

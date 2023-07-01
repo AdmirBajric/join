@@ -1,4 +1,3 @@
-//############### ONLOAD ###############//
 let toDo = [];
 let inProgress = [];
 let feedback = [];
@@ -19,7 +18,6 @@ async function initBoard() {
     renderTaskCardDone();
 }
 
-//############### LOADING FUNCTIONS ###############//
 
 async function loadtoDos() {
     try {
@@ -61,11 +59,6 @@ async function loadUsers() {
     }
 }
 
-//############### RENDER FUNCTIONS ###############//
-
-/**
- * Renders the task cards for the "To Do" status.
- */
 function renderTaskCardToDo() {
     let toDoContainer = document.getElementById("toDo");
     let renderedIDs = {};
@@ -79,9 +72,6 @@ function renderTaskCardToDo() {
     }
 }
 
-/**
- * Renders the task cards for the "In Progress" status.
- */
 function renderTaskCardProgress() {
     let progressContainer = document.getElementById("inProgress");
     let renderedIDs = {};
@@ -95,9 +85,6 @@ function renderTaskCardProgress() {
     }
 }
 
-/**
- * Renders the task cards for the "Feedback" status.
- */
 function renderTaskCardFeedback() {
     let feedbackContainer = document.getElementById("feedback");
     let renderedIDs = {};
@@ -124,9 +111,6 @@ function renderTaskCardDone() {
     }
 }
 
-/**
- * Renders the task cards for the "Done" status.
- */
 function clearTasksContainer() {
     let toDoContainer = document.getElementById("toDo");
     let progressContainer = document.getElementById("inProgress");
@@ -139,11 +123,6 @@ function clearTasksContainer() {
     doneContainer.innerHTML = "";
 }
 
-/**
- * Renders avatars for a given task.
- *
- * @param {*} currentTask - The current task.
- */
 async function renderAvatars(currentTask) {
     let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
     for (let i = 0; i < currentTask["assignments"].length; i++) {
@@ -158,13 +137,6 @@ async function renderAvatars(currentTask) {
     }
 }
 
-/**
- * Returns the color of a user based on their ID.
- *
- * @param {*} id - The ID of the user.
- * @returns The color of the user.
- * @throws Error if the user is not found.
- */
 function getUserColor(id) {
     let currentUser = users.find((user) => user.id == id);
     if (currentUser) {
@@ -175,16 +147,10 @@ function getUserColor(id) {
     }
 }
 
-/**
- * Shows the detail card of a task.
- *
- * @param {*} id - The ID of the task.
- */
 function showDetailCard(id) {
     let overlay = document.getElementById("overlay");
     overlay.classList.remove("d-none");
 
-    // Clear the content of the overlay before adding the new popup
     overlay.innerHTML = "";
 
     for (let i = 0; i < tasks.length; i++) {
@@ -197,30 +163,25 @@ function showDetailCard(id) {
         }
     }
 
-    // Add an event listener to the overlay to close it when clicked
     overlay.addEventListener("click", function(event) {
         if (event.target === overlay) {
             overlay.classList.add("d-none");
-            overlay.innerHTML = ""; // Clear the content of the overlay
+            overlay.innerHTML = ""; 
         }
     });
 }
 
-/**
- * Renders the priority of a task.
- *
- * @param {*} task - The task.
- */
+
 async function getTaskPrio(task) {
     let prioContainer = document.getElementById("prioDetail");
     switch (task["prio"]) {
-        case "down":
+        case "low":
             prioContainer.innerHTML += `
         <div
         class="prio-btn-low" 
     >
         Low
-        <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/low-prio.svg" alt="" />
     </div>
         `;
             break;
@@ -230,28 +191,23 @@ async function getTaskPrio(task) {
         class="prio-btn-medium"
     >
         Medium
-        <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/medium-prio.svg" alt="" />
     </div>
         `;
             break;
-        case "up":
+        case "urgent":
             prioContainer.innerHTML += `
         <div
         class="prio-btn-urgent"
     >
         Urgent
-        <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
+        <img id="imgUrgent" src="./assets/img/urgent-prio.svg" alt=""/>
     </div>
         `;
             break;
     }
     }
 
-/**
- * Renders the assigned contacts of a task in the detail card.
- *
- * @param {*} task - The task.
- */
 function getAssignedToDetailCard(task) {
     let assignContainer = document.getElementById("assignDetail");
     for (let i = 0; i < task["assignments"].length; i++) {
@@ -262,97 +218,22 @@ function getAssignedToDetailCard(task) {
         initials = initials.join("").toUpperCase();
         assignContainer.innerHTML += `
     <div class="flex-row align-center gap-15">
-      <div class="avatar-container" style="background-color:${color}">${initials}</div>
-      <div class="font-weight-500">${contact}</div>
+        <div class="avatar-container" style="background-color:${color}">${initials}</div>
+        <div class="font-weight-500">${contact}</div>
     </div>
     `;
     }
 }
 
-//############### HELP FUNCTIONS ###############//
-
 function redirectToAddTask() {
-    window.location.href = "task_form.html";
+    window.location.href = "add-task.html";
 }
-
-/**
- * Returns the HTML code for a task card.
- *
- * @param {*} currentTask - The current task.
- * @param {*} status - The status of the task.
- * @returns The HTML code of the task card.
- */
-function getTaskCardHTML(currentTask, status) {
-    return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${
-        currentTask["id"]
-    },'${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
-    currentTask["id"]
-    })" id="${currentTask["id"]}">
-        <div class="task-card-top-div">
-        <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
-            currentTask["color"]
-        }">${currentTask["category"]}</div>
-    <div class="dropdown-position" onclick="event.stopPropagation();">
-            <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
-            currentTask["id"]
-            }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
-    currentTask["id"]
-    }, '${status}')">
-            <option value="toDo" ${
-                status === "toDo" ? "selected" : ""
-            }>To Do</option>
-            <option value="inProgress" ${
-                status === "inProgress" ? "selected" : ""
-            }>In progress</option>
-            <option value="feedback" ${
-                status === "feedback" ? "selected" : ""
-            }>Awaiting feedback</option>
-            <option value="done" ${
-                status === "done" ? "selected" : ""
-            }>Done</option>
-            </select>
-        </div>
-        </div>
-        <span class="task-card-title" id="taskTitleContainer">${
-        currentTask["title"]
-        }</span>
-        <div class="task-card-description" id="taskDescriptionContainer">${
-        currentTask["description"]
-        }</div>
-        <div class="task-card-bottom-container align-center margin-bottom-10">
-        <div class="subtasks-border">
-            <div id="subtasksStatus" style="width:${
-            (currentTask["subtasksClosed"].length /
-                currentTask["taskSub"].length) *
-            100
-            }%" class="subtasks-status"></div>
-        </div>
-        <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
-    currentTask["taskSub"].length
-    } done</span>
-        </div>
-        <div class="task-card-bottom-container">
-        <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
-        <div class="task-card-prio">
-            <img id="imgUrgentTask" src="./assets/img/icon_${
-            currentTask["prio"]
-            }.png" alt="" />
-        </div>
-        </div>
-    </div>`;
-    }
 
 function closePopup() {
     let overlay = document.getElementById("overlay");
     overlay.classList.add("d-none");
 }
 
-/**
- * Deletes a task.
- *
- * @param {*} id - The ID of the task.
- */
 async function deleteTask(id) {
     deleteObjectById(id);
     for (let i = 0; i < tasks.length; i++) {
@@ -376,11 +257,6 @@ function editTask(id) {
     setCategoryForEdit(currentTask);
 }
 
-/**
- * Shows the assigned contacts in the edit view of a task.
- *
- * @param {*} currentTask - The current task.
- */
 function showAssignedContacts(currentTask) {
     let assignableContactsContainer = document.getElementById("dropdownContent");
     const assignedContacts = currentTask["assignments"].map(
@@ -397,10 +273,9 @@ function showAssignedContacts(currentTask) {
         checkbox.value = name;
         checkbox.dataset.id = id;
         checkbox.onclick = function(event) {
-            event.stopPropagation(); // Stoppe das Event-Bubbling
+            event.stopPropagation();
         };
 
-        // Überprüfe, ob der Kontakt ausgewählt ist
         if (assignedContacts.includes(name)) {
             checkbox.checked = true;
         }
@@ -417,21 +292,12 @@ function showAssignedContacts(currentTask) {
     }
 }
 
-/**
- * Toggles the state of a checkbox.
- *
- * @param {string} checkboxId - The ID of the checkbox.
- */
+
 function toggleCheckbox(checkboxId) {
     var checkbox = document.getElementById(checkboxId);
     checkbox.checked = !checkbox.checked;
 }
 
-/**
- * Retrieves the current date in the format "YYYY-MM-DD".
- *
- * @returns {string} The current date in "YYYY-MM-DD" format.
- */
 function getCurrentDate() {
     const today = new Date();
     let day = today.getDate();
@@ -448,11 +314,6 @@ function getCurrentDate() {
     return `${year}-${month}-${day}`;
 }
 
-/**
- * Deletes an object by its ID from the appropriate arrays.
- *
- * @param {*} id - The ID of the object.
- */
 async function deleteObjectById(id) {
     for (var i = 0; i < toDo.length; i++) {
         if (toDo[i] == id) {
@@ -487,9 +348,6 @@ async function deleteObjectById(id) {
     }
 }
 
-/**
- * Toggles the visibility of the dropdown category content.
- */
 function toggleDropdownCategory() {
     let dropdownContent = document.getElementById("dropdownCategoryContent");
     let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -497,11 +355,6 @@ function toggleDropdownCategory() {
     dropdownMin.classList.toggle("open");
 }
 
-/**
- * Displays the subtasks of a task in the designated container.
- *
- * @param {*} task - The task object.
- */
 function showSubtasks(task) {
     let container = document.getElementById("subtasksContainer");
     for (let i = 0; i < task["taskSub"].length; i++) {
@@ -510,41 +363,6 @@ function showSubtasks(task) {
     }
 }
 
-/**
- * Searches for a task based on the input value and shows/hides tasks accordingly.
- */
-function searchForTaskByInput() {
-    let search = document.getElementById("search-input").value;
-    search = search.toLowerCase();
-
-    if (search.trim() === "") {
-        // Wenn das Suchfeld leer ist, zeige alle Aufgaben
-        for (let i = 0; i < tasks.length; i++) {
-            showHiddenTask(tasks[i]["id"]);
-        }
-    } else {
-        for (let i = 0; i < tasks.length; i++) {
-            const title = tasks[i]["title"];
-            const description = tasks[i]["description"];
-
-            if (
-                title.toLowerCase().includes(search) ||
-                description.toLowerCase().includes(search)
-            ) {
-                showHiddenTask(tasks[i]["id"]);
-            } else {
-                console.log("removed task" + tasks[i]["id"]);
-                hideTask(tasks[i]["id"]);
-            }
-        }
-    }
-}
-
-/**
- * Hides a task card with the given ID.
- *
- * @param {*} id - The ID of the task card.
- */
 function hideTask(id) {
     let taskCardContainer = document.getElementById(id);
 
@@ -556,11 +374,6 @@ function hideTask(id) {
     }
 }
 
-/**
- * Shows a hidden task card with the given ID.
- *
- * @param {*} id - The ID of the task card.
- */
 function showHiddenTask(id) {
     let taskCardContainer = document.getElementById(id);
 
@@ -572,11 +385,6 @@ function showHiddenTask(id) {
     }
 }
 
-/**
- * Displays the tickable subtasks for the current task in the designated container.
- *
- * @param {*} currentTask - The current task.
- */
 async function showTickableSubtasks(currentTask) {
     let subtasksContainer = document.getElementById("subtaskContent");
     subtasksContainer.innerHTML = "";
@@ -601,11 +409,6 @@ async function showTickableSubtasks(currentTask) {
     }
 }
 
-/**
- * Validates the subtasks form and updates the subtasksClosed and subtasksOpened properties of the current task.
- *
- * @param {*} currentTask - The current task.
- */
 function validateSubtasksForm(currentTask) {
     currentTask["subtasksClosed"] = [];
     currentTask["subtasksOpened"] = [];

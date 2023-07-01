@@ -1,4 +1,5 @@
 async function load() {
+<<<<<<< HEAD
     await greetcontainerTowtow();
     await greetingDay();
     dateContainer();
@@ -21,24 +22,29 @@ function allGreeting() {
     }
 }
 
+=======
+  await greetingDay();
+  dateContainer();
+}
+
+>>>>>>> 1ad1d929800dfb598249a357be27d6ead6926c23
 // greeting day on
 async function greetingDay() {
-    document.getElementById("dayGreeting").innerText = alldayGreeting();
+  document.getElementById("dayGreeting").innerText = alldayGreeting();
 }
 
 function alldayGreeting() {
-    let hour = new Date().getHours();
-    if (4 <= hour && hour <= 11) {
-      return "Good morning,";
-    }
-    if (11 < hour && hour <= 19) {
-      return "Good afternoon,";
-    }
-    if (19 < hour || hour < 4) {
-      return "Good evening,";
-    }
+  let hour = new Date().getHours();
+  if (4 <= hour && hour <= 11) {
+    return "Good morning,";
   }
-
+  if (11 < hour && hour <= 19) {
+    return "Good afternoon,";
+  }
+  if (19 < hour || hour < 4) {
+    return "Good evening,";
+  }
+}
 
 /*
 function greet() {
@@ -50,27 +56,25 @@ function greet() {
 }
 */
 
-
-
 /*date today*/
 function dateContainer() {
-    let containerDay = new Date().toLocaleString();
-    containerDay = containerDay.slice(0, 10);
-    let containerDayArray = containerDay.split(".");
-    let containerMonth = getMonthContainer(containerDayArray[1]);
-    containerDay = `${containerMonth} ${containerDayArray[0]}, ${containerDayArray[2]}`;
-    document.getElementById('dateContainer').innerHTML = `<strong>${containerDay}</strong>`;
+  let containerDay = new Date().toLocaleString();
+  containerDay = containerDay.slice(0, 10);
+  let containerDayArray = containerDay.split(".");
+  let containerMonth = getMonthContainer(containerDayArray[1]);
+  containerDay = `${containerMonth} ${containerDayArray[0]}, ${containerDayArray[2]}`;
+  document.getElementById(
+    "dateContainer"
+  ).innerHTML = `<strong>${containerDay}</strong>`;
 }
 
-function getMonthContainer(i){
-    const date = new Date();
-    date.setMonth(i - 1);
-    return date.toLocaleString('en-us', {month: 'short'});
-  }
+function getMonthContainer(i) {
+  const date = new Date();
+  date.setMonth(i - 1);
+  return date.toLocaleString("en-us", { month: "short" });
+}
 
-  
-
-  //go to Board
+//go to Board
 function toBoard() {
-    window.location.href = "board.html";
+  window.location.href = "board.html";
 }
