@@ -21,22 +21,6 @@ const [
   sentConfirmationMessage,
 ] = indexSelectedElements();
 
-const loginUser = () => {
-  hideErrorMessages();
-  if (false) {
-    // If condition please replace with "if the user is logged in"
-    // If user logged successfully redirect to summary.html
-    window.location.replace("https://admirbajric.github.io/join/summary.html");
-  } else {
-    errorMessage.style.opacity = 1;
-    errorMessage.style.animation = "fadeSendMessageIn 1s ease-in-out forwards";
-  }
-
-  email.value = "";
-  password.value = "";
-  checkBox.checked = false;
-};
-
 const registerScreen = () => {
   hideAllContainers();
 
@@ -64,12 +48,6 @@ const forgotScreen = () => {
   hideAllContainers();
   forgotPassword.style.display = "flex";
   signUpContainer.style.display = "none";
-};
-
-const hideErrorMessages = () => {
-  email.focus();
-  errorMessage.style.opacity = 0;
-  errorMessage.style.animation = "fadeSendMessageOut 1s ease-in-out forwards";
 };
 
 const sendEmail = () => {
