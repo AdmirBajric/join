@@ -1,4 +1,5 @@
 body {
+    scroll-behavior: smooth;
     --sb-track-color: #f6f7f8;
     --sb-thumb-color: #2a3647;
     --sb-size: 13px;
