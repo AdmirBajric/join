@@ -1,9 +1,25 @@
 async function load() {
+    await greetcontainerTowtow();
     await greetingDay();
     dateContainer();
 }
 
+async function greetcontainerTowtow() {
+  document.getElementById("greet-textTow").innerText = allGreeting();
+}
 
+function allGreeting() {
+  let hour = new Date().getHours();
+    if (4 <= hour && hour <= 11) {
+      return "Good morning,";
+    }
+    if (11 < hour && hour <= 19) {
+      return "Good afternoon,";
+    }
+    if (19 < hour || hour < 4) {
+      return "Good evening,";
+    }
+}
 
 // greeting day on
 async function greetingDay() {

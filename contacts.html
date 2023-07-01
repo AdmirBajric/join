@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="contacts-responsive.css" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css">
+    <script src="sidebar_mobile.js"></script>
     <script src="header_sidebar.js"></script>
     <script src="log-out.js"></script>
     <title>Contacts</title>
   </head>
-  <body onload="includeLoad()">
+  <body onload="includeLoad(), includeLoad_mobile()">
     <div id="contacts-body">
       <div w3-include-html="header_sidebar.html"></div>
 
@@ -205,5 +207,6 @@
     <script src="./js/contactTemplate.js"></script>
     <script src="./js/contacts.js"></script>
     <!-- Javascript end -->
+    <div w3-include-html="sibebar_mobile.html"></div>
   </body>
 </html>

@@ -6,13 +6,15 @@
 <link rel="stylesheet" href="header.css" />
 <link rel="stylesheet" href="sidebar.css" />
 <link rel="stylesheet" href="summary.css" />
+<link rel="stylesheet" href="sidebar_mobile.css">
 <script src="summary.js"></script>
 <script src="header_sidebar.js"></script>
 <script src="log-out.js"></script>
 <script src="./js/storage.js"></script>
+<script src="sidebar_mobile.js"></script>
 <title>Summary-join</title>
 
-<body onload="load(), includeLoad()">
+<body onload="load(), includeLoad(), includeLoad_mobile()">
   <div w3-include-html="header_sidebar.html"></div>
 
   <!--Summary on-->
@@ -41,6 +43,11 @@
         </div>
       </div>
 
+      <div class="greetcontainerTow" id="greetcontainerTow">
+        <div class="greet-textTow" id="greet-textTow">Good morning,</div>
+        <div class="greet-nameTow" id="greet-nameTow">Dear Guest</div>
+      </div>
+
       <div class="long-dueContainer">
         <div class="long-div" onclick="toBoard()">
           <div class="urgent">
@@ -60,7 +67,7 @@
         </div>
         <div class="greet-container" id="greet-container">
           <div class="greet-text" id="dayGreeting">Good morning,</div>
-          <div class="greet-name">Dear Guest</div>
+          <div class="greet-name" id="greet-name">Dear Guest</div>
         </div>
       </div>
 
@@ -91,4 +98,5 @@
     </div>
   </div>
   <!--Summary off-->
+  <div w3-include-html="sibebar_mobile.html"></div>
 </body>

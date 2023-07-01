@@ -322,7 +322,9 @@ body {
     color: #2a3647; 
 }
 
-
+#greetcontainerTow {
+    display: none;
+}
 
 @media (max-width: 1440px) {
 
@@ -341,6 +343,39 @@ body {
 }
 
 @media (max-width: 1000px) {
+
+    #greetcontainerTow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        display: block;
+        position: absolute;
+        z-index: 105;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 30%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: visibility 0s linear 5s, opacity 5s;
+    }
+    
+    #greetcontainerTow {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .greet-textTow {
+        font-size: 4rem;
+        color: #2a3647;
+    }
+
+    .greet-nameTow {
+        font-size: 3.6rem;
+        font-weight: bold;
+        color: #29abe2;
+    }
 
     .container-right {
         margin-left: 200px;

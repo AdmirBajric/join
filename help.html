@@ -1,11 +1,13 @@
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="sidebar.css">
 <link rel="stylesheet" href="help.css">
+<link rel="stylesheet" href="sidebar_mobile.css">
+<script src="sidebar_mobile.js"></script>
 <script src="summary.js"></script>
 <script src="header_sidebar.js"></script>
 <script src="log-out.js"></script>
 
-<body onload="includeLoad()">
+<body onload="includeLoad(), includeLoad_mobile()">
     <div w3-include-html="header_sidebar.html"></div>
 <!--help on-->
 <div class="right-help-Container">
@@ -38,4 +40,5 @@
     </div>
 </div>
 <!--help off-->
+<div w3-include-html="sibebar_mobile.html"></div>
 </body>

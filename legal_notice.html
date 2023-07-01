@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="legal_notice.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="sidebar_mobile.css">
+    <script src="sidebar_mobile.js"></script>
     <script src="header_sidebar.js"></script>
     <script src="log-out.js"></script>
     <script
@@ -16,7 +18,7 @@
     ></script>
     <title>Add Task</title>
 </head>
-<body onload="includeLoad()" class="legal-notice">
+<body onload="includeLoad(), includeLoad_mobile()" class="legal-notice">
 
     <div w3-include-html="header_sidebar.html"></div>
 
@@ -67,7 +69,7 @@
         </ul>
         <p>Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
         <p>Sie können sich jederzeit mit einer Beschwerde an eine Aufsichtsbehörde wenden, z. B. an die zuständige Aufsichtsbehörde des Bundeslands Ihres Wohnsitzes oder an die für uns als verantwortliche Stelle zuständige Behörde.</p>
-        <p>Eine Liste der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html" target="_blank" rel="noopener nofollow">https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html</a>.</p>
+        <p>Eine Liste der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift finden Sie unter:<br> <a href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html" target="_blank" rel="noopener nofollow"><br>https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html</a>.</p>
         <p></p><br><h2>Erfassung allgemeiner Informationen beim Besuch unserer Website</h2>
         <br>
         <h3>Art und Zweck der Verarbeitung:</h3>
@@ -145,7 +147,7 @@
         <p>Die Bereitstellung Ihrer personenbezogenen Daten erfolgt freiwillig. Wir können Ihre Anfrage jedoch nur bearbeiten, sofern Sie uns Ihren Namen, Ihre E-Mail-Adresse und den Grund der Anfrage mitteilen.</p>
         <p></p><br><h2>Verwendung von Scriptbibliotheken (Google Webfonts)</h2>
         <p>Um unsere Inhalte browserübergreifend korrekt und grafisch ansprechend darzustellen, verwenden wir auf dieser Website „Google Web Fonts“ der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; nachfolgend „Google“) zur Darstellung von Schriften.</p>
-        <p>Weitere Informationen zu Google Web Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" rel="noopener nofollow" target="_blank">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://www.google.com/policies/privacy/" rel="noopener nofollow" target="_blank">https://www.google.com/policies/privacy/</a>.</p>
+        <p>Weitere Informationen zu Google Web Fonts finden Sie unter<br> <a href="https://developers.google.com/fonts/faq" rel="noopener nofollow" target="_blank"><br>https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google:<br> <a href="https://www.google.com/policies/privacy/" rel="noopener nofollow" target="_blank"><br>https://www.google.com/policies/privacy/</a>.</p>
         <p></p><br><h2>SSL-Verschlüsselung</h2>
         <p>Um die Sicherheit Ihrer Daten bei der Übertragung zu schützen, verwenden wir dem aktuellen Stand der Technik entsprechende Verschlüsselungsverfahren (z. B. SSL) über HTTPS.</p>
         <p></p><hr>
@@ -165,8 +167,9 @@
         <br>
         <h2>Fragen an den Datenschutzbeauftragten</h2>
         <p>Wenn Sie Fragen zum Datenschutz haben, schreiben Sie uns bitte eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation:</p>
-        <p></p><p><em>Die Datenschutzerklärung wurde mithilfe der activeMind AG erstellt, den Experten für <a href="https://www.activemind.de/datenschutz/datenschutzbeauftragter/" target="_blank" rel="noopener">externe Datenschutzbeauftragte</a> (Version #2020-09-30).</em></p>
+        <p></p><p><em>Die Datenschutzerklärung wurde mithilfe der activeMind AG erstellt, den Experten für<br> <a href="https://www.activemind.de/datenschutz/datenschutzbeauftragter/" target="_blank" rel="noopener">externe Datenschutzbeauftragte</a> (Version #2020-09-30).</em></p>
     </div>  
 </div>
+<div w3-include-html="sibebar_mobile.html"></div>
 </body>
 </html>
