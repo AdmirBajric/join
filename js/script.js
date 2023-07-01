@@ -51,7 +51,7 @@ const forgotScreen = () => {
 };
 
 const sendEmail = () => {
-  // Send resetpassword link to user in the real application
+  // Send resetpassword link to the user in the real application
   // In this project we open the reset screen of course to reset the password immediately
   forgotPassword.style.display = "none";
   forgotPasswordInput.value = "";
