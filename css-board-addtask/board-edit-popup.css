@@ -1,30 +1,16 @@
 body {
     line-height: unset !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
-
-.task-Alert {
-    width: 350px;
-    height: 50px;
-    margin-left: -15px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ********* Scrollbar CSS ********* */
-
-/* Firefox */
 
 .task-card-scroll {
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
 }
 
-/* Chrome, Edge, and Safari */
-
 .task-card-scroll::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 .task-card-scroll::-webkit-scrollbar-track {
@@ -33,12 +19,8 @@ body {
 
 .task-card-scroll::-webkit-scrollbar-thumb {
     background-color: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     border: 1px solid #ffffff;
-}
-
-#add-task-link {
-    background-color: #091931;
 }
 
 .column-container {
@@ -48,6 +30,17 @@ body {
     /* Spalten nebeneinander */
     justify-content: space-between;
     /* Abstand zwischen Spalten */
+}
+
+.task-card-category{
+    padding: 4px 36.5px;
+    align-items: flex-start;
+    gap: 10px;
+    font-size:2.1rem ;
+}
+
+.inner-content2 span{
+    font-size: 2.1rem;
 }
 
 .column-left,
@@ -62,7 +55,7 @@ body {
 
 .column-left>*+*,
 .column-right>*+* {
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 .task-card {
@@ -72,49 +65,49 @@ body {
     /* Breite der Karte */
     grid-column: 3/11;
     grid-row: 2/11;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 60px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 6rem;
     overflow-x: hidden;
     overflow-y: auto;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 .headline-text {
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 6.1rem;
     line-height: 120%;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .margin-bottom-60 {
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .border {
     border-right: 2px solid #d1d1d1;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 #description {
     resize: vertical;
-    max-height: 200px;
+    max-height: 20rem;
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 18px 21px;
-    gap: 10px;
+    padding: 1.8rem 2.1rem;
+    gap: 1rem;
     isolation: isolate;
-    height: 119px;
+    height: 11.9rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -127,13 +120,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -142,8 +135,8 @@ body {
 
 .prio {
     display: flex;
-    gap: 17px;
-    padding: 10px;
+    gap: 1.7rem;
+    padding: 1rem;
 }
 
 .prio div {
@@ -151,7 +144,7 @@ body {
     justify-content: center;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 1rem;
     border: 1px solid var(--dimmed);
     font-size: 0.8rem;
     border-radius: 7px;
@@ -161,12 +154,11 @@ body {
 }
 
 .prio div:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 20%);
+    box-shadow: 0px 0.3rem 0.3rem 0px rgba(0, 0, 0, 20%);
 }
 
 .prio div>img {
-    margin-left: 7px;
+    margin-left: 0.7rem;
 }
 
 .newCategory {
@@ -176,28 +168,28 @@ body {
 
 #datePicker {
     box-sizing: border-box;
-    font-size: 21px;
+    font-size: 2.1rem;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 18px 21px;
-    gap: 10px;
+    padding: 1.8rem 2.1rem;
+    gap: 1rem;
     isolation: isolate;
-    height: 51px;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border: 0.1rem solid #d1d1d1;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     flex-grow: 0;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    width: 20px;
-    height: 20px;
-    margin-left: 250px;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 25rem;
 }
 
 input[type="date"]::-webkit-datetime-edit-fields-wrapper {
@@ -209,7 +201,7 @@ input[type="date"] {
 }
 
 ::placeholder {
-    font-size: 21px;
+    font-size: 2.1rem;
     color: #d1d1d1;
 }
 
@@ -237,12 +229,12 @@ input:focus::placeholder {
 
 input {
     outline: none;
-    font-size: 21px;
+    font-size: 2.1rem;
 }
 
 textarea {
     outline: none;
-    font-size: 21px;
+    font-size: 2.1rem;
 }
 
 .btn {
@@ -265,19 +257,25 @@ textarea {
     width: 100%;
 }
 
+.subCon {
+    margin-top: 2.1rem;
+    font-size: large;
+}
+
 .subtask-container {
     box-sizing: border-box;
+    margin-top: 1.2rem !important;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-    height: 51px;
+    padding: 1.3rem 2.1rem;
+    gap: 1rem;
+    height: 5.1rem;
     background: #ffffff;
     /* Style */
     border: 1px solid #d1d1d1;
-    border-radius: 10px;
+    border-radius: 1rem;
     /* Inside auto layout */
     flex: none;
     align-self: stretch;
@@ -290,24 +288,25 @@ textarea {
 }
 
 #subtaskOninput img {
-    height: 25px;
+    height: 2.5rem;
     cursor: pointer;
 }
 
 .border-subtask {
     border-right: 2px solid #d1d1d1;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 label {
-    font-size: 21px;
+    font-size: 2.1rem;
+    margin-top: 1.8rem !important;
 }
 
 .action-button-container {
     display: flex;
     justify-content: end;
-    margin-top: 130px;
+    margin-top: 13rem;
 }
 
 .action-button-container img {
@@ -328,40 +327,32 @@ label {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 19px 15px;
-    gap: 10px;
+    padding: 1.9rem 1.5rem;
+    gap: 1rem;
     border: 0;
     color: white;
-    right: 60px;
+    right: 6rem;
     background: #2a3647;
-    border-radius: 10px;
+    border-radius: 1rem;
     width: 197.77px;
 }
 
-.add-task-btn:hover {
-    background: #485d7a;
-}
-
-#clearTask {
-    margin-right: 140px;
-}
-
 .form-control::placeholder {
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 #colorPicker {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 8px;
+    margin-top: 0.8rem;
 }
 
 .color-option {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
-    margin-right: 10px;
+    margin-right: 1rem;
     cursor: pointer;
     border: 2px solid white;
 }
@@ -373,23 +364,25 @@ label {
 .dropdown-content {
     display: none;
     background-color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .dropdown-content.show {
     display: flex;
     flex-direction: column;
     margin-top: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     border: 1px solid #d1d1d1;
     border-top: unset;
     overflow: auto;
-    max-height: 200px;
+    max-height: 20rem;
 }
 
-/* Flexbox-Stil für den Namen und die Checkbox */
+#editTask{
+    font-size: 2.1rem
+}
 
 .dropdown-object {
     cursor: pointer;
@@ -397,7 +390,7 @@ label {
     align-items: center;
     justify-content: space-between;
     padding: 5px;
-    padding-left: 10px;
+    padding-left: 1rem;
 }
 
 .dropdown-object:hover {
@@ -405,7 +398,7 @@ label {
 }
 
 .dropdown-object input {
-    margin-right: 10px;
+    margin-right: 1rem;
 }
 
 .category-input {
@@ -418,21 +411,21 @@ label {
     display: flex;
     justify-content: space-between;
     background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     border: 1px solid #d1d1d1;
-    font-size: 1rem;
+    font-size: 2.1remrem;
 }
 
 .dropdown-min img {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .dropdown-min.open {
@@ -476,206 +469,189 @@ label {
 }
 
 .select-color-category div {
-    width: 18px;
-    height: 18px;
-    border: 1px solid white;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.1rem solid white;
     border-radius: 100%;
 }
 
 .select-color-category div:hover {
     cursor: pointer;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 
 .selected-color {
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
 }
 
 .category-color {
-    width: 18px;
-    height: 18px;
-    border: 1px solid white;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.1rem solid white;
     border-radius: 100%;
 }
 
 .margin-left-10 {
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 /* @media screen and (max-width: 1445px) {
-  #clearTask {
-    margin-right: 190px;
-  }
-} */
-
-@media screen and (max-width: 1252px) {
-    .column-right {
-        width: 400px;
-    }
-}
-
-@media screen and (max-width: 1190px) {
-    .border {
-        border-right: 2px solid #d1d1d1;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    .column-container {
-        flex-direction: column;
-    }
-    .column-right {
-        width: 100%;
-    }
-    .add-task-btn {
-        position: unset;
-        margin-right: 30px;
-    }
     #clearTask {
-        margin-right: 70px;
+      margin-right: 190px;
     }
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 380px;
+  } */
+
+.column-right {
+    width: 400px !important;
+}
+
+.border {
+    border-right: 2px solid #d1d1d1 !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+
+.column-container {
+    flex-direction: column !important;
+}
+
+.column-right {
+    width: 100% !important;
+}
+
+.add-task-btn {
+    position: unset !important;
+    margin-right: 3rem !important;
+    font-size: larger;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 380px !important;
+}
+
+.column-right {
+    margin-top: 1.8rem !important;
+}
+
+.task-card {
+    width: 70% !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 33rem !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 290px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 250px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 200px !important;
+}
+
+.task-card {
+    width: 65% !important;
+}
+
+.task-card {
+    grid-column: 1/11 !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    width: 95% !important;
+    margin-bottom: 150px !important;
+}
+
+#clearTask {
+    margin-right: 70px;
+}
+
+#prio button{
+    font-size: 2.1rem !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 470px !important;
+}
+
+.action-button-container {
+    margin-top: 2.1rem !important;
+}
+
+.prio {
+    gap: 1rem !important;
+    padding: 0 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 440px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 380px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 300px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 250px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 200px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 150px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 2rem !important;
+    height: 2rem !important;
+    margin-left: 10rem !important;
+}
+
+@media (max-height: 850px) {
+    #clearTask {
+        margin-right: 1rem;
     }
-    .column-right {
-        margin-top: 18px;
-    }
-    .task-card {
-        width: 70%;
-        /* Breite der Karte */
+    .prio div {
+        width: 200px;
+        font-size: 14px;
     }
 }
 
-@media screen and (max-width: 1050px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 330px;
-    }
-}
-
-@media screen and (max-width: 970px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 290px;
-    }
-}
-
-@media screen and (max-width: 890px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 250px;
-    }
-}
-
-@media screen and (max-width: 820px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 200px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .task-card {
-        width: 65%;
-        /* Breite der Karte */
-    }
-}
-
-@media screen and (max-width: 756px) {
-    .task-card {
-        grid-column: 1/11;
-        margin-left: 10px;
-        margin-right: 10px;
+@media (max-width: 400px) {
+    .subtask-container {
         width: 95%;
-        margin-bottom: 150px;
-    }
-    #clearTask {
-        margin-right: 70px;
-    }
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 470px;
-    }
-    .action-button-container {
-        margin-top: 60px;
-    }
-    .prio {
-        gap: 10px;
-        padding: 0;
-    }
-}
-
-@media screen and (max-width: 720px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 440px;
-    }
-}
-
-@media screen and (max-width: 685px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 380px;
-    }
-}
-
-@media screen and (max-width: 618px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 300px;
-    }
-}
-
-@media screen and (max-width: 535px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 250px;
-    }
-}
-
-@media screen and (max-width: 486px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 200px;
-    }
-}
-
-@media screen and (max-width: 434px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 150px;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        width: 20px;
-        height: 20px;
-        margin-left: 100px;
-    }
-    .add-task-btn {
-        position: unset;
-        margin-right: 0px;
-    }
-}
-
-@media screen and (max-width: 456px) {
-    .headline-text {
-        font-size: 46px;
     }
 }

@@ -61,13 +61,11 @@ async function checkTargetArrayForID(targetArray, status) {
 }
 
 function getTaskById(id) {
-    // Durchsuche alle Aufgaben nach der übergebenen ID
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
-            return tasks[i]; // Rückgabe des gefundenen Aufgabenobjekts
+            return tasks[i];
         }
     }
-    // Wenn keine Übereinstimmung gefunden wurde, gib null zurück oder wirf eine entsprechende Fehlermeldung
     return null;
 }
 

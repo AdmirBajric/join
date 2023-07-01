@@ -1,5 +1,5 @@
 function editTaskHTML(currentTask) {
-    return `
+  return `
   
     <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
       
@@ -12,7 +12,7 @@ function editTaskHTML(currentTask) {
             <div class="inner-content scroll">
         <div>
           <div id="taskAdded" class="taskAdded d-none">
-            <img src="./assets_task_board/img/task_Added.svg" alt="" />
+            <img src="./assets/img/add-task.svg" alt="" />
           </div>
         </div>
   
@@ -42,7 +42,7 @@ function editTaskHTML(currentTask) {
             >
               <div class="dropdown-min" id="dropdownMinCategory">
                 <span>${currentTask["category"]}</span>
-                <img src="./assets_task_board/img/arrow_down_black.svg" alt="" />
+                <img src="./assets/img/arrow_down_black.svg" alt="" />
               </div>
             </label>
             <div id="dropdownCategoryContent" class="dropdown-content"></div>
@@ -92,7 +92,7 @@ function editTaskHTML(currentTask) {
             <label for="dropdown" onclick="toggleDropdown()">
               <div class="dropdown-min" id="dropdownMin">
                 <span id="categoryTextField"> Select contacts to assign</span>
-                <img src="./assets_task_board/img/arrow_down_black.svg" alt="" />
+                <img src="./assets/img/arrow_down_black.svg" alt="" />
               </div>
             </label>
             <div id="dropdownContent" class="dropdown-content"></div>
@@ -118,19 +118,19 @@ function editTaskHTML(currentTask) {
                 currentTask["prio"] === "up" ? "active" : ""
               }" id="prioUrgent" onclick="TaskButtonUrgent(); setPrioStatus('up')">
                 Urgent
-                <img id="imgUrgent" src="./assets_task_board/icon_up.png" alt="" />
+                <img id="imgUrgent" src="./assets/img/urgent-prio.svg" alt="" />
               </div>
               <div class="prio-btn ${
                 currentTask["prio"] === "medium" ? "active" : ""
               }" id="prioMedium" onclick="TaskButtonMedium(); setPrioStatus('medium')">
                 Medium
-                <img id="imgMedium" src="assets_task_board/img/icon_medium.png" alt="" />
+                <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
               </div>
               <div class="prio-btn ${
                 currentTask["prio"] === "down" ? "active" : ""
               }" id="prioLow" onclick="TaskButtonLow(); setPrioStatus('down')">
                 Low
-                <img id="imgLow" src="assets_task_board/img/icon_down.png" alt="" />
+                <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
               </div>
             </div>
   
@@ -139,10 +139,10 @@ function editTaskHTML(currentTask) {
               <input type="text" id="subtask-input-content" placeholder="Enter Subtask..."/>
   
               <div id="subtaskOninput" style="display: flex">
-                <img src="./assets_task_board/img/X.png" id="clearSubtaskInput" />
+                <img src="./assets/img/close.svg" id="clearSubtaskInput" />
                 <div class="border-subtask"></div>
                 <img
-                  src="./assets_task_board/img/icon_check.svg"
+                  src="./assets/img/check.svg"
                   onclick="addSubtaskFromEdit('${currentTask["id"]}')"
                   id="finishEditingSubtask"
                 />
@@ -154,13 +154,8 @@ function editTaskHTML(currentTask) {
             </div>
   
             <div class="action-button-container">
-              <img
-                id="clearTask"
-                onclick="reloadPage()"
-                src="./assets_task_board/img/cancel-task.svg"
-              />
               <button id="editTask" class="add-task-btn" type="submit">
-                Edit Task
+                OK<img src="./assets/img/check-white.svg">
               </button>
             </div>
           </form>
@@ -169,7 +164,7 @@ function editTaskHTML(currentTask) {
 }
 
 function getTaskDetailCardHTML(task) {
-    return /*html*/ `
+  return /*html*/ `
       
         <div class="Task-Content" id="taskContent">
   
@@ -206,19 +201,75 @@ function getTaskDetailCardHTML(task) {
                 <path d="M9.33289 28C8.59955 28 7.97177 27.7389 7.44955 27.2167C6.92733 26.6944 6.66622 26.0667 6.66622 25.3333V8H5.33289V5.33333H11.9996V4H19.9996V5.33333H26.6662V8H25.3329V25.3333C25.3329 26.0667 25.0718 26.6944 24.5496 27.2167C24.0273 27.7389 23.3996 28 22.6662 28H9.33289ZM22.6662 8H9.33289V25.3333H22.6662V8ZM11.9996 22.6667H14.6662V10.6667H11.9996V22.6667ZM17.3329 22.6667H19.9996V10.6667H17.3329V22.6667Z" fill="#2A3647"/>
               </g>
             </svg>
-            
-            
             <div class="task-popup-bottom-trash-edit-line"></div> 
-            
-            
             <svg  onclick="editTask(${task.id})" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="50" height="50" rx="10" fill="#2A3647"/>
               <path d="M17.4445 32.0155L22.2638 34.9404L34.907 14.1083C35.1935 13.6362 35.043 13.0211 34.5709 12.7346L31.4613 10.8474C30.9892 10.5608 30.3742 10.7113 30.0876 11.1834L17.4445 32.0155Z" fill="white"/>
               <path d="M16.8604 32.9794L21.6797 35.9043L16.9511 38.1892L16.8604 32.9794Z" fill="white"/>
             </svg>
-            
-            
           </div>
         </div>
       `;
 }
+
+
+function getTaskCardHTML(currentTask, status) {
+  return /*html*/ `
+  <div draggable="true" ondragstart="startDragging(${
+      currentTask["id"]
+  },'${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
+  currentTask["id"]
+  })" id="${currentTask["id"]}">
+      <div class="task-card-top-div">
+      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
+          currentTask["color"]
+      }">${currentTask["category"]}</div>
+  <div class="dropdown-position" onclick="event.stopPropagation();">
+          <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
+          currentTask["id"]
+          }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
+  currentTask["id"]
+  }, '${status}')">
+          <option value="toDo" ${
+              status === "toDo" ? "selected" : ""
+          }>To Do</option>
+          <option value="inProgress" ${
+              status === "inProgress" ? "selected" : ""
+          }>In progress</option>
+          <option value="feedback" ${
+              status === "feedback" ? "selected" : ""
+          }>Awaiting feedback</option>
+          <option value="done" ${
+              status === "done" ? "selected" : ""
+          }>Done</option>
+          </select>
+      </div>
+      </div>
+      <span class="task-card-title" id="taskTitleContainer">${
+      currentTask["title"]
+      }</span>
+      <div class="task-card-description" id="taskDescriptionContainer">${
+      currentTask["description"]
+      }</div>
+      <div class="task-card-bottom-container align-center margin-bottom-10">
+      <div class="subtasks-border">
+          <div id="subtasksStatus" style="width:${
+          (currentTask["subtasksClosed"].length /
+              currentTask["taskSub"].length) *
+          100
+          }%" class="subtasks-status"></div>
+      </div>
+      <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
+  currentTask["taskSub"].length
+  } done</span>
+      </div>
+      <div class="task-card-bottom-container">
+      <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
+      <div class="task-card-prio">
+          <img id="imgUrgentTask" src="./assets/img/${
+          currentTask["prio"]
+          }-prio.svg" alt="" />
+      </div>
+      </div>
+  </div>`;
+  }
