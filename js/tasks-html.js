@@ -22,7 +22,7 @@ function categoryListHTML(){
 }
 
 function categoryFieldHTML(){
-    reutrn`
+    return`
     <div class="flex-row space-between align-center">
     <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
 
