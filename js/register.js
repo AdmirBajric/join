@@ -70,12 +70,15 @@ const saveUserToDatabase = async () => {
   };
   users = [...users, newUser];
 
+  const tasks = JSON.parse(await getItem("tasks"));
+  const contacts = JSON.parse(await getItem("contacts"));
+
+  const newTasks = [...tasks, { ownerId: newUser.id, tasks: [] }];
+  const newContacts = [...contacts, { ownerId: newUser.id, contacts: [] }];
+
   await setItem("users", JSON.stringify(users));
-  await setItem("tasks", JSON.stringify([{ ownerId: newUser.id, tasks: [] }]));
-  await setItem(
-    "contacts",
-    JSON.stringify([{ ownerId: newUser.id, contacts: [] }])
-  );
+  await setItem("tasks", JSON.stringify(newTasks));
+  await setItem("contacts", JSON.stringify(newContacts));
 };
 
 // This function generates a unique ID for new users.
