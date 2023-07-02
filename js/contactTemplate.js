@@ -1,3 +1,4 @@
+// This function is used to generate a template for contacts
 const renderContactsList = (
   count,
   colors,
@@ -19,6 +20,7 @@ const renderContactsList = (
     `;
 };
 
+// This function is used to generate a template for render one specific contact
 const userContactPreview = (
   colors,
   id,

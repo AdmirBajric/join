@@ -1,3 +1,4 @@
+// The function contactsSelectedElements() likely returns the selected elements in the DOM
 const [
   contactBody,
   addContact,
@@ -17,14 +18,12 @@ const [
 // Count for colors
 let count = 0;
 
-// Colors
+// Colors for avatar
 const colors = colorsMix();
 
-// JSON data
+// JSON data from Database
 const data = localStorage.getItem("userContacts");
 const jsonData = JSON.parse(data);
-
-// Parse the JSON data
 let userContacts = jsonData[0]?.contacts;
 
 // Create an object to hold the grouped names
@@ -52,13 +51,16 @@ const groupNames = () => {
   });
 };
 
+// This function takes a 'user' object as input and splits the full name into first name and last name initials.
 const splitNameLastName = (user) => {
-  const firstNameLetter = user.fullName.split(" ")[0].charAt(0);
-  const firstLastLetter = user.fullName.split(" ")[1].charAt(0);
+  const firstLetter = user.fullName.split(" ")[0].charAt(0);
+  const lastLetter = user.fullName.split(" ")[1].charAt(0);
 
-  return [firstNameLetter, firstLastLetter];
+  return [firstLetter, lastLetter];
 };
 
+// This function increments the 'count' variable by 1 if it is less than 19,
+// otherwise, it resets the 'count' variable to 0.
 const countStart = () => {
   if (count < 19) {
     count++;
@@ -67,6 +69,7 @@ const countStart = () => {
   }
 };
 
+// Generate and render the HTML
 const renderHTML = () => {
   resetToStart();
   sortArray();
@@ -80,13 +83,13 @@ const renderHTML = () => {
     htmlOutput += `<div class="contact-divider"></div>`;
 
     groupedNames[letter].forEach((user) => {
-      const [firstNameLetter, firstLastLetter] = splitNameLastName(user);
+      const [firstLetter, lastLetter] = splitNameLastName(user);
 
       htmlOutput += renderContactsList(
         count,
         colors,
-        firstNameLetter,
-        firstLastLetter,
+        firstLetter,
+        lastLetter,
         user
       );
       countStart();
@@ -97,6 +100,7 @@ const renderHTML = () => {
   renderContacts.innerHTML = htmlOutput;
 };
 
+// Generate and render the contacts
 const renderContact = (id) => {
   clearActiveState();
   toggleActiveState(id);
@@ -104,15 +108,13 @@ const renderContact = (id) => {
   contactContainer.style.animation = "fadeOutContact 50ms ease-in-out forwards";
   contactContainer.innerHTML = "";
 
-  const [firstNameLetter, firstLastLetter] = splitNameLastName(
-    userContacts[id]
-  );
+  const [firstLetter, lastLetter] = splitNameLastName(userContacts[id]);
 
   let html = userContactPreview(
     colors,
     id,
-    firstNameLetter,
-    firstLastLetter,
+    firstLetter,
+    lastLetter,
     userContacts
   );
 
@@ -124,6 +126,7 @@ const renderContact = (id) => {
   }, 100);
 };
 
+// This function is used to clear the active state from contact-user elements.
 const clearActiveState = () => {
   const contactUser = document.querySelectorAll(".contact-user-active");
   contactUser.forEach((a) => {
@@ -132,6 +135,7 @@ const clearActiveState = () => {
   });
 };
 
+// This function is used to toggle the active state of a specific contact-user element based on its 'id'.
 const toggleActiveState = (id) => {
   const contactUser = document.querySelector(`.contact-user-${id}`);
 
@@ -139,6 +143,7 @@ const toggleActiveState = (id) => {
   contactUser.classList.remove("contact-user");
 };
 
+// This function is used to handle the hover effect for the "edit contact" image.
 const editContactHover = () => {
   const editContactImg = document.querySelector(".edit-contact-img");
   editContactImg.addEventListener("mouseover", () => {
@@ -150,6 +155,7 @@ const editContactHover = () => {
   });
 };
 
+// This function is used to handle the hover effect for the "user contact add task" image.
 const userContactHover = () => {
   const userContactAddTaskImg = document.querySelector(
     ".user-contact-add-task-img"
@@ -164,6 +170,7 @@ const userContactHover = () => {
   });
 };
 
+// This function is used to open the "add contact" section by changing CSS properties and calling the "animateToggle" function.
 const openAddContact = () => {
   contactExist.style.opacity = 0;
   contactBody.style.opacity = 0.3;
@@ -172,18 +179,21 @@ const openAddContact = () => {
   addContact.style.opacity = 1;
 };
 
+// This function is used to close the "add contact" section by changing CSS properties and calling the "animateToggle" function.
 const closeAddContact = () => {
   contactBody.style.opacity = 1;
   contactBody.style.zIndex = 1;
   animateToggle("fadeOut", addContact);
 };
 
+// This function is used to close the "edit contact" section by changing CSS properties and calling the "animateToggle" function.
 const closeEditContact = () => {
   contactBody.style.opacity = 1;
   contactBody.style.zIndex = 1;
   animateToggle("fadeOut", editUserContact);
 };
 
+// This function is used to edit a specific contact with the provided 'id'.
 const editContact = (id) => {
   contactBody.style.opacity = 0.3;
   contactBody.style.zIndex = -1;
@@ -200,6 +210,7 @@ const editContact = (id) => {
   myButtonEvents(id);
 };
 
+// This function is used to apply fadeIn or fadeOut animations to the specified 'element'.
 const animateToggle = (stringFade, element) => {
   if (stringFade === "fadeIn") {
     element.style.animation = "addFadeIn 1s ease-in-out forwards";
@@ -208,14 +219,14 @@ const animateToggle = (stringFade, element) => {
   }
 };
 
+// This function is used to create a letter-based avatar for the contact with the provided 'id'.
 const createLetterAvatar = (id) => {
-  const [firstNameLetter, firstLastLetter] = splitNameLastName(
-    userContacts[id]
-  );
-  editFormUserImg.innerHTML = `<p>${firstNameLetter}</p> <p>${firstLastLetter}</p>`;
+  const [firstLetter, lastLetter] = splitNameLastName(userContacts[id]);
+  editFormUserImg.innerHTML = `<p>${firstLetter}</p> <p>${lastLetter}</p>`;
   editFormUserImg.style.backgroundColor = colors[id];
 };
 
+// This function is used to set specific events for the edit buttons, based on the provided 'id'.
 const myButtonEvents = (id) => {
   editButtonsCancel.setAttribute("onclick", `deleteContact(${id})`);
   editButtonsCreate.setAttribute(
@@ -224,6 +235,7 @@ const myButtonEvents = (id) => {
   );
 };
 
+// This function is used to delete a contact with the provided 'id'.
 const deleteContact = async (id) => {
   const user = userContacts[id];
 
@@ -249,6 +261,7 @@ const deleteContact = async (id) => {
   renderHTML();
 };
 
+// This function is used to save the edited contact with the provided 'id'.
 const saveEditedContact = async (id) => {
   const user = userContacts[id];
 
@@ -271,6 +284,7 @@ const saveEditedContact = async (id) => {
   renderContact(id);
 };
 
+// This function is used to filter the user and update the current user
 const filterTheUsers = async (user) => {
   const [name, email, phone] = inputFields();
 
@@ -287,6 +301,7 @@ const filterTheUsers = async (user) => {
   return filterUser;
 };
 
+// This function is used to select the input fields
 const inputFields = () => {
   const name = document.querySelector("#edit-input-name");
   const email = document.querySelector("#edit-input-email");
@@ -295,6 +310,7 @@ const inputFields = () => {
   return [name, email, phone];
 };
 
+// This function is used to create new Contact
 const createContact = async () => {
   const [addFormNameInput, addFormEmailInput, addFormPhoneInput] =
     formInputFields();
@@ -363,6 +379,7 @@ const createContact = async () => {
   }
 };
 
+// This function is used to clear the input fields
 const clearInputsInnerHtml = (name, email, phone) => {
   renderContacts.innerHTML = "";
   name.value = "";
@@ -370,6 +387,7 @@ const clearInputsInnerHtml = (name, email, phone) => {
   phone.value = "";
 };
 
+// This function is used to select the input fields
 const formInputFields = () => {
   const addFormNameInput = document.querySelector("#add-form-name-input");
   const addFormEmailInput = document.querySelector("#add-form-email-input");
@@ -378,6 +396,7 @@ const formInputFields = () => {
   return [addFormNameInput, addFormEmailInput, addFormPhoneInput];
 };
 
+// This function is used to start the render th HTML if the data is in the array
 if (jsonData.length > 0) {
   renderHTML();
 }
