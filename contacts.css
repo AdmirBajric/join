@@ -646,3 +646,16 @@ body {
   border: none;
   background-color: var(--lightBlue);
 }
+
+#contact-exist {
+  opacity: 0;
+  position: absolute;
+  bottom: 6rem;
+  right: 10.2rem;
+}
+
+#contact-exist p {
+  font-size: 1.4rem;
+  color: var(--development);
+  font-weight: var(--weight5);
+}

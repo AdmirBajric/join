@@ -51,7 +51,7 @@ const userExistOnSignUp = () => {
 
 const saveUserToDatabase = async () => {
   const newUser = {
-    id: users.length,
+    id: generateUniqueId(),
     name: signupNameInput.value,
     email: signupEmailInput.value,
     password: signupPasswordInput.value,
@@ -59,12 +59,16 @@ const saveUserToDatabase = async () => {
   users = [...users, newUser];
 
   await setItem("users", JSON.stringify(users));
-  await setItem(
-    "tasks",
-    JSON.stringify([{ ownerId: users.length, tasks: [] }])
-  );
+  await setItem("tasks", JSON.stringify([{ ownerId: newUser.id, tasks: [] }]));
   await setItem(
     "contacts",
-    JSON.stringify([{ ownerId: users.length, contacts: [] }])
+    JSON.stringify([{ ownerId: newUser.id, contacts: [] }])
   );
+};
+
+const generateUniqueId = () => {
+  const timestamp = new Date().getTime(); // Get the current timestamp
+  const randomNum = Math.floor(Math.random() * 1000000); // Generate a random integer between 0 and 999999
+
+  return parseInt(`${timestamp}${randomNum}`);
 };

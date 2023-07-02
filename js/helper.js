@@ -11,6 +11,7 @@ const contactsSelectedElements = () => {
   const renderContacts = document.querySelector("#render-contacts");
   const contactContainer = document.querySelector("#contact-container");
   const newContact = document.querySelector("#new-contact");
+  const contactExist = document.querySelector("#contact-exist");
 
   return [
     contactBody,
@@ -25,6 +26,7 @@ const contactsSelectedElements = () => {
     renderContacts,
     contactContainer,
     newContact,
+    contactExist,
   ];
 };
 

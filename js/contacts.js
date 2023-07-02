@@ -11,6 +11,7 @@ const [
   renderContacts,
   contactContainer,
   newContact,
+  contactExist,
 ] = contactsSelectedElements();
 
 // Count for colors
@@ -25,6 +26,7 @@ const jsonData = JSON.parse(data);
 
 // Parse the JSON data
 let userObject = jsonData;
+
 let userContacts = jsonData[0]?.contacts;
 
 // Create an object to hold the grouped names
@@ -165,6 +167,7 @@ const userContactHover = () => {
 };
 
 const openAddContact = () => {
+  contactExist.style.opacity = 0;
   contactBody.style.opacity = 0.3;
   contactBody.style.zIndex = -1;
   animateToggle("fadeIn", addContact);
@@ -298,43 +301,60 @@ const createContact = async () => {
   const [addFormNameInput, addFormEmailInput, addFormPhoneInput] =
     formInputFields();
 
-  const newUser = {
-    fullName: addFormNameInput.value,
-    email: addFormEmailInput.value,
-    phone: addFormPhoneInput.value,
-  };
-
-  const id = JSON.parse(localStorage.getItem("user"))[0].id;
   let allContacts = JSON.parse(await getItem("contacts"));
 
-  let filterUserContacts = allContacts.filter((contact) => {
-    if (contact.ownerId === id) {
-      return contact;
-    }
-  });
+  const create = async () => {
+    const newUser = {
+      fullName: addFormNameInput.value,
+      email: addFormEmailInput.value,
+      phone: addFormPhoneInput.value,
+    };
 
-  filterUserContacts[0].contacts = [
-    ...filterUserContacts[0]?.contacts,
-    newUser,
-  ];
+    const id = JSON.parse(localStorage.getItem("user"))[0].id;
 
-  const updateContacts = allContacts.filter((c) => {
-    console.log(c);
-    if (c.ownerId === id) {
-      return filterUserContacts;
-    }
-  });
+    let filterUserContacts = allContacts.filter((contact) => {
+      if (contact.ownerId === id) {
+        return contact;
+      }
+    });
 
-  await setItem("contacts", JSON.stringify(updateContacts));
-  localStorage.setItem("userContacts", JSON.stringify(updateContacts));
+    filterUserContacts[0].contacts = [
+      ...filterUserContacts[0]?.contacts,
+      newUser,
+    ];
 
-  userContacts = updateContacts[0].contacts;
+    const updateContacts = allContacts.filter((c) => {
+      if (c.ownerId === id) {
+        return filterUserContacts;
+      }
+    });
 
-  clearInputsInnerHtml(addFormNameInput, addFormEmailInput, addFormPhoneInput);
-  closeAddContact();
-  renderHTML();
-  const index = userContacts.findIndex((o) => o.email === newUser.email);
-  renderContact(index);
+    await setItem("contacts", JSON.stringify(updateContacts));
+    localStorage.setItem("userContacts", JSON.stringify(updateContacts));
+
+    userContacts = updateContacts[0].contacts;
+
+    clearInputsInnerHtml(
+      addFormNameInput,
+      addFormEmailInput,
+      addFormPhoneInput
+    );
+    closeAddContact();
+    renderHTML();
+    const index = userContacts.findIndex((o) => o.email === newUser.email);
+    renderContact(index);
+  };
+
+  const emailExist = allContacts[0].contacts.filter(
+    (a) => a.email === addFormEmailInput.value
+  );
+
+  if (emailExist.length < 1) {
+    create();
+    contactExist.style.opacity = 0;
+  } else {
+    contactExist.style.opacity = 1;
+  }
 };
 
 const clearInputsInnerHtml = (name, email, phone) => {
