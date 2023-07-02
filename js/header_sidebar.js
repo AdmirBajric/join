@@ -31,7 +31,7 @@ function gotoBoard() {
 }
 
 function gotoAddTask() {
-    window.location.href = "add_task.html";
+    window.location.href = "add-task.html";
 }
 
 function gotoContacts() {

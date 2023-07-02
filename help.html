@@ -1,15 +1,18 @@
-<link rel="stylesheet" href="header.css" />
-<link rel="stylesheet" href="sidebar.css" />
-<link rel="stylesheet" href="help.css" />
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="help.css">
+<link rel="stylesheet" href="sidebar_mobile.css">
+<script src="sidebar_mobile.js"></script>
+
 <script src="summary.js"></script>
 <script src="header_sidebar.js"></script>
 <script src="log-out.js"></script>
 <script src="./js/routing.js"></script>
 
-<body onload="includeLoad()">
-  <div w3-include-html="header_sidebar.html"></div>
-  <!--help on-->
-  <div class="right-help-Container">
+<body onload="includeLoad(), includeLoad_mobile()">
+    <div w3-include-html="header_sidebar.html"></div>
+<!--help on-->
+<div class="right-help-Container">
     <div class="right-Notiz">
       <div class="content">
         <div class="h1-img">
@@ -68,6 +71,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <!--help off-->
+</div>
+<!--help off-->
+<div w3-include-html="sibebar_mobile.html"></div>
 </body>

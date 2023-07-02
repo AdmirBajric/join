@@ -8,26 +8,30 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
     <link rel="stylesheet" href="./css-board-addtask/board.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./sidebar.css" />
     <link rel="stylesheet" href="./css-board-addtask/board-edit-popup.css" />
     <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
-    <link rel="stylesheet" href="./css-board-addtask/task_form.css" />
-    <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css">
+    <link rel="stylesheet" href="style.css">
 
-    <script src=".//js/storage.js"></script>
+
+    <script src="./js/sidebar_mobile.js"></script>
+    <script src="./js/storage.js"></script>
+
     <script src="./js/board_template.js"></script>
     <script src="./js/tasks.js"></script>
     <script src="./js/tasks-html.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/board_drag_drop.js"></script>
     <script src="./js/routing.js"></script>
-    <script src="header_sidebar.js"></script>
-    <script src="log-out.js"></script>
+    <script src="./js/header_sidebar.js"></script>
+    <script src="./js/log-out.js"></script>
   </head>
 
-  <body onload="initBoard();includeLoad();" id="body-board">
-    <div w3-include-html="header_sidebar.html"></div>
+<body onload="initBoard(),includeLoad(), includeLoad_mobile()">
+  
+  <div w3-include-html="header_sidebar.html"></div>
+
     <div class="overlay-bg d-none" id="overlay"></div>
 
     <div class="board-main-container inner-content">
@@ -249,5 +253,9 @@
         </div>
       </div>
     </div>
-  </body>
+    </div>
+    <div w3-include-html="sibebar_mobile.html"></div>
+</body>
+
 </html>
+

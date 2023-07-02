@@ -122,74 +122,8 @@ nav{
     font-size: 18px;
 }
 
-
-
 @media (max-width: 1000px) {
-
     .side-bar {
-        position: fixed;
-        bottom: 0;
-        top: 53rem;
-        width: 100vw;
-        height: 81px;
-    }
-
-    .side-logo {
         display: none;
     }
-
-    .side-container {
-        height: 100%;
-        width: 100%;
-        padding: 0px;
-    }
-
-    .box {
-        padding: 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .box1 {
-        display: none;
-    }
-
-    .side-summary {
-        flex-direction: column;
-    }
-
-    .side-board {
-        flex-direction: column;
-    }
-
-    .side-addtask {
-        flex-direction: column;
-    }
-
-    .side-contacts {
-        flex-direction: column;
-    }
-
-    .side-around {
-        display: flex;
-        padding-right: 3px;
-    }
-    
-}
-
-@media (max-width: 850px) {
-
-    .box {
-        width: 150px;
-    }
-
-}
-
-@media (max-width: 580px) {
-
-    .box {
-        width: 100px;
-    }
-
 }

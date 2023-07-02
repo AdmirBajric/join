@@ -25,7 +25,24 @@ async function addNewTask() {
     let buttonMedium = document.getElementById("prioMedium");
     let buttonLow = document.getElementById("prioLow");
 
-    validateInput(taskTitle,taskDescription,taskDueDate,taskPriority,taskSub);
+    if (
+        taskTitle.value === "" ||
+        taskDescription.value === "" ||
+        taskDueDate.value === "" ||
+        currentPrioStatus === undefined ||
+        selectedCategory === undefined ||
+        taskSub.value === ""
+    ) {
+        let taskAlert = document.getElementById("taskAlert");
+        taskAlert.innerHTML = ""; // Leere den vorherigen Text
+        if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
+        if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
+        if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
+        if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
+        if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
+        if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
+        return; 
+    }
 
     tasks.push({
         title: taskTitle.value,
@@ -53,27 +70,6 @@ async function addNewTask() {
 
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
-}
-
-function validateInput(taskTitle,taskDescription,taskDueDate,taskSub){
-        if (
-        taskTitle.value === "" ||
-        taskDescription.value === "" ||
-        taskDueDate.value === "" ||
-        currentPrioStatus === undefined ||
-        selectedCategory === undefined ||
-        taskSub.value === ""
-    ) {
-        let taskAlert = document.getElementById("taskAlert");
-        taskAlert.innerHTML = ""; // Leere den vorherigen Text
-        if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
-        if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
-        if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
-        if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
-        if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
-        if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
-        return; 
-    }
 }
 
 async function subTasksLoad() {

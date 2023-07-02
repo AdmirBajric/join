@@ -1,6 +1,6 @@
 async function load() {
-  await greetingDay();
-  dateContainer();
+    await greetingDay();
+    dateContainer();
 }
 
 // greeting day on
