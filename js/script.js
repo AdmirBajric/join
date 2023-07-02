@@ -79,7 +79,7 @@ const userResetPassword = async () => {
   if (newPassword.value === confirmPassword.value) {
     const users = await findUser(newPassword);
 
-    JSON.stringify(await setItem("users", users));
+    await setItem("users", JSON.stringify(users));
 
     confirmMessage.style.animation =
       "fadeSendMessageIn 600ms ease-in-out forwards";

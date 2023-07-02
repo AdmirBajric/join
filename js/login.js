@@ -13,6 +13,11 @@ const loginUser = async () => {
   } else {
     errorMessage.style.opacity = 1;
     errorMessage.style.animation = "fadeSendMessageIn 1s ease-in-out forwards";
+
+    setTimeout(() => {
+      errorMessage.style.animation =
+        "fadeSendMessageOut 1s ease-in-out forwards";
+    }, 4000);
   }
 };
 
