@@ -137,6 +137,18 @@ body {
     flex-grow: 0;
 }
 
+#addTask:hover{
+    background-color: var(--lightBlue);
+    box-shadow: 0 0.3rem 0.4rem 0 rgba(0, 0, 0, 40%);
+}
+
+#clearTask:hover{
+    border-color: var(--lightBlue);
+    color: var(--lightBlue);
+    box-shadow: 0 0.3rem 0.4rem 0 rgba(0, 0, 0, 40%);
+    filter: invert(55%) sepia(83%) saturate(441%) hue-rotate(156deg) brightness(89%) contrast(98%);
+}
+
 .prio {
     display: flex;
     gap: 17rem;

@@ -155,6 +155,16 @@
     border: none;
 }
 
+#add-task-btn-board:hover{
+    background-color: var(--lightBlue);
+    border: none;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+#add-task-btn-board img{
+    filter: invert(99%) sepia(21%) saturate(2%) hue-rotate(355deg) brightness(107%) contrast(101%);
+}
+
 .add-task-btn-board-mobile {
     box-sizing: border-box;
     display: flex;

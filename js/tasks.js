@@ -72,15 +72,6 @@ async function addNewTask() {
     await setItem("toDo", JSON.stringify(toDo));
 }
 
-
-function alertIfNull(){
-    
-}
-
-
-
-
-
 async function subTasksLoad() {
     subtasks = [];
     for (let i = 0; i < subtasks.length; i++) {

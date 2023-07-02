@@ -1,4 +1,3 @@
-
 let toDo = [];
 let inProgress = [];
 let feedback = [];
@@ -91,12 +90,17 @@ function renderTaskCardFeedback() {
     let renderedIDs = {};
     for (let i = 0; i < feedback.length; i++) {
         let currentTask = tasks.find((task) => task.id === feedback[i]);
-        if (!renderedIDs[currentTask.id]) {
+        if (currentTask) {
             feedbackContainer.innerHTML += getTaskCardHTML(currentTask, "feedback");
             renderedIDs[currentTask.id] = true;
             renderAvatars(currentTask);
         }
+        else{
+            console.error(`task with ID ${feedback[i]} not found`)
+        }
     }
+
+    //!renderedIDs[currentTask.id]
 }
 
 function renderTaskCardDone() {
