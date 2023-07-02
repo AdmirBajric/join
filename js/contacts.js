@@ -19,13 +19,13 @@ let count = 0;
 // Colors
 const colors = colorsMix();
 
-// Sample JSON data
-
+// JSON data
 const data = localStorage.getItem("userContacts");
 const jsonData = JSON.parse(data);
 
-// Parse the JSON data into an array of objects
-let users = jsonData[0]?.contacts;
+// Parse the JSON data
+let userObject = jsonData;
+let userContacts = jsonData[0]?.contacts;
 
 // Create an object to hold the grouped names
 let groupedNames = [];
@@ -38,12 +38,12 @@ const resetToStart = () => {
 
 const sortArray = () => {
   // Sort the array alphabetically by the fullName property
-  users.sort((a, b) => a.fullName.localeCompare(b.fullName));
+  userContacts.sort((a, b) => a.fullName.localeCompare(b.fullName));
 };
 
 const groupNames = () => {
   // Group the names by their starting letters
-  users.forEach((user) => {
+  userContacts.forEach((user) => {
     const firstLetter = user.fullName.charAt(0).toUpperCase();
     if (!groupedNames[firstLetter]) {
       groupedNames[firstLetter] = [];
@@ -104,14 +104,16 @@ const renderContact = (id) => {
   contactContainer.style.animation = "fadeOutContact 50ms ease-in-out forwards";
   contactContainer.innerHTML = "";
 
-  const [firstNameLetter, firstLastLetter] = splitNameLastName(users[id]);
+  const [firstNameLetter, firstLastLetter] = splitNameLastName(
+    userContacts[id]
+  );
 
   let html = userContactPreview(
     colors,
     id,
     firstNameLetter,
     firstLastLetter,
-    users
+    userContacts
   );
 
   setTimeout(() => {
@@ -187,7 +189,7 @@ const editContact = (id) => {
   animateToggle("fadeIn", editUserContact);
   editUserContact.style.opacity = 1;
 
-  const { email, fullName, phone } = users[id];
+  const { email, fullName, phone } = userContacts[id];
 
   editInputName.value = fullName;
   editInputEmail.value = email;
@@ -206,7 +208,9 @@ const animateToggle = (stringFade, element) => {
 };
 
 const createLetterAvatar = (id) => {
-  const [firstNameLetter, firstLastLetter] = splitNameLastName(users[id]);
+  const [firstNameLetter, firstLastLetter] = splitNameLastName(
+    userContacts[id]
+  );
   editFormUserImg.innerHTML = `<p>${firstNameLetter}</p> <p>${firstLastLetter}</p>`;
   editFormUserImg.style.backgroundColor = colors[id];
 };
@@ -219,42 +223,67 @@ const myButtonEvents = (id) => {
   );
 };
 
-const deleteContact = (id) => {
-  const user = users[id];
-  const filteredUser = users.filter((u) => {
+const deleteContact = async (id) => {
+  const user = userContacts[id];
+
+  const userId = JSON.parse(localStorage.getItem("userContacts"));
+
+  const filterContacts = userContacts.filter((u) => {
     if (u.email !== user.email) {
       return u;
     }
   });
 
-  users = filteredUser;
+  const newUserObject = [
+    { ownerId: userId[0].ownerId, contacts: filterContacts },
+  ];
+
+  await setItem("contacts", JSON.stringify(newUserObject));
+  localStorage.setItem("userContacts", JSON.stringify(newUserObject));
+
+  userContacts = filterContacts;
   contactContainer.innerHTML = "";
   renderContacts.innerHTML = "";
   closeEditContact();
   renderHTML();
 };
 
-const saveEditedContact = (id) => {
-  const user = users[id];
+const saveEditedContact = async (id) => {
+  const user = userContacts[id];
 
-  filterTheUsers(user);
+  const userFiltered = await filterTheUsers(user);
+
+  const userId = JSON.parse(localStorage.getItem("userContacts"));
+
+  const newUserObject = [
+    { ownerId: userId[0].ownerId, contacts: userFiltered },
+  ];
+
+  await setItem("contacts", JSON.stringify(newUserObject));
+  localStorage.setItem("userContacts", JSON.stringify(newUserObject));
+
   renderContacts.innerHTML = "";
   closeEditContact();
   renderHTML();
-  const index = users.findIndex((o) => o.email === user.email);
-  renderContact(index);
+  const index = userContacts.findIndex((o) => o.email === user.email);
+  console.log(index);
+  renderContact(id);
 };
 
-const filterTheUsers = (user) => {
+const filterTheUsers = async (user) => {
   const [name, email, phone] = inputFields();
 
-  users.filter((r) => {
+  const filterUser = await userContacts.filter((r) => {
     if (user.email === r.email) {
       r.fullName = name.value;
       r.email = email.value;
       r.phone = phone.value;
+      return r;
     }
+    return r;
   });
+
+  return filterUser;
 };
 
 const inputFields = () => {
@@ -265,7 +294,7 @@ const inputFields = () => {
   return [name, email, phone];
 };
 
-const createContact = () => {
+const createContact = async () => {
   const [addFormNameInput, addFormEmailInput, addFormPhoneInput] =
     formInputFields();
 
@@ -275,12 +304,36 @@ const createContact = () => {
     phone: addFormPhoneInput.value,
   };
 
-  users = [...users, newUser];
+  const id = JSON.parse(localStorage.getItem("user"))[0].id;
+  let allContacts = JSON.parse(await getItem("contacts"));
+
+  let filterUserContacts = allContacts.filter((contact) => {
+    if (contact.ownerId === id) {
+      return contact;
+    }
+  });
+
+  filterUserContacts[0].contacts = [
+    ...filterUserContacts[0]?.contacts,
+    newUser,
+  ];
+
+  const updateContacts = allContacts.filter((c) => {
+    console.log(c);
+    if (c.ownerId === id) {
+      return filterUserContacts;
+    }
+  });
+
+  await setItem("contacts", JSON.stringify(updateContacts));
+  localStorage.setItem("userContacts", JSON.stringify(updateContacts));
+
+  userContacts = updateContacts[0].contacts;
 
   clearInputsInnerHtml(addFormNameInput, addFormEmailInput, addFormPhoneInput);
   closeAddContact();
   renderHTML();
-  const index = users.findIndex((o) => o.email === newUser.email);
+  const index = userContacts.findIndex((o) => o.email === newUser.email);
   renderContact(index);
 };
 
@@ -302,3 +355,46 @@ const formInputFields = () => {
 if (jsonData.length > 0) {
   renderHTML();
 }
+
+// const newContact = [
+//   {
+//     ownerId: 0,
+//     contacts: [
+//       {
+//         fullName: "Andy Miller",
+//         email: "andymiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Barbara Miller",
+//         email: "barbaramiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Daniela Miller",
+//         email: "danielamiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Emmily Miller",
+//         email: "emilymiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Thomas Miller",
+//         email: "thomasmiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Hans Miller",
+//         email: "hansmiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//       {
+//         fullName: "Rudolf Miller",
+//         email: "rudolfmiller@gmail.com",
+//         phone: "015764892345",
+//       },
+//     ],
+//   },
+// ];

@@ -25,7 +25,7 @@ const filterUser = async (email, password) => {
 
   const userExist = users.filter((user) => {
     if (user.email === email && user.password === password) {
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify([user]));
       return user;
     }
   });
@@ -36,23 +36,21 @@ const filterUser = async (email, password) => {
 const filterUserTasks = async (id) => {
   let tasks = JSON.parse(await getItem("tasks"));
 
-  const userTasks = tasks.filter((task) => {
+  tasks.filter((task) => {
     if (task.ownerId === id) {
+      localStorage.setItem("userTasks", JSON.stringify([task]));
       return task;
     }
   });
-
-  localStorage.setItem("userTasks", JSON.stringify(userTasks));
 };
 
 const filterUserContacts = async (id) => {
   let contacts = JSON.parse(await getItem("contacts"));
 
-  const userContacts = contacts.filter((contact) => {
+  contacts.filter((contact) => {
     if (contact.ownerId === id) {
+      localStorage.setItem("userContacts", JSON.stringify([contact]));
       return contact;
     }
   });
-
-  localStorage.setItem("userContacts", JSON.stringify(userContacts));
 };

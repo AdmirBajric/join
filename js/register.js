@@ -59,4 +59,12 @@ const saveUserToDatabase = async () => {
   users = [...users, newUser];
 
   await setItem("users", JSON.stringify(users));
+  await setItem(
+    "tasks",
+    JSON.stringify([{ ownerId: users.length, tasks: [] }])
+  );
+  await setItem(
+    "contacts",
+    JSON.stringify([{ ownerId: users.length, contacts: [] }])
+  );
 };

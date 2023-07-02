@@ -1,4 +1,4 @@
-const guestLogin = async (id) => {
+const guestLoginNow = async (id) => {
   await filterGuest(id);
   await filterGuestTasks(id);
   await filterGuestContacts(id);
@@ -7,21 +7,21 @@ const guestLogin = async (id) => {
 };
 
 const filterGuest = async (id) => {
-  let users = JSON.parse(await getItem("users"));
+  let allUsers = JSON.parse(await getItem("users"));
 
-  const user = users.filter((user) => {
+  const guestUser = allUsers.filter((user) => {
     if (user.id === id) {
       return user;
     }
   });
 
-  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("user", JSON.stringify(guestUser));
 };
 
 const filterGuestTasks = async (id) => {
-  let tasks = JSON.parse(await getItem("tasks"));
+  let allTasks = JSON.parse(await getItem("tasks"));
 
-  const userTasks = tasks.filter((task) => {
+  const userTasks = allTasks.filter((task) => {
     if (task.ownerId === id) {
       return task;
     }
@@ -31,9 +31,9 @@ const filterGuestTasks = async (id) => {
 };
 
 const filterGuestContacts = async (id) => {
-  let contacts = JSON.parse(await getItem("contacts"));
+  let allContacts = JSON.parse(await getItem("contacts"));
 
-  const userContacts = contacts.filter((contact) => {
+  const userContacts = allContacts.filter((contact) => {
     if (contact.ownerId === id) {
       return contact;
     }
