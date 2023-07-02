@@ -25,8 +25,6 @@ const data = localStorage.getItem("userContacts");
 const jsonData = JSON.parse(data);
 
 // Parse the JSON data
-let userObject = jsonData;
-
 let userContacts = jsonData[0]?.contacts;
 
 // Create an object to hold the grouped names
@@ -38,13 +36,13 @@ const resetToStart = () => {
   count = 0;
 };
 
+// Sort the array alphabetically by the fullName property
 const sortArray = () => {
-  // Sort the array alphabetically by the fullName property
   userContacts.sort((a, b) => a.fullName.localeCompare(b.fullName));
 };
 
+// Group the names by their starting letters
 const groupNames = () => {
-  // Group the names by their starting letters
   userContacts.forEach((user) => {
     const firstLetter = user.fullName.charAt(0).toUpperCase();
     if (!groupedNames[firstLetter]) {
@@ -301,11 +299,19 @@ const createContact = async () => {
   const [addFormNameInput, addFormEmailInput, addFormPhoneInput] =
     formInputFields();
 
+  const capitalizeWord = (word) =>
+    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+  const name = addFormNameInput.value.split(" ");
+  
+  const firstName = capitalizeWord(name[0]);
+  const lastName = capitalizeWord(name[1]);
+
   let allContacts = JSON.parse(await getItem("contacts"));
 
   const create = async () => {
     const newUser = {
-      fullName: addFormNameInput.value,
+      fullName: `${firstName} ${lastName}`,
       email: addFormEmailInput.value,
       phone: addFormPhoneInput.value,
     };
