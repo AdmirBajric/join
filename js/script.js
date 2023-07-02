@@ -22,6 +22,8 @@ const [
   sentConfirmationMessage,
 ] = indexSelectedElements();
 
+let userInputEmailAddress = "";
+
 // This function is used to display the sign-up form and hide all other containers in the user interface.
 // It is typically called when the user clicks on the "Sign Up" link or button to switch to the registration screen.
 const registerScreen = () => {
@@ -59,8 +61,8 @@ const forgotScreen = () => {
 // This function simulates sending a password reset link to the user in a real application.
 // In this project, it directly opens the password reset screen to allow the user to reset their password immediately.
 const sendEmail = () => {
-  // Send resetpassword link to the user in the real application
-  // In this project we open the reset screen of course to reset the password immediately
+  userInputEmailAddress = forgotPasswordInput.value;
+
   forgotPassword.style.display = "none";
   forgotPasswordInput.value = "";
   sentConfirmationMessage.style.animation =
@@ -73,16 +75,32 @@ const sendEmail = () => {
 };
 
 // This function handles the user's attempt to reset their password.
-const userResetPassword = () => {
+const userResetPassword = async () => {
   if (newPassword.value === confirmPassword.value) {
-    // Password matches - Change password on database
-    // Open success message and redirect to login
+    const users = await findUser(newPassword);
+
+    JSON.stringify(await setItem("users", users));
+
     confirmMessage.style.animation =
       "fadeSendMessageIn 600ms ease-in-out forwards";
     passwordSuccessReset();
   } else {
     passwordResetFailed();
   }
+};
+
+// Async function that finds a user by their email address and updates their password
+const findUser = async (newPassword) => {
+  const users = JSON.parse(await getItem("users"));
+
+  const newUsers = users.filter((user) => {
+    if (user.email === userInputEmailAddress) {
+      return (user.password = newPassword.value);
+    }
+    return user;
+  });
+
+  return newUsers;
 };
 
 // This function displays a message to inform the user that the password reset has failed.
@@ -105,7 +123,7 @@ const passwordSuccessReset = () => {
   setTimeout(() => {
     confirmMessage.style.animation =
       "fadeSendMessageOut 1s ease-in-out forwards";
-    location.replace("https://admirbajric.github.io/join/index.html");
+    location.replace("index.html");
   }, 2000);
 };
 
