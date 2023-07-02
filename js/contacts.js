@@ -303,7 +303,7 @@ const createContact = async () => {
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 
   const name = addFormNameInput.value.split(" ");
-  
+
   const firstName = capitalizeWord(name[0]);
   const lastName = capitalizeWord(name[1]);
 
@@ -312,7 +312,7 @@ const createContact = async () => {
   const create = async () => {
     const newUser = {
       fullName: `${firstName} ${lastName}`,
-      email: addFormEmailInput.value,
+      email: addFormEmailInput.value.toLowerCase(),
       phone: addFormPhoneInput.value,
     };
 
