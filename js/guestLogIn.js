@@ -1,3 +1,4 @@
+// This function is used to handle guest login. It takes the 'id' parameter, which may be used to identify the guest user.
 const guestLoginNow = async (id) => {
   await filterGuest(id);
   await filterGuestTasks(id);
@@ -6,6 +7,7 @@ const guestLoginNow = async (id) => {
   location.replace("summary.html");
 };
 
+// This function is used to filter and store the guest user's information in the local storage. It takes an 'id' parameter.
 const filterGuest = async (id) => {
   let allUsers = JSON.parse(await getItem("users"));
 
@@ -18,6 +20,7 @@ const filterGuest = async (id) => {
   localStorage.setItem("user", JSON.stringify(guestUser));
 };
 
+// This function is used to filter and store the tasks associated with the guest user in the local storage. It takes an 'id' parameter.
 const filterGuestTasks = async (id) => {
   let allTasks = JSON.parse(await getItem("tasks"));
 
@@ -30,6 +33,7 @@ const filterGuestTasks = async (id) => {
   localStorage.setItem("userTasks", JSON.stringify(userTasks));
 };
 
+// This function is used to filter and store the contacts associated with the guest user in the local storage. It takes an 'id' parameter.
 const filterGuestContacts = async (id) => {
   let allContacts = JSON.parse(await getItem("contacts"));
 

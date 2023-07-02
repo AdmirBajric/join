@@ -1,3 +1,4 @@
+// This function is used to select and return a list of DOM elements required for various interactions and manipulations in the contacts section of the webpage.
 const contactsSelectedElements = () => {
   const contactBody = document.querySelector("#contacts-body");
   const addContact = document.querySelector("#add-contact");
@@ -30,6 +31,7 @@ const contactsSelectedElements = () => {
   ];
 };
 
+// This function is used to select and return a list of DOM elements required for various interactions and manipulations in the index (login and signup) section of the webpage.
 const indexSelectedElements = () => {
   const login = document.querySelector("#login-container");
   const errorMessage = document.querySelector("#show-error-message");
@@ -82,6 +84,7 @@ const indexSelectedElements = () => {
   ];
 };
 
+// This function is used to select and return a list of DOM elements representing the input fields required for the signup process on the webpage.
 const signUpInputs = () => {
   const signupNameInput = document.querySelector("#signup-name");
   const signupEmailInput = document.querySelector("#signup-email");
@@ -90,6 +93,8 @@ const signUpInputs = () => {
   return [signupNameInput, signupEmailInput, signupPasswordInput];
 };
 
+// This variable contains an array of hexadecimal color codes.
+// These colors are used to mix and assign colors to various elements or entities in the application.
 const colorsMix = () => {
   return [
     "#ff7a00",

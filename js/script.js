@@ -1,3 +1,4 @@
+// The function indexSelectedElements() likely returns the selected elements in the DOM
 const [
   login,
   errorMessage,
@@ -21,6 +22,8 @@ const [
   sentConfirmationMessage,
 ] = indexSelectedElements();
 
+// This function is used to display the sign-up form and hide all other containers in the user interface.
+// It is typically called when the user clicks on the "Sign Up" link or button to switch to the registration screen.
 const registerScreen = () => {
   hideAllContainers();
 
@@ -31,12 +34,14 @@ const registerScreen = () => {
   signUpContainer.style.display = "none";
 };
 
+// This function hides all other containers and displays both the login form container and the sign-up container.
 const backToLoginPage = () => {
   hideAllContainers();
   signUpContainer.style.display = "flex";
   login.style.display = "flex";
 };
 
+// This function hides all containers with the class "login-container".
 const hideAllContainers = () => {
   const loginContainer = document.querySelectorAll(".login-container");
   loginContainer.forEach((element) => {
@@ -44,12 +49,15 @@ const hideAllContainers = () => {
   });
 };
 
+// This function displays the "forgot password" screen by hiding all other containers and showing the "forgotPassword" container.
 const forgotScreen = () => {
   hideAllContainers();
   forgotPassword.style.display = "flex";
   signUpContainer.style.display = "none";
 };
 
+// This function simulates sending a password reset link to the user in a real application.
+// In this project, it directly opens the password reset screen to allow the user to reset their password immediately.
 const sendEmail = () => {
   // Send resetpassword link to the user in the real application
   // In this project we open the reset screen of course to reset the password immediately
@@ -64,6 +72,7 @@ const sendEmail = () => {
   }, 1500);
 };
 
+// This function handles the user's attempt to reset their password.
 const userResetPassword = () => {
   if (newPassword.value === confirmPassword.value) {
     // Password matches - Change password on database
@@ -76,6 +85,7 @@ const userResetPassword = () => {
   }
 };
 
+// This function displays a message to inform the user that the password reset has failed.
 const passwordResetFailed = () => {
   passwordFailed.style.animation =
     "fadeSendMessageIn 600ms ease-in-out forwards";
@@ -86,6 +96,7 @@ const passwordResetFailed = () => {
   }, 1000);
 };
 
+// This function handles the UI behavior when the user successfully resets their password.
 const passwordSuccessReset = () => {
   setTimeout(() => {
     resetPassword.style.display = "none";
@@ -98,6 +109,7 @@ const passwordSuccessReset = () => {
   }, 2000);
 };
 
+// This function handles URL changes in the application.
 const handleUrlChange = (e) => {
   if (localStorage.getItem("user")) {
     location.replace("summary.html");

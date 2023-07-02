@@ -1,3 +1,5 @@
+// The 'loginUser' function is responsible for handling the login process when the user attempts to log in.
+// It first hides any existing error messages by calling the 'hideErrorMessages' function.
 const loginUser = async () => {
   hideErrorMessages();
 
@@ -14,12 +16,16 @@ const loginUser = async () => {
   }
 };
 
+// The 'hideErrorMessages' function is responsible for hiding any error messages related to the login process.
+// It sets the focus on the email input field to allow the user to easily start typing without having to click the field.
 const hideErrorMessages = () => {
   email.focus();
   errorMessage.style.opacity = 0;
   errorMessage.style.animation = "fadeSendMessageOut 1s ease-in-out forwards";
 };
 
+// The 'filterUser' function checks if a user with the provided email and password exists in the 'users' array.
+// It retrieves the 'users' array from local storage and parses it as a JSON object.
 const filterUser = async (email, password) => {
   let users = JSON.parse(await getItem("users"));
 
@@ -33,6 +39,8 @@ const filterUser = async (email, password) => {
   return userExist;
 };
 
+// The 'filterUserTasks' function filters tasks based on the provided user ID and stores the filtered tasks in local storage.
+// It retrieves the 'tasks' array from local storage and parses it as a JSON object.
 const filterUserTasks = async (id) => {
   let tasks = JSON.parse(await getItem("tasks"));
 
@@ -44,6 +52,8 @@ const filterUserTasks = async (id) => {
   });
 };
 
+// The 'filterUserContacts' function filters contacts based on the provided user ID and stores the filtered contacts in local storage.
+// It retrieves the 'contacts' array from local storage and parses it as a JSON object.
 const filterUserContacts = async (id) => {
   let contacts = JSON.parse(await getItem("contacts"));
 
