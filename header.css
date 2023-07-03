@@ -93,6 +93,13 @@ body {
     align-items: center; 
 }
 
+@media (max-width: 480px) {
+   .mobile-options {
+    margin-left: -34px;
+    width: 125px;
+    height: 73px;
+   } 
+}
 
 @media (max-width: 1000px) {
 

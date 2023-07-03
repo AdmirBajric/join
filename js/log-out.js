@@ -10,4 +10,5 @@ function Logout() {
 function Logoutout() {
   localStorage.clear();
   window.location.href = "index.html";
+  window.location.replace("index.html");
 }
