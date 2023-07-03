@@ -2,9 +2,18 @@
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
+body{
+    margin:0;
+    padding:0;
+}
+
 #board-link {
     /* styles for board link */
     background-color: #091931;
+}
+
+.hidden{
+    overflow: hidden;
 }
 
 .active {
