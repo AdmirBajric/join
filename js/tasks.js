@@ -34,7 +34,7 @@ async function addNewTask() {
         taskSub.value === ""
     ) {
         let taskAlert = document.getElementById("taskAlert");
-        taskAlert.innerHTML = ""; // Leere den vorherigen Text
+        taskAlert.innerHTML = ""; 
         if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
         if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
         if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
@@ -71,11 +71,6 @@ async function addNewTask() {
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
 }
-
-
-
-
-
 
 async function subTasksLoad() {
     subtasks = [];
@@ -413,9 +408,6 @@ function renderCategoryList() {
     `;
 }
 
-/**
- * Renders a new category field in the dropdown menu.
- */
 function renderNewCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     document.getElementById("select-color-category").classList.remove("d-none");
@@ -469,7 +461,7 @@ function renderNormalCategoryField() {
     dropdownField.innerHTML = `
     <span>Select category</span>
     <img src="./assets/img/arrow_down_black.svg" alt="">
-  `;
+`;
 }
 
 function saveSelectedCategory(element, color) {
@@ -547,11 +539,9 @@ function updateTaskCardIcons(id) {
 }
 
 function selectColor(id) {
-    // Remove "selected-color" class from all colors
     for (let i = 1; i < 8; i++) {
         document.getElementById(`color${i}`).classList.remove("selected-color");
     }
-    // Add "selected-color" class to the chosen color
     document.getElementById(`color${id}`).classList.add("selected-color");
     selectedColor = document.getElementById(`color${id}`).style.backgroundColor;
 }

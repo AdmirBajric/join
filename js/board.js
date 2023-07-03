@@ -6,13 +6,13 @@ let currentDraggedElement;
 
 async function initBoard() {
     clearTasksContainer();
-    await loadTasks(); // Ensure tasks are loaded before rendering
+    await loadTasks(); 
     await loadtoDos();
     await loadInProgress();
     await loadFeedback();
     await loadDone();
     await loadUsers();
-    renderBoard(); // Call a single rendering function instead of separate ones
+    renderBoard(); 
 }
 
 
@@ -290,7 +290,6 @@ function editTask(id) {
 function showAssignedContacts(currentTask) {
     let assignableContactsContainer = document.getElementById("dropdownContent");
     const assignedContacts = currentTask["assignments"].map(
-        //erstellt ein neues Array nur mit "Name"s aus assignments-Array
         (assignment) => assignment["name"]
     );
 
@@ -322,21 +321,11 @@ function showAssignedContacts(currentTask) {
     }
 }
 
-/**
- * Toggles the state of a checkbox.
- *
- * @param {string} checkboxId - The ID of the checkbox.
- */
 function toggleCheckbox(checkboxId) {
     var checkbox = document.getElementById(checkboxId);
     checkbox.checked = !checkbox.checked;
 }
 
-/**
- * Retrieves the current date in the format "YYYY-MM-DD".
- *
- * @returns {string} The current date in "YYYY-MM-DD" format.
- */
 function getCurrentDate() {
     const today = new Date();
     let day = today.getDate();
@@ -353,11 +342,6 @@ function getCurrentDate() {
     return `${year}-${month}-${day}`;
 }
 
-/**
- * Deletes an object by its ID from the appropriate arrays.
- *
- * @param {*} id - The ID of the object.
- */
 async function deleteObjectById(id) {
     for (var i = 0; i < toDo.length; i++) {
         if (toDo[i] == id) {
@@ -392,9 +376,6 @@ async function deleteObjectById(id) {
     }
 }
 
-/**
- * Toggles the visibility of the dropdown category content.
- */
 function toggleDropdownCategory() {
     let dropdownContent = document.getElementById("dropdownCategoryContent");
     let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -402,11 +383,6 @@ function toggleDropdownCategory() {
     dropdownMin.classList.toggle("open");
 }
 
-/**
- * Displays the subtasks of a task in the designated container.
- *
- * @param {*} task - The task object.
- */
 function showSubtasks(task) {
     let container = document.getElementById("subtasksContainer");
     for (let i = 0; i < task["taskSub"].length; i++) {
@@ -415,9 +391,6 @@ function showSubtasks(task) {
     }
 }
 
-/**
- * Searches for a task based on the input value and shows/hides tasks accordingly.
- */
 function searchForTaskByInput() {
     let search = document.getElementById("search-input").value;
     search = search.toLowerCase();
@@ -445,11 +418,6 @@ function searchForTaskByInput() {
     }
 }
 
-/**
- * Hides a task card with the given ID.
- *
- * @param {*} id - The ID of the task card.
- */
 function hideTask(id) {
     let taskCardContainer = document.getElementById(id);
 
@@ -461,11 +429,6 @@ function hideTask(id) {
     }
 }
 
-/**
- * Shows a hidden task card with the given ID.
- *
- * @param {*} id - The ID of the task card.
- */
 function showHiddenTask(id) {
     let taskCardContainer = document.getElementById(id);
 
@@ -477,11 +440,6 @@ function showHiddenTask(id) {
     }
 }
 
-/**
- * Displays the tickable subtasks for the current task in the designated container.
- *
- * @param {*} currentTask - The current task.
- */
 async function showTickableSubtasks(currentTask) {
     let subtasksContainer = document.getElementById("subtaskContent");
     subtasksContainer.innerHTML = "";
@@ -506,11 +464,6 @@ async function showTickableSubtasks(currentTask) {
     }
 }
 
-/**
- * Validates the subtasks form and updates the subtasksClosed and subtasksOpened properties of the current task.
- *
- * @param {*} currentTask - The current task.
- */
 function validateSubtasksForm(currentTask) {
     currentTask["subtasksClosed"] = [];
     currentTask["subtasksOpened"] = [];
