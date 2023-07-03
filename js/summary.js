@@ -1,6 +1,6 @@
 async function load() {
-    await greetingDay();
-    dateContainer();
+  await greetingDay();
+  dateContainer();
 }
 
 // greeting day on
@@ -31,23 +31,38 @@ function greet() {
 }
 */
 
-/*date today*/
-function dateContainer() {
-  let containerDay = new Date().toLocaleString();
-  containerDay = containerDay.slice(0, 10);
-  let containerDayArray = containerDay.split(".");
-  let containerMonth = getMonthContainer(containerDayArray[1]);
-  containerDay = `${containerMonth} ${containerDayArray[0]}, ${containerDayArray[2]}`;
+function formatDate(dateString) {
+  const months = [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  ];
+
+  const date = new Date(dateString);
+  const monthIndex = date.getMonth();
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  const formattedDate = `${months[monthIndex]} ${day}, ${year}`;
+
   document.getElementById(
     "dateContainer"
-  ).innerHTML = `<strong>${containerDay}</strong>`;
+  ).innerHTML = `<strong>${formattedDate}</strong>`;
 }
 
-function getMonthContainer(i) {
-  const date = new Date();
-  date.setMonth(i - 1);
-  return date.toLocaleString("en-us", { month: "short" });
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const inputDate = new Date();
+  formatDate(inputDate);
+});
 
 //go to Board
 function toBoard() {
