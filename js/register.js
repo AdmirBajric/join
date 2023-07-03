@@ -37,9 +37,9 @@ const userNotExistOnSignUp = async () => {
       "fadeSendMessageOut 1s ease-in-out forwards";
   }, 1000);
 
-  // setTimeout(() => {
-  //   location.href = "index.html";
-  // }, 2000);
+  setTimeout(() => {
+    location.href = "index.html";
+  }, 2000);
   userExist = !userExist;
 };
 
@@ -73,12 +73,11 @@ const saveUserToDatabase = async () => {
   await setItem("users", JSON.stringify(users));
 
   const tasks = JSON.parse(await getItem("tasks"));
-  const contacts = JSON.parse(await getItem("contacts"));
-
   const newTasks = [...tasks, { ownerId: newUser.id, tasks: [] }];
-  const newContacts = [...contacts, { ownerId: newUser.id, contacts: [] }];
-
   await setItem("tasks", JSON.stringify(newTasks));
+
+  const contacts = JSON.parse(await getItem("contacts"));
+  const newContacts = [...contacts, { ownerId: newUser.id, contacts: [] }];
   await setItem("contacts", JSON.stringify(newContacts));
 };
 

@@ -240,6 +240,7 @@ const deleteContact = async (id) => {
   const user = userContacts[id];
 
   const userId = JSON.parse(localStorage.getItem("userContacts"));
+  const allContacts = JSON.parse(await getItem("contacts"));
 
   const filterContacts = userContacts.filter((u) => {
     if (u.email !== user.email) {
@@ -247,12 +248,17 @@ const deleteContact = async (id) => {
     }
   });
 
-  const newUserObject = [
-    { ownerId: userId[0].ownerId, contacts: filterContacts },
-  ];
+  const newUser = { ownerId: userId[0].ownerId, contacts: filterContacts };
 
-  await setItem("contacts", JSON.stringify(newUserObject));
-  localStorage.setItem("userContacts", JSON.stringify(newUserObject));
+  const filterAllContacts = allContacts.filter((i) => {
+    if (i.ownerId === userId[0].ownerId) {
+      return newUser;
+    }
+    return i;
+  });
+
+  await setItem("contacts", JSON.stringify(filterAllContacts));
+  localStorage.setItem("userContacts", JSON.stringify([newUser]));
 
   userContacts = filterContacts;
   contactContainer.innerHTML = "";
@@ -324,6 +330,7 @@ const createContact = async () => {
   const lastName = capitalizeWord(name[1]);
 
   let allContacts = JSON.parse(await getItem("contacts"));
+  const id = JSON.parse(localStorage.getItem("user"))[0].id;
 
   const create = async () => {
     const newUser = {
@@ -332,8 +339,6 @@ const createContact = async () => {
       phone: addFormPhoneInput.value,
     };
 
-    const id = JSON.parse(localStorage.getItem("user"))[0].id;
-
     let filterUserContacts = allContacts.filter((contact) => {
       if (contact.ownerId === id) {
         return contact;
@@ -341,7 +346,7 @@ const createContact = async () => {
     });
 
     filterUserContacts[0].contacts = [
-      ...filterUserContacts[0]?.contacts,
+      ...filterUserContacts[0].contacts,
       newUser,
     ];
 
@@ -349,12 +354,13 @@ const createContact = async () => {
       if (c.ownerId === id) {
         return filterUserContacts;
       }
+      return c;
     });
 
     await setItem("contacts", JSON.stringify(updateContacts));
-    localStorage.setItem("userContacts", JSON.stringify(updateContacts));
+    localStorage.setItem("userContacts", JSON.stringify(filterUserContacts));
 
-    userContacts = updateContacts[0].contacts;
+    userContacts = filterUserContacts[0].contacts;
 
     clearInputsInnerHtml(
       addFormNameInput,
@@ -367,7 +373,13 @@ const createContact = async () => {
     renderContact(index);
   };
 
-  const emailExist = allContacts[0].contacts.filter(
+  const usersContacts = allContacts.filter((contact) => {
+    if (contact.ownerId === id) {
+      return contact;
+    }
+  });
+
+  const emailExist = usersContacts[0].contacts.filter(
     (a) => a.email === addFormEmailInput.value
   );
 
