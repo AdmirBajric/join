@@ -8,20 +8,16 @@
     <title>Board</title>
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
 
-    <link rel="stylesheet" href="./css/board.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/navbar.css" />
-    <link rel="stylesheet" href="./css/board-edit-popup.css" />
-    <link rel="stylesheet" href="./css/board-task-popup.css" />
+    <link rel="stylesheet" href="../../css/board.css" />
+    <link rel="stylesheet" href="../../css/board-edit-popup.css" />
+    <link rel="stylesheet" href="../../css/board-task-popup.css" />
 
-
-    <script src="./js/navbar.js"></script>
-    <script src="./storage.js"></script>
-    <script src="./js/board_template.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/tasks.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/board_drag_drop.js"></script>
+    <script src="../../storage.js"></script>
+    <script src="../../js/board_template.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/tasks.js"></script>
+    <script src="../../js/board.js"></script>
+    <script src="../../js/board_drag_drop.js"></script>
 </head>
 
 <body onload="initBoard()">
@@ -33,9 +29,9 @@
       <div class="headline-container">
         <div class="headline-left">
           <span class="headline-text headline-text-container">Board</span>
-        <div onclick="redirectToAddTaskPopup()" id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
+        <div onclick="redirectToAddTask()" id="add-task-btn-board-mobile" class="add-task-btn-board-mobile">
             <button>
-              <img src="./assets/img/plus-sign.svg" alt="" />
+              <img src="../img/plus-sign.svg" alt="" />
             </button>
         </div>
     </div>
@@ -45,13 +41,13 @@
 
             <div id="search-input-images" style="display: flex">
                 <div class="border-subtask"></div>
-                <img src="./assets/img/search.svg" id="finishEditingSubtask" />
+                <img src="../img/search.svg" id="finishEditingSubtask" />
             </div>
         </div>
 
         <div onclick="redirectToAddTaskPopup()" id="add-task-btn-board" class="add-task-btn-board">
             <button>Add Task</button>
-            <img src="./assets/img/plus-sign.svg" alt="" />
+            <img src="../img/plus-sign.svg" alt="" />
         </div>
     </div>
     </div>
