@@ -20,16 +20,6 @@ function alldayGreeting() {
   }
 }
 
-/*
-function greet() {
-  const greetingElement = document.getElementById('greeting');
-  let currentUser = decodeURIComponent(window.location.search.split('=')[1]);
-  greetingElement.innerHTML = getGreeting();
-  let greetUser = document.getElementById('user');
-  greetUser.innerHTML = currentUser;
-}
-*/
-
 function formatDate(dateString) {
   const months = [
     "Januar",
