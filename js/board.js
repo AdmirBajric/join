@@ -6,18 +6,30 @@ let currentDraggedElement;
 
 async function initBoard() {
     clearTasksContainer();
-    await loadTasks();
+    await loadTasks(); 
     await loadtoDos();
     await loadInProgress();
     await loadFeedback();
     await loadDone();
     await loadUsers();
+    renderBoard(); 
+}
+
+
+async function loadTasks() {
+    try {
+        tasks = JSON.parse(await getItem("tasks"));
+    } catch (e) {
+        console.error("Loading error:", e);
+    }
+}
+
+function renderBoard() {
     renderTaskCardToDo();
     renderTaskCardProgress();
     renderTaskCardFeedback();
     renderTaskCardDone();
 }
-
 
 async function loadtoDos() {
     try {
@@ -64,19 +76,23 @@ function renderTaskCardToDo() {
     let renderedIDs = {};
     for (let i = 0; i < toDo.length; i++) {
         let currentTask = tasks.find((task) => task.id === toDo[i]);
-        if (!renderedIDs[currentTask.id]) {
-            toDoContainer.innerHTML += getTaskCardHTML(currentTask, "toDo");
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
+        if (currentTask && !renderedIDs[currentTask.id]) {
+        toDoContainer.innerHTML += getTaskCardHTML(currentTask, "toDo");
+        renderedIDs[currentTask.id] = true;
+        renderAvatars(currentTask);
         }
     }
-}
+    }
 
-function renderTaskCardProgress() {
+
+async function renderTaskCardProgress() {
     let progressContainer = document.getElementById("inProgress");
     let renderedIDs = {};
+    await loadTasks(); 
+
     for (let i = 0; i < inProgress.length; i++) {
         let currentTask = tasks.find((task) => task.id === inProgress[i]);
+
         if (!renderedIDs[currentTask.id]) {
             progressContainer.innerHTML += getTaskCardHTML(currentTask, "inProgress");
             renderedIDs[currentTask.id] = true;
@@ -90,19 +106,24 @@ function renderTaskCardFeedback() {
     let renderedIDs = {};
     for (let i = 0; i < feedback.length; i++) {
         let currentTask = tasks.find((task) => task.id === feedback[i]);
-        if (!renderedIDs[currentTask.id]) {
-            feedbackContainer.innerHTML += getTaskCardHTML(currentTask, "feedback");
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
+        if (currentTask && !renderedIDs[currentTask.id]) {
+        feedbackContainer.innerHTML += getTaskCardHTML(currentTask, "feedback");
+        renderedIDs[currentTask.id] = true;
+        renderAvatars(currentTask);
         }
     }
-}
+    }
 
-function renderTaskCardDone() {
+
+async function renderTaskCardDone() {
     let doneContainer = document.getElementById("done");
     let renderedIDs = {};
+    await loadTasks();
+
     for (let i = 0; i < done.length; i++) {
         let currentTask = tasks.find((task) => task.id === done[i]);
+        console.log('currentTask.id:', currentTask.id);
+
         if (!renderedIDs[currentTask.id]) {
             doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
             renderedIDs[currentTask.id] = true;
@@ -110,6 +131,7 @@ function renderTaskCardDone() {
         }
     }
 }
+
 
 function clearTasksContainer() {
     let toDoContainer = document.getElementById("toDo");
@@ -149,7 +171,9 @@ function getUserColor(id) {
 
 function showDetailCard(id) {
     let overlay = document.getElementById("overlay");
+    let bodyBoard = document.getElementsByClassName('body-board')[0];
     overlay.classList.remove("d-none");
+    bodyBoard.classList.add('hidden');
 
     overlay.innerHTML = "";
 
@@ -162,26 +186,26 @@ function showDetailCard(id) {
             showSubtasks(task);
         }
     }
-
     overlay.addEventListener("click", function(event) {
         if (event.target === overlay) {
             overlay.classList.add("d-none");
             overlay.innerHTML = ""; 
         }
     });
-}
 
+
+}
 
 async function getTaskPrio(task) {
     let prioContainer = document.getElementById("prioDetail");
     switch (task["prio"]) {
-        case "low":
+        case "down":
             prioContainer.innerHTML += `
         <div
         class="prio-btn-low" 
     >
         Low
-        <img id="imgUrgent" src="./assets/img/low-prio.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
     </div>
         `;
             break;
@@ -191,17 +215,17 @@ async function getTaskPrio(task) {
         class="prio-btn-medium"
     >
         Medium
-        <img id="imgUrgent" src="./assets/img/medium-prio.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
     </div>
         `;
             break;
-        case "urgent":
+        case "up":
             prioContainer.innerHTML += `
         <div
         class="prio-btn-urgent"
     >
         Urgent
-        <img id="imgUrgent" src="./assets/img/urgent-prio.svg" alt=""/>
+        <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
     </div>
         `;
             break;
@@ -225,12 +249,18 @@ function getAssignedToDetailCard(task) {
     }
 }
 
-function redirectToAddTask() {
-    window.location.href = "add-task.html";
+function redirectToAddTaskPopup(){
+    window.location.href = "addtask-popup.html";
+}
+
+function redirectToAddTaskPopupOne(){
+    window.location.href = "../assets/templates/addtask-popup.html"
 }
 
 function closePopup() {
     let overlay = document.getElementById("overlay");
+    let bodyBoard = document.getElementsByClassName("body-board")[0];
+    bodyBoard.classList.remove('hidden');
     overlay.classList.add("d-none");
 }
 
@@ -260,7 +290,6 @@ function editTask(id) {
 function showAssignedContacts(currentTask) {
     let assignableContactsContainer = document.getElementById("dropdownContent");
     const assignedContacts = currentTask["assignments"].map(
-        //erstellt ein neues Array nur mit "Name"s aus assignments-Array
         (assignment) => assignment["name"]
     );
 
@@ -273,7 +302,7 @@ function showAssignedContacts(currentTask) {
         checkbox.value = name;
         checkbox.dataset.id = id;
         checkbox.onclick = function(event) {
-            event.stopPropagation();
+            event.stopPropagation(); 
         };
 
         if (assignedContacts.includes(name)) {
@@ -291,7 +320,6 @@ function showAssignedContacts(currentTask) {
         assignableContactsContainer.appendChild(div);
     }
 }
-
 
 function toggleCheckbox(checkboxId) {
     var checkbox = document.getElementById(checkboxId);
@@ -360,6 +388,33 @@ function showSubtasks(task) {
     for (let i = 0; i < task["taskSub"].length; i++) {
         const subTask = task["taskSub"][i]["task"];
         container.innerHTML += `<li>${subTask}</li>`;
+    }
+}
+
+function searchForTaskByInput() {
+    let search = document.getElementById("search-input").value;
+    search = search.toLowerCase();
+
+    if (search.trim() === "") {
+        // Wenn das Suchfeld leer ist, zeige alle Aufgaben
+        for (let i = 0; i < tasks.length; i++) {
+            showHiddenTask(tasks[i]["id"]);
+        }
+    } else {
+        for (let i = 0; i < tasks.length; i++) {
+            const title = tasks[i]["title"];
+            const description = tasks[i]["description"];
+
+            if (
+                title.toLowerCase().includes(search) ||
+                description.toLowerCase().includes(search)
+            ) {
+                showHiddenTask(tasks[i]["id"]);
+            } else {
+                console.log("removed task" + tasks[i]["id"]);
+                hideTask(tasks[i]["id"]);
+            }
+        }
     }
 }
 

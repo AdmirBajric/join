@@ -34,14 +34,14 @@ async function addNewTask() {
         taskSub.value === ""
     ) {
         let taskAlert = document.getElementById("taskAlert");
-        taskAlert.innerHTML = ""; // Leere den vorherigen Text
+        taskAlert.innerHTML = ""; 
         if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
         if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
         if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
         if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
         if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
         if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
-        return; 
+        return;
     }
 
     tasks.push({
@@ -61,12 +61,12 @@ async function addNewTask() {
     toDo.push(currentTaskID);
 
     const taskAddedElement = document.getElementById("taskAdded");
-    taskAddedElement.classList.remove("d-none"); 
+    taskAddedElement.classList.remove("d-none");
 
     setTimeout(() => {
         taskAddedElement.classList.add("d-none"); 
         redirectToBoard(); 
-    }, 1000); 
+    }, 1000);
 
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
@@ -79,13 +79,14 @@ async function subTasksLoad() {
     }
 }
 
+
 async function setNewTaskID() {
     try {
         let res = JSON.parse(await getItem("currentTaskID"));
         currentTaskID = res + 1;
         await setItem("currentTaskID", JSON.stringify(currentTaskID));
     } catch (e) {
-        currentTaskID = 1; 
+        currentTaskID = 1;
         await setItem("currentTaskID", JSON.stringify(currentTaskID));
     }
 }
@@ -99,6 +100,7 @@ async function loadTasks() {
     }
 }
 
+
 async function subTaskAddToJson() {
     let task = document.getElementById("subtask-input-content");
 
@@ -109,6 +111,7 @@ async function subTaskAddToJson() {
     addNewSubTask();
     task.value = "";
 }
+
 
 async function addSubtaskFromEdit(id) {
     let currentTask = tasks.find((task) => task.id == id);
@@ -123,6 +126,7 @@ async function addSubtaskFromEdit(id) {
     task.value = "";
 }
 
+
 async function addNewSubTask() {
     let subtaskContent = document.getElementById("subtaskContent");
     subtaskContent.innerHTML = "";
@@ -133,6 +137,7 @@ async function addNewSubTask() {
     <div>${task}</div>`;
     }
 }
+
 
 async function editTaskBoard(id) {
     let currentTask = tasks.find((task) => task.id == id);
@@ -150,23 +155,23 @@ async function editTaskBoard(id) {
     validateSubtasksForm(currentTask);
 
     const taskAddedElement = document.getElementById("taskAdded");
-    taskAddedElement.classList.remove("d-none"); 
+    taskAddedElement.classList.remove("d-none");
 
     setCategoryForEdit(currentTask);
 
     setTimeout(() => {
         taskAddedElement.classList.add("d-none"); 
-        reloadPage();
+        reloadPage(); 
     }, 1000);
 
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
 }
 
-
 async function setCategoryForEdit(currentTask) {
     document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
+
 
 async function deleteAllTasksFromServer() {
     try {
@@ -189,6 +194,7 @@ async function deleteAllTasksFromServer() {
         console.error("Loading error:", e);
     }
 }
+
 
 async function TaskButtonUrgent() {
     let buttonUrgent = document.getElementById("prioUrgent");
@@ -261,11 +267,9 @@ async function TaskButtonLow() {
     buttonUrgent.style.color = "black";
     buttonLow.style.color = "white";
 
-    // Setze das Bild für "Urgent" zurück
     let imageUrgent = document.getElementById("imgUrgent");
     imageUrgent.style.filter = "none";
 
-    // Setze das Bild für "Medium" zurück
     let imageMedium = document.getElementById("imgMedium");
     imageMedium.style.filter = "none";
 
@@ -278,9 +282,16 @@ function reloadPage() {
     location.reload();
 }
 
+
 function redirectToBoard() {
     window.location.href = "board.html";
 }
+
+function redirectToBoardFromPopup() {
+    window.location.href = "../../board.html";
+}
+
+
 
 function checkScreenWidth() {
     document
@@ -374,15 +385,46 @@ function renderCategoryList() {
         "dropdownCategoryContent"
     );
     categoryListContainer.innerHTML = "";
-    categoryListContainer.innerHTML += categoryListHTML();
-    }
+    categoryListContainer.innerHTML += `
+    <div class="dropdown-object" onclick="renderNewCategoryField()">
+    <div id="newCategory">New category</div>  
+    </div>
 
+
+    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
+    <div class="flex-row">
+        <span>Backoffice</span>
+        <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
+    </div>
+    </div>
+
+    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
+    <div class="flex-row">
+        <span>Sales</span>
+        <div class="category-color margin-left-10" style="background-color: pink"></div>
+    </div>
+    </div>
+
+    `;
+}
 
 function renderNewCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     document.getElementById("select-color-category").classList.remove("d-none");
 
-    dropdownField.innerHTML = categoryFieldHTML();
+    dropdownField.innerHTML = /*html*/ `
+    <div class="flex-row space-between align-center">
+    <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
+
+        <div class="flex-row align-center height-100">
+        <img src="./assets/img/close-button-addtask.svg" onclick="clearSelections()">
+
+        <div class="vert-border"></div>
+        <button class="newCategory" onclick="checkNewCategory(); stopDropdown(event);" type="button"><img
+        src="assets/img/check-addtask.svg"></button>
+        </div>
+    </div>
+    `;
     toggleDropdownCategory();
 }
 
@@ -399,11 +441,9 @@ function clearSelections() {
     hideCategoryDisplay();
 }
 
-
 function hideSelectColor() {
     document.getElementById("select-color-category").classList.add("d-none");
 }
-
 
 function hideErrorMessage() {
     document.getElementById("errorMessage").textContent = "";
@@ -418,7 +458,10 @@ function renderNormalCategoryField() {
     document.getElementById("categoryDisplay").style.display = "none";
 
     let dropdownField = document.getElementById("dropdownMinCategory");
-    dropdownField.innerHTML = normalCategoryFiled();
+    dropdownField.innerHTML = `
+    <span>Select category</span>
+    <img src="./assets/img/arrow_down_black.svg" alt="">
+`;
 }
 
 function saveSelectedCategory(element, color) {
@@ -479,10 +522,12 @@ function updateTaskCardIcons(id) {
     const imgLowTask = document.getElementById("imgLowTask");
 
     if (imgUrgentTask && imgMediumTask && imgLowTask) {
+        // Verstecke alle Icons
         imgUrgentTask.classList.add("d-none");
         imgMediumTask.classList.add("d-none");
         imgLowTask.classList.add("d-none");
 
+        // Zeige das entsprechende Icon basierend auf prio
         if (id === "urgent") {
             imgUrgentTask.classList.remove("d-none");
         } else if (id === "medium") {
@@ -497,7 +542,6 @@ function selectColor(id) {
     for (let i = 1; i < 8; i++) {
         document.getElementById(`color${i}`).classList.remove("selected-color");
     }
-    // Add "selected-color" class to the chosen color
     document.getElementById(`color${id}`).classList.add("selected-color");
     selectedColor = document.getElementById(`color${id}`).style.backgroundColor;
 }
