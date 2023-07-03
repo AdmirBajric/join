@@ -416,6 +416,7 @@ function searchForTaskByInput() {
     }
 
 
+
 function hideTask(id) {
     let taskCardContainer = document.getElementById(id);
 
