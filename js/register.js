@@ -34,12 +34,12 @@ const userNotExistOnSignUp = async () => {
 
   setTimeout(() => {
     successfullyRegistered.style.animation =
-      "fadeSendMessageOut 1s ease-in-out forwards";
-  }, 1000);
+      "fadeSendMessageOut 2s ease-in-out forwards";
+  }, 2000);
 
   setTimeout(() => {
     location.href = "index.html";
-  }, 2000);
+  }, 3000);
   userExist = !userExist;
 };
 
@@ -47,12 +47,12 @@ const userNotExistOnSignUp = async () => {
 // It displays an error message indicating that the user already exists and redirects to the index page after a delay.
 const userExistOnSignUp = () => {
   setTimeout(() => {
-    accountExist.style.animation = "fadeSendMessageOut 1s ease-in-out forwards";
-  }, 1000);
+    accountExist.style.animation = "fadeSendMessageOut 2s ease-in-out forwards";
+  }, 2000);
 
   setTimeout(() => {
     location.href = "index.html";
-  }, 2000);
+  }, 3000);
   userExist = !userExist;
 };
 
