@@ -1,7 +1,6 @@
 body {
     line-height: unset !important;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .task-card-scroll {
