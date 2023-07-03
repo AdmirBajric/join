@@ -37,9 +37,9 @@ const userNotExistOnSignUp = async () => {
       "fadeSendMessageOut 1s ease-in-out forwards";
   }, 1000);
 
-  setTimeout(() => {
-    location.href = "index.html";
-  }, 2000);
+  // setTimeout(() => {
+  //   location.href = "index.html";
+  // }, 2000);
   userExist = !userExist;
 };
 
@@ -63,12 +63,14 @@ const userExistOnSignUp = () => {
 // Additionally, empty arrays for tasks and contacts are created for the new user and saved to the database.
 const saveUserToDatabase = async () => {
   const newUser = {
-    id: generateUniqueId(),
+    id: await generateUniqueId(),
     name: signupNameInput.value,
     email: signupEmailInput.value,
     password: signupPasswordInput.value,
   };
-  users = [...users, newUser];
+
+  users.push(newUser);
+  await setItem("users", JSON.stringify(users));
 
   const tasks = JSON.parse(await getItem("tasks"));
   const contacts = JSON.parse(await getItem("contacts"));
@@ -76,7 +78,6 @@ const saveUserToDatabase = async () => {
   const newTasks = [...tasks, { ownerId: newUser.id, tasks: [] }];
   const newContacts = [...contacts, { ownerId: newUser.id, contacts: [] }];
 
-  await setItem("users", JSON.stringify(users));
   await setItem("tasks", JSON.stringify(newTasks));
   await setItem("contacts", JSON.stringify(newContacts));
 };
@@ -87,7 +88,7 @@ const saveUserToDatabase = async () => {
 // A random number between 0 and 999999 is generated using Math.random and Math.floor.
 // The timestamp and random number are concatenated to form the unique ID.
 // The resulting ID is returned as an integer.
-const generateUniqueId = () => {
+const generateUniqueId = async () => {
   const timestamp = new Date().getTime(); // Get the current timestamp
   const randomNum = Math.floor(Math.random() * 1000000); // Generate a random integer between 0 and 999999
 
