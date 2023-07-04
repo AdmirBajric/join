@@ -152,6 +152,12 @@
     border: none;
 }
 
+.add-task-btn-board:hover{
+    background-color: var(--lightBlue);
+    border:none;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
 .add-task-btn-board-mobile {
     box-sizing: border-box;
     display: flex;

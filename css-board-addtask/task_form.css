@@ -311,7 +311,13 @@ label {
 }
 
 .add-task-btn:hover {
-    background: #485d7a;
+    background: var(--lightBlue);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.clear-task-btn:hover{
+    filter: invert(50%) sepia(31%) saturate(1195%) hue-rotate(152deg) brightness(111%) contrast(82%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 #clearTask {

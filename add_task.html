@@ -56,11 +56,11 @@
 
                 <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
             <div class="dropdown-min" id="dropdownMinCategory">
-              <span>Select category</span>
-              <img src="./assets/img/arrow_down_black.svg" alt="" />
+                <span>Select category</span>
+                <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
             <div id="dropdownCategoryContent" class="dropdown-content"></div>
-          </label>
+            </label>
 
                 <div id="select-color-category" class="select-color-category d-none">
                     <div onclick="selectColor(1)" id="color1" style="background-color: red"></div>
@@ -78,10 +78,10 @@
 
                 <label for="dropdown" onclick="toggleDropdown()">
             <div class="dropdown-min" id="dropdownMin">
-              <span id="categoryTextField"> Select contacts to assign</span>
-              <img src="./assets/img/arrow_down_black.svg" alt="" />
+                <span id="categoryTextField"> Select contacts to assign</span>
+                <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
-          </label>
+            </label>
                 <div id="dropdownContent" class="dropdown-content"></div>
             </div>
 
@@ -123,10 +123,14 @@
                 <div id="subtaskContent"></div>
 
                 <div class="action-button-container">
-                    <img id="clearTask" onclick="reloadPage()" src="./assets/img/close.svg" />
+                    <button id="clearTask" onclick="reloadPage()" class="clear-task-btn">
+                        Clear
+                        <img  src="./assets/img/close.svg" />
+                    </button>
+                    
                     <button id="addTask" class="add-task-btn" type="submit">
-              Create Task
-            </button>
+                        Create Task
+                    </button>
                 </div>
             </div>
         </form>
