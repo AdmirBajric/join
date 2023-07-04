@@ -571,6 +571,12 @@
     }
 }
 
+@media only screen and (max-width:1000px){
+    .board-main-container{
+        margin-left:0;
+    }
+} 
+
 @media only screen and (max-width: 1400px) {
     .drop-area {
         align-items: center;
@@ -584,10 +590,6 @@
     }
     .board-content-element {
         width: calc(90% - 26px);
-    }
-    .board-main-container {
-        margin-left: 30px;
-        margin-right: 30px;
     }
     .headline-text {
         font-size: 48px;

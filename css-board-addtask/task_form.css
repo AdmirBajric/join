@@ -521,13 +521,19 @@ span{
     }
     .task-card {
         width: 70%;
-        margin-left:16%
+        margin-left:26%
     }
     .action-button-container{
         margin-top: 0;
     }
     .margin-bottom-60{
         margin-bottom:0;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .task-card{
+        margin-left:16rem;
     }
 }
 
