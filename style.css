@@ -106,7 +106,6 @@ body {
   font-family: var(--fontFamily);
   position: relative;
   background-color: var(--bgColor);
-  overflow: hidden;
 }
 
 /* Join start image styles */

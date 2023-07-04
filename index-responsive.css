@@ -2,9 +2,6 @@
   body {
     width: 100%;
     background-color: var(--btnBackgroundColor);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   @keyframes changeBcg {
