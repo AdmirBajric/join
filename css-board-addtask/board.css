@@ -421,6 +421,16 @@
     cursor: pointer;
 }
 
+.container-ok-popup{
+    display: flex;
+    justify-content: end;
+}
+
+#editTask:hover{
+    background-color: var(--lightBlue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}   
+
 .board-task-card:hover {
     transform: scale(1.05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

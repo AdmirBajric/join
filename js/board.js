@@ -172,8 +172,10 @@ function getUserColor(id) {
 function showDetailCard(id) {
     let overlay = document.getElementById("overlay");
     let bodyBoard = document.getElementsByClassName('body-board')[0];
+    let boardContainer = document.getElementsByClassName('board-main-container')[0];
     overlay.classList.remove("d-none");
     bodyBoard.classList.add('hidden');
+    boardContainer.classList.add('zero-margin-top');
 
     overlay.innerHTML = "";
 
@@ -191,9 +193,8 @@ function showDetailCard(id) {
             overlay.classList.add("d-none");
             overlay.innerHTML = ""; 
         }
+        
     });
-
-
 }
 
 async function getTaskPrio(task) {
@@ -486,4 +487,13 @@ function validateSubtasksForm(currentTask) {
             name: value
         });
     }
+}
+
+function openAddTaskPopup(){
+    let popupOverLay = document.getElementById('addtask-popup');
+    popupOverLay.classList.remove('d-none');
+
+    popupOverLay.innerHTML = '';
+
+    popupOverLay.innerHTML = addTaskPopupHTML();
 }

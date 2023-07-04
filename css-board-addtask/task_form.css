@@ -1,5 +1,6 @@
 body {
     line-height: unset !important;
+    overflow: hidden;
 }
 
 .task-Alert {
@@ -41,10 +42,14 @@ body {
 
 .column-left,
 .column-right {
-    flex-basis: 50%;
     display: flex;
     flex-direction: column;
 }
+
+.column-right {
+    flex-basis: 50%;
+}
+
 
 
 .column-left>*+*,
@@ -120,9 +125,8 @@ body {
 
 .prio {
     display: flex;
-    gap: 17rem;
+    gap: 3rem;
     padding: 1rem;
-
 }
 
 .prio div {
@@ -534,6 +538,9 @@ span{
 @media screen and (max-width:1000px) {
     .task-card{
         margin-left:16rem;
+    }
+    body{
+        overflow: unset;
     }
 }
 

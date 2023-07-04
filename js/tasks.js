@@ -291,8 +291,6 @@ function redirectToBoardFromPopup() {
     window.location.href = "../../board.html";
 }
 
-
-
 function checkScreenWidth() {
     document
         .getElementById("addTaskPopUp")
