@@ -152,6 +152,12 @@
     border: none;
 }
 
+.add-task-btn-board:hover{
+    background-color: var(--lightBlue);
+    border:none;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
 .add-task-btn-board-mobile {
     box-sizing: border-box;
     display: flex;
@@ -415,6 +421,16 @@
     cursor: pointer;
 }
 
+.container-ok-popup{
+    display: flex;
+    justify-content: end;
+}
+
+#editTask:hover{
+    background-color: var(--lightBlue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}   
+
 .board-task-card:hover {
     transform: scale(1.05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -565,6 +581,12 @@
     }
 }
 
+@media only screen and (max-width:1000px){
+    .board-main-container{
+        margin-left:0;
+    }
+} 
+
 @media only screen and (max-width: 1400px) {
     .drop-area {
         align-items: center;
@@ -578,10 +600,6 @@
     }
     .board-content-element {
         width: calc(90% - 26px);
-    }
-    .board-main-container {
-        margin-left: 30px;
-        margin-right: 30px;
     }
     .headline-text {
         font-size: 48px;

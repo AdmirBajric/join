@@ -291,8 +291,6 @@ function redirectToBoardFromPopup() {
     window.location.href = "../../board.html";
 }
 
-
-
 function checkScreenWidth() {
     document
         .getElementById("addTaskPopUp")
@@ -385,46 +383,14 @@ function renderCategoryList() {
         "dropdownCategoryContent"
     );
     categoryListContainer.innerHTML = "";
-    categoryListContainer.innerHTML += `
-    <div class="dropdown-object" onclick="renderNewCategoryField()">
-    <div id="newCategory">New category</div>  
-    </div>
-
-
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
-    <div class="flex-row">
-        <span>Backoffice</span>
-        <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
-    </div>
-    </div>
-
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
-    <div class="flex-row">
-        <span>Sales</span>
-        <div class="category-color margin-left-10" style="background-color: pink"></div>
-    </div>
-    </div>
-
-    `;
+    categoryListContainer.innerHTML += categoryListHTML();
 }
 
 function renderNewCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     document.getElementById("select-color-category").classList.remove("d-none");
 
-    dropdownField.innerHTML = /*html*/ `
-    <div class="flex-row space-between align-center">
-    <input placeholder="Enter new category" id="new-category" class="category-input" onclick="stopDropdown(event)">
-
-        <div class="flex-row align-center height-100">
-        <img src="./assets/img/close-button-addtask.svg" onclick="clearSelections()">
-
-        <div class="vert-border"></div>
-        <button class="newCategory" onclick="checkNewCategory(); stopDropdown(event);" type="button"><img
-        src="assets/img/check-addtask.svg"></button>
-        </div>
-    </div>
-    `;
+    dropdownField.innerHTML = renderNewCategoryHTML();
     toggleDropdownCategory();
 }
 
@@ -458,10 +424,7 @@ function renderNormalCategoryField() {
     document.getElementById("categoryDisplay").style.display = "none";
 
     let dropdownField = document.getElementById("dropdownMinCategory");
-    dropdownField.innerHTML = `
-    <span>Select category</span>
-    <img src="./assets/img/arrow_down_black.svg" alt="">
-`;
+    dropdownField.innerHTML = normalCategoryFiledHTML();
 }
 
 function saveSelectedCategory(element, color) {

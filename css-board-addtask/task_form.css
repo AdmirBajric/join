@@ -1,5 +1,6 @@
 body {
     line-height: unset !important;
+    overflow: hidden;
 }
 
 .task-Alert {
@@ -37,15 +38,18 @@ body {
 .column-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 
 .column-left,
 .column-right {
-    flex-basis: 40%;
     display: flex;
     flex-direction: column;
 }
+
+.column-right {
+    flex-basis: 50%;
+}
+
 
 
 .column-left>*+*,
@@ -121,9 +125,8 @@ body {
 
 .prio {
     display: flex;
-    gap: 17rem;
+    gap: 3rem;
     padding: 1rem;
-
 }
 
 .prio div {
@@ -139,7 +142,9 @@ body {
     cursor: pointer;
 }
 
-
+#categoryDisplay{
+    font-size: 2.1rem;
+}
 
 .prio div:hover {
     transform: scale(1.1);
@@ -311,7 +316,13 @@ label {
 }
 
 .add-task-btn:hover {
-    background: #485d7a;
+    background: var(--lightBlue);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.clear-task-btn:hover{
+    filter: invert(50%) sepia(31%) saturate(1195%) hue-rotate(152deg) brightness(111%) contrast(82%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 #clearTask {
@@ -514,6 +525,22 @@ span{
     }
     .task-card {
         width: 70%;
+        margin-left:26%
+    }
+    .action-button-container{
+        margin-top: 0;
+    }
+    .margin-bottom-60{
+        margin-bottom:0;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .task-card{
+        margin-left:16rem;
+    }
+    body{
+        overflow: unset;
     }
 }
 
@@ -570,9 +597,6 @@ span{
         width: 2rem;
         height: 2rem;
         margin-left: 470px;
-    }
-    .action-button-container {
-        margin-top: 60px;
     }
     .prio {
         gap: 10px;

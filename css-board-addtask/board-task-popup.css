@@ -16,14 +16,12 @@
     background-color: white;
 }
 
-.Task-Bottom-Content {
-    position: fixed;
-    margin-left: 25rem;
-    margin-top: 8px;
-}
-
 .Task-Bottom-Content svg {
     cursor: pointer;
+}
+
+.zero-margin-top{
+    margin-top: 0 !important;
 }
 
 .trash-popUp {
@@ -84,6 +82,12 @@
     font-size: 2rem;
     line-height: 1;
     cursor: pointer;
+}
+
+.Task-Bottom-Content{
+    display: flex;
+    justify-content: end;
+    margin-right: 2rem;
 }
 
 @media (max-width: 530px) {
