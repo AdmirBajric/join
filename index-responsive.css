@@ -1,0 +1,101 @@
+@media only screen and (max-width: 350px) {
+  body {
+    background-color: var(--btnBackgroundColor);
+  }
+
+  @keyframes changeBcg {
+    0% {
+      background-color: var(--btnBackgroundColor);
+    }
+    100% {
+      background-color: var(--bgColor);
+    }
+  }
+
+  #join-start-img {
+    display: none;
+  }
+
+  /* Join start image styles */
+  #join-start-img-responsive {
+    width: 10rem;
+    height: 12.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(./assets/img/join-small-white.svg);
+  }
+
+  @keyframes changeImg {
+    0% {
+    }
+    100% {
+      top: 7.4rem;
+      left: 5.6rem;
+      width: 6.4rem;
+      height: 7.8rem;
+      background-image: url(./assets/img/join-small-blue.svg);
+    }
+  }
+
+  /* Login container styles */
+  .login-container {
+    width: 33.2rem;
+    height: 57.3rem;
+    top: 50%;
+  }
+
+  /* Login header paragraph styles */
+  #login-header p {
+    font-size: 4.7rem;
+  }
+
+  /* Login divider styles */
+  #login-divider {
+    width: 8rem;
+  }
+
+  /* Login form styles */
+  .login-form {
+    width: 32.2rem;
+  }
+
+  /* Login email, password, and user styles */
+  #login-email,
+  #login-password,
+  #login-user {
+    width: 32.2rem;
+  }
+
+  /* Login options styles */
+  #login-options {
+    width: 32.2rem;
+    height: 6.9rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  /* Login buttons container styles */
+  #login-buttons {
+    width: 18rem;
+    height: 12.3rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #login,
+  #guest-login {
+    width: 18rem;
+  }
+
+  /* Sign up container styles */
+  #sign-up-container {
+    top: 81.6rem;
+    right: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+}

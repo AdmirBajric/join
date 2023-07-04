@@ -106,6 +106,7 @@ body {
   font-family: var(--fontFamily);
   position: relative;
   background-color: var(--bgColor);
+  overflow: hidden;
 }
 
 /* Join start image styles */
@@ -116,7 +117,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: fadeOut 1s ease-in-out forwards;
 }
 
 @keyframes fadeOut {
