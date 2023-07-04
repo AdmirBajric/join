@@ -1,6 +1,10 @@
 @media only screen and (max-width: 428px) {
   body {
+    width: 100%;
     background-color: var(--btnBackgroundColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   @keyframes changeBcg {
@@ -41,9 +45,9 @@
 
   /* Login container styles */
   .login-container {
-    width: 33.2rem;
+    width: 35.2rem;
     height: 57.3rem;
-    top: 50%;
+    position: relative;
     opacity: 0;
   }
 
@@ -94,7 +98,7 @@
   #sign-up-container {
     opacity: 0;
     top: 81.6rem;
-    right: 10%;
+    left: calc(50% - (28.7rem / 2));
     display: flex;
     justify-content: space-between;
     align-items: center;
