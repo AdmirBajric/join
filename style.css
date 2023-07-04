@@ -139,7 +139,6 @@ body {
   position: absolute;
   top: 8rem;
   left: 7.7rem;
-  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
@@ -162,7 +161,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: fadeIn 1s ease-in-out forwards;
 }
 
 /* Sign up text styles */
@@ -215,7 +213,6 @@ body {
   background-color: var(--white);
   border-radius: 3rem;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
-  animation: fadeIn 1s ease-in-out forwards;
 }
 
 /* Signup container styles */
