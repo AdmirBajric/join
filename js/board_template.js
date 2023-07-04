@@ -276,7 +276,7 @@ function getTaskCardHTML(currentTask, status) {
       <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">
-          <img id="imgUrgentTask" src="../img/${
+          <img id="imgUrgentTask" src="../assets/img/${
           currentTask["prio"]
           }-prio.svg" alt="" />
       </div>

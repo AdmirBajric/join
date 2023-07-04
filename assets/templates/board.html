@@ -7,21 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+    <link rel="stylesheet" href="../../sidebar.css" />
+    <link rel="stylesheet" href="../../sidebar_mobile.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../css-board-addtask/board.css" />
+    <link rel="stylesheet" href="../../css-board-addtask/board-edit-popup.css" />
+    <link rel="stylesheet" href="../../css-board-addtask/board-task-popup.css" />
 
-    <link rel="stylesheet" href="../../css/board.css" />
-    <link rel="stylesheet" href="../../css/board-edit-popup.css" />
-    <link rel="stylesheet" href="../../css/board-task-popup.css" />
-
-    <script src="../../storage.js"></script>
+    <script src="../../js/storage.js"></script>
     <script src="../../js/board_template.js"></script>
     <script src="../../js/tasks.js"></script>
+    <script src="../../js/header_sidebar.js"></script>
     <script src="../../js/board.js"></script>
     <script src="../../js/board_drag_drop.js"></script>
 </head>
 
-<body onload="initBoard()" class="body-board">
+<body onload="initBoard();includeLoad();" class="body-board">
     <div class="overlay-bg d-none" id="overlay"></div>
-
+    <div w3-include-html="../../header_sidebar.html"></div>
     <div class="board-main-container inner-content">
         <span id="headline-mobile" class="headline-text-mobile">Kanban Project Management Tool</span
       >

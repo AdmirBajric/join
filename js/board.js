@@ -205,7 +205,7 @@ async function getTaskPrio(task) {
         class="prio-btn-low" 
     >
         Low
-        <img id="imgUrgent" src="../img/prioLow.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/prioLow.svg" alt="" />
     </div>
         `;
             break;
@@ -215,7 +215,7 @@ async function getTaskPrio(task) {
         class="prio-btn-medium"
     >
         Medium
-        <img id="imgUrgent" src="../img/prioMedium.svg" alt="" />
+        <img id="imgUrgent" src="./assets/img/prioMedium.svg" alt="" />
     </div>
         `;
             break;
@@ -225,7 +225,7 @@ async function getTaskPrio(task) {
         class="prio-btn-urgent"
     >
         Urgent
-        <img id="imgUrgent" src="../img/prioUrgent.svg" alt=""/>
+        <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt=""/>
     </div>
         `;
             break;
@@ -396,27 +396,26 @@ function searchForTaskByInput() {
     search = search.toLowerCase();
 
     if (search.trim() === "") {
-        // Wenn das Suchfeld leer ist, zeige alle Aufgaben
+        // If the search field is empty, show all tasks
         for (let i = 0; i < tasks.length; i++) {
-            showHiddenTask(tasks[i]["id"]);
+        showHiddenTask(tasks[i]["id"]);
         }
     } else {
         for (let i = 0; i < tasks.length; i++) {
-            const title = tasks[i]["title"];
-            const description = tasks[i]["description"];
+        const task = tasks[i];
+        const title = task["title"] || ""; // Ensure title is not undefined
+        const description = task["description"] || ""; // Ensure description is not undefined
 
-            if (
-                title.toLowerCase().includes(search) ||
-                description.toLowerCase().includes(search)
-            ) {
-                showHiddenTask(tasks[i]["id"]);
-            } else {
-                console.log("removed task" + tasks[i]["id"]);
-                hideTask(tasks[i]["id"]);
-            }
+        if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+            showHiddenTask(task["id"]);
+        } else {
+            hideTask(task["id"]);
+        }
         }
     }
-}
+    }
+
+
 
 function hideTask(id) {
     let taskCardContainer = document.getElementById(id);
