@@ -16,11 +16,38 @@
     position: absolute;
     margin: auto;
     inset: 0;
+    margin-left: 20%;
+    inset: 0;
+    z-index: 99999999;
+    animation: slideIn 225ms forwards;
+    transform:translateX(-00%);
+
+}
+
+@keyframes slideIn{
+    0%{
+        transform: translateX(100%)
+    }
+    100%{
+        transform:translateX(0);
+    }
 }
 
 .column-right {
     width: 40rem;
 }
+
+
+.low-opacity{
+    opacity: 0.1;
+}
+
+.column-container-popup{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+}
+
 
 .prio-popup{
     display: flex;
@@ -29,6 +56,14 @@
     padding: 1rem;
     gap: 1rem;
 }
+
+
+.overlay-addtask-popup{
+    position: absolute;
+    margin: auto;
+    inset: 0;
+}
+
 
 .prio-popup div {
     width: 33%;
@@ -65,6 +100,15 @@
 }
 
 .clear-task-btn:hover{
+    width: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear-task-btn:hover{
+    cursor: pointer;
+
     box-shadow: 0 0.3rem 0.3rem 0 rgba(0, 0, 0, 20%);
     filter: invert(76%) sepia(36%) saturate(6486%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
@@ -74,13 +118,23 @@
 }
 
 .add-task-btn{
+
     font-size: 2.1rem;
+
+    font-size: 2.1rem !important;
+
 }
 
 .add-task-btn:hover{
     background-color: var(--lightBlue);
     box-shadow: 0 0.3rem 0.3rem 0 rgba(0, 0, 0, 20%);
 }
+
+
+.hidden{
+    overflow: hidden;
+}
+
 
 #title{
     font-size: 2.1rem;
@@ -96,4 +150,24 @@
 
 #subtask-input-content{
     height: 2.1rem;
+
+}
+
+@media screen and (max-width: 1200px) {
+    .column-container-popup{
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .popup-task{
+        width: unset;
+        height: unset;
+        background-color: unset;
+        box-shadow: unset;
+        margin-top: -15rem;
+    }
+
+    .margin-bottom-60{
+        margin-bottom: 0 !important;
+    } 
 }
