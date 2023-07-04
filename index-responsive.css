@@ -94,7 +94,7 @@
   /* Sign up container styles */
   #sign-up-container {
     opacity: 0;
-    top: 81.6rem;
+    top: 84rem;
     left: calc(50% - (28.7rem / 2));
     display: flex;
     justify-content: space-between;
