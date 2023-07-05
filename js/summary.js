@@ -9,7 +9,7 @@ async function greetingDay() {
 }
 
 function alldayGreeting() {
-  let hour = new Date().getHours();
+  let hour = new Date().getHours(); 
   if (4 <= hour && hour <= 11) {
     return "Good morning,";
   }
@@ -60,24 +60,6 @@ function toBoard() {
 }
 
 // greet name
-/*
-let user;
-
-function greet() {
-  if (user = JSON.parse(localStorage.getItem("user")) == 0)
-  {
-    document.getElementById('greet-name').innerHTML = 'Goast';
-  }else{
-    greetName();
-  }
-}
-
-function greetName() {
-  user = JSON.parse(localStorage.getItem("user"));
-  document.getElementById('greet-name').innerHTML = `${user.name}`;
-}
-*/
-
 function greet(){
   if (localStorage.getItem('username')) {
     let username = localStorage.getItem('username');
