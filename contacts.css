@@ -360,13 +360,11 @@ body {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 1;
   width: 121.2rem;
   height: 59.4rem;
   border-radius: 3rem;
   display: flex;
   background-color: var(--white);
-  animation: addFadeOut 1s ease-in-out forwards;
   opacity: 0;
   z-index: 2;
 }

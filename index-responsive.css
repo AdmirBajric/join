@@ -1,7 +1,8 @@
 @media only screen and (max-width: 428px) {
   body {
-    width: 100%;
     background-color: var(--btnBackgroundColor);
+    display: flex;
+    flex-direction: column;
   }
 
   @keyframes changeBcg {

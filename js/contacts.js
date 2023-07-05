@@ -1,5 +1,6 @@
 // The function contactsSelectedElements() likely returns the selected elements in the DOM
 const [
+  body,
   contactBody,
   addContact,
   editUserContact,
@@ -173,7 +174,8 @@ const userContactHover = () => {
 // This function is used to open the "add contact" section by changing CSS properties and calling the "animateToggle" function.
 const openAddContact = () => {
   contactExist.style.opacity = 0;
-  contactBody.style.opacity = 0.3;
+  contactBody.style.opacity = 0.2;
+  body.style.backgroundColor = "var(--btnBackgroundColor)";
   contactBody.style.zIndex = -1;
   animateToggle("fadeIn", addContact);
   addContact.style.opacity = 1;

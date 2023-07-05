@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="sidebar.css" />
     <title>Contacts</title>
   </head>
-  <body onload="includeLoad(), includeLoad_mobile()">
+  <body onload="includeLoad(); includeLoad_mobile(); responsive()">
     <div id="contacts-body">
       <div w3-include-html="header_sidebar.html"></div>
 
@@ -39,14 +39,14 @@
               <p>Better with a team</p>
             </div>
             <div id="contact-container"></div>
-            <button onclick="openAddContact()" id="new-contact">
-              <p>New contact</p>
-              <img src="./assets/img/add-contact.svg" alt="User img " />
-            </button>
           </div>
           <!-- Contacts Add Edit Delete start -->
         </div>
         <!-- Contacts container start -->
+        <button onclick="openAddContact()" id="new-contact">
+          <p>New contact</p>
+          <img src="./assets/img/add-contact.svg" alt="User img " />
+        </button>
       </div>
       <!-- Contacts screen end -->
     </div>
@@ -56,9 +56,11 @@
     <div id="add-contact">
       <div id="add-header-container">
         <img src="./assets/img/add-contact-join.svg" alt="Join image" />
-        <p class="add-header">Add contact</p>
-        <p class="add-tasks">Tasks are better with a team!</p>
-        <div class="add-divider"></div>
+        <div class="add-container">
+          <p class="add-header">Add contact</p>
+          <p class="add-tasks">Tasks are better with a team!</p>
+          <div class="add-divider"></div>
+        </div>
       </div>
 
       <div id="add-form-container">
@@ -203,6 +205,7 @@
     <!-- Javascript start -->
     <script src="./js/header_sidebar.js"></script>
     <script src="./js/sidebar_mobile.js"></script>
+    <script src="./js/responsive-contacts.js"></script>
     <script src="./js/log-out.js"></script>
     <script src="./js/helper.js"></script>
     <script src="./js/contactTemplate.js"></script>

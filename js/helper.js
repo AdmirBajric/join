@@ -1,5 +1,6 @@
 // This function is used to select and return a list of DOM elements required for various interactions and manipulations in the contacts section of the webpage.
 const contactsSelectedElements = () => {
+  const body = document.querySelector("body");
   const contactBody = document.querySelector("#contacts-body");
   const addContact = document.querySelector("#add-contact");
   const editUserContact = document.querySelector("#edit-contact");
@@ -15,6 +16,7 @@ const contactsSelectedElements = () => {
   const contactExist = document.querySelector("#contact-exist");
 
   return [
+    body,
     contactBody,
     addContact,
     editUserContact,
