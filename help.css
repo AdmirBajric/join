@@ -88,3 +88,9 @@ h1 {
         padding-bottom: 80px;
     }
 }
+
+@media (max-width: 375px) {
+    .right-help-Container {
+        margin-top: 70px;
+    }
+}

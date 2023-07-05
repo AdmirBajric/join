@@ -262,7 +262,6 @@ async function TaskButtonLow() {
     buttonLow.style.backgroundColor = "#7AE229";
     buttonUrgent.style.filter = "contrast(1)";
     buttonMedium.style.filter = "contrast(1)";
-    buttonLow.style.filter = "contrast(1)";
     buttonMedium.style.color = "black";
     buttonUrgent.style.color = "black";
     buttonLow.style.color = "white";
@@ -289,22 +288,6 @@ function redirectToBoard() {
 
 function redirectToBoardFromPopup() {
     window.location.href = "../../board.html";
-}
-
-function checkScreenWidth() {
-    document
-        .getElementById("addTaskPopUp")
-        .addEventListener("click", checkScreenWidth);
-
-    var screenWidth = window.innerWidth;
-
-    var targetWidth = 1351;
-
-    if (screenWidth >= targetWidth) {
-        showAddTaskPopUp();
-    } else {
-        window.location.href = "task_form.html";
-    }
 }
 
 function showAddTaskPopUp() {

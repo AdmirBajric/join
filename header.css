@@ -95,10 +95,19 @@ body {
 
 @media (max-width: 480px) {
    .mobile-options {
-    margin-left: -34px;
+    margin-left: -38px;
     width: 125px;
     height: 73px;
    } 
+
+   .notice-log {
+    color: white;
+   }
+
+   .log-img {
+    color: white;
+    padding-right: 23px;
+   }
 }
 
 @media (max-width: 1000px) {
@@ -127,4 +136,10 @@ body {
         padding-left: 36px;
     }
 
+}
+
+@media (max-width: 375px) {
+    .mobile-options a{
+        color: white;
+    }
 }

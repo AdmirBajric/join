@@ -44,8 +44,6 @@
     .side-img_m {
         padding: 10px;
         object-fit: cover;
-        height: 2.6vh;
-        width: 2.5vh;
     }
 
     .neben {
@@ -104,11 +102,14 @@
 
     @media (max-width: 420px) {
         .box_m {
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-left: 18px;
+            padding-right: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .px_m {
-            font-size: 1.3rem;
+            font-size: 1rem;
         }
     }
 

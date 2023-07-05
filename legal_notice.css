@@ -88,8 +88,18 @@ body {
         padding-bottom: 103px;
         font-size: 1.7vh;
     }
+}
 
-    .header-legal-notice {
-        margin-right: 10rem;
+@media (max-width: 375px) {
+    .all-in-daten {
+        width: 110%;
+    }
+
+    .header-legal-notice img {
+        display: none;
+    }
+
+    .header-legal-notice h2 {
+        font-size: 4.3rem;
     }
 }
