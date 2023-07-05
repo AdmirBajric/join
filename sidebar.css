@@ -126,4 +126,10 @@ nav{
     .side-bar {
         display: none;
     }
+
+    .box_m {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
