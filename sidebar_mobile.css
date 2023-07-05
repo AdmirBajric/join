@@ -104,11 +104,14 @@
 
     @media (max-width: 420px) {
         .box_m {
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-left: 18px;
+            padding-right: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .px_m {
-            font-size: 1.3rem;
+            font-size: 1rem;
         }
     }
 
