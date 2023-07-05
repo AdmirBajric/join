@@ -101,14 +101,4 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  @keyframes fadeInResponsive {
-    0% {
-      opacity: 0;
-      pointer-events: none;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
