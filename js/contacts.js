@@ -179,6 +179,7 @@ const openAddContact = () => {
   contactBody.style.zIndex = -1;
   animateToggle("fadeIn", addContact);
   addContact.style.opacity = 1;
+  addContact.style.zIndex = 5;
 };
 
 // This function is used to close the "add contact" section by changing CSS properties and calling the "animateToggle" function.

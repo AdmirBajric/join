@@ -366,7 +366,10 @@ body {
   display: flex;
   background-color: var(--white);
   opacity: 0;
-  z-index: 2;
+}
+
+#new-contact {
+  z-index: 4;
 }
 
 @keyframes addFadeIn {

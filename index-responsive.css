@@ -46,7 +46,7 @@
     width: 35.2rem;
     height: 57.3rem;
     position: relative;
-    opacity: 0;
+    /* opacity: 0; */
   }
 
   /* Login header paragraph styles */
