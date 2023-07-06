@@ -67,11 +67,16 @@ function activeUser() {
 }
 
 function usersName() {
-  fromLocalStorage = localStorage.getItem("user");
-  const greetName = document.getElementById("#greet-name");
-  if (fromLocalStorage[0].id === 0) {
+  fromLocalStorage = JSON.parse(localStorage.getItem("user"));
+  const fullName = fromLocalStorage[0].name;
+
+  console.log(fullName);
+
+  const greetName = document.getElementById("greet-name");
+
+  if (+fromLocalStorage[0].id === 0) {
     greetName.innerHTML = "Dear Guest";
   } else {
-    greetName.innerHTML = fromLocalStorage[0].name;
+    greetName.innerHTML = fullName;
   }
 }
