@@ -14,6 +14,9 @@ const [
   contactContainer,
   newContact,
   contactExist,
+  contactsList,
+  crudContacts,
+  contactsContainer,
 ] = contactsSelectedElements();
 
 // Count for colors
@@ -105,26 +108,52 @@ const renderHTML = () => {
 const renderContact = (id) => {
   clearActiveState();
   toggleActiveState(id);
-
-  contactContainer.style.animation = "fadeOutContact 50ms ease-in-out forwards";
-  contactContainer.innerHTML = "";
-
   const [firstLetter, lastLetter] = splitNameLastName(userContacts[id]);
 
-  let html = userContactPreview(
-    colors,
-    id,
-    firstLetter,
-    lastLetter,
-    userContacts
-  );
+  if (window.innerWidth <= 428) {
+    console.log("test");
+    contactsList.style.display = "none";
+    crudContacts.style.display = "block";
+    contactsContainer.style.position = "relative";
+    contactsContainer.style.top = "8rem";
+    newContact.style.display = "none";
 
-  setTimeout(() => {
-    contactContainer.style.animation = "fadeInContact 1s ease-in-out forwards";
-    contactContainer.innerHTML = html;
-    editContactHover();
-    userContactHover();
-  }, 100);
+    contactContainer.innerHTML = "";
+
+    let html = userContactPreviewMobile(
+      colors,
+      id,
+      firstLetter,
+      lastLetter,
+      userContacts
+    );
+
+    setTimeout(() => {
+      contactContainer.innerHTML = html;
+      editContactHover();
+      userContactHover();
+    }, 100);
+  } else {
+    contactContainer.style.animation =
+      "fadeOutContact 50ms ease-in-out forwards";
+    contactContainer.innerHTML = "";
+
+    let html = userContactPreview(
+      colors,
+      id,
+      firstLetter,
+      lastLetter,
+      userContacts
+    );
+
+    setTimeout(() => {
+      contactContainer.style.animation =
+        "fadeInContact 1s ease-in-out forwards";
+      contactContainer.innerHTML = html;
+      editContactHover();
+      userContactHover();
+    }, 100);
+  }
 };
 
 // This function is used to clear the active state from contact-user elements.

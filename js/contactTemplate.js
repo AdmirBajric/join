@@ -65,3 +65,61 @@ const userContactPreview = (
     </div>
     `;
 };
+
+// This function is used to generate a template for render one specific contact
+const userContactPreviewMobile = (
+  colors,
+  id,
+  firstNameLetter,
+  firstLastLetter,
+  users
+) => {
+  return `
+    <div class="user-contact-preview-info-mobile">
+      <h3>Kanban Project Management Tool</h3>  
+    </div>
+    <div class="user-contact-preview-title-mobile">
+      <h2>Contacts</h2>
+      <img class="user-contact-preview-title-img-mobile" src="./assets/img/arrow-left.svg" alt="Arrow left image" />
+    </div>
+    <div class="user-contact-preview-title-team-mobile">
+      <p>Better with a team</p>
+    </div>
+    <div class="user-contact-preview-title-divider-mobile"></div>
+    
+    <div class="user-contact-mobile">
+      <div style="background-color: ${colors[id]}" class="user-contact-init-mobile">
+          <p>${firstNameLetter}</p>
+          <p>${firstLastLetter}</p>
+      </div>
+  
+      <div class="user-contact-info-mobile">
+          <p class="user-contact-info-name-mobile">${users[id].fullName}</p>
+          <div onclick="addTask(${id})" class="user-contact-add-task-mobile">
+              <img class="user-contact-add-task-img-mobile" src="./assets/img/add-task-blue.svg" alt="Add task image" />
+          </div>
+      </div>
+    </div>
+  
+    <div class="contact-information-mobile">
+        <div class="contact-information-header-mobile">
+          <p>Contact Information</p>
+        </div>
+        
+        <div onclick="editContact(${id})" class="edit-contact-mobile">
+          <img class="edit-contact-img-mobile" src="./assets/img/edit-contact-black.svg" alt="Pencil" />
+        </div>
+    </div>
+  
+    <div class="contact-email-phone-mobile">
+        <div class="contact-email-mobile">
+            <p class="contact-email-header-mobile">Email</p>
+            <p class="contact-email-address-mobile">${users[id].email}</p>
+        </div>
+        <div class="contact-phone-mobile">
+            <p class="contact-phone-header-mobile">Phone</p>
+            <p class="contact-phone-number-mobile">${users[id].phone}</p>
+        </div>
+    </div>
+    `;
+};

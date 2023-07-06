@@ -11,7 +11,7 @@ async function greetingDay() {
 }
 
 function alldayGreeting() {
-  let hour = new Date().getHours(); 
+  let hour = new Date().getHours();
   if (4 <= hour && hour <= 11) {
     return "Good morning,";
   }
@@ -59,20 +59,4 @@ document.addEventListener("DOMContentLoaded", function () {
 //go to Board
 function toBoard() {
   window.location.href = "board.html";
-}
-
-
-// greet name 
-function activeUser() {
-  usersName();
-}
-
-function usersName() {
-  fromLocalStorage = localStorage.getItem('user');
-  const greetName = document.getElementById("#greet-name");
-  if (fromLocalStorage[0].id === 0) {
-    greetName.innerHTML = "Dear Guest"
-  }else{
-    greetName.innerHTML = fromLocalStorage[0].name;
-  }
 }

@@ -12,8 +12,11 @@ const contactsSelectedElements = () => {
   const editButtonsCreate = document.querySelector("#edit-form");
   const renderContacts = document.querySelector("#render-contacts");
   const contactContainer = document.querySelector("#contact-container");
+  const contactsContainer = document.querySelector("#contacts-container");
   const newContact = document.querySelector("#new-contact");
   const contactExist = document.querySelector("#contact-exist");
+  const contactsList = document.querySelector("#contacts-list");
+  const crudContacts = document.querySelector("#crud-contacts");
 
   return [
     body,
@@ -30,6 +33,9 @@ const contactsSelectedElements = () => {
     contactContainer,
     newContact,
     contactExist,
+    contactsList,
+    crudContacts,
+    contactsContainer,
   ];
 };
 
