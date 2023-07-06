@@ -68,6 +68,7 @@ function activeUser() {
 
 function usersName() {
   fromLocalStorage = JSON.parse(localStorage.getItem("user"));
+
   const fullName = fromLocalStorage[0].name;
 
   const greetName = document.getElementById("greet-name");
