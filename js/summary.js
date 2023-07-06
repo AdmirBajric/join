@@ -70,8 +70,6 @@ function usersName() {
   fromLocalStorage = JSON.parse(localStorage.getItem("user"));
   const fullName = fromLocalStorage[0].name;
 
-  console.log(fullName);
-
   const greetName = document.getElementById("greet-name");
 
   if (+fromLocalStorage[0].id === 0) {
