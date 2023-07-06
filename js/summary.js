@@ -1,6 +1,8 @@
+let fromLocalStorage;
+
 async function load() {
   await greetingDay();
-  greet();
+  activeUser();
 }
 
 // greeting day on
@@ -59,15 +61,18 @@ function toBoard() {
   window.location.href = "board.html";
 }
 
-// greet name
-function greet(){
-  if (localStorage.getItem('username')) {
-    let username = localStorage.getItem('username');
-    document.getElementById("greet-name").innerHTML = username; 
-  } else {
-    document.getElementById("greet-name").innerHTML = 'Dear Guest'
-  }
+
+// greet name 
+function activeUser() {
+  usersName();
 }
 
-
-
+function usersName() {
+  fromLocalStorage = localStorage.getItem('user');
+  const greetName = document.getElementById("#greet-name");
+  if (fromLocalStorage[0].id === 0) {
+    greetName.innerHTML = "Dear Guest"
+  }else{
+    greetName.innerHTML = fromLocalStorage[0].name;
+  }
+}
