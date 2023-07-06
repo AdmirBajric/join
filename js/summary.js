@@ -68,11 +68,14 @@ function activeUser() {
 }
 
 function usersName() {
-  fromLocalStorage = localStorage.getItem('user');
+  fromLocalStorage = JSON.parse(localStorage.getItem("user"));
+  const fullName = fromLocalStorage[0].name;
+
   const greetName = document.getElementById("#greet-name");
-  if (fromLocalStorage[0].id === 0) {
+
+  if (+fromLocalStorage[0].id === 0) {
     greetName.innerHTML = "Dear Guest"
   }else{
-    greetName.innerHTML = fromLocalStorage[0].name;
+    greetName.innerHTML = fullName;
   }
 }
