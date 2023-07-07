@@ -276,7 +276,7 @@ function getTaskCardHTML(currentTask, status) {
 
 function addTaskPopupHTML(){
   return`
-  <div onload="initTasks()" class="body-popup">
+  <div class="body-popup">
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
