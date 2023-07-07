@@ -401,15 +401,14 @@ function searchForTaskByInput() {
     search = search.toLowerCase();
 
     if (search.trim() === "") {
-        // If the search field is empty, show all tasks
         for (let i = 0; i < tasks.length; i++) {
         showHiddenTask(tasks[i]["id"]);
         }
     } else {
         for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
-        const title = task["title"] || ""; // Ensure title is not undefined
-        const description = task["description"] || ""; // Ensure description is not undefined
+        const title = task["title"] || ""; 
+        const description = task["description"] || ""; 
 
         if (title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
             showHiddenTask(task["id"]);

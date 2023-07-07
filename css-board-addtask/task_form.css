@@ -529,6 +529,7 @@ span{
     }
     .action-button-container{
         margin-top: 0;
+        margin-bottom:10rem
     }
     .margin-bottom-60{
         margin-bottom:0;
@@ -541,6 +542,9 @@ span{
     }
     body{
         overflow: unset;
+    }
+    .action-button-container{
+        margin-bottom:10rem
     }
 }
 
