@@ -10,7 +10,7 @@
 }
 
 .Task-Content {
-    height: 70rem;
+    min-height: 70rem;
     border-radius: 30px;
     width: 50rem;
     background-color: white;

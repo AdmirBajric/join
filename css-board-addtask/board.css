@@ -365,6 +365,10 @@
     border-radius: 1rem;
 }
 
+#subtasksContainer li{
+    font-size: 1.6rem;
+}
+
 .inner-content {
     scrollbar-width: auto;
     scrollbar-color: #2a3647 #f6f7f8;
@@ -426,10 +430,10 @@
     justify-content: end;
 }
 
-#editTask:hover{
-    background-color: var(--lightBlue);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}   
+#editTask{
+    margin-top: -0.3rem;
+    margin-left: -0.3rem;
+}
 
 .board-task-card:hover {
     transform: scale(1.05);

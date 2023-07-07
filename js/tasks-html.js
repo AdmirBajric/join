@@ -64,6 +64,18 @@ function categoryListHTML(){
         <div class="category-color margin-left-10" style="background-color: pink"></div>
     </div>
     </div>
+    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"blue"}')">
+    <div class="flex-row">
+        <span>Marketing</span>
+        <div class="category-color margin-left-10" style="background-color: blue"></div>
+    </div>
+    </div>
+    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"orange"}')">
+    <div class="flex-row">
+        <span>Design</span>
+        <div class="category-color margin-left-10" style="background-color: orange"></div>
+    </div>
+    </div>
 
     `
 }

@@ -425,6 +425,7 @@ label {
 .flex-row {
     display: flex;
     flex-direction: row;
+    align-items:center;
 }
 
 .space-between {
@@ -486,6 +487,13 @@ span{
 .margin-left-10 {
     margin-left: 1rem;
 }
+
+
+#subtaskContent div{
+    font-size: 2.1rem;
+}
+
+
 
 @media screen and (max-width: 1252px) {
     .column-right {
