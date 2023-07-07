@@ -111,7 +111,6 @@ const renderContact = (id) => {
   const [firstLetter, lastLetter] = splitNameLastName(userContacts[id]);
 
   if (window.innerWidth <= 428) {
-    console.log("test");
     contactsList.style.display = "none";
     crudContacts.style.display = "block";
     contactsContainer.style.position = "relative";
@@ -176,13 +175,15 @@ const toggleActiveState = (id) => {
 // This function is used to handle the hover effect for the "edit contact" image.
 const editContactHover = () => {
   const editContactImg = document.querySelector(".edit-contact-img");
-  editContactImg.addEventListener("mouseover", () => {
-    editContactImg.src = "./assets/img/edit-contact-blue.svg";
-  });
+  if (editContactImg) {
+    editContactImg.addEventListener("mouseover", () => {
+      editContactImg.src = "./assets/img/edit-contact-blue.svg";
+    });
 
-  editContactImg.addEventListener("mouseout", () => {
-    editContactImg.src = "./assets/img/edit-contact-black.svg";
-  });
+    editContactImg.addEventListener("mouseout", () => {
+      editContactImg.src = "./assets/img/edit-contact-black.svg";
+    });
+  }
 };
 
 // This function is used to handle the hover effect for the "user contact add task" image.
@@ -191,13 +192,15 @@ const userContactHover = () => {
     ".user-contact-add-task-img"
   );
 
-  userContactAddTaskImg.addEventListener("mouseover", () => {
-    userContactAddTaskImg.src = "./assets/img/add-task-blue-bold.svg";
-  });
+  if (userContactAddTaskImg) {
+    userContactAddTaskImg.addEventListener("mouseover", () => {
+      userContactAddTaskImg.src = "./assets/img/add-task-blue-bold.svg";
+    });
 
-  userContactAddTaskImg.addEventListener("mouseout", () => {
-    userContactAddTaskImg.src = "./assets/img/add-task-blue.svg";
-  });
+    userContactAddTaskImg.addEventListener("mouseout", () => {
+      userContactAddTaskImg.src = "./assets/img/add-task-blue.svg";
+    });
+  }
 };
 
 // This function is used to open the "add contact" section by changing CSS properties and calling the "animateToggle" function.

@@ -3,6 +3,7 @@
   #contacts-container {
     position: absolute;
     top: 17rem;
+    height: 74%;
   }
 
   #contacts-header {
@@ -22,12 +23,13 @@
 
   #crud-contacts {
     position: absolute;
-    top: 0;
+    top: -7.5rem;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     display: none;
+    z-index: 3;
   }
 
   #render-contacts {
@@ -211,11 +213,111 @@
 
   #contact-container {
     width: 100%;
+    height: 100vh;
     position: relative;
-    top: 0;
-    left: 0;
+    top: 3.5rem;
+    left: 3.3rem;
     right: 0;
     bottom: 0;
-    padding: 2rem;
+  }
+
+  .user-contact-preview-info-mobile {
+    width: 25.5rem;
+    height: 1.9rem;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: var(--weight4);
+    line-height: 120%;
+  }
+
+  .user-contact-preview-title-mobile {
+    width: 36.4rem;
+    height: 5.6rem;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: var(--weight7);
+    line-height: 120%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.9rem;
+  }
+
+  .user-contact-preview-title-img-mobile {
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+  }
+
+  .user-contact-preview-title-team-mobile {
+    width: 18.3rem;
+    height: 2.5rem;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: var(--weight4);
+    line-height: 120%;
+    margin-top: 2rem;
+  }
+
+  .user-contact-preview-title-divider-mobile {
+    width: 20%;
+    height: 0.3rem;
+    background-color: var(--lightBlue);
+    margin-top: 3.2rem;
+  }
+
+  .user-contact-mobile {
+    margin-top: 3.7rem;
+    width: 30rem;
+    height: 8rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .user-contact-init-mobile {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-contact-init-mobile p {
+    font-size: 27px;
+    font-style: normal;
+    font-weight: var(--weight4);
+    line-height: 120%;
+    color: var(--white);
+  }
+
+  .user-contact-info-mobile {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: var(--weight4);
+    line-height: 120%;
+  }
+
+  .user-contact-add-task-mobile {
+    cursor: pointer;
+  }
+
+  .contact-information-header-mobile {
+    margin-top: 2.1rem;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: var(--weight4);
+    line-height: 120%;
+  }
+
+  .contact-email-phone-mobile {
+    width: 14rem;
+    height: 12.8rem;
+    margin-top: 2.1rem;
+  }
+
+  .contact-email-mobile,
+  .contact-phone-mobile {
+    width: 14rem;
+    height: 5.3rem;
   }
 }

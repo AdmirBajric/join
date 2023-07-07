@@ -76,11 +76,11 @@ const userContactPreviewMobile = (
 ) => {
   return `
     <div class="user-contact-preview-info-mobile">
-      <h3>Kanban Project Management Tool</h3>  
+      <p>Kanban Project Management Tool</p>  
     </div>
     <div class="user-contact-preview-title-mobile">
-      <h2>Contacts</h2>
-      <img class="user-contact-preview-title-img-mobile" src="./assets/img/arrow-left.svg" alt="Arrow left image" />
+      <p>Contacts</p>
+      <img onclick="contactsListMobile()" class="user-contact-preview-title-img-mobile" src="./assets/img/arrow-left-line.svg" alt="Arrow left image" />
     </div>
     <div class="user-contact-preview-title-team-mobile">
       <p>Better with a team</p>
@@ -104,10 +104,6 @@ const userContactPreviewMobile = (
     <div class="contact-information-mobile">
         <div class="contact-information-header-mobile">
           <p>Contact Information</p>
-        </div>
-        
-        <div onclick="editContact(${id})" class="edit-contact-mobile">
-          <img class="edit-contact-img-mobile" src="./assets/img/edit-contact-black.svg" alt="Pencil" />
         </div>
     </div>
   
