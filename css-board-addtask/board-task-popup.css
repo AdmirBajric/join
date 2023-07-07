@@ -10,7 +10,7 @@
 }
 
 .Task-Content {
-    height: 70rem;
+    min-height: 70rem;
     border-radius: 30px;
     width: 50rem;
     background-color: white;
@@ -96,7 +96,7 @@
     }
     .Task-Bottom-Content {
         margin-left: 23rem;
-        margin-top: 1.7rem;
+        margin-top: -1.7rem;
     }
 }
 

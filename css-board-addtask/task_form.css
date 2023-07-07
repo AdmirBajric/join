@@ -425,6 +425,7 @@ label {
 .flex-row {
     display: flex;
     flex-direction: row;
+    align-items:center;
 }
 
 .space-between {
@@ -487,6 +488,13 @@ span{
     margin-left: 1rem;
 }
 
+
+#subtaskContent div{
+    font-size: 2.1rem;
+}
+
+
+
 @media screen and (max-width: 1252px) {
     .column-right {
         width: 40rem;
@@ -529,6 +537,7 @@ span{
     }
     .action-button-container{
         margin-top: 0;
+        margin-bottom:10rem
     }
     .margin-bottom-60{
         margin-bottom:0;
@@ -541,6 +550,9 @@ span{
     }
     body{
         overflow: unset;
+    }
+    .action-button-container{
+        margin-bottom:10rem
     }
 }
 
