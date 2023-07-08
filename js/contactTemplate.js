@@ -126,10 +126,10 @@ const userContactPreviewMobile = (
 
    
         <div onclick="deleteContact(${id})" class="contact-crud-options-delete">
-          <img src="../assets/img/delete.svg" alt="Delete img"/> 
+          <img src="./assets/img/delete.svg" alt="Delete img"/> 
         </div>
         <div onclick="" class="contact-crud-options-edit">
-        <img src="../assets/img/pencil-blue.svg" alt="Edit img"/> 
+        <img src="./assets/img/pencil-blue.svg" alt="Edit img"/> 
         </div>
    
     `;
