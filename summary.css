@@ -322,9 +322,7 @@ body {
     color: #2a3647; 
 }
 
-.first-mobile-greeting {
-    display: none;
-}
+
 
 @media (max-width: 1000px) {
 
@@ -360,45 +358,6 @@ body {
 
     .greet-container {
         display: none;
-    }
-
-}
-
-@media (max-width: 1500px) {
-
-    .first-mobile-greeting {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        visibility: hidden;
-        display: block;
-        position: absolute;
-        z-index: 105;
-        top: 75%;
-        left: 45%;
-        height: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: visibility 0s linear 10s, opacity 5s;
-        z-index: 100000;
-    }
-    
-    .first-mobile-greeting {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .mobileTextgreeting {
-        display: flex;
-        font-size: 3rem;
-        color: #2a3647;
-    }
-
-    .mobileNamegreeting {
-        display: flex;
-        font-size: 2.6rem;
-        font-weight: bold;
-        color: #29abe2;
     }
 
 }

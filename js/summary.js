@@ -1,16 +1,13 @@
 let fromLocalStorage;
-let localstorage;
 
 async function load() {
   await greetingDay();
   activeUser();
-  mobileUsers();
 }
 
 // greeting day on
 async function greetingDay() {
   document.getElementById("dayGreeting").innerText = alldayGreeting();
-  document.getElementById("mobileTextgreeting").innerText = alldayGreeting();
 }
 
 function alldayGreeting() {
@@ -80,25 +77,5 @@ function usersName() {
     greetName.innerHTML = "Dear Guest";
   } else {
     greetName.innerHTML = fullName;
-  }
-}
-
-
-// greet mobile Users
-function mobileUsers() {
-  mobileusersName();
-}
-
-function mobileusersName() {
-  localstorage = JSON.parse(localStorage.getItem("user"));
-
-  const fullName = localstorage[0].name;
-
-  const greetmobileName = document.getElementById("mobileNamegreeting");
-
-  if (+localstorage[0].id === 0) {
-    greetmobileName.innerHTML = "Dear Guest";
-  } else {
-    greetmobileName.innerHTML = fullName;
   }
 }
