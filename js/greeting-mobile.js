@@ -1,9 +1,27 @@
 let localstorage;
 
 async function mobile() {
+  greetSummaryAnimation();
   await greetingDay();
   mobileUsers();
-  greetSummaryAnimation();
+}
+
+function greetSummaryAnimation() {
+  if (window.innerWidth > 1500) {
+    
+  } else if (window.innerWidth < 1500) {
+
+    setTimeout(() => {
+      location.href = "summary.html";
+    }, 2000);
+
+    const greetingElement = document.getElementById("mobileTextgreeting");
+    const greetingElementtow = document.getElementById("mobileNamegreeting");
+
+    console.log(greetingElement);
+    console.log(greetingElementtow);
+
+  }
 }
 
 // greeting day on
@@ -42,17 +60,3 @@ function mobileUsers() {
       greetmobileName.innerHTML = fullName;
     }
   }
-
-
-  function greetSummaryAnimation() {
-    if (window.innerWidth <= 1500) {
-      const greetingElement = document.getElementById("mobileTextgreeting");
-      const greetingElementtow = document.getElementById("mobileNamegreeting");
-      console.log = greetingElement;
-      console.log = greetingElementtow;
-      } else {
-        setTimeout(() => {
-            location.href = "summary.html";
-        }, 3000);
-      }
-    }
