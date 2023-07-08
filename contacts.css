@@ -7,6 +7,7 @@ body {
   height: 100vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 
 #nav-contacts-container {
@@ -390,7 +391,7 @@ body {
 }
 
 @keyframes addFadeIn {
-  0% {
+  0% {\
     left: 150%;
   }
   100% {
