@@ -14,15 +14,21 @@ const responsive = () => {
         addFormCloseImg.src = "./assets/img/close-white.svg";
         editFormCloseImg.src = "./assets/img/close-white.svg";
       }
+
+      contactsListMobile();
     },
     true
   );
 };
 
 const contactsListMobile = () => {
-  contactsContainer.style.position = "absolute";
-  contactsContainer.style.top = "17rem";
-  contactsList.style.display = "block";
-  crudContacts.style.display = "none";
-  newContact.style.display = "flex";
+  if (window.innerWidth <= 428) {
+    contactsContainer.style.position = "absolute";
+    contactsContainer.style.top = "17rem";
+    contactsList.style.display = "";
+    crudContacts.style.display = "none";
+    newContact.style.display = "flex";
+  } else {
+    contactsContainer.style.top = "8rem";
+  }
 };

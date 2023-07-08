@@ -146,8 +146,13 @@ const renderContact = (id) => {
     );
 
     setTimeout(() => {
-      contactContainer.style.animation =
-        "fadeInContact 1s ease-in-out forwards";
+      if (window.innerWidth <= 428) {
+        contactContainer.style.animation =
+          "fadeInContactMobile 1s ease-in-out forwards";
+      } else {
+        contactContainer.style.animation =
+          "fadeInContact 1s ease-in-out forwards";
+      }
       contactContainer.innerHTML = html;
       editContactHover();
       userContactHover();
@@ -224,7 +229,6 @@ const closeAddContact = () => {
 // This function is used to close the "edit contact" section by changing CSS properties and calling the "animateToggle" function.
 const closeEditContact = () => {
   contactBody.style.opacity = 1;
-  contactBody.style.zIndex = 1;
   animateToggle("fadeOut", editUserContact);
 };
 
@@ -285,9 +289,11 @@ const deleteContact = async (id) => {
 
   const newUser = { ownerId: userId[0].ownerId, contacts: filterContacts };
 
-  const filterAllContacts = allContacts.filter((i) => {
+  const filterAllContacts = await allContacts.map((i) => {
     if (i.ownerId === userId[0].ownerId) {
-      return newUser;
+      i = newUser;
+      console.log(i);
+      return i;
     }
     return i;
   });
@@ -322,7 +328,6 @@ const saveEditedContact = async (id) => {
   closeEditContact();
   renderHTML();
   const index = userContacts.findIndex((o) => o.email === user.email);
-  console.log(index);
   renderContact(id);
 };
 
@@ -330,7 +335,7 @@ const saveEditedContact = async (id) => {
 const filterTheUsers = async (user) => {
   const [name, email, phone] = inputFields();
 
-  const filterUser = await userContacts.filter((r) => {
+  const filterUser = await userContacts.map((r) => {
     if (user.email === r.email) {
       r.fullName = name.value;
       r.email = email.value;

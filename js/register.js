@@ -91,5 +91,5 @@ const generateUniqueId = async () => {
   const timestamp = new Date().getTime(); // Get the current timestamp
   const randomNum = Math.floor(Math.random() * 1000000); // Generate a random integer between 0 and 999999
 
-  return parseInt(`${timestamp}${randomNum}`);
+  return `${timestamp}${randomNum}`;
 };

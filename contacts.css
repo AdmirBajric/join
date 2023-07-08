@@ -87,6 +87,10 @@ body {
   color: var(--white);
 }
 
+.contact-user-active:hover {
+  cursor: pointer;
+}
+
 .contact-user-init {
   width: 4.2rem;
   height: 4.2rem;
@@ -177,6 +181,18 @@ body {
   100% {
     opacity: 1;
     left: 6.5rem;
+  }
+}
+
+@keyframes fadeInContactMobile {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+    left: 30rem;
+  }
+  100% {
+    opacity: 1;
+    left: 3.3em;
   }
 }
 
