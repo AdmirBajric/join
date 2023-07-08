@@ -78,44 +78,59 @@ const userContactPreviewMobile = (
     <div class="user-contact-preview-info-mobile">
       <p>Kanban Project Management Tool</p>  
     </div>
+
     <div class="user-contact-preview-title-mobile">
       <p>Contacts</p>
       <img onclick="contactsListMobile()" class="user-contact-preview-title-img-mobile" src="./assets/img/arrow-left-line.svg" alt="Arrow left image" />
     </div>
+
     <div class="user-contact-preview-title-team-mobile">
       <p>Better with a team</p>
     </div>
+
     <div class="user-contact-preview-title-divider-mobile"></div>
     
-    <div class="user-contact-mobile">
-      <div style="background-color: ${colors[id]}" class="user-contact-init-mobile">
-          <p>${firstNameLetter}</p>
-          <p>${firstLastLetter}</p>
+
+    <div id="user-info-container">
+      <div class="user-contact-mobile">
+        <div style="background-color: ${colors[id]}" class="user-contact-init-mobile">
+            <p>${firstNameLetter}</p>
+            <p>${firstLastLetter}</p>
+        </div>
+    
+        <div class="user-contact-info-mobile">
+            <p class="user-contact-info-name-mobile">${users[id].fullName}</p>
+            <div onclick="addTask(${id})" class="user-contact-add-task-mobile">
+                <img class="user-contact-add-task-img-mobile" src="./assets/img/add-task-blue.svg" alt="Add task image" />
+            </div>
+        </div>
       </div>
-  
-      <div class="user-contact-info-mobile">
-          <p class="user-contact-info-name-mobile">${users[id].fullName}</p>
-          <div onclick="addTask(${id})" class="user-contact-add-task-mobile">
-              <img class="user-contact-add-task-img-mobile" src="./assets/img/add-task-blue.svg" alt="Add task image" />
+    
+      <div class="contact-information-mobile">
+          <div class="contact-information-header-mobile">
+            <p>Contact Information</p>
+          </div>
+      </div>
+    
+      <div class="contact-email-phone-mobile">
+          <div class="contact-email-mobile">
+              <p class="contact-email-header-mobile">Email</p>
+              <p class="contact-email-address-mobile">${users[id].email}</p>
+          </div>
+          <div class="contact-phone-mobile">
+              <p class="contact-phone-header-mobile">Phone</p>
+              <p class="contact-phone-number-mobile">${users[id].phone}</p>
           </div>
       </div>
     </div>
-  
-    <div class="contact-information-mobile">
-        <div class="contact-information-header-mobile">
-          <p>Contact Information</p>
+
+   
+        <div onclick="deleteContact(${id})" class="contact-crud-options-delete">
+          <img src="../assets/img/delete.svg" alt="Delete img"/> 
         </div>
-    </div>
-  
-    <div class="contact-email-phone-mobile">
-        <div class="contact-email-mobile">
-            <p class="contact-email-header-mobile">Email</p>
-            <p class="contact-email-address-mobile">${users[id].email}</p>
+        <div onclick="" class="contact-crud-options-edit">
+        <img src="../assets/img/pencil-blue.svg" alt="Edit img"/> 
         </div>
-        <div class="contact-phone-mobile">
-            <p class="contact-phone-header-mobile">Phone</p>
-            <p class="contact-phone-number-mobile">${users[id].phone}</p>
-        </div>
-    </div>
+   
     `;
 };

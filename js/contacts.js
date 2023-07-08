@@ -300,6 +300,7 @@ const deleteContact = async (id) => {
   renderContacts.innerHTML = "";
   closeEditContact();
   renderHTML();
+  contactsListMobile();
 };
 
 // This function is used to save the edited contact with the provided 'id'.

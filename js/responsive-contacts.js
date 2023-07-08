@@ -20,5 +20,7 @@ const responsive = () => {
 };
 
 const contactsListMobile = () => {
-  console.log("Hier wie denn Screen umschalten");
+  contactsList.style.display = "block";
+  crudContacts.style.display = "none";
+  newContact.style.display = "flex";
 };
