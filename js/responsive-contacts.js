@@ -20,6 +20,8 @@ const responsive = () => {
 };
 
 const contactsListMobile = () => {
+  contactsContainer.style.position = "absolute";
+  contactsContainer.style.top = "17rem";
   contactsList.style.display = "block";
   crudContacts.style.display = "none";
   newContact.style.display = "flex";
