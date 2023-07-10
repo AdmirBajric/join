@@ -31,6 +31,16 @@
   #contacts-header p {
     display: none;
   }
+
+  .contact-info {
+    margin-left: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .contact-info {
+    margin-left: 1.5rem;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -41,9 +51,17 @@
   #nav-contacts-container {
     margin-left: 0;
   }
+}
 
+@media only screen and (max-width: 800px) {
   .contact-info {
-    margin-left: 0;
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .contact-info {
+    margin-left: 0.5rem;
   }
 }
 
@@ -268,11 +286,10 @@
   }
 
   #contact-container {
-    width: 92%;
+    width: 100%;
     height: 96%;
     position: relative;
     top: 3.5rem;
-    left: 3.3rem;
     right: 0;
     bottom: 0;
   }
@@ -421,7 +438,7 @@
     border: 1px solid var(--version-2-main-color, #2a3647);
     position: absolute;
     bottom: 9.9rem;
-    right: 2.2rem;
+    right: 5.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -436,7 +453,7 @@
   .contact-crud-options-edit {
     position: absolute;
     bottom: 3.3rem;
-    right: 2.2rem;
+    right: 5.5rem;
     cursor: pointer;
   }
 }
@@ -446,7 +463,24 @@
     display: none;
   }
 
-  .contact-info {
+  .user-contact-preview-title-mobile {
+    width: 30rem;
+    font-size: 3.7rem;
+  }
+
+  #user-info-container {
     margin-left: 0;
+  }
+
+  .user-contact-init-mobile {
+    display: none;
+  }
+
+  .user-contact-info-mobile {
+    margin-left: 0;
+  }
+
+  .contact-info {
+    margin-left: 3.5rem;
   }
 }
