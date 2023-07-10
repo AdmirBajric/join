@@ -6,7 +6,6 @@ const responsive = () => {
       if (activeContact) {
         renderContact(activeContact.id);
       }
-      responsive();
       contactsListMobile();
     },
     true
