@@ -7,7 +7,7 @@ const renderContactsList = (
   user
 ) => {
   return `
-    <div onclick="renderContact(${count})" class="contact-user contact-user-${count}">
+    <div id="${count}" onclick="renderContact(${count})" class="contact-user contact-user-${count}">
         <div style="background-color: ${colors[count]}" class="contact-user-init">
             <p>${firstNameLetter}</p>
             <p>${firstLastLetter}</p>

@@ -168,9 +168,9 @@ body {
 #contact-container {
   position: absolute;
   top: 20.3rem;
-  /* left: 6.5rem; */
   width: 46.1rem;
   height: 36.4rem;
+  animation: fadeInContactMobile 1s ease-in-out forwards;
 }
 
 @keyframes fadeInContact {
@@ -193,17 +193,17 @@ body {
   }
   100% {
     opacity: 1;
-    left: 3.3em;
+    left: 5em;
   }
 }
 
 @keyframes fadeOutContact {
   0% {
     opacity: 1;
-    left: 6.5rem;
+    left: 30rem;
   }
   100% {
-    left: 30rem;
+    left: 6.5rem;
     opacity: 0;
   }
 }

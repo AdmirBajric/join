@@ -10,7 +10,7 @@ const contactsSelectedElements = () => {
   const editInputPhone = document.querySelector("#edit-input-phone");
   const editButtonsCancel = document.querySelector("#edit-buttons-cancel");
   const editButtonsCreate = document.querySelector("#edit-form");
-  const renderContacts = document.querySelector("#render-contacts");
+  const renderAllContacts = document.querySelector("#render-contacts");
   const contactContainer = document.querySelector("#contact-container");
   const contactsContainer = document.querySelector("#contacts-container");
   const newContact = document.querySelector("#new-contact");
@@ -29,7 +29,7 @@ const contactsSelectedElements = () => {
     editInputPhone,
     editButtonsCancel,
     editButtonsCreate,
-    renderContacts,
+    renderAllContacts,
     contactContainer,
     newContact,
     contactExist,

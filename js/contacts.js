@@ -10,7 +10,7 @@ const [
   editInputPhone,
   editButtonsCancel,
   editButtonsCreate,
-  renderContacts,
+  renderAllContacts,
   contactContainer,
   newContact,
   contactExist,
@@ -101,7 +101,7 @@ const renderHTML = () => {
   }
 
   // Display the HTML output
-  renderContacts.innerHTML = htmlOutput;
+  renderAllContacts.innerHTML = htmlOutput;
 };
 
 // Generate and render the contacts
@@ -110,9 +110,9 @@ const renderContact = (id) => {
   toggleActiveState(id);
   const [firstLetter, lastLetter] = splitNameLastName(userContacts[id]);
 
-  if (window.innerWidth <= 428) {
+  if (window.innerWidth <= 700) {
     contactsList.style.display = "none";
-    crudContacts.style.display = "block";
+    crudContacts.style.display = "flex";
     contactsContainer.style.position = "relative";
     contactsContainer.style.top = "8rem";
     newContact.style.display = "none";
@@ -146,7 +146,7 @@ const renderContact = (id) => {
     );
 
     setTimeout(() => {
-      if (window.innerWidth <= 428) {
+      if (window.innerWidth <= 700) {
         contactContainer.style.animation =
           "fadeInContactMobile 1s ease-in-out forwards";
       } else {
@@ -304,7 +304,7 @@ const deleteContact = async (id) => {
 
   userContacts = filterContacts;
   contactContainer.innerHTML = "";
-  renderContacts.innerHTML = "";
+  renderAllContacts.innerHTML = "";
   closeEditContact();
   renderHTML();
   contactsListMobile();
@@ -325,7 +325,7 @@ const saveEditedContact = async (id) => {
   await setItem("contacts", JSON.stringify(newUserObject));
   localStorage.setItem("userContacts", JSON.stringify(newUserObject));
 
-  renderContacts.innerHTML = "";
+  renderAllContacts.innerHTML = "";
   closeEditContact();
   renderHTML();
   const index = userContacts.findIndex((o) => o.email === user.email);
@@ -412,6 +412,7 @@ const createContact = async () => {
     closeAddContact();
     renderHTML();
     const index = userContacts.findIndex((o) => o.email === newUser.email);
+    console.log(index);
     renderContact(index);
   };
 
@@ -435,7 +436,7 @@ const createContact = async () => {
 
 // This function is used to clear the input fields
 const clearInputsInnerHtml = (name, email, phone) => {
-  renderContacts.innerHTML = "";
+  renderAllContacts.innerHTML = "";
   name.value = "";
   email.value = "";
   phone.value = "";
