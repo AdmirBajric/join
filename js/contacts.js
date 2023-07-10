@@ -212,7 +212,6 @@ const userContactHover = () => {
 const openAddContact = () => {
   contactExist.style.opacity = 0;
   contactBody.style.opacity = 0.2;
-  body.style.backgroundColor = "var(--btnBackgroundColor)";
   contactBody.style.zIndex = -1;
   animateToggle("fadeIn", addContact);
   addContact.style.opacity = 1;
