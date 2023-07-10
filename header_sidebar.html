@@ -4,7 +4,9 @@
   <link rel="stylesheet" href="sidebar.css" />
   <script src="./js/log-out.js"></script>
   <script src="./js/routing.js"></script>
-  <body>
+  <script src="./js/header_sidebar.js"></script>
+
+  <body onload="sidimmerhov(), includeLoad()">
     <!--header on-->
     <header class="head">
       <img class="img-mini" src="imgH/Capa.png" />
@@ -43,28 +45,28 @@
 
         <div class="side-navigation">
           <div class="side-around">
-            <div class="box" id="summary-link" onclick="gotoSummary()">
+            <div class="box sidebarBtn sidebarBtnActive" id="summary" onclick="gotoSummary()">
               <div class="side-summary">
                 <img class="side-img" src="sidebarimg/Vector.png" />
                 <span class="px">Summary</span>
               </div>
             </div>
 
-            <div class="box" onclick="gotoBoard()">
+            <div class="box sidebarBtn" id="board" onclick="gotoBoard()">
               <div class="side-board">
                 <img class="side-img" src="sidebarimg/Vector (1).png" />
                 <span class="px">Board</span>
               </div>
             </div>
 
-            <div class="box" onclick="gotoAddTask()">
+            <div class="box sidebarBtn" id="addTask" onclick="gotoAddTask()">
               <div class="side-addtask">
                 <img class="side-img" src="sidebarimg/Group 1.png" />
                 <span class="px">Add Task</span>
               </div>
             </div>
 
-            <div class="box" onclick="gotoContacts()">
+            <div class="box sidebarBtn" id="contacts" onclick="gotoContacts()">
               <div class="side-contacts">
                 <img class="side-img" src="sidebarimg/Vector (2).png" />
                 <span class="px">Contacts</span>
@@ -72,7 +74,7 @@
             </div>
           </div>
         </div>
-        <div class="box1" onclick="gotoLegalNotice()">
+        <div class="box1 sidebarBtn" id="legalNotice" onclick="gotoLegalNotice()">
           <div class="side-legal">
             <img class="side-img" src="sidebarimg/Group 4.png" />
             <span class="px">Legal Notice</span>

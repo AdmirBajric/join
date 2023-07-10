@@ -122,6 +122,10 @@ nav{
     font-size: 18px;
 }
 
+.sidebarBtnActive {
+    background: #091931;
+}
+
 @media (max-width: 1000px) {
     .side-bar {
         display: none;
