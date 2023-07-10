@@ -21,6 +21,42 @@
   #contacts-header p {
     font-size: 2rem;
   }
+
+  #add-contact,
+  #edit-contact {
+    width: 100rem;
+  }
+
+  #edit-header-container,
+  #add-header-container {
+    width: 35.7rem;
+  }
+
+  #edit-form-container,
+  #add-form-container {
+    width: 64.3rem;
+  }
+
+  .edit-header,
+  .add-header {
+    font-size: 4.5rem;
+  }
+
+  .add-tasks {
+    font-size: 2rem;
+  }
+
+  .edit-form-user-img,
+  .add-form-user-img {
+    display: none;
+  }
+
+  #edit-form,
+  #edit-buttons,
+  #add-form,
+  #add-buttons {
+    left: calc(80% - 42.2rem);
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -41,6 +77,42 @@
   .contact-info {
     margin-left: 1.5rem;
   }
+
+  #add-contact,
+  #edit-contact {
+    width: 80rem;
+  }
+
+  #edit-header-container,
+  #add-header-container {
+    width: 35.7rem;
+  }
+
+  #edit-form-container,
+  #add-edit-container {
+    width: 64.3rem;
+  }
+
+  .edit-header,
+  .add-header {
+    font-size: 3.5rem;
+  }
+
+  .edit-form-user-img,
+  .add-form-user-img {
+    display: none;
+  }
+
+  #edit-form,
+  #edit-buttons,
+  #add-form,
+  #add-buttons {
+    left: calc(90% - 42.2rem);
+  }
+
+  .add-tasks {
+    font-size: 1.6rem;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -57,6 +129,46 @@
   .contact-info {
     margin-left: 2rem;
   }
+
+  #add-contact,
+  #edit-contact {
+    width: 70rem;
+  }
+
+  .edit-divider {
+    top: 30rem;
+  }
+
+  #edit-header-container,
+  #add-form-container {
+    width: 35.7rem;
+  }
+
+  #edit-form-container,
+  #add-form-container {
+    width: 64.3rem;
+  }
+
+  .edit-header,
+  .add-header {
+    font-size: 2.5rem;
+  }
+
+  .edit-form-user-img,
+  .add-form-user-img {
+    display: none;
+  }
+
+  #edit-form,
+  #edit-buttons,
+  #add-form,
+  #add-buttons {
+    left: calc(97% - 42.2rem);
+  }
+
+  .add-tasks {
+    font-size: 1.5rem;
+  }
 }
 
 @media only screen and (max-width: 740px) {
@@ -66,6 +178,11 @@
 }
 
 @media only screen and (max-width: 700px) {
+  .edit-form-user-img,
+  .add-form-user-img {
+    display: flex;
+  }
+
   .contact-user-init {
     display: flex;
   }
@@ -269,7 +386,7 @@
 
   @keyframes fadeInResponsive {
     0% {
-      top: 150%;
+      top: 200%;
     }
     100% {
       top: 50%;
@@ -281,7 +398,7 @@
       top: 50%;
     }
     100% {
-      top: 150%;
+      top: 200%;
     }
   }
 
@@ -482,5 +599,63 @@
 
   .contact-info {
     margin-left: 3.5rem;
+  }
+
+  #add-contact,
+  #edit-contact {
+    width: 32rem;
+    left: 40%;
+  }
+
+  .add-container {
+    width: 90%;
+  }
+
+  .add-divider {
+    width: 100%;
+  }
+
+  .add-form-user-img,
+  .edit-form-user-img {
+    left: 10rem;
+  }
+
+  #add-header-container,
+  #edit-header-container {
+    width: 32rem;
+  }
+
+  #edit-form-container,
+  #add-form-container {
+    width: 32rem;
+  }
+
+  .edit-header {
+    font-size: 4rem;
+  }
+
+  #edit-form,
+  #add-form,
+  #add-form-name,
+  #add-form-email,
+  #add-form-phone,
+  #edit-form-name,
+  #edit-form-email,
+  #edit-form-phone {
+    width: 31rem;
+  }
+
+  #edit-form-name div,
+  #edit-form-email div,
+  #edit-form-phone div,
+  #add-form-name div,
+  #add-form-email div,
+  #add-form-phone div {
+    width: 31rem;
+  }
+
+  #edit-buttons-cancel {
+    width: 12rem;
+    padding: 1.2rem 1rem;
   }
 }

@@ -392,7 +392,7 @@ body {
 
 @keyframes addFadeIn {
   0% {
-    left: 150%;
+    left: 200%;
   }
   100% {
     left: 50%;
@@ -404,7 +404,7 @@ body {
     left: 50%;
   }
   100% {
-    left: 150%;
+    left: 200%;
   }
 }
 
