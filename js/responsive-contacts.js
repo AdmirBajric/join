@@ -21,7 +21,6 @@ const checkImg = () => {
   const editFormCloseImg = document.querySelector(".edit-form-close-img");
 
   if (window.innerWidth <= 700) {
-    console.log("checkIMg");
     addFormCloseImg.src = "./assets/img/close-white.svg";
     editFormCloseImg.src = "./assets/img/close-white.svg";
   } else {
