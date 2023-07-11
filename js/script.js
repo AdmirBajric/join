@@ -27,6 +27,11 @@ let userInputEmailAddress = "";
 // This function is used to display the sign-up form and hide all other containers in the user interface.
 // It is typically called when the user clicks on the "Sign Up" link or button to switch to the registration screen.
 const registerScreen = () => {
+  if (window.innerWidth <= 700) {
+    login.style.display = "none";
+    signUp.style.display = "flex";
+    signUp.style.animation = "forgotPasswordIn 1s ease-in-out forwards";
+  }
   hideAllContainers();
 
   errorMessage.style.opacity = 0;
@@ -53,6 +58,11 @@ const hideAllContainers = () => {
 
 // This function displays the "forgot password" screen by hiding all other containers and showing the "forgotPassword" container.
 const forgotScreen = () => {
+  if (window.innerWidth <= 700) {
+    login.style.display = "none";
+    forgotPassword.style.display = "flex";
+    forgotPassword.style.animation = "forgotPasswordIn 1s ease-in-out forwards";
+  }
   hideAllContainers();
   forgotPassword.style.display = "flex";
   signUpContainer.style.display = "none";
@@ -63,10 +73,18 @@ const forgotScreen = () => {
 const sendEmail = () => {
   userInputEmailAddress = forgotPasswordInput.value;
 
-  forgotPassword.style.display = "none";
+  if (window.innerWidth <= 700) {
+    forgotPassword.style.display = "none";
+    sentConfirmationMessage.style.display = "flex";
+    sentConfirmationMessage.style.animation =
+      "fadeSendMessageIn 600ms ease-in-out forwards";
+    resetPassword.style.animation = "forgotPasswordIn 1s ease-in-out forwards";
+  } else {
+    forgotPassword.style.display = "none";
+    sentConfirmationMessage.style.animation =
+      "fadeSendMessageIn 600ms ease-in-out forwards";
+  }
   forgotPasswordInput.value = "";
-  sentConfirmationMessage.style.animation =
-    "fadeSendMessageIn 600ms ease-in-out forwards";
   setTimeout(() => {
     resetPassword.style.display = "flex";
     sentConfirmationMessage.style.animation =

@@ -1,4 +1,4 @@
-@media only screen and (max-width: 428px) {
+@media only screen and (max-width: 700px) {
   body {
     background-color: var(--btnBackgroundColor);
     display: flex;
@@ -41,12 +41,23 @@
     }
   }
 
+  @keyframes fadeInContainers {
+    0% {
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   /* Login container styles */
   .login-container {
     width: 35.2rem;
     height: 57.3rem;
     position: relative;
-    /* opacity: 0; */
+    opacity: 0;
   }
 
   /* Login header paragraph styles */
@@ -100,5 +111,82 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  #signup-container {
+    width: 35.2rem !important;
+  }
+
+  #login-header {
+    margin-top: 2rem;
+    justify-content: space-around;
+  }
+
+  #signup-form {
+    width: 32rem !important;
+  }
+
+  #reset-password-container {
+    width: 35.2rem !important;
+  }
+
+  #sent-confirmation-message {
+    width: 35rem !important;
+    font-size: 1.8rem !important;
+    display: none;
+  }
+
+  #forgot-password-container {
+    width: 35.2rem !important;
+    height: 50rem !important;
+  }
+
+  .login-header,
+  #login-header {
+    width: 30rem !important;
+    height: 10rem !important;
+    text-align: center;
+    margin-top: 6rem;
+  }
+
+  #reset-password-info {
+    width: 32rem !important;
+  }
+
+  #reset-password-form {
+    width: 32.2rem !important;
+  }
+
+  #sent-message-img {
+    display: none;
+  }
+
+  #login-header p {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: var(--weight7);
+    line-height: 120%;
+  }
+
+  #forgot-password-info {
+    width: 32rem;
+    font-size: 2rem;
+    font-weight: var(--weight4);
+    margin-top: 2rem;
+  }
+
+  #forgot-password-form {
+    width: 32rem !important;
+    height: 7.1rem !important;
+  }
+
+  @keyframes forgotPasswordIn {
+    0% {
+      top: 200%;
+    }
+    100% {
+      opacity: 1;
+      top: 50%;
+    }
   }
 }
