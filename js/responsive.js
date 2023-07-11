@@ -11,4 +11,9 @@ const responsive = () => {
       "fadeInContainers 1s ease-in-out forwards";
     loginContainer.style.animation = "fadeInContainers 1s ease-in-out forwards";
   }, 2000);
+
+  setTimeout(() => {
+    loginContainer.style.display = "flex";
+    signUpContainer.style.display = "flex";
+  }, 500);
 };

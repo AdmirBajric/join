@@ -55,7 +55,7 @@
   /* Login container styles */
   .login-container {
     width: 35.2rem;
-    height: 57.3rem;
+    height: 60rem;
     position: relative;
     opacity: 0;
   }
@@ -146,7 +146,6 @@
     width: 30rem !important;
     height: 10rem !important;
     text-align: center;
-    margin-top: 6rem;
   }
 
   #reset-password-info {

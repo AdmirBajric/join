@@ -161,6 +161,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  display: none;
 }
 
 /* Sign up text styles */
@@ -213,6 +214,7 @@ body {
   background-color: var(--white);
   border-radius: 3rem;
   box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
+  display: none;
 }
 
 /* Signup container styles */
