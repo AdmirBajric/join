@@ -281,11 +281,11 @@
 
   .add-header,
   .edit-header {
-    font-size: 4.7rem;
+    font-size: 4.4rem;
   }
 
   .add-tasks {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
   }
 
@@ -612,7 +612,8 @@
   }
 
   .add-divider {
-    width: 100%;
+    width: 85%;
+    align-self: center;
   }
 
   .add-form-user-img,
@@ -657,5 +658,10 @@
   #edit-buttons-cancel {
     width: 12rem;
     padding: 1.2rem 1rem;
+  }
+
+  .edit-divider {
+    width: 85%;
+    align-self: center;
   }
 }
