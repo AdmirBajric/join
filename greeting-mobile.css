@@ -1,3 +1,4 @@
+@media (max-width: 1500px) {
 body {
     margin: 0;
     font-family: "Inter", sans-serif;
@@ -29,6 +30,20 @@ body {
     font-size: 3.6rem;
     font-weight: bold;
     color: #29abe2;
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  #mobileTextgreeting, #mobileNamegreeting {
+    animation: fadeOut 1.3s linear 1.3s forwards;
+  }
 }
 
 @media (max-width: 500px) {
