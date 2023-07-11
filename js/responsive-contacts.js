@@ -1,23 +1,27 @@
 const responsive = () => {
-  window.addEventListener(
-    "resize",
-    (e) => {
-      const activeContact = document.querySelector(".contact-user-active");
-      if (activeContact) {
-        renderContact(activeContact.id);
-      }
-      contactsListMobile();
-    },
-    true
-  );
+  contactsListMobile();
   checkImg();
 };
+
+window.addEventListener(
+  "resize",
+  (e) => {
+    const activeContact = document.querySelector(".contact-user-active");
+    if (activeContact) {
+      renderContact(activeContact.id);
+    }
+    contactsListMobile();
+    checkImg();
+  },
+  true
+);
 
 const checkImg = () => {
   const addFormCloseImg = document.querySelector(".add-form-close-img");
   const editFormCloseImg = document.querySelector(".edit-form-close-img");
 
   if (window.innerWidth <= 700) {
+    console.log("checkIMg");
     addFormCloseImg.src = "./assets/img/close-white.svg";
     editFormCloseImg.src = "./assets/img/close-white.svg";
   } else {
