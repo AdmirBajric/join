@@ -6,17 +6,22 @@ async function mobile() {
   mobileUsers();
 }
 
-function greetSummaryAnimation() {
+
+
+  function greetSummaryAnimation() {
+
+  const greetingElement = document.getElementById("mobileTextgreeting");
+  const greetingElementtow = document.getElementById("mobileNamegreeting");
+
   if (window.innerWidth > 1500) {
-    
+    location.href = "summary.html";   //hir braucht man noch eine bessere lössung !
   } else if (window.innerWidth < 1500) {
 
     setTimeout(() => {
+      greetingElement.classList.add("fade-out");
+      greetingElementtow.classList.add("fade-out");
       location.href = "summary.html";
     }, 2000);
-
-    const greetingElement = document.getElementById("mobileTextgreeting");
-    const greetingElementtow = document.getElementById("mobileNamegreeting");
 
     console.log(greetingElement);
     console.log(greetingElementtow);
