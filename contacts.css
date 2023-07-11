@@ -47,8 +47,8 @@ body {
   overflow: scroll;
 }
 
-#render-contacts:last-child {
-  margin-bottom: 3rem;
+.contact-user:last-child {
+  margin-bottom: 5rem;
 }
 
 .contact-letter {
