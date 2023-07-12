@@ -88,18 +88,20 @@ function renderTaskCardToDo() {
 async function renderTaskCardProgress() {
     let progressContainer = document.getElementById("inProgress");
     let renderedIDs = {};
-    await loadTasks(); 
+    await loadTasks();
 
     for (let i = 0; i < inProgress.length; i++) {
         let currentTask = tasks.find((task) => task.id === inProgress[i]);
 
-        if (!renderedIDs[currentTask.id]) {
+        if (currentTask && !renderedIDs[currentTask.id]) {
             progressContainer.innerHTML += getTaskCardHTML(currentTask, "inProgress");
             renderedIDs[currentTask.id] = true;
             renderAvatars(currentTask);
         }
     }
 }
+
+
 
 function renderTaskCardFeedback() {
     let feedbackContainer = document.getElementById("feedback");

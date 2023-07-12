@@ -253,12 +253,9 @@ function getTaskCardHTML(currentTask, status) {
       }</div>
       <div class="task-card-bottom-container align-center margin-bottom-10">
       <div class="subtasks-border">
-          <div id="subtasksStatus" style="width:${
-          (currentTask["subtasksClosed"].length /
-              currentTask["taskSub"].length) *
-          100
-          }%" class="subtasks-status"></div>
-      </div>
+    <div id="subtasksStatus" style="width:${currentTask["taskSub"].length > 0 ? (currentTask["subtasksClosed"].length / currentTask["taskSub"].length) * 100 : 0}%" class="subtasks-status"></div>
+</div>
+
       <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
   currentTask["taskSub"].length
   } done</span>

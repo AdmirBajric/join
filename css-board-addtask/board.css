@@ -209,8 +209,7 @@
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 6rem;
-    border: 3px dotted transparent;
-    min-height: 1vh;
+    height: 100%;
 }
 
 .add-border {
@@ -565,6 +564,7 @@
 .task-card-top-div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     font-size: 1.6rem;
 }
