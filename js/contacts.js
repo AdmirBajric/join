@@ -411,7 +411,6 @@ const createContact = async () => {
     closeAddContact();
     renderHTML();
     const index = userContacts.findIndex((o) => o.email === newUser.email);
-    console.log(index);
     renderContact(index);
   };
 
