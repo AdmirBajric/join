@@ -397,6 +397,12 @@ body {
   }
 }
 
+@media (max-width: 885px) {
+  .container-right {
+    margin-left: 140px;
+  }
+}
+
 @media (max-width: 850px) {
   .container-right {
     margin-left: 115px;
@@ -418,6 +424,12 @@ body {
 @media (max-width: 660px) {
   .container-right {
     margin-left: 80px;
+  }
+}
+
+@media (max-width: 585px) {
+  .container-right {
+    margin-left: 53px;
   }
 }
 
@@ -461,9 +473,15 @@ body {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .container-right {
-    margin-left: 15px;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 408px) {
+  .container-right {
+    margin-left: 8px;
   }
 }
 
@@ -497,7 +515,7 @@ body {
 
 @media (max-width: 375px) {
   .container-right {
-    margin-left: 8px;
+    margin-left: 5px;
   }
 
   .on-top {
