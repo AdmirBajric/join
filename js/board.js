@@ -124,7 +124,6 @@ async function renderTaskCardDone() {
 
     for (let i = 0; i < done.length; i++) {
         let currentTask = tasks.find((task) => task.id === done[i]);
-        console.log('currentTask.id:', currentTask.id);
 
         if (!renderedIDs[currentTask.id]) {
             doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");

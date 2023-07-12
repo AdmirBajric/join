@@ -277,7 +277,7 @@ function addTaskPopupHTML(){
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div class="margin-bottom-60 headline-container">
+      <div>
           <span class="headline-text">Add Task</span>
       </div>
 

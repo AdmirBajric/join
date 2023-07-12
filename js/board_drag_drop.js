@@ -20,6 +20,23 @@ function drag(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
+async function drop(ev, status) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    let data = ev.dataTransfer.getData("text/plain");
+    let draggedElement = document.getElementById(data);
+    let dropArea = ev.target;
+
+    // Check if the drop area is valid for the dragged element
+    if (dropArea.classList.contains("drop-area")) {
+        dropArea.appendChild(draggedElement);
+        await moveTo(status);
+    } else {
+        // Invalid drop area, return the element to its original position
+        draggedElement.classList.remove("d-none");
+    }
+}
+
 async function moveTo(status) {
     let targetArray;
     switch (status) {
@@ -61,13 +78,11 @@ async function checkTargetArrayForID(targetArray, status) {
 }
 
 function getTaskById(id) {
-    // Durchsuche alle Aufgaben nach der übergebenen ID
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
-            return tasks[i]; // Rückgabe des gefundenen Aufgabenobjekts
+            return tasks[i];
         }
     }
-    // Wenn keine Übereinstimmung gefunden wurde, gib null zurück oder wirf eine entsprechende Fehlermeldung
     return null;
 }
 

@@ -15,6 +15,7 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     position: absolute;
     margin: auto;
+    margin-top: 6% !important;
     inset: 0;
     margin-left: 20%;
     inset: 0;
@@ -153,7 +154,6 @@
         flex-direction: column !important;
     }
     .headline-container{
-        margin-top:15rem;
         align-items: start !important;
     }
     .hidden{
