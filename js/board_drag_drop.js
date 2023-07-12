@@ -1,3 +1,5 @@
+let currentDraggedElement;
+
 async function startDragging(id, status) {
     currentDraggedElement = id;
     await showDropArea(status);
@@ -70,7 +72,6 @@ async function moveTo(status) {
 async function checkTargetArrayForID(targetArray, status) {
     const elementExists = targetArray.includes(currentDraggedElement);
     if (elementExists) {
-        console.log("Element already exists in the array.");
         return;
     }
     targetArray.push(currentDraggedElement);
@@ -132,7 +133,6 @@ async function deleteTaskFromDragged(id, sourceArray) {
 }
 
 async function showDropArea(status) {
-    console.log(status);
     switch (status) {
         case "toDo":
             document.getElementById("inProgress").classList.add("add-border");

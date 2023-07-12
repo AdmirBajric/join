@@ -2,7 +2,6 @@ let toDo = [];
 let inProgress = [];
 let feedback = [];
 let done = [];
-let currentDraggedElement;
 
 async function initBoard() {
     clearTasksContainer();
