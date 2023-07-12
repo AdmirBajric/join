@@ -32,8 +32,6 @@ if (window.innerWidth <= 700) {
     login.style.top = "60%";
   } else if (window.innerHeight <= 915) {
     login.style.top = "55%";
-  } else if (window.innerHeight <= 1030) {
-    login.style.top = "40%";
   }
 }
 
