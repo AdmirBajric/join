@@ -14,7 +14,7 @@ async function mobile() {
   const greetingElementtow = document.getElementById("mobileNamegreeting");
 
   if (window.innerWidth > 1500) {
-    location.href = "summary.html";   //hir braucht man noch eine bessere lössung !
+    location.href = "summary.html";
   } else if (window.innerWidth < 1500) {
 
     setTimeout(() => {
