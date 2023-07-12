@@ -8,6 +8,23 @@ const activePage = () => {
     currentPageUrl.length - 5
   );
 
+  if (word !== "help") {
+    selectActive();
+    const findClass = document.querySelectorAll(`.${word}-sidebar`);
+
+    findClass.forEach((c) => {
+      c.classList.add("sidebarBtnActive");
+    });
+  } else {
+    selectActive();
+  }
+};
+
+setTimeout(() => {
+  activePage();
+}, 500);
+
+const selectActive = () => {
   const sideBarDesktop = document.querySelector(".side-around");
   const sideBarDesktopActive =
     sideBarDesktop.querySelectorAll(".sidebarBtnActive");
@@ -17,14 +34,4 @@ const activePage = () => {
   const sideBarMobileActive =
     sideBarMobile.querySelectorAll(".sidebarBtnActive");
   sideBarMobileActive.forEach((b) => b.classList.remove("sidebarBtnActive"));
-
-  const findClass = document.querySelectorAll(`.${word}-sidebar`);
-
-  findClass.forEach((c) => {
-    c.classList.add("sidebarBtnActive");
-  });
 };
-
-setTimeout(() => {
-  activePage();
-}, 500);

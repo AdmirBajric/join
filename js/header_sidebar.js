@@ -1,10 +1,5 @@
 async function includeLoad() {
   await includeHTML();
-  renderSummary();
-  renderBoard();
-  renderAddTask();
-  renderContacts();
-  renderLegalNotice();
 }
 
 // includeHTML
@@ -43,42 +38,3 @@ function gotoLegalNotice() {
   window.location.href = "legal_notice.html";
 }
 /*sidebar navigation off*/
-
-/*sidebar hover frozen on*/
-function renderSummary() {
-  let summary = document.getElementById("summary");
-  sidebarBtnActiveFN(summary);
-  lastActivePage = "summary";
-}
-
-function renderBoard() {
-  let board = document.getElementById("board");
-  sidebarBtnActiveFN(board);
-  lastActivePage = "board";
-}
-
-function renderAddTask() {
-  let addTask = document.getElementById("addTask");
-  sidebarBtnActiveFN(addTask);
-  lastActivePage = "addTask";
-}
-
-function renderContacts() {
-  let contacts = document.getElementById("contacts");
-  sidebarBtnActiveFN(contacts);
-  lastActivePage = "contacts";
-}
-
-function renderLegalNotice() {
-  let legalNotice = document.getElementById("legalNotice");
-  sidebarBtnActiveFN(legalNotice);
-  lastActivePage = "legalNotice";
-}
-
-function sidebarBtnActiveFN(element) {
-  const buttons = document.getElementsByClassName("sidebarBtn");
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("sidebarBtnActive");
-  }
-  element.classList.add("sidebarBtnActive");
-}
