@@ -253,12 +253,9 @@ function getTaskCardHTML(currentTask, status) {
       }</div>
       <div class="task-card-bottom-container align-center margin-bottom-10">
       <div class="subtasks-border">
-          <div id="subtasksStatus" style="width:${
-          (currentTask["subtasksClosed"].length /
-              currentTask["taskSub"].length) *
-          100
-          }%" class="subtasks-status"></div>
-      </div>
+    <div id="subtasksStatus" style="width:${currentTask["taskSub"].length > 0 ? (currentTask["subtasksClosed"].length / currentTask["taskSub"].length) * 100 : 0}%" class="subtasks-status"></div>
+</div>
+
       <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
   currentTask["taskSub"].length
   } done</span>
@@ -280,7 +277,7 @@ function addTaskPopupHTML(){
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div class="margin-bottom-60">
+      <div>
           <span class="headline-text">Add Task</span>
       </div>
 
@@ -324,7 +321,7 @@ function addTaskPopupHTML(){
                   <div onclick="selectColor(7)" id="color7" style="background-color: blue"></div>
               </div>
               <div id="errorMessage" style="color: red"></div>
-              <div id="categoryDisplay" style="display: none; color: green"></div>
+              <div id="categoryDisplay" style="display: none"></div>
 
               <label>Assigned to</label>
 

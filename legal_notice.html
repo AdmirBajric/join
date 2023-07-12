@@ -14,17 +14,15 @@
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="sidebar.css" />
     <link rel="stylesheet" href="sidebar_mobile.css" />
-    <script src="./js/sidebar_mobile.js"></script>
-    <script src="./js/header_sidebar.js"></script>
-    <script src="./js/log-out.js"></script>
-    <script src="./js/routing.js"></script>
 
     <script
       src="https://kit.fontawesome.com/aa0c350945.js"
       crossorigin="anonymous"
     ></script>
+
     <title>Add Task</title>
   </head>
+
   <body onload="includeLoad(), includeLoad_mobile()" class="legal-notice">
     <div w3-include-html="header_sidebar.html"></div>
 
@@ -429,5 +427,10 @@
       </div>
     </div>
     <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
+
+    <script src="./js/sidebar_mobile.js"></script>
+    <script src="./js/header_sidebar.js"></script>
+    <script src="./js/log-out.js"></script>
+    <script src="./js/routing.js"></script>
   </body>
 </html>
