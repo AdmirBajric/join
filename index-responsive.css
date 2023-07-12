@@ -3,7 +3,7 @@
     background-color: var(--btnBackgroundColor);
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
   }
 
   @keyframes changeBcg {

@@ -22,6 +22,21 @@ const [
   sentConfirmationMessage,
 ] = indexSelectedElements();
 
+if (window.innerWidth <= 700) {
+  signUpContainer.style.marginBottom = "4rem";
+  if (window.innerHeight <= 667) {
+    login.style.top = "70%";
+  } else if (window.innerHeight <= 740) {
+    login.style.top = "62%";
+  } else if (window.innerHeight <= 815) {
+    login.style.top = "60%";
+  } else if (window.innerHeight <= 915) {
+    login.style.top = "55%";
+  } else if (window.innerHeight <= 1030) {
+    login.style.top = "40%";
+  }
+}
+
 let userInputEmailAddress = "";
 
 // This function is used to display the sign-up form and hide all other containers in the user interface.
