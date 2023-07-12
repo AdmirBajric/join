@@ -22,7 +22,7 @@ const activePage = () => {
 
 setTimeout(() => {
   activePage();
-}, 500);
+}, 400);
 
 const selectActive = () => {
   const sideBarDesktop = document.querySelector(".side-around");
