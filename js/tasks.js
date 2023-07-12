@@ -372,6 +372,7 @@ function renderCategoryList() {
 function renderNewCategoryField() {
     let dropdownField = document.getElementById("dropdownMinCategory");
     document.getElementById("select-color-category").classList.remove("d-none");
+    document.getElementById('dropdownCategoryContent').classList.add("d-none")
 
     dropdownField.innerHTML = renderNewCategoryHTML();
     toggleDropdownCategory();
@@ -496,6 +497,8 @@ function checkNewCategory() {
     const newCategoryInput = document.getElementById("new-category");
     const categoryDisplay = document.getElementById("categoryDisplay");
     const dataField = document.getElementById("categoryEdit");
+    const categoryInputField = document.getElementById('new-category');
+    const categoryContent = document.getElementById('dropdownCategoryContent')
 
     if (selectedColor && newCategoryInput.value !== "") {
         selectedCategory = newCategoryInput.value;
@@ -508,6 +511,7 @@ function checkNewCategory() {
     if (newCategoryInput.value === "") {
         hideCategoryDisplay(categoryDisplay);
     }
+
 }
 
 function displayCategory(category) {

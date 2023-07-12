@@ -280,7 +280,7 @@ function addTaskPopupHTML(){
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div class="margin-bottom-60">
+      <div class="margin-bottom-60 headline-container">
           <span class="headline-text">Add Task</span>
       </div>
 
@@ -324,7 +324,7 @@ function addTaskPopupHTML(){
                   <div onclick="selectColor(7)" id="color7" style="background-color: blue"></div>
               </div>
               <div id="errorMessage" style="color: red"></div>
-              <div id="categoryDisplay" style="display: none; color: green"></div>
+              <div id="categoryDisplay" style="display: none"></div>
 
               <label>Assigned to</label>
 

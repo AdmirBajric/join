@@ -495,11 +495,13 @@ function validateSubtasksForm(currentTask) {
 function openAddTaskPopup(){
     let popupOverLay = document.getElementById('addtask-popup');
     let bodyBoard = document.getElementsByClassName('body-board')[0];
+    let boardContent = document.getElementsByClassName('board-main-container')[0];
+    console.log(boardContent);
     bodyBoard.classList.add('hidden');
     popupOverLay.classList.remove('d-none');
+    boardContent.classList.add('d-none');
 
     popupOverLay.innerHTML = '';
 
     popupOverLay.innerHTML = addTaskPopupHTML();
-
 }

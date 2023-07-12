@@ -1,5 +1,8 @@
 body {
     line-height: unset !important;
+}
+
+.body-addtask{
     overflow: hidden;
 }
 
@@ -144,6 +147,7 @@ body {
 
 #categoryDisplay{
     font-size: 2.1rem;
+    color: var(--lightBlue);
 }
 
 .prio div:hover {
@@ -417,9 +421,8 @@ label {
 }
 
 .dropdown-min.open {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: unset;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .flex-row {
@@ -510,6 +513,9 @@ span{
 }
 
 @media screen and (max-width: 1100px) {
+    .body-addtask{
+        overflow-y:scroll ;
+    }
     .column-container {
         flex-direction: column;
     }
