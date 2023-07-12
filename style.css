@@ -204,7 +204,7 @@ body {
   width: 65.2rem;
   height: 51.3rem;
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
