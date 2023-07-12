@@ -93,10 +93,6 @@ body {
   align-items: center;
 }
 
-.active {
-  background-color: var(--active);
-}
-
 @media (max-width: 480px) {
   .mobile-options {
     margin-left: -38px;

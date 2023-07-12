@@ -82,29 +82,3 @@ function sidebarBtnActiveFN(element) {
   }
   element.classList.add("sidebarBtnActive");
 }
-
-function lastPage() {
-  let currentPageUrl = window.location.href;
-
-  let lastSlashIndex = currentPageUrl.lastIndexOf("/");
-
-  let word = currentPageUrl.substring(
-    lastSlashIndex + 1,
-    currentPageUrl.length - 5
-  );
-
-  const sideBarDesktop = document.querySelector(".side-around");
-  const sideBarDesktopActive = sideBarDesktop.querySelectorAll(".active");
-  sideBarDesktopActive.forEach((a) => a.classList.remove("active"));
-
-  const sideBarMobile = document.querySelector(".side-container_m");
-  const sideBarMobileActive = sideBarMobile.querySelectorAll(".active");
-  sideBarMobileActive.forEach((b) => b.classList.remove("active"));
-
-  const findClass = document.querySelectorAll(`.${word}-sidebar`);
-
-  findClass.forEach((c) => {
-    c.classList.add("active");
-  });
-}
-/*sidebar hover frozen off*/
