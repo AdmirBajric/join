@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     margin-left: 232px;
     margin-right: 80px;
-    margin-top: 100px;
+    margin-top: 135px;
 }
 
 .right-Notiz {
@@ -25,11 +25,11 @@ body {
 
 .p-px {
     padding-left: 30px;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .p-px1 {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .nummer {
@@ -44,6 +44,12 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+h2 {
+    font-size: 25px;
+    padding-bottom: 30px;
+    padding-top: 25px;
 }
 
 .img-close {
@@ -68,29 +74,17 @@ h1 {
     } 
 
     .p-px1 {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .p-px {
-        font-size: 15px;
+        font-size: 18px;
     }
 
-}
-
-@media (max-width: 685px) {
-    .right-help-Container {
-        margin-top: 55px;
-    }
 }
 
 @media (max-width: 580px) {
     .content {
         padding-bottom: 80px;
-    }
-}
-
-@media (max-width: 375px) {
-    .right-help-Container {
-        margin-top: 70px;
     }
 }
