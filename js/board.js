@@ -1,7 +1,7 @@
 let toDo = [];
 let inProgress = [];
 let feedback = [];
-let done = [];
+let done = [133];
 
 async function initBoard() {
     clearTasksContainer();
@@ -18,10 +18,13 @@ async function initBoard() {
 async function loadTasks() {
     try {
         tasks = JSON.parse(await getItem("tasks"));
+        if (!tasks) {
+        tasks = []; // Create an empty array if no tasks are found
+        }
     } catch (e) {
         console.error("Loading error:", e);
     }
-}
+    }
 
 function renderBoard() {
     renderTaskCardToDo();
@@ -83,32 +86,39 @@ function renderTaskCardToDo() {
     }
     }
 
-
-async function renderTaskCardProgress() {
-    let progressContainer = document.getElementById("inProgress");
-    let renderedIDs = {};
-    await loadTasks();
-
-    for (let i = 0; i < inProgress.length; i++) {
-        let currentTask = tasks.find((task) => task.id === inProgress[i]);
-
-        if (currentTask && !renderedIDs[currentTask.id]) {
-            progressContainer.innerHTML += getTaskCardHTML(currentTask, "inProgress");
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
-        }
-    }
-}
-
-
-
 function renderTaskCardFeedback() {
     let feedbackContainer = document.getElementById("feedback");
     let renderedIDs = {};
+    
+    if (!tasks) {
+        console.error("Tasks array is empty or undefined.");
+        return;
+    }
+    
     for (let i = 0; i < feedback.length; i++) {
         let currentTask = tasks.find((task) => task.id === feedback[i]);
         if (currentTask && !renderedIDs[currentTask.id]) {
         feedbackContainer.innerHTML += getTaskCardHTML(currentTask, "feedback");
+        renderedIDs[currentTask.id] = true;
+        renderAvatars(currentTask);
+        }
+    }
+    }
+    
+    async function renderTaskCardProgress() {
+    let progressContainer = document.getElementById("inProgress");
+    let renderedIDs = {};
+    
+    if (!tasks) {
+        console.error("Tasks array is empty or undefined.");
+        return;
+    }
+    
+    for (let i = 0; i < inProgress.length; i++) {
+        let currentTask = tasks.find((task) => task.id === inProgress[i]);
+    
+        if (currentTask && !renderedIDs[currentTask.id]) {
+        progressContainer.innerHTML += getTaskCardHTML(currentTask, "inProgress");
         renderedIDs[currentTask.id] = true;
         renderAvatars(currentTask);
         }
@@ -120,17 +130,19 @@ async function renderTaskCardDone() {
     let doneContainer = document.getElementById("done");
     let renderedIDs = {};
     await loadTasks();
-
+    
     for (let i = 0; i < done.length; i++) {
         let currentTask = tasks.find((task) => task.id === done[i]);
-
-        if (!renderedIDs[currentTask.id]) {
-            doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
+    
+        if (currentTask && !renderedIDs[currentTask.id]) {
+        doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
+        renderedIDs[currentTask.id] = true;
+        renderAvatars(currentTask);
         }
     }
-}
+    }
+    
+    
 
 
 function clearTasksContainer() {
