@@ -1,40 +1,33 @@
-let localstorage;
+const mobileGreeting = document.querySelector(".first-mobile-greeting");
+const summaryDesktop = document.querySelector(".on-top");
 
 async function mobile() {
-  greetSummaryAnimation();
-  await greetingDay();
-  mobileUsers();
+  document.getElementById("mobileTextgreeting").innerText =
+    await alldayGreeting();
+  await mobileUsersName();
+  await greetSummaryAnimation();
 }
 
-
-
-  function greetSummaryAnimation() {
-
-  const greetingElement = document.getElementById("mobileTextgreeting");
-  const greetingElementtow = document.getElementById("mobileNamegreeting");
-
-  if (window.innerWidth > 1500) {
-    location.href = "summary.html";
-  } else if (window.innerWidth < 1500) {
+async function greetSummaryAnimation() {
+  if (window.innerWidth >= 1000) {
+    mobileGreeting.style.display = "none";
+    summaryDesktop.style.display = "flex";
+  } else if (window.innerWidth <= 1000) {
+    mobileGreeting.style.display = "flex";
+    summaryDesktop.style.display = "none";
 
     setTimeout(() => {
-      greetingElement.classList.add("fade-out");
-      greetingElementtow.classList.add("fade-out");
-      location.href = "summary.html";
+      mobileGreeting.style.animation =
+        "fadeOutGreeting 1s ease-in-out forwards";
+      mobileGreeting.style.display = "none";
+
+      summaryDesktop.style.animation = "fadeInGreeting 1s ease-in-out forwards";
+      summaryDesktop.style.display = "flex";
     }, 2000);
-
-    console.log(greetingElement);
-    console.log(greetingElementtow);
-
   }
 }
 
-// greeting day on
-async function greetingDay() {
-  document.getElementById("mobileTextgreeting").innerText = alldayGreeting();
-}
-
-function alldayGreeting() {
+async function alldayGreeting() {
   let hour = new Date().getHours();
   if (4 <= hour && hour <= 11) {
     return "Good morning,";
@@ -47,21 +40,16 @@ function alldayGreeting() {
   }
 }
 
-// greet mobile Users
-function mobileUsers() {
-    mobileusersName();
+async function mobileUsersName() {
+  localstorage = JSON.parse(localStorage.getItem("user"));
+
+  const fullName = localstorage[0].name;
+
+  const greetmobileName = document.getElementById("mobileNamegreeting");
+
+  if (+localstorage[0].id === 0) {
+    greetmobileName.innerHTML = "Dear Guest";
+  } else {
+    greetmobileName.innerHTML = fullName;
   }
-  
-  function mobileusersName() {
-    localstorage = JSON.parse(localStorage.getItem("user"));
-  
-    const fullName = localstorage[0].name;
-  
-    const greetmobileName = document.getElementById("mobileNamegreeting");
-  
-    if (+localstorage[0].id === 0) {
-      greetmobileName.innerHTML = "Dear Guest";
-    } else {
-      greetmobileName.innerHTML = fullName;
-    }
-  }
+}

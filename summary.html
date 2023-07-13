@@ -8,6 +8,7 @@
       href="./assets/img/join-small.svg"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="greeting-mobile.css" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="sidebar.css" />
     <link rel="stylesheet" href="summary.css" />
@@ -16,8 +17,13 @@
     <title>Summary-join</title>
   </head>
 
-  <body onload="load(), includeLoad(), includeLoad_mobile()">
+  <body onload="load(), includeLoad(), includeLoad_mobile(), mobile()">
     <div w3-include-html="header_sidebar.html"></div>
+
+    <div class="first-mobile-greeting">
+      <div class="mobileTextgreeting" id="mobileTextgreeting"></div>
+      <div class="mobileNamegreeting" id="mobileNamegreeting"></div>
+    </div>
 
     <!--Summary on-->
     <div class="on-top">
@@ -103,6 +109,7 @@
     <script src="./js/storage.js"></script>
     <script src="./js/sidebar_mobile.js"></script>
     <script src="./js/routing.js"></script>
+    <script src="./js/greeting-mobile.js"></script>
     <script src="./js/activePage.js" defer></script>
   </body>
 </html>
