@@ -127,6 +127,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 21px;
 }
 
 .urgent {
@@ -208,7 +209,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 285px;
+  width: 258px;
   height: 145px;
   background-color: white;
   border: 1px solid #e3e1e1cd;
@@ -243,7 +244,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 285px;
+  width: 258px;
   height: 145px;
   background-color: white;
   border: 1px solid #e3e1e1;
@@ -376,11 +377,11 @@ body {
   }
 
   .to-do-div {
-    width: 222px;
+    width: 195px;
   }
 
   .done-div {
-    width: 222px;
+    width: 195px;
   }
 
   .tasks-progress {
@@ -420,19 +421,28 @@ body {
   }
 }
 
-@media (max-width: 585px) {
+@media (max-width: 660px) {
   .container-right {
-    margin-left: 15px;
+    margin-left: 80px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 585px) {
   .container-right {
-    margin-left: 10px;
+    margin-left: 53px;
+  }
+}
+
+@media (max-width: 540px) {
+  .container-right {
+    margin-left: 30px;
   }
 }
 
 @media (max-width: 530px) {
+  .container-right {
+    margin-left: 60px;
+  }
 
   .img-summary {
     display: none;
@@ -455,11 +465,17 @@ body {
   }
 
   .to-do-div {
-    width: 200px;
+    width: 175px;
   }
 
   .done-div {
-    width: 200px;
+    width: 175px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-right {
+    margin-left: 30px;
   }
 }
 
@@ -471,7 +487,7 @@ body {
 
 @media (max-width: 430px) {
   .container-right {
-    margin-left: 8px;
+    margin-left: 25px;
   }
 
   .container-tasks {
@@ -499,7 +515,7 @@ body {
 
 @media (max-width: 375px) {
   .container-right {
-    margin-left: 8px;
+    margin-left: 10px;
   }
 
   .on-top {
@@ -533,12 +549,12 @@ body {
   }
 
   .to-do-div {
-    width: 175px;
+    width: 153px;
     height: 130px;
   }
 
   .done-div {
-    width: 175px;
+    width: 153px;
     height: 130px;
     padding-right: 4px;
   }

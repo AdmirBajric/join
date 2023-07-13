@@ -59,9 +59,6 @@ async function addNewTask() {
     });
 
     toDo.push(currentTaskID);
-    console.log(tasks);
-    console.log(currentTaskID);
-    console.log(toDo);
 
     const taskAddedElement = document.getElementById("taskAdded");
     taskAddedElement.classList.remove("d-none");
@@ -283,6 +280,7 @@ async function TaskButtonLow() {
 function reloadPage() {
     location.reload();
 }
+
 
 function redirectToBoard() {
     window.location.href = "board.html";
