@@ -2,15 +2,15 @@ let fromLocalStorage;
 
 async function load() {
   await greetingDay();
-  activeUser();
+  await usersName();
 }
 
 // greeting day on
 async function greetingDay() {
-  document.getElementById("dayGreeting").innerText = alldayGreeting();
+  document.getElementById("dayGreeting").innerText = await alldayGreeting();
 }
 
-function alldayGreeting() {
+async function alldayGreeting() {
   let hour = new Date().getHours();
   if (4 <= hour && hour <= 11) {
     return "Good morning,";
@@ -61,12 +61,7 @@ function toBoard() {
   window.location.href = "board.html";
 }
 
-// greet name
-function activeUser() {
-  usersName();
-}
-
-function usersName() {
+async function usersName() {
   fromLocalStorage = JSON.parse(localStorage.getItem("user"));
 
   const fullName = fromLocalStorage[0].name;
