@@ -36,8 +36,11 @@ async function drop(ev, status) {
     } else {
         // Invalid drop area, return the element to its original position
         draggedElement.classList.remove("d-none");
+        let originalParent = document.getElementById(currentDraggedElement).parentNode;
+        originalParent.appendChild(draggedElement);
     }
 }
+
 
 async function moveTo(status) {
     let targetArray;
