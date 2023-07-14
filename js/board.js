@@ -116,22 +116,22 @@ function renderTaskCardFeedback() {
     }
 
 
-async function renderTaskCardDone() {
-    let doneContainer = document.getElementById("done");
-    let renderedIDs = {};
-    await loadTasks();
-
-    for (let i = 0; i < done.length; i++) {
-        let currentTask = tasks.find((task) => task.id === done[i]);
-
-        if (!renderedIDs[currentTask.id]) {
-            doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
-            renderedIDs[currentTask.id] = true;
-            renderAvatars(currentTask);
+    async function renderTaskCardDone() {
+        let doneContainer = document.getElementById("done");
+        let renderedIDs = {};
+        await loadTasks();
+    
+        for (let i = 0; i < done.length; i++) {
+            let currentTask = tasks.find((task) => task.id === done[i]);
+    
+            if (currentTask && !renderedIDs[currentTask.id]) {
+                doneContainer.innerHTML += getTaskCardHTML(currentTask, "done");
+                renderedIDs[currentTask.id] = true;
+                renderAvatars(currentTask);
+            }
         }
     }
-}
-
+    
 
 function clearTasksContainer() {
     let toDoContainer = document.getElementById("toDo");
