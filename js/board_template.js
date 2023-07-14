@@ -263,7 +263,7 @@ function getTaskCardHTML(currentTask, status) {
       <div class="task-card-bottom-container">
       <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
       <div class="task-card-prio">
-          <img id="imgUrgentTask" src="assets/img/${
+          <img id="imgUrgentTask" src="./assets/img/${
           currentTask["prio"]
           }-prio.svg" alt="" />
       </div>
@@ -283,7 +283,7 @@ function addTaskPopupHTML(){
 
       <div>
           <div id="taskAdded" class="taskAdded d-none">
-              <img src="assets/img/add-task.svg" alt="" />
+              <img src="./assets/img/add-task.svg" alt="" />
           </div>
       </div>
 
@@ -306,7 +306,7 @@ function addTaskPopupHTML(){
               <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
           <div class="dropdown-min" id="dropdownMinCategory">
               <span>Select category</span>
-              <img src="assets/img/arrow-down.svg" alt="" />
+              <img src="./assets/img/arrow-down.svg" alt="" />
           </div>
           <div id="dropdownCategoryContent" class="dropdown-content"></div>
           </label>
@@ -328,7 +328,7 @@ function addTaskPopupHTML(){
               <label for="dropdown" onclick="toggleDropdown()">
           <div class="dropdown-min" id="dropdownMin">
               <span id="categoryTextField"> Select contacts to assign</span>
-              <img src="assets/img/arrow-down.svg" alt="" />
+              <img src="./assets/img/arrow-down.svg" alt="" />
           </div>
           </label>
               <div id="dropdownContent" class="dropdown-content"></div>
@@ -346,15 +346,15 @@ function addTaskPopupHTML(){
               <div id="prio" class="prio-popup">
                   <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
                       Urgent
-                      <img id="imgUrgent" src="assets/img/prioUrgent.svg" alt="" />
+                      <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium();getPrioStatus('medium')">
                       Medium
-                      <img id="imgMedium" src="assets/img/medium-prio.svg" alt="" />
+                      <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
                       Low
-                      <img id="imgLow" src="assets/img/low-prio.svg" alt="" />
+                      <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
                   </div>
               </div>
 
@@ -363,9 +363,9 @@ function addTaskPopupHTML(){
                   <input type="text" id="subtask-input-content" placeholder="Enter Subtask..." />
 
                   <div id="subtaskOninput" style="display: flex">
-                      <img src="assets/img/close.svg" id="clearSubtaskInput" />
+                      <img src="./assets/img/close.svg" id="clearSubtaskInput" />
                       <div class="border-subtask"></div>
-                      <img src="assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+                      <img src="./assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
                   </div>
               </div>
 
@@ -375,7 +375,7 @@ function addTaskPopupHTML(){
 
                   <button class="clear-task-btn right-zero" id="clearTask" onclick="reloadPage()">
                       Clear
-                      <img src="assets/img/close.svg" />
+                      <img src="./assets/img/close.svg" />
                   </button>
                   
                   <button id="addTask" class="add-task-btn" type="submit">
