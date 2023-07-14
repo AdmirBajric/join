@@ -253,7 +253,7 @@ function getAssignedToDetailCard(task) {
         assignContainer.innerHTML += `
     <div class="flex-row align-center gap-15">
         <div class="avatar-container" style="background-color:${color}">${initials}</div>
-        <div class="font-weight-500">${contact}</div>
+        <div class="font-weight-500 con-name" >${contact}</div>
     </div>
     `;
     }
@@ -350,6 +350,12 @@ function getCurrentDate() {
     }
 
     return `${year}-${month}-${day}`;
+}
+
+function disablePastDates() {
+    const datePickerPopup = document.getElementById("datePickerPopup");
+    const today = new Date().toISOString().split("T")[0];
+    datePickerPopup.setAttribute("min", today);
 }
 
 async function deleteObjectById(id) {

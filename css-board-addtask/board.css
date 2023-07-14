@@ -665,6 +665,10 @@
     }
 }
 
+.con-name{
+    font-size:2.1rem
+}
+
 @media only screen and (max-width: 555px) {
     #add-task-btn-board {
         display: none;
@@ -701,6 +705,9 @@
 @media only screen and (max-width:450px){
     .popup-header{
         margin-top: 20rem;
+    }
+    .headline-container{
+        margin-top: 9rem;
     }
 }
 
