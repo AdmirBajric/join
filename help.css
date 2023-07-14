@@ -88,3 +88,11 @@ h2 {
         padding-bottom: 80px;
     }
 }
+
+@media (max-width: 375px) {
+
+    .right-help-Container {
+        padding-top: 53px;
+    }
+
+}
