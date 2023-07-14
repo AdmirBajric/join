@@ -260,7 +260,8 @@ function getTaskCardHTML(currentTask, status) {
 
 
 
-function addTaskPopupHTML(){
+function addTaskPopupHTML(status){
+  console.log(status)
   return`
   <div class="body-popup">
 
@@ -328,7 +329,7 @@ function addTaskPopupHTML(){
           <div class="column-right">
               <label>Due Date</label>
 
-              <input id="datePickerPopup" type="date" placeholder="Enter a description" required /><br /><br />
+              <input id="datePicker" type="date" placeholder="Enter a description" required /><br /><br />
 
               <label>Prio</label>
 

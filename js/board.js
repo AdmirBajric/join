@@ -352,12 +352,6 @@ function getCurrentDate() {
     return `${year}-${month}-${day}`;
 }
 
-function disablePastDates() {
-    const datePickerPopup = document.getElementById("datePickerPopup");
-    const today = new Date().toISOString().split("T")[0];
-    datePickerPopup.setAttribute("min", today);
-}
-
 async function deleteObjectById(id) {
     for (var i = 0; i < toDo.length; i++) {
         if (toDo[i] == id) {
@@ -503,18 +497,25 @@ function validateSubtasksForm(currentTask) {
     }
 }
 
-function openAddTaskPopup(){
-    let popupOverLay = document.getElementById('addtask-popup');
-    let bodyBoard = document.getElementsByClassName('body-board')[0];
-    let boardContent = document.getElementsByClassName('board-main-container')[0];
-    bodyBoard.classList.add('hidden');
-    popupOverLay.classList.remove('d-none');
-    boardContent.classList.add('d-none');
+function openAddTaskPopup(status) {
+    console.log(status);
+    const popupOverlay = document.getElementById("addtask-popup");
+    const bodyBoard = document.getElementsByClassName("body-board")[0];
+    const boardContent = document.getElementsByClassName(
+        "board-main-container"
+    )[0];
+    bodyBoard.classList.add("hidden");
+    popupOverlay.classList.remove("d-none");
+    boardContent.classList.add("d-none");
 
-    popupOverLay.innerHTML = '';
+    popupOverlay.innerHTML = addTaskPopupHTML(status);
 
-    popupOverLay.innerHTML = addTaskPopupHTML();
-}
+    const form = document.querySelector(".column-container-popup");
+    form.addEventListener("submit", () => {
+        addNewTask(status);
+    });
+    }
+
 
 function countTasks(category){
     let count = 0;
