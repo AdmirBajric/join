@@ -151,6 +151,8 @@
     font-size: 2.1rem;
 }
 
+
+
 @media screen and (max-width: 1200px) {
     .column-container-popup{
         display: flex;

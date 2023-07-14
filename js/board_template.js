@@ -277,13 +277,13 @@ function addTaskPopupHTML(){
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div>
+      <div class="popup-header">
           <span class="headline-text">Add Task</span>
       </div>
 
       <div>
           <div id="taskAdded" class="taskAdded d-none">
-              <img src="../assets/img/add-task.svg" alt="" />
+              <img src="assets/img/add-task.svg" alt="" />
           </div>
       </div>
 

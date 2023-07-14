@@ -697,3 +697,16 @@
         display: none;
     }
 }
+
+@media only screen and (max-width:450px){
+    .popup-header{
+        margin-top: 20rem;
+    }
+}
+
+@media screen and (max-width:375px){
+    .popup-header{
+        margin-top:40rem;
+}
+}
+
