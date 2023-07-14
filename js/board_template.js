@@ -373,7 +373,7 @@ function addTaskPopupHTML(){
 
               <div class="action-button-container">
 
-                  <button class="clear-task-btn" id="clearTask" onclick="reloadPage()">
+                  <button class="clear-task-btn right-zero" id="clearTask" onclick="reloadPage()">
                       Clear
                       <img src="../assets/img/close.svg" />
                   </button>
