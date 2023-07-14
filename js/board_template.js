@@ -365,7 +365,7 @@ function addTaskPopupHTML(){
                   <div id="subtaskOninput" style="display: flex">
                       <img src="assets/img/close.svg" id="clearSubtaskInput" />
                       <div class="border-subtask"></div>
-                      <img src="assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+                      <img src="./assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
                   </div>
               </div>
 
