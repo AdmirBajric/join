@@ -276,182 +276,116 @@ function addTaskPopupHTML(){
   <div class="body-popup">
 
   <div class="popup-task">
-  <div class="task-card task-card-scroll">
-  <div class="margin-bottom-60">
-    <span class="headline-text">Add Task</span>
+  <div class="task-card-popup task-card-scroll">
+      <div>
+          <span class="headline-text">Add Task</span>
+      </div>
+
+      <div>
+          <div id="taskAdded" class="taskAdded d-none">
+              <img src="../assets/img/add-task.svg" alt="" />
+          </div>
+      </div>
+
+      <div class="task-Alert" id="taskAlert"></div>
+
+      <form class="column-container-popup" onsubmit="addNewTask() ; return false">
+          <div class="column-left">
+              <label>Title</label>
+
+              <input type="text" id="title" placeholder="Enter a title..." required />
+
+              <label>Description</label>
+
+              <textarea id="description" placeholder="Enter a description..."></textarea>
+
+              <label>Category</label>
+
+              <div class="d-none" id="categoryEdit"></div>
+
+              <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
+          <div class="dropdown-min" id="dropdownMinCategory">
+              <span>Select category</span>
+              <img src="../assets/img/arrow-down.svg" alt="" />
+          </div>
+          <div id="dropdownCategoryContent" class="dropdown-content"></div>
+          </label>
+
+              <div id="select-color-category" class="select-color-category d-none">
+                  <div onclick="selectColor(1)" id="color1" style="background-color: red"></div>
+                  <div onclick="selectColor(2)" id="color2" style="background-color: #fc71ff"></div>
+                  <div onclick="selectColor(3)" id="color3" style="background-color: #ff7a00"></div>
+                  <div onclick="selectColor(4)" id="color4" style="background-color: #1fd7c1"></div>
+                  <div onclick="selectColor(5)" id="color5" style="background-color: #2ad300"></div>
+                  <div onclick="selectColor(6)" id="color6" style="background-color: #8aa4ff"></div>
+                  <div onclick="selectColor(7)" id="color7" style="background-color: blue"></div>
+              </div>
+              <div id="errorMessage" style="color: red"></div>
+              <div id="categoryDisplay" style="display: none"></div>
+
+              <label>Assigned to</label>
+
+              <label for="dropdown" onclick="toggleDropdown()">
+          <div class="dropdown-min" id="dropdownMin">
+              <span id="categoryTextField"> Select contacts to assign</span>
+              <img src="../assets/img/arrow-down.svg" alt="" />
+          </div>
+          </label>
+              <div id="dropdownContent" class="dropdown-content"></div>
+          </div>
+
+          <div class="border"></div>
+
+          <div class="column-right">
+              <label>Due Date</label>
+
+              <input id="datePicker" type="date" placeholder="Enter a description" required /><br /><br />
+
+              <label>Prio</label>
+
+              <div id="prio" class="prio-popup">
+                  <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
+                      Urgent
+                      <img id="imgUrgent" src="../assets/img/prioUrgent.svg" alt="" />
+                  </div>
+                  <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium();getPrioStatus('medium')">
+                      Medium
+                      <img id="imgMedium" src="../assets/img/medium-prio.svg" alt="" />
+                  </div>
+                  <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
+                      Low
+                      <img id="imgLow" src="../assets/img/low-prio.svg" alt="" />
+                  </div>
+              </div>
+
+              <label class="subtask">Subtasks</label>
+              <div class="subtask-container">
+                  <input type="text" id="subtask-input-content" placeholder="Enter Subtask..." />
+
+                  <div id="subtaskOninput" style="display: flex">
+                      <img src="../assets/img/close.svg" id="clearSubtaskInput" />
+                      <div class="border-subtask"></div>
+                      <img src="../assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+                  </div>
+              </div>
+
+              <div id="subtaskContent"></div>
+
+              <div class="action-button-container">
+
+                  <button class="clear-task-btn" id="clearTask" onclick="reloadPage()">
+                      Clear
+                      <img src="../assets/img/close.svg" />
+                  </button>
+                  
+                  <button id="addTask" class="add-task-btn" type="submit">
+                      Create Task
+                  </button>
+              </div>
+          </div>
+      </form>
   </div>
-
-  <div>
-    <div id="taskAdded" class="taskAdded d-none">
-      <img src="./assets/img/plus-sign.svg" alt="" />
-    </div>
-  </div>
-
-  <div class="task-Alert" id="taskAlert"></div>
-
-  <form class="column-container" onsubmit="addNewTask() ; return false">
-    <div class="column-left">
-      <label>Title</label>
-
-      <input
-        type="text"
-        id="title"
-        placeholder="Enter a title..."
-        required
-      />
-
-      <label>Description</label>
-
-      <textarea
-        id="description"
-        placeholder="Enter a description..."
-      ></textarea>
-
-      <label>Category</label>
-
-      <label
-        id="toggleDrop"
-        for="dropdown"
-        onclick="toggleDropdownCategory()"
-      >
-        <div class="dropdown-min" id="dropdownMinCategory">
-          <span>Select category</span>
-          <img src="./assets/img/arrow_down_black.svg" alt="" />
-        </div>
-        <div id="dropdownCategoryContent" class="dropdown-content"></div>
-      </label>
-
-      <div id="select-color-category" class="select-color-category d-none">
-        <div
-          onclick="selectColor(1)"
-          id="color1"
-          style="background-color: red"
-        ></div>
-        <div
-          onclick="selectColor(2)"
-          id="color2"
-          style="background-color: #fc71ff"
-        ></div>
-        <div
-          onclick="selectColor(3)"
-          id="color3"
-          style="background-color: #ff7a00"
-        ></div>
-        <div
-          onclick="selectColor(4)"
-          id="color4"
-          style="background-color: #1fd7c1"
-        ></div>
-        <div
-          onclick="selectColor(5)"
-          id="color5"
-          style="background-color: #2ad300"
-        ></div>
-        <div
-          onclick="selectColor(6)"
-          id="color6"
-          style="background-color: #8aa4ff"
-        ></div>
-        <div
-          onclick="selectColor(7)"
-          id="color7"
-          style="background-color: blue"
-        ></div>
-      </div>
-      <div id="errorMessage" style="color: red"></div>
-      <div id="categoryDisplay" style="display: none"></div>
-
-      <div class="d-none" id="categoryEdit"></div>
-
-      <label>Assigned to</label>
-
-      <label for="dropdown" onclick="toggleDropdown()">
-        <div class="dropdown-min" id="dropdownMin">
-          <span id="categoryTextField"> Select contacts to assign</span>
-          <img src="./assets/img/arrow_down_black.svg" alt="" />
-        </div>
-      </label>
-      <div id="dropdownContent" class="dropdown-content"></div>
-    </div>
-
-    <div class="border"></div>
-
-    <div class="column-right">
-      <label>Due Date</label>
-
-      <input
-        id="datePicker"
-        type="date"
-        placeholder="Enter a description"
-        required
-      /><br /><br />
-
-      <label>Prio</label>
-
-      <div id="prio" class="prio">
-        <div
-          class="prio-btn"
-          id="prioUrgent"
-          onclick="TaskButtonUrgent();getPrioStatus('up')"
-        >
-          Urgent
-          <img id="imgUrgent" src="./assets/img/up-prio.svg" alt="" />
-        </div>
-        <div
-          class="prio-btn"
-          id="prioMedium"
-          onclick="TaskButtonMedium();getPrioStatus('medium')"
-        >
-          Medium
-          <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
-        </div>
-        <div
-          class="prio-btn"
-          id="prioLow"
-          onclick="TaskButtonLow();getPrioStatus('down')"
-        >
-          Low
-          <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
-        </div>
-      </div>
-
-      <label class="subtask">Subtasks</label>
-      <div class="subtask-container">
-        <input
-          type="text"
-          id="subtask-input-content"
-          placeholder="Enter Subtask..."
-        />
-
-        <div id="subtaskOninput" style="display: flex">
-          <img src="./assets/img/close.svg" id="clearSubtaskInput" />
-          <div class="border-subtask"></div>
-          <img
-            src="./assets/img/check.svg"
-            onclick="subTaskAddToJson()"
-            id="finishEditingSubtask"
-          />
-        </div>
-      </div>
-
-      <div id="subtaskContent"></div>
-
-      <div class="action-button-container">
-        <button
-          id="clearTask"
-          onclick="reloadPage()"
-          class="clear-task-btn"
-        >
-          Clear
-          <img src="./assets/img/close.svg" />
-        </button>
-
-        <button id="addTask" class="add-task-btn" type="submit">
-          Create Task
-        </button>
-      </div>
-    </div>
-  </form>
 </div>
+  </div>
   `
 }

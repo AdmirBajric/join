@@ -1,4 +1,5 @@
 let toDo = [];
+
 let inProgress = [];
 let feedback = [];
 let done = [];
@@ -28,6 +29,19 @@ function renderBoard() {
     renderTaskCardProgress();
     renderTaskCardFeedback();
     renderTaskCardDone();
+    const taskCountBoard = countTasks("board");
+    const taskCountInProgress = countTasks("inProgress");
+    const taskCountFeedback = countTasks("feedback");
+    const taskCountUrgent = countTasks("urgent");
+    const taskCountToDo = countTasks("toDo");
+    const taskCountDone = countTasks("done");
+
+    console.log("Tasks in board:", taskCountBoard);
+    console.log("Tasks in progress:", taskCountInProgress);
+    console.log("Awaiting feedback:", taskCountFeedback);
+    console.log("Urgent:", taskCountUrgent);
+    console.log("To-do:", taskCountToDo);
+    console.log("Done:", taskCountDone);
 }
 
 async function loadtoDos() {
@@ -501,4 +515,30 @@ function openAddTaskPopup(){
     popupOverLay.innerHTML = '';
 
     popupOverLay.innerHTML = addTaskPopupHTML();
+}
+
+function countTasks(category){
+    let count = 0;
+
+    switch(category){
+        case "board":
+            count = tasks.length;
+            break;
+        case "inProgress":
+            count = inProgress.length;
+            break;
+        case "feedback":
+            count = feedback.length;
+            break;
+        case "urgent":
+            count = tasks.filter(task => task.prio === "up").length;
+            break;
+        case "toDo":
+            count = toDo.length;
+            break;
+        case "done":
+            count = done.length;
+            break;
+        }
+        return count;
 }

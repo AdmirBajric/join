@@ -21,7 +21,6 @@
     inset: 0;
     animation: slideIn 225ms forwards;
     transform:translateX(-00%);
-
 }
 
 @keyframes slideIn{
@@ -31,6 +30,10 @@
     100%{
         transform:translateX(0);
     }
+}
+
+.popup-card{
+    margin-top: 0 !important;
 }
 
 .column-right {
@@ -183,9 +186,8 @@
         overflow: unset;
     }
     .popup-task{
-        margin-left: 0;
         z-index:unset;
-        
+        width: 40%;
     }
     
 }

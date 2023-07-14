@@ -13,7 +13,38 @@ async function initTasks() {
     renderCategoryList();
 }
 
+async function validateTaskForm() {
+    let taskTitle = document.getElementById("title");
+    let taskDescription = document.getElementById("description");
+    let taskDueDate = document.getElementById("datePicker");
+    let taskSub = document.getElementById("subtaskContent");
+
+if (
+    taskTitle.value === "" ||
+    taskDescription.value === "" ||
+    taskDueDate.value === "" ||
+    currentPrioStatus === undefined ||
+    selectedCategory === undefined ||
+    taskSub.value === ""
+) {
+    let taskAlert = document.getElementById("taskAlert");
+    taskAlert.innerHTML = "";
+    if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
+    if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
+    if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
+    if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
+    if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
+    if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
+    return false;
+}
+
+return true;
+}
+
 async function addNewTask() {
+    const isValid = await validateTaskForm();
+    if (!isValid) return;
+
     await setNewTaskID();
     await loadtoDos();
     let taskTitle = document.getElementById("title");
@@ -25,52 +56,34 @@ async function addNewTask() {
     let buttonMedium = document.getElementById("prioMedium");
     let buttonLow = document.getElementById("prioLow");
 
-    if (
-        taskTitle.value === "" ||
-        taskDescription.value === "" ||
-        taskDueDate.value === "" ||
-        currentPrioStatus === undefined ||
-        selectedCategory === undefined ||
-        taskSub.value === ""
-    ) {
-        let taskAlert = document.getElementById("taskAlert");
-        taskAlert.innerHTML = ""; 
-        if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
-        if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
-        if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
-        if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
-        if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
-        if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
-        return;
-    }
+tasks.push({
+    title: taskTitle.value,
+    description: taskDescription.value,
+    category: selectedCategory,
+    prio: currentPrioStatus,
+    color: selectedColor,
+    assignments: validateAssignmentForm(),
+    dueDate: taskDueDate.value,
+    taskSub: subtasks,
+    subtasksOpened: subtasks,
+    subtasksClosed: [],
+    id: currentTaskID,
+});
 
-    tasks.push({
-        title: taskTitle.value,
-        description: taskDescription.value,
-        category: selectedCategory,
-        prio: currentPrioStatus,
-        color: selectedColor,
-        assignments: validateAssignmentForm(),
-        dueDate: taskDueDate.value,
-        taskSub: subtasks,
-        subtasksOpened: subtasks,
-        subtasksClosed: [],
-        id: currentTaskID,
-    });
+toDo.push(currentTaskID);
 
-    toDo.push(currentTaskID);
+const taskAddedElement = document.getElementById("taskAdded");
+taskAddedElement.classList.remove("d-none");
 
-    const taskAddedElement = document.getElementById("taskAdded");
-    taskAddedElement.classList.remove("d-none");
+setTimeout(() => {
+    taskAddedElement.classList.add("d-none");
+    redirectToBoard();
+}, 1000);
 
-    setTimeout(() => {
-        taskAddedElement.classList.add("d-none"); 
-        redirectToBoard(); 
-    }, 1000);
-
-    await setItem("tasks", JSON.stringify(tasks));
-    await setItem("toDo", JSON.stringify(toDo));
+await setItem("tasks", JSON.stringify(tasks));
+await setItem("toDo", JSON.stringify(toDo));
 }
+
 
 async function subTasksLoad() {
     subtasks = [];

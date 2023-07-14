@@ -3,6 +3,40 @@ let fromLocalStorage;
 async function load() {
   await greetingDay();
   await usersName();
+  await loadBoardData();
+  renderSummary();
+}
+
+async function loadBoardData(){
+  await loadTasks();
+  await loadtoDos();
+  await loadInProgress();
+  await loadFeedback();
+  await loadDone();
+}
+
+function renderSummary() {
+  const taskCountBoard = countTasks("board");
+  const taskCountInProgress = countTasks("inProgress");
+  const taskCountFeedback = countTasks("feedback");
+  const taskCountUrgent = countTasks("urgent");
+  const taskCountToDo = countTasks("toDo");
+  const taskCountDone = countTasks("done");
+
+  console.log("Tasks in board:", taskCountBoard);
+  console.log("Tasks in progress:", taskCountInProgress);
+  console.log("Awaiting feedback:", taskCountFeedback);
+  console.log("Urgent:", taskCountUrgent);
+  console.log("To-do:", taskCountToDo);
+  console.log("Done:", taskCountDone);
+
+  // Update the summary section with the task counts
+  document.getElementById("tasks-board").innerText = taskCountBoard;
+  document.getElementById("tasks-progress").innerText = taskCountInProgress;
+  document.getElementById("awaiting-feedback").innerText = taskCountFeedback;
+  document.getElementById("sum-urgent").innerText = taskCountUrgent;
+  document.getElementById("sum-todo").innerText = taskCountToDo;
+  document.getElementById("sum-done").innerText = taskCountDone;
 }
 
 // greeting day on
