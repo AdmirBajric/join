@@ -44,10 +44,10 @@ return true;
 async function addNewTask(status) {
     const isValid = await validateTaskForm();
     if (!isValid) return;
-  
+
     await setNewTaskID();
     await loadtoDos();
-  
+
     const taskTitle = document.getElementById("title").value;
     const taskDescription = document.getElementById("description").value;
     const taskDueDate = document.getElementById("datePicker").value;
@@ -56,55 +56,55 @@ async function addNewTask(status) {
     const buttonUrgent = document.getElementById("prioUrgent");
     const buttonMedium = document.getElementById("prioMedium");
     const buttonLow = document.getElementById("prioLow");
-  
+
     const newTask = {
-      title: taskTitle,
-      description: taskDescription,
-      category: selectedCategory,
-      prio: currentPrioStatus,
-      color: selectedColor,
-      assignments: validateAssignmentForm(),
-      dueDate: taskDueDate,
-      taskSub: subtasks,
-      subtasksOpened: subtasks,
-      subtasksClosed: [],
-      id: currentTaskID,
+        title: taskTitle,
+        description: taskDescription,
+        category: selectedCategory,
+        prio: currentPrioStatus,
+        color: selectedColor,
+        assignments: validateAssignmentForm(),
+        dueDate: taskDueDate,
+        taskSub: subtasks,
+        subtasksOpened: subtasks,
+        subtasksClosed: [],
+        id: currentTaskID,
     };
-  
+
     tasks.push(newTask);
-  
+
     switch (status) {
-      case "toDo":
+        case "toDo":
         toDo.push(currentTaskID);
         break;
-      case "inProgress":
+        case "inProgress":
         inProgress.push(currentTaskID);
         break;
-      case "feedback":
+        case "feedback":
         feedback.push(currentTaskID);
         break;
-      case "done":
+        case "done":
         done.push(currentTaskID);
         break;
-      default:
+        default:
         break;
     }
-  
+
     const taskAddedElement = document.getElementById("taskAdded");
     taskAddedElement.classList.remove("d-none");
-  
+
     setTimeout(() => {
-      taskAddedElement.classList.add("d-none");
-      redirectToBoard();
+        taskAddedElement.classList.add("d-none");
+        redirectToBoard();
     }, 1000);
-  
+
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
     await setItem("inProgress", JSON.stringify(inProgress));
     await setItem("feedback", JSON.stringify(feedback));
     await setItem("done", JSON.stringify(done));
-  }
-  
+    }
+
 
 
 async function subTasksLoad() {
