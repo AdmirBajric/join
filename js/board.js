@@ -18,7 +18,6 @@ async function initBoard() {
 async function loadTasks() {
     try {
         tasks = JSON.parse(await getItem("tasks"));
-        console.log("Tasks loaded:", tasks);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -36,20 +35,12 @@ function renderBoard() {
     const taskCountUrgent = tasks.filter(task => task.prio === "up").length;
     const taskCountToDo = toDo.length;
     const taskCountDone = done.length;
-
-    console.log("Tasks in board:", taskCountBoard);
-    console.log("Tasks in progress:", taskCountInProgress);
-    console.log("Awaiting feedback:", taskCountFeedback);
-    console.log("Urgent:", taskCountUrgent);
-    console.log("To-do:", taskCountToDo);
-    console.log("Done:", taskCountDone);
 }
 
 
 async function loadtoDos() {
     try {
         toDo = JSON.parse(await getItem("toDo"));
-        console.log("To-do tasks loaded:", toDo);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -58,7 +49,6 @@ async function loadtoDos() {
 async function loadInProgress() {
     try {
         inProgress = JSON.parse(await getItem("inProgress"));
-        console.log("In-progress tasks loaded:", inProgress);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -67,7 +57,6 @@ async function loadInProgress() {
 async function loadFeedback() {
     try {
         feedback = JSON.parse(await getItem("feedback"));
-        console.log("Feedback tasks loaded:", feedback);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -76,7 +65,6 @@ async function loadFeedback() {
 async function loadDone() {
     try {
         done = JSON.parse(await getItem("done"));
-        console.log("Done tasks loaded:", done);
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -85,7 +73,6 @@ async function loadDone() {
 async function loadUsers() {
     try {
         users = JSON.parse(await getItem("users"));
-        console.log("loadedusers:", users);
     } catch (e) {
         console.error("Loading error:", e);
     }
