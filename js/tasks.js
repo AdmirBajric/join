@@ -48,46 +48,41 @@ async function addNewTask(status) {
     await setNewTaskID();
     await loadtoDos();
 
-    const taskTitle = document.getElementById("title").value;
-    const taskDescription = document.getElementById("description").value;
-    const taskDueDate = document.getElementById("datePicker").value;
-    const taskPriority = document.getElementById("priority");
-    const taskSub = document.getElementById("subtaskContent");
-    const buttonUrgent = document.getElementById("prioUrgent");
-    const buttonMedium = document.getElementById("prioMedium");
-    const buttonLow = document.getElementById("prioLow");
+    let taskTitle = document.getElementById("title");
+    let taskDescription = document.getElementById("description");
+    let taskDueDate = document.getElementById("datePicker");
+    let taskPriority = document.getElementById("priority");
+    let taskSub = document.getElementById("subtaskContent");
+    let buttonUrgent = document.getElementById("prioUrgent");
+    let buttonMedium = document.getElementById("prioMedium");
+    let buttonLow = document.getElementById("prioLow");
 
-    const newTask = {
-        title: taskTitle,
-        description: taskDescription,
+    let currentDate = new Date();
+    let formattedDate = currentDate.toISOString().split("T")[0];
+    taskDueDate.setAttribute("min", formattedDate);
+
+    tasks.push({
+        title: taskTitle.value,
+        description: taskDescription.value,
         category: selectedCategory,
         prio: currentPrioStatus,
         color: selectedColor,
         assignments: validateAssignmentForm(),
-        dueDate: taskDueDate,
+        dueDate: taskDueDate.value,
         taskSub: subtasks,
         subtasksOpened: subtasks,
         subtasksClosed: [],
         id: currentTaskID,
-    };
+    });
 
-    tasks.push(newTask);
-
-    switch (status) {
-        case "toDo":
+    if (status === "toDo") {
         toDo.push(currentTaskID);
-        break;
-        case "inProgress":
+    } else if (status === "inProgress") {
         inProgress.push(currentTaskID);
-        break;
-        case "feedback":
+    } else if (status === "feedback") {
         feedback.push(currentTaskID);
-        break;
-        case "done":
+    } else if (status === "done") {
         done.push(currentTaskID);
-        break;
-        default:
-        break;
     }
 
     const taskAddedElement = document.getElementById("taskAdded");
@@ -104,6 +99,7 @@ async function addNewTask(status) {
     await setItem("feedback", JSON.stringify(feedback));
     await setItem("done", JSON.stringify(done));
     }
+
 
 
 
@@ -172,7 +168,6 @@ async function addNewSubTask() {
     <div>${task}</div>`;
     }
 }
-
 
 async function editTaskBoard(id) {
     let currentTask = tasks.find((task) => task.id == id);
@@ -576,11 +571,3 @@ function hideCategoryDisplay() {
     categoryDisplay.style.display = "none";
     categoryDisplay.textContent = "";
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const datePicker = document.getElementById("datePicker");
-    if (datePicker) {
-        const currentDate = new Date().toISOString().split("T")[0];
-        datePicker.setAttribute("min", currentDate);
-    }
-});
