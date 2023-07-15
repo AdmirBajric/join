@@ -250,7 +250,7 @@ function getAssignedToDetailCard(task) {
     assignContainer.innerHTML += `
     <div class="flex-row align-center gap-15">
         <div class="avatar-container" style="background-color:${color}">${initials}</div>
-        <div class="font-weight-500 con-name" >${contact}</div>
+        <div class="font-weight-500">${contact}</div>
     </div>
     `;
   }

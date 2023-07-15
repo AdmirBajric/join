@@ -35,7 +35,7 @@ body {
     padding: 4px 36.5px;
     align-items: flex-start;
     gap: 10px;
-    font-size:1.7rem ;
+    font-size:2.1rem ;
 }
 
 .inner-content2 span{
@@ -504,6 +504,10 @@ label {
     }
   } */
 
+.column-right {
+    width: 400px !important;
+}
+
 .border {
     border-right: 2px solid #d1d1d1 !important;
     margin-left: 15px !important;
@@ -512,6 +516,10 @@ label {
 
 .column-container {
     flex-direction: column !important;
+}
+
+.column-right {
+    width: 100% !important;
 }
 
 .add-task-btn {
@@ -524,6 +532,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 2rem !important;
     height: 2rem !important;
     margin-left: 380px !important;
+}
+
+.column-right {
+    margin-top: 1.8rem !important;
 }
 
 .task-card {
@@ -566,8 +578,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 150px !important;
 }
 
-.right-zero {
-    margin-right: 0 !important;
+#clearTask {
+    margin-right: 70px;
 }
 
 #prio button{
