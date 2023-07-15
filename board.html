@@ -7,7 +7,11 @@
     <title>Board</title>
     <link rel="icon" type="image/png" href="./assets/img/join-small.svg" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="
+    style.css"
+    />
     <link rel="stylesheet" href="./css-board-addtask/board.css" />
     <link rel="stylesheet" href="./sidebar.css" />
     <link rel="stylesheet" href="./sidebar_mobile.css" />
@@ -22,13 +26,13 @@
     <script src="./js/storage.js" defer></script>
     <script src="./js/tasks-html.js" defer></script>
     <script src="./js/tasks.js" defer></script>
-    <script src="./js/activePage.js" defer></script>
     <script src="./js/board.js" defer></script>
     <script src="./js/board_template.js" defer></script>
     <script src="./js/board_drag_drop.js" defer></script>
+    <script src="./js/activePage.js" defer></script>
   </head>
 
-  <body onload="initBoard(); includeLoad();" class="body-board">
+  <body onload="initBoard();includeLoad();" class="body-board">
     <div id="includedContent"></div>
     <div class="overlay-bg d-none" id="overlay"></div>
     <div class="overlay-addtask-popup d-none" id="addtask-popup"></div>
@@ -41,11 +45,13 @@
         <div class="headline-left">
           <span class="headline-text headline-text-container">Board</span>
           <div
-            onclick="openAddTaskPopup('toDo'); initTasks()"
+            onclick="openAddTaskPopup();initTasks()"
             id="add-task-btn-board-mobile"
             class="add-task-btn-board-mobile"
           >
-            <button><img src="./assets/img/plus-sign.svg" alt="" /></button>
+            <button>
+              <img src="./assets/img/plus-sign.svg" alt="" />
+            </button>
           </div>
         </div>
         <div class="board-headline-right">
@@ -55,6 +61,7 @@
               oninput="searchForTaskByInput()"
               placeholder="Search..."
             />
+
             <div id="search-input-images" style="display: flex">
               <div class="border-subtask"></div>
               <img src="./assets/img/search.svg" id="finishEditingSubtask" />
@@ -62,7 +69,7 @@
           </div>
 
           <div
-            onclick="openAddTaskPopup('toDo'); initTasks()"
+            onclick="openAddTaskPopup(); initTasks()"
             id="add-task-btn-board"
             class="add-task-btn-board"
           >
@@ -77,7 +84,7 @@
           <div class="task-type">
             <span>To Do</span>
             <svg
-              onclick="openAddTaskPopup('toDo');initTasks();"
+              onclick="openAddTaskPopup();initTasks();"
               class="svg"
               width="30"
               height="30"
@@ -122,7 +129,7 @@
           <div class="task-type">
             <span>In progress</span>
             <svg
-              onclick="openAddTaskPopup('inProgress');disablePastDates(); initTasks();"
+              onclick="openAddTaskPopup();initTasks();"
               class="svg"
               width="30"
               height="30"
@@ -166,7 +173,7 @@
           <div class="task-type">
             <span>Awaiting feedback</span>
             <svg
-              onclick="openAddTaskPopup('feedback');initTasks();"
+              onclick="openAddTaskPopup();initTasks();"
               class="svg"
               width="30"
               height="30"
@@ -210,7 +217,7 @@
           <div class="task-type">
             <span>Done</span>
             <svg
-              onclick="openAddTaskPopup('done');initTasks();"
+              onclick="openAddTaskPopup();initTasks();"
               class="svg"
               width="30"
               height="30"
