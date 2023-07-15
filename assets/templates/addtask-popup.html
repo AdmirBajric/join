@@ -42,7 +42,7 @@
 
         <div class="task-Alert" id="taskAlert"></div>
 
-        <form class="column-container" onsubmit="addNewTask() ; return false">
+        <form class="column-container" id="form-column-popup" onsubmit="addNewTask() ; return false">
             <div class="column-left">
                 <label>Title</label>
 
@@ -131,7 +131,7 @@
                         <img src="../img/close.svg" />
                     </button>
                     
-                    <button id="addTask" class="add-task-btn" type="submit">
+                    <button id="addTask" form="form-column-popup" class="add-task-btn" type="submit">
                         Create Task
                     </button>
                 </div>

@@ -1,5 +1,5 @@
 function editTaskHTML(currentTask) {
-    return `
+  return `
   
     <div id="overlayPopUpbg" class="overlay-board-bg" style="padding:21px">
       
@@ -16,7 +16,7 @@ function editTaskHTML(currentTask) {
           </div>
         </div>
   
-        <form class="column-container" onsubmit="editTaskBoard(currentTaskID) ; return false">
+        <form class="column-container" id="column-container-edit" onsubmit="editTaskBoard(currentTaskID) ; return false">
           <div class="column-left">
             <label>Title</label>
   
@@ -153,7 +153,7 @@ function editTaskHTML(currentTask) {
               
             </div>
             <div class="container-ok-popup">
-              <button id="editTask" class="add-task-btn" type="submit">
+              <button id="editTask" form="column-container-edit" class="add-task-btn" type="submit">
                 OK
               </button>
             </div>
@@ -164,7 +164,7 @@ function editTaskHTML(currentTask) {
 }
 
 function getTaskDetailCardHTML(task) {
-    return /*html*/ `
+  return /*html*/ `
       
         <div class="Task-Content" id="taskContent">
   
@@ -222,8 +222,8 @@ function getTaskCardHTML(currentTask, status) {
     <div draggable="true" ondragstart="startDragging(${
       currentTask["id"]
     }, '${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
-      currentTask["id"]
-    })" id="${currentTask["id"]}">
+    currentTask["id"]
+  })" id="${currentTask["id"]}">
       <div class="task-card-top-div">
         <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
           currentTask["color"]
@@ -232,34 +232,56 @@ function getTaskCardHTML(currentTask, status) {
           <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
             currentTask["id"]
           }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
-            currentTask["id"]
-          }, '${status}')">
-            <option value="toDo" ${status === "toDo" ? "selected" : ""}>To Do</option>
-            <option value="inProgress" ${status === "inProgress" ? "selected" : ""}>In progress</option>
-            <option value="feedback" ${status === "feedback" ? "selected" : ""}>Awaiting feedback</option>
-            <option value="done" ${status === "done" ? "selected" : ""}>Done</option>
+    currentTask["id"]
+  }, '${status}')">
+            <option value="toDo" ${
+              status === "toDo" ? "selected" : ""
+            }>To Do</option>
+            <option value="inProgress" ${
+              status === "inProgress" ? "selected" : ""
+            }>In progress</option>
+            <option value="feedback" ${
+              status === "feedback" ? "selected" : ""
+            }>Awaiting feedback</option>
+            <option value="done" ${
+              status === "done" ? "selected" : ""
+            }>Done</option>
           </select>
         </div>
       </div>
-      <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
-      <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
+      <span class="task-card-title" id="taskTitleContainer">${
+        currentTask["title"]
+      }</span>
+      <div class="task-card-description" id="taskDescriptionContainer">${
+        currentTask["description"]
+      }</div>
       <div class="task-card-bottom-container align-center margin-bottom-10">
         <div class="subtasks-border ${subtasksBorderStyle}">
-          <div id="subtasksStatus" style="width:${hasSubtasks ? (currentTask["subtasksClosed"].length / currentTask["taskSub"].length) * 100 : 0}%" class="subtasks-status"></div>
+          <div id="subtasksStatus" style="width:${
+            hasSubtasks
+              ? (currentTask["subtasksClosed"].length /
+                  currentTask["taskSub"].length) *
+                100
+              : 0
+          }%" class="subtasks-status"></div>
         </div>
-        <span id="subtasksCounter" class="${subtasksCounterStyle}">${currentTask["subtasksClosed"].length}/${currentTask["taskSub"].length} done</span>
+        <span id="subtasksCounter" class="${subtasksCounterStyle}">${
+    currentTask["subtasksClosed"].length
+  }/${currentTask["taskSub"].length} done</span>
       </div>
       <div class="task-card-bottom-container">
         <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
         <div class="task-card-prio">
-          <img id="imgUrgentTask" src="./assets/img/${currentTask["prio"]}-prio.svg" alt="" />
+          <img id="imgUrgentTask" src="./assets/img/${
+            currentTask["prio"]
+          }-prio.svg" alt="" />
         </div>
       </div>
     </div>`;
 }
 
-function addTaskPopupHTML(){
-  return`
+function addTaskPopupHTML() {
+  return `
   <div class="body-popup">
 
   <div class="popup-task">
@@ -270,13 +292,13 @@ function addTaskPopupHTML(){
 
       <div>
           <div id="taskAdded" class="taskAdded d-none">
-              <img src="../assets/img/add-task.svg" alt="" />
+              <img src="./assets/img/add-task.svg" alt="" />
           </div>
       </div>
 
       <div class="task-Alert" id="taskAlert"></div>
 
-      <form class="column-container-popup" onsubmit="addNewTask() ; return false">
+      <form class="column-container-popup" id="column-container-popup-task" onsubmit="addNewTask() ; return false">
           <div class="column-left">
               <label>Title</label>
 
@@ -293,7 +315,7 @@ function addTaskPopupHTML(){
               <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
           <div class="dropdown-min" id="dropdownMinCategory">
               <span>Select category</span>
-              <img src="../assets/img/arrow-down.svg" alt="" />
+              <img src="./assets/img/arrow-down.svg" alt="" />
           </div>
           <div id="dropdownCategoryContent" class="dropdown-content"></div>
           </label>
@@ -315,7 +337,7 @@ function addTaskPopupHTML(){
               <label for="dropdown" onclick="toggleDropdown()">
           <div class="dropdown-min" id="dropdownMin">
               <span id="categoryTextField"> Select contacts to assign</span>
-              <img src="../assets/img/arrow-down.svg" alt="" />
+              <img src="./assets/img/arrow-down.svg" alt="" />
           </div>
           </label>
               <div id="dropdownContent" class="dropdown-content"></div>
@@ -333,15 +355,15 @@ function addTaskPopupHTML(){
               <div id="prio" class="prio-popup">
                   <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
                       Urgent
-                      <img id="imgUrgent" src="../assets/img/prioUrgent.svg" alt="" />
+                      <img id="imgUrgent" src="./assets/img/prioUrgent.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium();getPrioStatus('medium')">
                       Medium
-                      <img id="imgMedium" src="../assets/img/medium-prio.svg" alt="" />
+                      <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
                       Low
-                      <img id="imgLow" src="../assets/img/low-prio.svg" alt="" />
+                      <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
                   </div>
               </div>
 
@@ -350,9 +372,9 @@ function addTaskPopupHTML(){
                   <input type="text" id="subtask-input-content" placeholder="Enter Subtask..." />
 
                   <div id="subtaskOninput" style="display: flex">
-                      <img src="../assets/img/close.svg" id="clearSubtaskInput" />
+                      <img src="./assets/img/close.svg" id="clearSubtaskInput" />
                       <div class="border-subtask"></div>
-                      <img src="../assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+                      <img src="./assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
                   </div>
               </div>
 
@@ -362,10 +384,10 @@ function addTaskPopupHTML(){
 
                   <button class="clear-task-btn" id="clearTask" onclick="reloadPage()">
                       Clear
-                      <img src="../assets/img/close.svg" />
+                      <img src="./assets/img/close.svg" />
                   </button>
                   
-                  <button id="addTask" class="add-task-btn" type="submit">
+                  <button id="addTask" form="column-container-popup-task" class="add-task-btn" type="submit">
                       Create Task
                   </button>
               </div>
@@ -374,5 +396,5 @@ function addTaskPopupHTML(){
   </div>
 </div>
   </div>
-  `
+  `;
 }

@@ -79,3 +79,46 @@ async function usersName() {
     greetName.innerHTML = fullName;
   }
 }
+
+const loadTasks = async () => {
+  await showAllTasksLength();
+  await showAllTasksInProgress();
+  await showAllTasksAwaitingFeedback();
+  await showAllTasksUrgent();
+  await shoAllTasksToDo();
+  await showAllTasksDone();
+};
+
+const showAllTasksLength = async () => {
+  const getAllTasks = JSON.parse(await getItem("tasks"));
+  const tasksInBoard = document.querySelector("#tasks-board");
+  tasksInBoard.innerHTML = getAllTasks.length;
+};
+
+const showAllTasksInProgress = async () => {
+  const getAllInProgress = JSON.parse(await getItem("inProgress"));
+  const inProgress = document.querySelector("#tasks-progress");
+  inProgress.innerHTML = getAllInProgress.length;
+};
+
+const showAllTasksAwaitingFeedback = async () => {
+  const getAllAwaitingFeedback = JSON.parse(await getItem("feedback"));
+  const awaitingFeedback = document.querySelector("#awaiting-feedback");
+  awaitingFeedback.innerHTML = getAllAwaitingFeedback.length;
+};
+
+const showAllTasksUrgent = async () => {
+  console.log("Urgent ");
+};
+
+const shoAllTasksToDo = async () => {
+  const getAllTasksToDo = JSON.parse(await getItem("toDo"));
+  const toDo = document.querySelector("#sum-todo");
+  toDo.innerHTML = getAllTasksToDo.length;
+};
+
+const showAllTasksDone = async () => {
+  const getAllTasksDone = JSON.parse(await getItem("done"));
+  const done = document.querySelector("#sum-done");
+  done.innerHTML = getAllTasksDone.length;
+};
