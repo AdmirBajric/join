@@ -11,13 +11,30 @@ async function includeHTML() {
     let resp = await fetch(file);
     if (resp.ok) {
       element.innerHTML = await resp.text();
-      await activePage();
     } else {
       element.innerHTML = "Page not found";
     }
   }
 }
 
-function goToPages(locationHref) {
-  window.location.href = `${locationHref}.html`;
+/*sidebar navigation on*/
+function gotoSummary() {
+  window.location.href = "summary.html";
 }
+
+function gotoBoard() {
+  window.location.href = "board.html";
+}
+
+function gotoAddTask() {
+  window.location.href = "add-task.html";
+}
+
+function gotoContacts() {
+  window.location.href = "contacts.html";
+}
+
+function gotoLegalNotice() {
+  window.location.href = "legal_notice.html";
+}
+/*sidebar navigation off*/

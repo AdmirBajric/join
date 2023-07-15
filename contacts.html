@@ -21,13 +21,8 @@
     <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
     <title>Contacts</title>
   </head>
-  <body
-    class="body-board"
-    onload="includeLoad(); includeLoad_mobile(); responsive()"
-  >
-    <div class="overlay-bg d-none" id="overlay"></div>
-    <div class="overlay-addtask-popup d-none" id="addtask-popup"></div>
-    <div class="board-main-container" id="contacts-body">
+  <body onload="includeLoad(); includeLoad_mobile(); responsive()">
+    <div id="contacts-body">
       <div w3-include-html="header_sidebar.html"></div>
 
       <!-- Contacts screen start -->
@@ -115,7 +110,7 @@
             <div>
               <input
                 minlength="4"
-                type="number"
+                type="tel"
                 name="tel"
                 required
                 placeholder="Phone"
@@ -216,6 +211,8 @@
     <!-- Javascript start -->
     <script src="./js/header_sidebar.js"></script>
     <script src="./js/sidebar_mobile.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/board_template.js"></script>
     <script src="./js/log-out.js"></script>
     <script src="./js/helper.js"></script>
     <script src="./js/contactTemplate.js"></script>
@@ -224,8 +221,6 @@
     <script src="./js/tasks.js" defer></script>
     <script src="./js/responsive-contacts.js"></script>
     <script src="./js/contacts.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/board_template.js"></script>
     <script src="./js/activePage.js" defer></script>
 
     <!-- Javascript end -->

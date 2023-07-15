@@ -13,41 +13,9 @@ async function initTasks() {
     renderCategoryList();
 }
 
-async function validateTaskForm() {
-    let taskTitle = document.getElementById("title");
-    let taskDescription = document.getElementById("description");
-    let taskDueDate = document.getElementById("datePicker");
-    let taskSub = document.getElementById("subtaskContent");
-
-if (
-    taskTitle.value === "" ||
-    taskDescription.value === "" ||
-    taskDueDate.value === "" ||
-    currentPrioStatus === undefined ||
-    selectedCategory === undefined ||
-    taskSub.value === ""
-) {
-    let taskAlert = document.getElementById("taskAlert");
-    taskAlert.innerHTML = "";
-    if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
-    if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
-    if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
-    if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
-    if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
-    if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
-    return false;
-}
-
-return true;
-}
-
-async function addNewTask(status) {
-    const isValid = await validateTaskForm();
-    if (!isValid) return;
-
+async function addNewTask() {
     await setNewTaskID();
     await loadtoDos();
-
     let taskTitle = document.getElementById("title");
     let taskDescription = document.getElementById("description");
     let taskDueDate = document.getElementById("datePicker");
@@ -57,9 +25,24 @@ async function addNewTask(status) {
     let buttonMedium = document.getElementById("prioMedium");
     let buttonLow = document.getElementById("prioLow");
 
-    let currentDate = new Date();
-    let formattedDate = currentDate.toISOString().split("T")[0];
-    taskDueDate.setAttribute("min", formattedDate);
+    if (
+        taskTitle.value === "" ||
+        taskDescription.value === "" ||
+        taskDueDate.value === "" ||
+        currentPrioStatus === undefined ||
+        selectedCategory === undefined ||
+        taskSub.value === ""
+    ) {
+        let taskAlert = document.getElementById("taskAlert");
+        taskAlert.innerHTML = ""; 
+        if (taskTitle.value === "") taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
+        if (taskDescription.value === "") taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
+        if (taskDueDate.value === "") taskAlert.innerHTML += "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
+        if (currentPrioStatus === undefined) taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
+        if (selectedCategory === undefined) taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
+        if (taskSub.value === "") taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
+        return;
+    }
 
     tasks.push({
         title: taskTitle.value,
@@ -75,33 +58,19 @@ async function addNewTask(status) {
         id: currentTaskID,
     });
 
-    if (status === "toDo") {
-        toDo.push(currentTaskID);
-    } else if (status === "inProgress") {
-        inProgress.push(currentTaskID);
-    } else if (status === "feedback") {
-        feedback.push(currentTaskID);
-    } else if (status === "done") {
-        done.push(currentTaskID);
-    }
+    toDo.push(currentTaskID);
 
     const taskAddedElement = document.getElementById("taskAdded");
     taskAddedElement.classList.remove("d-none");
 
     setTimeout(() => {
-        taskAddedElement.classList.add("d-none");
-        redirectToBoard();
+        taskAddedElement.classList.add("d-none"); 
+        redirectToBoard(); 
     }, 1000);
 
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
-    await setItem("inProgress", JSON.stringify(inProgress));
-    await setItem("feedback", JSON.stringify(feedback));
-    await setItem("done", JSON.stringify(done));
-    }
-
-
-
+}
 
 async function subTasksLoad() {
     subtasks = [];
@@ -168,6 +137,7 @@ async function addNewSubTask() {
     <div>${task}</div>`;
     }
 }
+
 
 async function editTaskBoard(id) {
     let currentTask = tasks.find((task) => task.id == id);
@@ -571,3 +541,11 @@ function hideCategoryDisplay() {
     categoryDisplay.style.display = "none";
     categoryDisplay.textContent = "";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const datePicker = document.getElementById("datePicker");
+    if (datePicker) {
+        const currentDate = new Date().toISOString().split("T")[0];
+        datePicker.setAttribute("min", currentDate);
+    }
+});

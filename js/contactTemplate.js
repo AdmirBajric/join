@@ -37,7 +37,7 @@ const userContactPreview = (
   
       <div class="user-contact-info">
           <p class="user-contact-info-name">${users[id].fullName}</p>
-          <div onclick="openAddTaskPopup('toDo'); initTasks()" class="user-contact-add-task">
+          <div onclick="openAddTaskPopup(); initTasks()" class="user-contact-add-task">
               <img class="user-contact-add-task-img" src="./assets/img/add-task-blue.svg" alt="Add task image" />
           </div>
       </div>

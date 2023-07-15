@@ -22,33 +22,23 @@ function drag(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
-function drop(ev, status) {
+async function drop(ev, status) {
     ev.preventDefault();
     ev.stopPropagation();
     let data = ev.dataTransfer.getData("text/plain");
     let draggedElement = document.getElementById(data);
     let dropArea = ev.target;
+
+    // Check if the drop area is valid for the dragged element
     if (dropArea.classList.contains("drop-area")) {
         dropArea.appendChild(draggedElement);
-        moveTo(status);
+        await moveTo(status);
     } else {
-        let originalContainer = document.getElementById(status);
-        originalContainer.appendChild(draggedElement);
-        ev.preventDefault();
-        draggedElement.classList.remove("dragging");
+        // Invalid drop area, return the element to its original position
+        draggedElement.classList.remove("d-none");
     }
-    getBorderRemoveFunctions();
-    }
+}
 
-
-
-function hideDraggedOrigin() {
-    let element = document.getElementById(currentDraggedElement);
-    if (element) {
-        element.classList.remove("d-none");
-    }
-    }
-    
 async function moveTo(status) {
     let targetArray;
     switch (status) {

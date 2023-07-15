@@ -214,66 +214,76 @@ function getTaskDetailCardHTML(task) {
 }
 
 function getTaskCardHTML(currentTask, status) {
-  const hasSubtasks = currentTask["taskSub"].length > 0;
-  const subtasksBorderStyle = hasSubtasks ? "" : "d-none";
-  const subtasksCounterStyle = hasSubtasks ? "" : "d-none";
-
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${
+  <div draggable="true" ondragstart="startDragging(${
       currentTask["id"]
-    }, '${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
-      currentTask["id"]
-    })" id="${currentTask["id"]}">
+  },'${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
+  currentTask["id"]
+  })" id="${currentTask["id"]}">
       <div class="task-card-top-div">
-        <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
+      <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
           currentTask["color"]
-        }">${currentTask["category"]}</div>
-        <div class="dropdown-position" onclick="event.stopPropagation();">
+      }">${currentTask["category"]}</div>
+  <div class="dropdown-position" onclick="event.stopPropagation();">
           <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
-            currentTask["id"]
+          currentTask["id"]
           }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
-            currentTask["id"]
-          }, '${status}')">
-            <option value="toDo" ${status === "toDo" ? "selected" : ""}>To Do</option>
-            <option value="inProgress" ${status === "inProgress" ? "selected" : ""}>In progress</option>
-            <option value="feedback" ${status === "feedback" ? "selected" : ""}>Awaiting feedback</option>
-            <option value="done" ${status === "done" ? "selected" : ""}>Done</option>
+  currentTask["id"]
+  }, '${status}')">
+          <option value="toDo" ${
+              status === "toDo" ? "selected" : ""
+          }>To Do</option>
+          <option value="inProgress" ${
+              status === "inProgress" ? "selected" : ""
+          }>In progress</option>
+          <option value="feedback" ${
+              status === "feedback" ? "selected" : ""
+          }>Awaiting feedback</option>
+          <option value="done" ${
+              status === "done" ? "selected" : ""
+          }>Done</option>
           </select>
-        </div>
       </div>
-      <span class="task-card-title" id="taskTitleContainer">${currentTask["title"]}</span>
-      <div class="task-card-description" id="taskDescriptionContainer">${currentTask["description"]}</div>
+      </div>
+      <span class="task-card-title" id="taskTitleContainer">${
+      currentTask["title"]
+      }</span>
+      <div class="task-card-description" id="taskDescriptionContainer">${
+      currentTask["description"]
+      }</div>
       <div class="task-card-bottom-container align-center margin-bottom-10">
-        <div class="subtasks-border ${subtasksBorderStyle}">
-          <div id="subtasksStatus" style="width:${hasSubtasks ? (currentTask["subtasksClosed"].length / currentTask["taskSub"].length) * 100 : 0}%" class="subtasks-status"></div>
-        </div>
-        <span id="subtasksCounter" class="${subtasksCounterStyle}">${currentTask["subtasksClosed"].length}/${currentTask["taskSub"].length} done</span>
+      <div class="subtasks-border">
+    <div id="subtasksStatus" style="width:${currentTask["taskSub"].length > 0 ? (currentTask["subtasksClosed"].length / currentTask["taskSub"].length) * 100 : 0}%" class="subtasks-status"></div>
+</div>
+
+      <span id="subtasksCounter">${currentTask["subtasksClosed"].length}/${
+  currentTask["taskSub"].length
+  } done</span>
       </div>
       <div class="task-card-bottom-container">
-        <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
-        <div class="task-card-prio">
-          <img id="imgUrgentTask" src="./assets/img/${currentTask["prio"]}-prio.svg" alt="" />
-        </div>
+      <div class="avatar-Box" id="avatarBox${currentTask["id"]}"></div>
+      <div class="task-card-prio">
+          <img id="imgUrgentTask" src="../assets/img/${
+          currentTask["prio"]
+          }-prio.svg" alt="" />
       </div>
-    </div>`;
+      </div>
+  </div>`;
 }
 
-
-
-function addTaskPopupHTML(status){
-  console.log(status)
+function addTaskPopupHTML(){
   return`
   <div class="body-popup">
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div class="popup-header">
+      <div>
           <span class="headline-text">Add Task</span>
       </div>
 
       <div>
           <div id="taskAdded" class="taskAdded d-none">
-              <img src="assets/img/add-task.svg" alt="" />
+              <img src="../assets/img/add-task.svg" alt="" />
           </div>
       </div>
 
@@ -296,7 +306,7 @@ function addTaskPopupHTML(status){
               <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
           <div class="dropdown-min" id="dropdownMinCategory">
               <span>Select category</span>
-              <img src="assets/img/arrow-down.svg" alt="" />
+              <img src="../assets/img/arrow-down.svg" alt="" />
           </div>
           <div id="dropdownCategoryContent" class="dropdown-content"></div>
           </label>
@@ -318,7 +328,7 @@ function addTaskPopupHTML(status){
               <label for="dropdown" onclick="toggleDropdown()">
           <div class="dropdown-min" id="dropdownMin">
               <span id="categoryTextField"> Select contacts to assign</span>
-              <img src="assets/img/arrow-down.svg" alt="" />
+              <img src="../assets/img/arrow-down.svg" alt="" />
           </div>
           </label>
               <div id="dropdownContent" class="dropdown-content"></div>
@@ -336,15 +346,15 @@ function addTaskPopupHTML(status){
               <div id="prio" class="prio-popup">
                   <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
                       Urgent
-                      <img id="imgUrgent" src="assets/img/prioUrgent.svg" alt="" />
+                      <img id="imgUrgent" src="../assets/img/prioUrgent.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium();getPrioStatus('medium')">
                       Medium
-                      <img id="imgMedium" src="assets/img/medium-prio.svg" alt="" />
+                      <img id="imgMedium" src="../assets/img/medium-prio.svg" alt="" />
                   </div>
                   <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
                       Low
-                      <img id="imgLow" src="assets/img/low-prio.svg" alt="" />
+                      <img id="imgLow" src="../assets/img/low-prio.svg" alt="" />
                   </div>
               </div>
 
@@ -353,9 +363,9 @@ function addTaskPopupHTML(status){
                   <input type="text" id="subtask-input-content" placeholder="Enter Subtask..." />
 
                   <div id="subtaskOninput" style="display: flex">
-                      <img src="assets/img/close.svg" id="clearSubtaskInput" />
+                      <img src="../assets/img/close.svg" id="clearSubtaskInput" />
                       <div class="border-subtask"></div>
-                      <img src="./assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
+                      <img src="../assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
                   </div>
               </div>
 
@@ -363,9 +373,9 @@ function addTaskPopupHTML(status){
 
               <div class="action-button-container">
 
-                  <button class="clear-task-btn right-zero" id="clearTask" onclick="reloadPage()">
+                  <button class="clear-task-btn" id="clearTask" onclick="reloadPage()">
                       Clear
-                      <img src="assets/img/close.svg" />
+                      <img src="../assets/img/close.svg" />
                   </button>
                   
                   <button id="addTask" class="add-task-btn" type="submit">

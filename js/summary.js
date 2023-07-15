@@ -2,49 +2,15 @@ let fromLocalStorage;
 
 async function load() {
   await greetingDay();
-  await usersName();
-  await loadBoardData();
-  renderSummary();
-}
-
-async function loadBoardData(){
-  await loadTasks();
-  await loadtoDos();
-  await loadInProgress();
-  await loadFeedback();
-  await loadDone();
-}
-
-function renderSummary() {
-  const taskCountBoard = countTasks("board");
-  const taskCountInProgress = countTasks("inProgress");
-  const taskCountFeedback = countTasks("feedback");
-  const taskCountUrgent = countTasks("urgent");
-  const taskCountToDo = countTasks("toDo");
-  const taskCountDone = countTasks("done");
-
-  console.log("Tasks in board:", taskCountBoard);
-  console.log("Tasks in progress:", taskCountInProgress);
-  console.log("Awaiting feedback:", taskCountFeedback);
-  console.log("Urgent:", taskCountUrgent);
-  console.log("To-do:", taskCountToDo);
-  console.log("Done:", taskCountDone);
-
-  // Update the summary section with the task counts
-  document.getElementById("tasks-board").innerText = taskCountBoard;
-  document.getElementById("tasks-progress").innerText = taskCountInProgress;
-  document.getElementById("awaiting-feedback").innerText = taskCountFeedback;
-  document.getElementById("sum-urgent").innerText = taskCountUrgent;
-  document.getElementById("sum-todo").innerText = taskCountToDo;
-  document.getElementById("sum-done").innerText = taskCountDone;
+  activeUser();
 }
 
 // greeting day on
 async function greetingDay() {
-  document.getElementById("dayGreeting").innerText = await alldayGreeting();
+  document.getElementById("dayGreeting").innerText = alldayGreeting();
 }
 
-async function alldayGreeting() {
+function alldayGreeting() {
   let hour = new Date().getHours();
   if (4 <= hour && hour <= 11) {
     return "Good morning,";
@@ -95,7 +61,12 @@ function toBoard() {
   window.location.href = "board.html";
 }
 
-async function usersName() {
+// greet name
+function activeUser() {
+  usersName();
+}
+
+function usersName() {
   fromLocalStorage = JSON.parse(localStorage.getItem("user"));
 
   const fullName = fromLocalStorage[0].name;
