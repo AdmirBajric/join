@@ -324,6 +324,10 @@ body {
 }
 
 @media (max-width: 1000px) {
+  body {
+    height: 85rem !important;
+  }
+
   .container-right {
     margin-left: 190px;
   }

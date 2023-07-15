@@ -25,7 +25,8 @@ const [
 if (window.innerWidth <= 700) {
   signUpContainer.style.marginBottom = "4rem";
   if (window.innerHeight <= 667) {
-    login.style.top = "70%";
+    document.body.style.height = "900px";
+    login.style.top = "50%";
   } else if (window.innerHeight <= 740) {
     login.style.top = "62%";
   } else if (window.innerHeight <= 815) {
