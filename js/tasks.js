@@ -64,8 +64,6 @@ async function addNewTask(status) {
   let buttonMedium = document.getElementById("prioMedium");
   let buttonLow = document.getElementById("prioLow");
 
-  console.log(tasks);
-
   tasks.push({
     title: taskTitle.value,
     description: taskDescription.value,
@@ -80,10 +78,6 @@ async function addNewTask(status) {
     id: currentTaskID,
   });
 
-  console.log(tasks);
-
-  // toDo.push(currentTaskID);
-
   if (status === "toDo") {
     toDo.push(currentTaskID);
   } else if (status === "inProgress") {
@@ -97,18 +91,15 @@ async function addNewTask(status) {
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none");
 
-  setTimeout(() => {
+  setTimeout(async () => {
+    await setItem("tasks", JSON.stringify(tasks));
+    await setItem("toDo", JSON.stringify(toDo));
+    await setItem("inProgress", JSON.stringify(inProgress));
+    await setItem("feedback", JSON.stringify(feedback));
+    await setItem("done", JSON.stringify(done));
     taskAddedElement.classList.add("d-none");
     redirectToBoard();
-  }, 1000);
-
-  console.log(tasks);
-
-  await setItem("tasks", JSON.stringify(tasks));
-  await setItem("toDo", JSON.stringify(toDo));
-  await setItem("inProgress", JSON.stringify(inProgress));
-  await setItem("feedback", JSON.stringify(feedback));
-  await setItem("done", JSON.stringify(done));
+  }, 500);
 }
 
 async function subTasksLoad() {
