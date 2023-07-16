@@ -1,43 +1,49 @@
 let currentDraggedElement;
-
 async function startDragging(id, status) {
     currentDraggedElement = id;
     await showDropArea(status);
     await getSourceArrayByStatus(status, id);
     await hideDraggedOrigin();
 }
-
 async function hideDraggedOrigin() {
     let element = document.getElementById(currentDraggedElement);
     if (element) {
         element.classList.add("d-none");
     }
 }
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
 function drag(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
-async function drop(ev, status) {
+function drop(ev, status) {
     ev.preventDefault();
     ev.stopPropagation();
     let data = ev.dataTransfer.getData("text/plain");
     let draggedElement = document.getElementById(data);
     let dropArea = ev.target;
-
-    // Check if the drop area is valid for the dragged element
     if (dropArea.classList.contains("drop-area")) {
         dropArea.appendChild(draggedElement);
-        await moveTo(status);
+        moveTo(status);
     } else {
-        // Invalid drop area, return the element to its original position
-        draggedElement.classList.remove("d-none");
+        let originalContainer = document.getElementById(status);
+        originalContainer.appendChild(draggedElement);
+        ev.preventDefault();
+        draggedElement.classList.remove("dragging");
     }
-}
+    getBorderRemoveFunctions();
+    }
+
+
+
+function hideDraggedOrigin() {
+    let element = document.getElementById(currentDraggedElement);
+    if (element) {
+        element.classList.remove("d-none");
+    }
+    }
 
 async function moveTo(status) {
     let targetArray;
@@ -68,7 +74,6 @@ async function moveTo(status) {
     }
     await checkTargetArrayForID(targetArray, status);
 }
-
 async function checkTargetArrayForID(targetArray, status) {
     const elementExists = targetArray.includes(currentDraggedElement);
     if (elementExists) {
@@ -77,7 +82,6 @@ async function checkTargetArrayForID(targetArray, status) {
     targetArray.push(currentDraggedElement);
     await setItem(status, JSON.stringify(targetArray));
 }
-
 function getTaskById(id) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].id === id) {
@@ -86,7 +90,6 @@ function getTaskById(id) {
     }
     return null;
 }
-
 async function getSourceArrayByStatus(status, id) {
     switch (status) {
         case "toDo":
@@ -106,7 +109,6 @@ async function getSourceArrayByStatus(status, id) {
             return null;
     }
 }
-
 async function deleteTaskFromDragged(id, sourceArray) {
     switch (sourceArray) {
         case "toDo":
@@ -131,7 +133,6 @@ async function deleteTaskFromDragged(id, sourceArray) {
             break;
     }
 }
-
 async function showDropArea(status) {
     switch (status) {
         case "toDo":
@@ -156,7 +157,6 @@ async function showDropArea(status) {
             break;
     }
 }
-
 function getBorderRemoveFunctions() {
     document.getElementById("toDo").classList.remove("add-border");
     document.getElementById("inProgress").classList.remove("add-border");

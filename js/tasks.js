@@ -82,7 +82,7 @@ async function addNewTask(status) {
 
   console.log(tasks);
 
-  toDo.push(currentTaskID);
+  // toDo.push(currentTaskID);
 
   if (status === "toDo") {
     toDo.push(currentTaskID);
