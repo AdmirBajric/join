@@ -58,11 +58,6 @@ async function addNewTask(status) {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
   let taskDueDate = document.getElementById("datePicker");
-  let taskPriority = document.getElementById("priority");
-  let taskSub = document.getElementById("subtaskContent");
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
 
   tasks.push({
     title: taskTitle.value,
@@ -77,6 +72,8 @@ async function addNewTask(status) {
     subtasksClosed: [],
     id: currentTaskID,
   });
+
+  console.log(status);
 
   if (status === "toDo") {
     toDo.push(currentTaskID);

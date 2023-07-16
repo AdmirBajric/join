@@ -219,11 +219,9 @@ function getTaskCardHTML(currentTask, status) {
   const subtasksCounterStyle = hasSubtasks ? "" : "d-none";
 
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${
+    <div draggable="true" class="board-task-card draggable" onclick="event.stopPropagation(); showDetailCard(${
       currentTask["id"]
-    }, '${status}')" class="board-task-card" onclick="event.stopPropagation(); showDetailCard(${
-    currentTask["id"]
-  })" id="${currentTask["id"]}">
+    })" id="${currentTask["id"]}">
       <div class="task-card-top-div">
         <div class="task-card-category" id="taskCategoryContainer" style="background-color:${
           currentTask["color"]
@@ -280,7 +278,7 @@ function getTaskCardHTML(currentTask, status) {
     </div>`;
 }
 
-function addTaskPopupHTML() {
+function addTaskPopupHTML(status = "toDo") {
   return `
   <div class="body-popup">
 
@@ -298,7 +296,7 @@ function addTaskPopupHTML() {
 
       <div class="task-Alert" id="taskAlert"></div>
 
-      <form class="column-container-popup" id="column-container-popup-task" onsubmit="addNewTask('toDo') ; return false">
+      <form class="column-container-popup" id="column-container-popup-task" onsubmit="addNewTask('${status}') ; return false">
           <div class="column-left">
               <label>Title</label>
 

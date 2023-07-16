@@ -1,14 +1,14 @@
-function addSubTaskTempHtml(i){
-    return`
+function addSubTaskTempHtml(i) {
+  return `
     <div class="sub-container-task">
         <input type="checkbox" name="Subtask ${i + 1}">
         <p>${newAddedSubtasks[i]}</p>
     </div>
-    `
+    `;
 }
 
-function popupAddTaskHtml(){
-    return`
+function popupAddTaskHtml() {
+  return `
     <div class="popup-task">
         <div class="popup-background">
             <h2 class="header-task">
@@ -102,11 +102,11 @@ function popupAddTaskHtml(){
 
     </div>
 </div>
-    `
+    `;
 }
 
-function showNewCategoryHTML(){
-    return`
+function showNewCategoryHTML() {
+  return `
         <div class="dropdown-category-cat">
             <div class="dropdown-title-new">
                 <input id="new-cat-value" class="input-color" placeholder="New Category Name"></input>
@@ -119,11 +119,11 @@ function showNewCategoryHTML(){
                     </div>
                 </div>
         </div>
-    `
+    `;
 }
 
-function showNewContactHTML(){
-    return`
+function showNewContactHTML() {
+  return `
     <div class="dropdown-category-con-new">
         <div class="dropdown-title-new">
             <input id="new-con-value" class="input-color" placeholder="Contact Email" type="email"></input>
@@ -137,13 +137,13 @@ function showNewContactHTML(){
             </div>
         </div>
     </div> 
-    `
+    `;
 }
 
-function boardCardHtml(task){
-    console.log(task)
-    return`
-    <div class="board-card" draggable="true" ondragstart="startDragging()">
+function boardCardHtml(task) {
+  console.log(task);
+  return `
+    <div class="board-card" draggable="true">
         <h2>${task.category}</h2>
         <h3>${task.title}</h3>
         <p>${task.description}</p>
@@ -161,11 +161,11 @@ function boardCardHtml(task){
             <img src="/assets/img/low-prio.svg" alt="" class="speed-todo" />
         </div>
     </div>
-    `
+    `;
 }
 
-function popupBoardHTML(){
-    return`
+function popupBoardHTML() {
+  return `
     <div class="popup-board-body">
     <div class="display-board-popup">
         <div class="popup-board-bg">
@@ -212,13 +212,5 @@ function popupBoardHTML(){
         </div>
     </div>
 </div>
-    `
+    `;
 }
-
-
-
-
-
-
-
-
