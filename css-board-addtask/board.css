@@ -672,6 +672,9 @@
     #add-task-btn-board-mobile {
         display: flex;
     }
+    .headline-container{
+        margin-top: 9rem;
+    }
 }
 
 @media only screen and (min-width: 556px) {

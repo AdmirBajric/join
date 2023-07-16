@@ -34,6 +34,10 @@
     border-bottom-right-radius: 0;
 }
 
+.name{
+    font-size:2.1rem;
+}
+
 .task-popup-bottom-trash-edit-line {
     position: absolute;
     margin-left: 4.4rem;

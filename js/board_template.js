@@ -286,7 +286,7 @@ function addTaskPopupHTML() {
 
   <div class="popup-task">
   <div class="task-card-popup task-card-scroll">
-      <div>
+      <div class="header-container">
           <span class="headline-text">Add Task</span>
       </div>
 
@@ -334,7 +334,7 @@ function addTaskPopupHTML() {
 
               <label>Assigned to</label>
 
-              <label for="dropdown" onclick="toggleDropdown()">
+              <label for="dropdown" class="dropdown-assigned" onclick="toggleDropdown()">
           <div class="dropdown-min" id="dropdownMin">
               <span id="categoryTextField"> Select contacts to assign</span>
               <img src="./assets/img/arrow-down.svg" alt="" />
