@@ -190,13 +190,9 @@
   .headline-text {
     font-size: 4.6rem !important;
   }
-  /* .column-container-popup{
-    width: 80% !important;
-    margin: 0;
-  }
   .header-container{
     margin-top:15rem
-  } */
+  } 
 }
 
 @media screen and (max-width: 500px) {
