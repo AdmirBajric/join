@@ -496,7 +496,6 @@ function validateSubtasksForm(currentTask) {
 }
 
 function openAddTaskPopup(status) {
-  console.log(status);
   const popupOverlay = document.getElementById("addtask-popup");
   const bodyBoard = document.getElementsByClassName("body-board")[0];
   const boardContent = document.getElementsByClassName(
@@ -507,11 +506,6 @@ function openAddTaskPopup(status) {
   boardContent.classList.add("d-none");
 
   popupOverlay.innerHTML = addTaskPopupHTML(status);
-
-  const form = document.querySelector(".column-container-popup");
-  form.addEventListener("submit", () => {
-    addNewTask(status);
-  });
 }
 
 function countTasks(category) {

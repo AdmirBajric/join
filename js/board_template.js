@@ -298,7 +298,7 @@ function addTaskPopupHTML() {
 
       <div class="task-Alert" id="taskAlert"></div>
 
-      <form class="column-container-popup" id="column-container-popup-task" onsubmit="addNewTask() ; return false">
+      <form class="column-container-popup" id="column-container-popup-task" onsubmit="addNewTask('toDo') ; return false">
           <div class="column-left">
               <label>Title</label>
 

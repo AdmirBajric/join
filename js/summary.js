@@ -81,44 +81,23 @@ async function usersName() {
 }
 
 const loadTasks = async () => {
-  await showAllTasksLength();
-  await showAllTasksInProgress();
-  await showAllTasksAwaitingFeedback();
+  await showAllTasksOnSummary("tasks", "tasks-board");
+  await showAllTasksOnSummary("inProgress", "tasks-progress");
+  await showAllTasksOnSummary("feedback", "awaiting-feedback");
   await showAllTasksUrgent();
-  await shoAllTasksToDo();
-  await showAllTasksDone();
-};
-
-const showAllTasksLength = async () => {
-  const getAllTasks = JSON.parse(await getItem("tasks"));
-  const tasksInBoard = document.querySelector("#tasks-board");
-  tasksInBoard.innerHTML = getAllTasks.length;
-};
-
-const showAllTasksInProgress = async () => {
-  const getAllInProgress = JSON.parse(await getItem("inProgress"));
-  const inProgress = document.querySelector("#tasks-progress");
-  inProgress.innerHTML = getAllInProgress.length;
-};
-
-const showAllTasksAwaitingFeedback = async () => {
-  const getAllAwaitingFeedback = JSON.parse(await getItem("feedback"));
-  const awaitingFeedback = document.querySelector("#awaiting-feedback");
-  awaitingFeedback.innerHTML = getAllAwaitingFeedback.length;
+  await showAllTasksOnSummary("toDo", "sum-todo");
+  await showAllTasksOnSummary("done", "sum-done");
 };
 
 const showAllTasksUrgent = async () => {
-  console.log("Urgent ");
+  const getAllTasks = JSON.parse(await getItem("tasks"));
+  const filteredTasks = getAllTasks.filter((t) => t.prio === "up");
+  const inBoard = document.querySelector("#sum-urgent");
+  inBoard.innerHTML = filteredTasks.length;
 };
 
-const shoAllTasksToDo = async () => {
-  const getAllTasksToDo = JSON.parse(await getItem("toDo"));
-  const toDo = document.querySelector("#sum-todo");
-  toDo.innerHTML = getAllTasksToDo.length;
-};
-
-const showAllTasksDone = async () => {
-  const getAllTasksDone = JSON.parse(await getItem("done"));
-  const done = document.querySelector("#sum-done");
-  done.innerHTML = getAllTasksDone.length;
+const showAllTasksOnSummary = async (item, element) => {
+  const getAllItems = JSON.parse(await getItem(item));
+  const inBoard = document.querySelector(`#${element}`);
+  inBoard.innerHTML = getAllItems.length;
 };
