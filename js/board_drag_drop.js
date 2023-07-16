@@ -50,6 +50,15 @@ function drop(event) {
   containers.forEach((container) => {
     container.classList.remove("highlight");
   });
+
+  // Call the function to log the dragged element ID and the parent ID where it is dropped
+  logElementDrop(draggableElement.id, currentContainer.parentNode.id);
+}
+
+// Function to log the dragged element ID and the parent ID where it is dropped
+function logElementDrop(elementId, parentId) {
+  console.log("Dragged Element ID:", elementId);
+  console.log("Parent ID where it is dropped:", parentId);
 }
 
 setTimeout(() => {
