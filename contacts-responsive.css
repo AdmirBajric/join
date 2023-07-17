@@ -577,6 +577,9 @@
 }
 
 @media only screen and (max-width: 400px) {
+  html {
+    font-size: 55% !important;
+  }
   .contact-user-init {
     display: none;
   }
@@ -664,5 +667,11 @@
   .edit-divider {
     width: 85%;
     align-self: center;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  html {
+    font-size: 50% !important;
   }
 }

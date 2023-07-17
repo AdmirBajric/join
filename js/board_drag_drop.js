@@ -70,7 +70,6 @@ function logElementDrop(dragStartParentId, elementId, parentId) {
 
 async function addElementToNewParent(parentId, elementId) {
   let parentName = parentId - 1;
-  console.log(parentName);
 
   const status = ["toDo", "inProgress", "feedback", "done"];
 
@@ -100,7 +99,6 @@ async function addElementToNewParent(parentId, elementId) {
 
 async function removeElementFromParent(dragStartParentId, elementId) {
   let parentName = dragStartParentId - 1;
-  console.log(parentName);
 
   const status = ["toDo", "inProgress", "feedback", "done"];
 
