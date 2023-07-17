@@ -184,19 +184,33 @@
     margin-left: 0;
     z-index: unset;
   }
+  .task-card-popup{
+    margin-left:5%;
+    margin-right: 5%;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .headline-text {
     font-size: 4.6rem !important;
   }
+  .popup-task{
+    display: unset;
+  }
   .header-container{
     margin-top:15rem
-  } 
+  }
+
 }
 
 @media screen and (max-width: 500px) {
   .headline-text {
     font-size: 4.6rem !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #clearTask{
+    margin-right: 0 !important;
   }
 }

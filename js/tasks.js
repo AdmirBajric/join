@@ -99,6 +99,11 @@ async function addNewTask(status) {
   }, 500);
 }
 
+function disableDateinput() {
+  var today = new Date().toISOString().split("T")[0];
+  document.getElementsByName("input-date")[0].setAttribute("min", today);
+}
+
 async function subTasksLoad() {
   subtasks = [];
   for (let i = 0; i < subtasks.length; i++) {
@@ -388,6 +393,7 @@ function renderCategoryList() {
 }
 
 function renderNewCategoryField() {
+  console.log(tasks)
   let dropdownField = document.getElementById("dropdownMinCategory");
   document.getElementById("select-color-category").classList.remove("d-none");
   document.getElementById("dropdownCategoryContent").classList.add("d-none");
@@ -444,7 +450,13 @@ function toggleDropdown() {
   let dropdownMin = document.getElementById("dropdownMin");
   dropdownContent.classList.toggle("show");
   dropdownMin.classList.toggle("open");
+  
+  // Hide dropdown content after selection
+  if (!dropdownContent.classList.contains("show")) {
+    hideSelectColor();
+  }
 }
+
 
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");

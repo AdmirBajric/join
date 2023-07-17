@@ -92,6 +92,7 @@
     display: flex;
     justify-content: end;
     margin-right: 2rem;
+    margin-bottom:2rem;
 }
 
 @media (max-width: 530px) {

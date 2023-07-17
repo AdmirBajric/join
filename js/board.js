@@ -399,52 +399,34 @@ function showSubtasks(task) {
 }
 
 function searchForTaskByInput() {
-  let search = document.getElementById("search-input").value;
-  search = search.toLowerCase();
+  let search = document.getElementById("search-input").value.trim().toLowerCase(); //gets the value+ changes it to lower case
 
-  if (search.trim() === "") {
-    for (let i = 0; i < tasks.length; i++) {
-      showHiddenTask(tasks[i]["id"]);
-    }
-  } else {
-    for (let i = 0; i < tasks.length; i++) {
-      const task = tasks[i];
-      const title = task["title"] || "";
-      const description = task["description"] || "";
+  for (let i = 0; i < tasks.length; i++) {
+    const task = tasks[i];
+    const title = task["title"] || "";
+    const description = task["description"] || "";
+    const taskCardContainer = document.getElementById(task["id"]);
 
-      if (
-        title.toLowerCase().includes(search) ||
-        description.toLowerCase().includes(search)
-      ) {
-        showHiddenTask(task["id"]);
-      } else {
-        hideTask(task["id"]);
-      }
+    if (search === "" || title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+      showTask(taskCardContainer);
+    } else {
+      hideTask(taskCardContainer);
     }
   }
 }
 
-function hideTask(id) {
-  let taskCardContainer = document.getElementById(id);
-
+function hideTask(taskCardContainer) {
   if (taskCardContainer) {
-    taskCardContainer.style.opacity = "0";
-    setTimeout(() => {
-      taskCardContainer.classList.add("d-none");
-    }, 500);
+    taskCardContainer.style.display = "none"; //Display property to none
   }
 }
 
-function showHiddenTask(id) {
-  let taskCardContainer = document.getElementById(id);
-
+function showTask(taskCardContainer) {
   if (taskCardContainer) {
-    taskCardContainer.classList.remove("d-none");
-    setTimeout(() => {
-      taskCardContainer.style.opacity = "1";
-    }, 100);
+    taskCardContainer.style.display = ""; // Resets the display property to its default value
   }
 }
+
 
 async function showTickableSubtasks(currentTask) {
   let subtasksContainer = document.getElementById("subtaskContent");

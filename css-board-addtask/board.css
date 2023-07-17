@@ -338,6 +338,7 @@
   background-color: #ffa800;
   color: white;
   width: 25%;
+  font-size: 1.7rem;
 }
 
 .prio-btn-urgent {
@@ -439,8 +440,8 @@
 }
 
 #editTask {
-  margin-top: -0.3rem;
-  margin-left: -0.3rem;
+  margin-top: -0.2rem;
+  margin-left: -0.5rem;
 }
 
 .board-task-card:hover {
