@@ -1,6 +1,7 @@
 // Elemente auswählen
 let draggableElement;
 let containers;
+let dragStartParentId;
 
 // Dragstart Event-Handler
 function dragStart(event) {
@@ -18,6 +19,8 @@ function dragStart(event) {
       container.classList.add("highlight");
     }
   });
+
+  dragStartParentId = event.currentTarget.parentNode.dataset.id;
 }
 
 // Dragend Event-Handler
@@ -52,13 +55,97 @@ function drop(event) {
   });
 
   // Call the function to log the dragged element ID and the parent ID where it is dropped
-  logElementDrop(draggableElement.id, currentContainer.parentNode.id);
+  logElementDrop(
+    dragStartParentId,
+    draggableElement.id,
+    currentContainer.parentNode.dataset.id
+  );
 }
 
 // Function to log the dragged element ID and the parent ID where it is dropped
-function logElementDrop(elementId, parentId) {
-  console.log("Dragged Element ID:", elementId);
-  console.log("Parent ID where it is dropped:", parentId);
+function logElementDrop(dragStartParentId, elementId, parentId) {
+  removeElementFromParent(dragStartParentId, elementId);
+  addElementToNewParent(parentId, elementId);
+}
+
+async function addElementToNewParent(parentId, elementId) {
+  let parentName = parentId - 1;
+  console.log(parentName);
+
+  const status = ["toDo", "inProgress", "feedback", "done"];
+
+  switch (true) {
+    case status[parentName] === "toDo":
+      toDo.push(+elementId);
+      await setItem("toDo", JSON.stringify(toDo));
+      break;
+    case status[parentName] === "inProgress":
+      inProgress.push(+elementId);
+      await setItem("inProgress", JSON.stringify(inProgress));
+      break;
+    case status[parentName] === "feedback":
+      feedback.push(+elementId);
+      await setItem("feedback", JSON.stringify(feedback));
+      break;
+    case status[parentName] === "done":
+      done.push(+elementId);
+      await setItem("done", JSON.stringify(done));
+
+      break;
+    default:
+      console.log("Error");
+      break;
+  }
+}
+
+async function removeElementFromParent(dragStartParentId, elementId) {
+  let parentName = dragStartParentId - 1;
+  console.log(parentName);
+
+  const status = ["toDo", "inProgress", "feedback", "done"];
+
+  switch (true) {
+    case status[parentName] === "toDo":
+      const filteredTodo = toDo.filter((t) => {
+        if (t !== +elementId) {
+          return t;
+        }
+      });
+      toDo = filteredTodo;
+      await setItem("toDo", JSON.stringify(toDo));
+      break;
+    case status[parentName] === "inProgress":
+      const filteredInProgress = inProgress.filter((t) => {
+        if (t !== +elementId) {
+          return t;
+        }
+      });
+      inProgress = filteredInProgress;
+      await setItem("inProgress", JSON.stringify(inProgress));
+      break;
+    case status[parentName] === "feedback":
+      const filteredFeedback = feedback.filter((t) => {
+        if (t !== +elementId) {
+          return t;
+        }
+      });
+      feedback = filteredFeedback;
+      await setItem("feedback", JSON.stringify(feedback));
+      break;
+    case status[parentName] === "done":
+      const filteredDone = done.filter((t) => {
+        if (t !== +elementId) {
+          return t;
+        }
+      });
+      done = filteredDone;
+      await setItem("done", JSON.stringify(done));
+
+      break;
+    default:
+      console.log("Error");
+      break;
+  }
 }
 
 setTimeout(() => {
@@ -71,7 +158,7 @@ setTimeout(() => {
   });
 
   // Eventlistener für Dragend hinzufügen
-  draggableElement.addEventListener("dragend", dragEnd);
+  draggableElement?.addEventListener("dragend", dragEnd);
 
   // Eventlistener für Dragover und Drop hinzufügen
   containers.forEach((container) => {

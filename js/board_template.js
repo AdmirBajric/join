@@ -227,21 +227,17 @@ function getTaskCardHTML(currentTask, status) {
           currentTask["color"]
         }">${currentTask["category"]}</div>
         <div class="dropdown-position" onclick="event.stopPropagation();">
-          <select class="dropdown-style" onchange="event.stopPropagation(); startDragging(${
-            currentTask["id"]
-          }, '${status}'); moveTo(event.target.value); deleteTaskFromDragged(${
-    currentTask["id"]
-  }, '${status}')">
-            <option value="toDo" ${
+          <select class="dropdown-style" onchange="event.stopPropagation(); listChanged(event)">
+            <option data-mobile-id="1"  id="mobile-toDo" ${
               status === "toDo" ? "selected" : ""
             }>To Do</option>
-            <option value="inProgress" ${
+            <option data-mobile-id="2" id="mobile-inProgress" ${
               status === "inProgress" ? "selected" : ""
             }>In progress</option>
-            <option value="feedback" ${
+            <option data-mobile-id="3" id="mobile-feedback" ${
               status === "feedback" ? "selected" : ""
             }>Awaiting feedback</option>
-            <option value="done" ${
+            <option data-mobile-id="1" id="mobile-done" ${
               status === "done" ? "selected" : ""
             }>Done</option>
           </select>

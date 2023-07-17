@@ -26,6 +26,7 @@
     <script src="./js/board.js" defer></script>
     <script src="./js/board_template.js" defer></script>
     <script src="./js/board_drag_drop.js" defer></script>
+    <script src="./js/mobile_board_drag_drop.js" defer></script>
   </head>
 
   <body onload="initBoard();includeLoad();" class="body-board">
@@ -73,7 +74,7 @@
       </div>
 
       <div class="board-content">
-        <div class="board-content-element" id="toDoContainer">
+        <div class="board-content-element" data-id="1" id="toDoContainer">
           <div class="task-type">
             <span>To Do</span>
             <svg
@@ -113,7 +114,7 @@
           </div>
         </div>
 
-        <div class="board-content-element" id="progressContainer">
+        <div class="board-content-element" data-id="2" id="progressContainer">
           <div class="task-type">
             <span>In progress</span>
             <svg
@@ -152,7 +153,7 @@
             <!--DropArea IN PROGRESS-->
           </div>
         </div>
-        <div class="board-content-element" id="feedbackContainer">
+        <div class="board-content-element" data-id="3" id="feedbackContainer">
           <div class="task-type">
             <span>Awaiting feedback</span>
             <svg
@@ -191,7 +192,7 @@
             <!--DropArea FEEDBACK-->
           </div>
         </div>
-        <div class="board-content-element" id="doneContainer">
+        <div class="board-content-element" data-id="4" id="doneContainer">
           <div class="task-type">
             <span>Done</span>
             <svg

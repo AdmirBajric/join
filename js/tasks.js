@@ -393,7 +393,7 @@ function renderCategoryList() {
 }
 
 function renderNewCategoryField() {
-  console.log(tasks)
+  console.log(tasks);
   let dropdownField = document.getElementById("dropdownMinCategory");
   document.getElementById("select-color-category").classList.remove("d-none");
   document.getElementById("dropdownCategoryContent").classList.add("d-none");
@@ -450,13 +450,12 @@ function toggleDropdown() {
   let dropdownMin = document.getElementById("dropdownMin");
   dropdownContent.classList.toggle("show");
   dropdownMin.classList.toggle("open");
-  
+
   // Hide dropdown content after selection
   if (!dropdownContent.classList.contains("show")) {
     hideSelectColor();
   }
 }
-
 
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");
