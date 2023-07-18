@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   margin-left: 232px;
   margin-right: 80px;
-  margin-top: 100px;
+  margin-top: 133px;
 }
 
 .right-Notiz {
@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 15px;
 }
 
 .p-px {
@@ -53,6 +54,12 @@ h1 {
 .img-close:hover {
   transform: scale(1.08);
   transition: all 150ms ease-in-out;
+}
+
+h2 {
+    font-size: 25px;
+    padding-bottom: 15px;
+    padding-top: 30px;
 }
 
 @media (max-width: 1000px) {
