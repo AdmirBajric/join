@@ -31,6 +31,28 @@ body {
     /* Abstand zwischen Spalten */
 }
 
+.dropdown-min-cat {
+    cursor: pointer;
+    background-color: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: 0.1rem solid #d1d1d1;
+    font-size: 2.1rem;
+}
+
+
+
+.dropdown-min img,.dropdown-min-cat img {
+    width: 2rem;
+    height: 2rem;
+}
+
 .task-card-category{
     padding: 4px 36.5px;
     align-items: flex-start;
@@ -498,14 +520,9 @@ label {
     margin-left: 1rem;
 }
 
-/* @media screen and (max-width: 1445px) {
-    #clearTask {
-      margin-right: 190px;
-    }
-  } */
-
 .column-right {
     width: 400px !important;
+    width: 100% !important;
 }
 
 .border {
@@ -516,10 +533,6 @@ label {
 
 .column-container {
     flex-direction: column !important;
-}
-
-.column-right {
-    width: 100% !important;
 }
 
 .add-task-btn {
@@ -534,9 +547,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: 380px !important;
 }
 
-.column-right {
+/* .column-right {
     margin-top: 1.8rem !important;
-}
+} */
 
 .task-card {
     width: 70% !important;

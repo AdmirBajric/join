@@ -49,6 +49,12 @@
     background-color: rgba(255, 255, 255, 0);
 }
 
+.select-cat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .Task-Content-Top {
     display: flex;
     justify-content: flex-start;

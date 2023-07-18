@@ -3,17 +3,18 @@ body {
 }
 
 .body-addtask{
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .task-Alert {
     width: 35rem;
     height: 5rem;
     margin-left: -1.5rem;
-    margin-bottom: 2.0rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: red;
+    font-size: 1.6rem;
 }
 .task-card-scroll {
     scrollbar-width: auto;
@@ -53,7 +54,11 @@ body {
     flex-basis: 50%;
 }
 
-
+.select-cat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .column-left>*+*,
 .column-right>*+* {
@@ -421,7 +426,23 @@ label {
     font-size: 1rem;
 }
 
-.dropdown-min img {
+.dropdown-min-cat {
+    cursor: pointer;
+    background-color: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: 0.1rem solid #d1d1d1;
+    font-size: 1rem;
+}
+
+
+.dropdown-min img,.dropdown-min-cat img {
     width: 2rem;
     height: 2rem;
 }

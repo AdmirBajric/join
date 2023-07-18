@@ -453,6 +453,7 @@
   overflow: auto;
   scrollbar-width: auto;
   scrollbar-color: #2a3647 #f6f7f8;
+  height: auto;
 }
 
 .board-task-card::-webkit-scrollbar {
