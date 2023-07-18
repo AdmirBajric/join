@@ -6,7 +6,7 @@
 
 .popup-task {
   width: 1116px;
-  height: 914px;
+  min-height: 70rem;
   background-color: var(--white);
   display: flex;
   justify-content: center;
@@ -83,6 +83,22 @@
   margin-left: 0.7rem;
 }
 
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: -5rem;
+}
+
+#closePopup{
+  height: 6.1rem;
+}
+
+#closePopup:hover{
+  cursor:pointer;
+  fill:red;
+  height: 3.1rem;
+}
+
 .dropdown-min span,
 .dropdown-object span {
   font-size: 2.1rem;
@@ -151,6 +167,10 @@
   .headline-container {
     align-items: start !important;
   }
+
+  .header-container{
+    margin-top: 2rem;
+  }
   .hidden {
     overflow-y: scroll !important;
   }
@@ -175,10 +195,10 @@
 
 @media screen and (max-width: 1000px) {
   .body-board {
-    overflow: unset;
+    overflow-x: hidden;
   }
   .body-popup {
-    overflow: unset;
+    overflow-x: hidden;
   }
   .popup-task {
     margin-left: 0;

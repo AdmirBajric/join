@@ -282,6 +282,9 @@ function addTaskPopupHTML(status = "toDo") {
   <div class="task-card-popup task-card-scroll">
       <div class="header-container">
           <span class="headline-text">Add Task</span>
+          <div  onclick="closePopupTask()" id="closePopup">
+            <img src="./assets/img/close.svg">
+          </div>
       </div>
 
       <div>
@@ -307,9 +310,11 @@ function addTaskPopupHTML(status = "toDo") {
               <div class="d-none" id="categoryEdit"></div>
 
               <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
-          <div class="dropdown-min" id="dropdownMinCategory">
+          <div class="dropdown-min-cat" id="dropdownMinCategory">
+          <div class="select-cat">
               <span>Select category</span>
               <img src="./assets/img/arrow-down.svg" alt="" />
+          </div>
           </div>
           <div id="dropdownCategoryContent" class="dropdown-content"></div>
           </label>

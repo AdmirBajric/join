@@ -267,6 +267,7 @@ function redirectToAddTaskPopupOne() {
 function closePopup() {
   let overlay = document.getElementById("overlay");
   let bodyBoard = document.getElementsByClassName("body-board")[0];
+  let popup = document.querySelector('.overlay-addtask-popup');
   bodyBoard.classList.remove("hidden");
   overlay.classList.add("d-none");
 }

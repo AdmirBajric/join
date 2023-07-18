@@ -339,6 +339,18 @@ function checkScreenWidth() {
   }
 }
 
+function toggleDropdown() {
+  let dropdownContent = document.getElementById("dropdownContent");
+  let dropdownMin = document.getElementById("dropdownMin");
+  dropdownContent.classList.toggle("show");
+  dropdownMin.classList.toggle("open");
+
+  // Hide dropdown content after selection
+  if (!dropdownContent.classList.contains("show")) {
+    hideSelectColor();
+  }
+}
+
 function showEditTaskPopUp() {
   var overlay = document.getElementById("editTaskPopUp");
   overlay.style.display = "block";
@@ -409,11 +421,11 @@ function stopDropdown(event) {
 function clearSelections() {
   renderNormalCategoryField();
   renderCategoryList();
-  toggleDropdownCategory();
   hideSelectColor();
   hideErrorMessage();
   hideCategoryDisplay();
 }
+
 
 function hideSelectColor() {
   document.getElementById("select-color-category").classList.add("d-none");
@@ -432,6 +444,7 @@ function renderNormalCategoryField() {
   document.getElementById("categoryDisplay").style.display = "none";
 
   let dropdownField = document.getElementById("dropdownMinCategory");
+  document.getElementById("dropdownCategoryContent").classList.remove("d-none");
   dropdownField.innerHTML = normalCategoryFiledHTML();
 }
 
@@ -443,18 +456,6 @@ function saveSelectedCategory(element, color) {
   dropdownMin.querySelector("span").innerText = selectedCategory;
   selectedColor = color;
   toggleDropdownCategory();
-}
-
-function toggleDropdown() {
-  let dropdownContent = document.getElementById("dropdownContent");
-  let dropdownMin = document.getElementById("dropdownMin");
-  dropdownContent.classList.toggle("show");
-  dropdownMin.classList.toggle("open");
-
-  // Hide dropdown content after selection
-  if (!dropdownContent.classList.contains("show")) {
-    hideSelectColor();
-  }
 }
 
 function toggleDropdownCategory() {
@@ -568,4 +569,14 @@ function hideCategoryDisplay() {
   const categoryDisplay = document.getElementById("categoryDisplay");
   categoryDisplay.style.display = "none";
   categoryDisplay.textContent = "";
+}
+
+function closePopupTask(){
+  let boardBody = document.querySelector('.body-board');
+  let boardMainContainer = document.querySelector('.board-main-container');
+  let popup = document.getElementById('addtask-popup');
+
+  boardBody.classList.remove('hidden');
+  boardMainContainer.classList.remove('d-none');
+  popup.classList.add('d-none')
 }

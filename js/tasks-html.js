@@ -39,8 +39,10 @@ function categoryFieldHTML(){
 
 function normalCategoryFiledHTML(){
     return`
-    <span>Select category</span>
-    <img src="./assets/img/arrow_down_black.svg" alt="">
+    <div class="select-cat">
+        <span>Select category</span>
+        <img src="./assets/img/arrow_down_black.svg" alt="" />
+    </div>
     `
 }
 
