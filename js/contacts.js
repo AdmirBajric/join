@@ -226,7 +226,7 @@ const closeAddContact = () => {
   setTimeout(() => {
     addContact.style.animation = "";
     addContact.style.opacity = 0;
-    addContact.style.zIndex = -1;
+    addContact.style.zIndex = -9999;
   }, 1000);
 };
 
@@ -238,7 +238,7 @@ const closeEditContact = () => {
   setTimeout(() => {
     editUserContact.style.animation = "";
     editUserContact.style.opacity = 0;
-    editUserContact.style.zIndex = -1;
+    editUserContact.style.zIndex = -9999;
   }, 1000);
 };
 
