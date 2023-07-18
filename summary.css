@@ -210,7 +210,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 258px;
+  width: 285px;
   height: 145px;
   background-color: white;
   border: 1px solid #e3e1e1cd;
@@ -245,7 +245,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 258px;
+  width: 285px;
   height: 145px;
   background-color: white;
   border: 1px solid #e3e1e1;
@@ -554,12 +554,12 @@ body {
   }
 
   .to-do-div {
-    width: 153px;
+    width: 175px;
     height: 130px;
   }
 
   .done-div {
-    width: 153px;
+    width: 175px;
     height: 130px;
     padding-right: 4px;
   }
