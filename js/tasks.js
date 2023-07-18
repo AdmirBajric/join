@@ -73,8 +73,6 @@ async function addNewTask(status) {
     id: currentTaskID,
   });
 
-  console.log(status);
-
   if (status === "toDo") {
     toDo.push(currentTaskID);
   } else if (status === "inProgress") {
@@ -125,11 +123,13 @@ async function setNewTaskID() {
 
 async function loadTasks() {
   try {
-    tasks = JSON.parse(await getItem("tasks"));
+    const storedTasks = JSON.parse(await getItem("tasks"));
+    tasks = tasks.concat(storedTasks);
   } catch (e) {
     console.error("Loading error:", e);
   }
 }
+
 
 async function subTaskAddToJson() {
   let task = document.getElementById("subtask-input-content");
