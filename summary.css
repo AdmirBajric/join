@@ -359,6 +359,30 @@ body {
   }
 }
 
+@media (max-width: 885px) {
+  .container-right {
+    margin-left: 140px;
+  }
+}
+
+@media (max-width: 850px) {
+  .container-right {
+    margin-left: 115px;
+  }
+}
+
+@media (max-width: 735px) {
+  .container-right {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 700px) {
+  .container-right {
+    margin-left: 45px;
+  }
+}
+
 @media (max-width: 670px) {
   .all-in-summary {
     margin-left: 0px;
@@ -382,11 +406,11 @@ body {
   }
 
   .to-do-div {
-    width: 195px;
+    width: 223px;
   }
 
   .done-div {
-    width: 195px;
+    width: 223px;
   }
 
   .tasks-progress {
@@ -399,30 +423,6 @@ body {
 
   .tasks-board {
     font-size: 50px;
-  }
-}
-
-@media (max-width: 885px) {
-  .container-right {
-    margin-left: 140px;
-  }
-}
-
-@media (max-width: 850px) {
-  .container-right {
-    margin-left: 115px;
-  }
-}
-
-@media (max-width: 735px) {
-  .container-right {
-    margin-left: 60px;
-  }
-}
-
-@media (max-width: 700px) {
-  .container-right {
-    margin-left: 45px;
   }
 }
 
@@ -470,11 +470,11 @@ body {
   }
 
   .to-do-div {
-    width: 175px;
+    width: 200px;
   }
 
   .done-div {
-    width: 175px;
+    width: 200px;
   }
 }
 
