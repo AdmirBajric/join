@@ -223,6 +223,7 @@ const closeAddContact = () => {
   contactBody.style.opacity = 1;
   contactBody.style.zIndex = 1;
   animateToggle("fadeOut", addContact);
+  addContact.style.animation = "";
 };
 
 // This function is used to close the "edit contact" section by changing CSS properties and calling the "animateToggle" function.

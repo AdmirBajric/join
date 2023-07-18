@@ -230,7 +230,7 @@
 
   #new-contact {
     position: absolute;
-    top: 10rem;
+    top: 11rem;
     right: 1rem;
   }
 
@@ -580,6 +580,12 @@
   html {
     font-size: 55% !important;
   }
+
+  .add-form-close-img,
+  .edit-form-close-img {
+    top: -28.5rem;
+    right: 2rem;
+  }
   .contact-user-init {
     display: none;
   }
@@ -603,6 +609,11 @@
 
   .contact-info {
     margin-left: 3.5rem;
+  }
+
+  #add-contact {
+    top: 45%;
+    height: 83%;
   }
 
   #add-contact,
