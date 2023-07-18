@@ -235,6 +235,11 @@ const closeEditContact = () => {
   contactBody.style.opacity = 1;
   contactBody.style.zIndex = 1;
   animateToggle("fadeOut", editUserContact);
+  setTimeout(() => {
+    editUserContact.style.animation = "";
+    editUserContact.style.opacity = 0;
+    editUserContact.style.zIndex = -1;
+  }, 1000);
 };
 
 // This function is used to edit a specific contact with the provided 'id'.

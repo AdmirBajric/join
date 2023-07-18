@@ -611,15 +611,12 @@
     margin-left: 3.5rem;
   }
 
-  #add-contact {
-    top: 45%;
-    height: 83%;
-  }
-
   #add-contact,
   #edit-contact {
     width: 32rem;
     left: 40%;
+    top: 45%;
+    height: 83%;
   }
 
   .add-container {
