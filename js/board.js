@@ -1,8 +1,10 @@
+// arrays for different task categories
 let toDo = [];
 let inProgress = [];
 let feedback = [];
 let done = [];
 
+// // Initialize the board by clearing the tasks container and loading tasks and users
 async function initBoard() {
   clearTasksContainer();
   await loadTasks();
@@ -14,6 +16,7 @@ async function initBoard() {
   renderBoard();
 }
 
+// loadtasks from storage
 async function loadTasks() {
   try {
     tasks = JSON.parse(await getItem("tasks"));
@@ -21,13 +24,13 @@ async function loadTasks() {
     console.error("Loading error:", e);
   }
 }
-
+// render task on board
 function renderBoard() {
   renderTaskCardToDo();
   renderTaskCardProgress();
   renderTaskCardFeedback();
   renderTaskCardDone();
-
+  // get task count for summary
   const taskCountBoard = tasks.length;
   const taskCountInProgress = inProgress.length;
   const taskCountFeedback = feedback.length;
@@ -75,7 +78,7 @@ async function loadUsers() {
     console.error("Loading error:", e);
   }
 }
-
+// Render the to-do task cards
 function renderTaskCardToDo() {
   let toDoContainer = document.getElementById("toDo");
   let renderedIDs = {};
@@ -88,7 +91,7 @@ function renderTaskCardToDo() {
     }
   }
 }
-
+// Render the progress task cards
 async function renderTaskCardProgress() {
   let progressContainer = document.getElementById("inProgress");
   let renderedIDs = {};
@@ -104,7 +107,7 @@ async function renderTaskCardProgress() {
     }
   }
 }
-
+// Render the feedback task cards
 function renderTaskCardFeedback() {
   let feedbackContainer = document.getElementById("feedback");
   let renderedIDs = {};
@@ -117,7 +120,7 @@ function renderTaskCardFeedback() {
     }
   }
 }
-
+// Render the done task cards
 async function renderTaskCardDone() {
   let doneContainer = document.getElementById("done");
   let renderedIDs = {};
@@ -133,7 +136,7 @@ async function renderTaskCardDone() {
     }
   }
 }
-
+// clear task container
 function clearTasksContainer() {
   let toDoContainer = document.getElementById("toDo");
   let progressContainer = document.getElementById("inProgress");
@@ -145,7 +148,7 @@ function clearTasksContainer() {
   feedbackContainer.innerHTML = "";
   doneContainer.innerHTML = "";
 }
-
+// render avatars for assigned contacts in a task
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
   for (let i = 0; i < currentTask["assignments"].length; i++) {
@@ -169,7 +172,7 @@ function getUserColor(id) {
     throw new Error(`Benutzer mit ID ${id} wurde nicht gefunden.`);
   }
 }
-
+// detail task for the card
 function showDetailCard(id) {
   const overlay = document.getElementById("overlay");
   const bodyBoard = document.getElementsByClassName("body-board")[0];
@@ -189,7 +192,7 @@ function showDetailCard(id) {
 
   addOverlayClickListener(overlay);
 }
-
+// show overlay by updating classes
 function showOverlay(overlay, bodyBoard, boardContainer) {
   overlay.classList.remove("d-none");
   bodyBoard.classList.add("hidden");
@@ -213,7 +216,7 @@ function addOverlayClickListener(overlay) {
   });
 }
 
-
+// get the priority of a task and render it ot detail
 async function getTaskPrio(task) {
   let prioContainer = document.getElementById("prioDetail");
   switch (task["prio"]) {
@@ -249,7 +252,7 @@ async function getTaskPrio(task) {
       break;
   }
 }
-
+// get assigned contact and render it to detail card
 function getAssignedToDetailCard(task) {
   let assignContainer = document.getElementById("assignDetail");
   for (let i = 0; i < task["assignments"].length; i++) {
@@ -295,7 +298,7 @@ async function deleteTask(id) {
   closePopup();
   initBoard();
 }
-
+// edit task by its ID (open)
 function editTask(id) {
   currentTaskID = id;
   let currentTask = tasks.find((task) => task.id == id);
@@ -344,7 +347,7 @@ function toggleCheckbox(checkboxId) {
   var checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;
 }
-
+// Get the current date in YYYY-MM-DD format
 function getCurrentDate() {
   const today = new Date();
   let day = today.getDate();
@@ -440,7 +443,7 @@ function openAddTaskPopup(status) {
   popupOverlay.innerHTML = addTaskPopupHTML(status);
 }
 
-
+// count number of tasks in category for summary
 function countTasks(category) {
   let count = 0;
 
