@@ -100,7 +100,7 @@ const userContactPreviewMobile = (
     
         <div class="user-contact-info-mobile">
             <p class="user-contact-info-name-mobile">${users[id].fullName}</p>
-            <div onclick="addTask(${id})" class="user-contact-add-task-mobile">
+            <div onclick="openAddTaskPopup('toDo');initTasks();" class="user-contact-add-task-mobile">
                 <img class="user-contact-add-task-img-mobile" src="./assets/img/add-task-blue.svg" alt="Add task image" />
             </div>
         </div>

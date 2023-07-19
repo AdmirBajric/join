@@ -35,57 +35,27 @@ function editTaskHTML(currentTask) {
   
             <div class="d-none" id = "categoryEdit"></div>
   
-            <label
-              id="toggleDrop"
-              for="dropdown"
-              onclick="toggleDropdownCategory()"
-            >
-              <div class="dropdown-min" id="dropdownMinCategory">
-                <span>${currentTask["category"]}</span>
-                <img src="./assets/img/arrow_down_black.svg" alt="" />
-              </div>
-            </label>
-            <div id="dropdownCategoryContent" class="dropdown-content"></div>
-  
-            <div id="select-color-category" class="select-color-category d-none">
-              <div
-                onclick="selectColor(1)"
-                id="color1"
-                style="background-color: red"
-              ></div>
-              <div
-                onclick="selectColor(2)"
-                id="color2"
-                style="background-color: #fc71ff"
-              ></div>
-              <div
-                onclick="selectColor(3)"
-                id="color3"
-                style="background-color: #ff7a00"
-              ></div>
-              <div
-                onclick="selectColor(4)"
-                id="color4"
-                style="background-color: #1fd7c1"
-              ></div>
-              <div
-                onclick="selectColor(5)"
-                id="color5"
-                style="background-color: #2ad300"
-              ></div>
-              <div
-                onclick="selectColor(6)"
-                id="color6"
-                style="background-color: #8aa4ff"
-              ></div>
-              <div
-                onclick="selectColor(7)"
-                id="color7"
-                style="background-color: blue"
-              ></div>
+            <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
+            <div class="dropdown-min-cat" id="dropdownMinCategory">
+            <div class="select-cat">
+                <span>Select category</span>
+                <img src="./assets/img/arrow-down.svg" alt="" />
             </div>
-            <div id="errorMessage" style="color: red"></div>
-            <div id="categoryDisplay" style="display: none; color: green"></div>
+            </div>
+            <div id="dropdownCategoryContent" class="dropdown-content"></div>
+            </label>
+  
+                <div id="select-color-category" class="select-color-category d-none">
+                    <div onclick="selectColor(1)" id="color1" style="background-color: red"></div>
+                    <div onclick="selectColor(2)" id="color2" style="background-color: #fc71ff"></div>
+                    <div onclick="selectColor(3)" id="color3" style="background-color: #ff7a00"></div>
+                    <div onclick="selectColor(4)" id="color4" style="background-color: #1fd7c1"></div>
+                    <div onclick="selectColor(5)" id="color5" style="background-color: #2ad300"></div>
+                    <div onclick="selectColor(6)" id="color6" style="background-color: #8aa4ff"></div>
+                    <div onclick="selectColor(7)" id="color7" style="background-color: blue"></div>
+                </div>
+                <div id="errorMessage" style="color: red"></div>
+                <div id="categoryDisplay" style="display: none"></div>
   
             <label>Assigned to</label>
   
@@ -214,6 +184,7 @@ function getTaskDetailCardHTML(task) {
 }
 
 function getTaskCardHTML(currentTask, status) {
+  console.log(currentTask)
   const hasSubtasks = currentTask["taskSub"].length > 0;
   const subtasksBorderStyle = hasSubtasks ? "" : "d-none";
   const subtasksCounterStyle = hasSubtasks ? "" : "d-none";
