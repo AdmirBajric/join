@@ -488,6 +488,12 @@ function openAddTaskPopup(status) {
   if (window.location.pathname.includes("board.html")) {
     bodyBoard.classList.add("hidden");
   }
+
+  if (window.location.pathname.includes("contacts.html")) {
+    const body = document.getElementsByTagName("body")[0];
+    body.style.overflowY = "scroll";
+  }
+  
   
   popupOverlay.classList.remove("d-none");
   boardContent.classList.add("d-none");
