@@ -33,45 +33,6 @@ async function initTasks() {
 }
 
 /**
- * Validate the task form before adding a new task.
- * @returns {boolean} - Returns true if the form is valid, false otherwise.
- */
-async function validateTaskForm() {
-  let taskTitle = document.getElementById("title");
-  let taskDescription = document.getElementById("description");
-  let taskDueDate = document.getElementById("datePicker");
-  let taskSub = document.getElementById("subtaskContent");
-
-  if (
-    taskTitle.value === "" ||
-    taskDescription.value === "" ||
-    taskDueDate.value === "" ||
-    currentPrioStatus === undefined ||
-    selectedCategory === undefined ||
-    taskSub.value === ""
-  ) {
-    let taskAlert = document.getElementById("taskAlert");
-    taskAlert.innerHTML = "";
-    if (taskTitle.value === "")
-      taskAlert.innerHTML += "Feld 'Titel' muss ausgefüllt werden.<br>";
-    if (taskDescription.value === "")
-      taskAlert.innerHTML += "Feld 'Beschreibung' muss ausgefüllt werden.<br>";
-    if (taskDueDate.value === "")
-      taskAlert.innerHTML +=
-        "Feld 'Fälligkeitsdatum' muss ausgefüllt werden.<br>";
-    if (currentPrioStatus === undefined)
-      taskAlert.innerHTML += "Feld 'Priorität' muss ausgefüllt werden.<br>";
-    if (selectedCategory === undefined)
-      taskAlert.innerHTML += "Feld 'Category' muss ausgefüllt werden.<br>";
-    if (taskSub.value === "")
-      taskAlert.innerHTML += "Feld 'Unteraufgabe' muss ausgefüllt werden.<br>";
-    return false;
-  }
-
-  return true;
-}
-
-/**
  * Add a new task.
  * @param {string} status - The status of the task (e.g., "toDo", "inProgress", "feedback", "done").
  */
@@ -240,115 +201,6 @@ async function setCategoryForEdit(currentTask) {
   document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
 
-//delete task permanently
-async function deleteAllTasksFromServer() {
-  try {
-    tasks = JSON.parse(await getItem("tasks"));
-    toDo = JSON.parse(await getItem("toDo"));
-    inProgress = JSON.parse(await getItem("inProgress"));
-    feedback = JSON.parse(await getItem("feedback"));
-    done = JSON.parse(await getItem("done"));
-
-    tasks = [];
-    toDo = [];
-    inProgress = [];
-    feedback = [];
-    done = [];
-    await setItem("tasks", JSON.stringify(tasks));
-    await setItem("toDo", JSON.stringify(toDo));
-    await setItem("inProgress", JSON.stringify(inProgress));
-    await setItem("feedback", JSON.stringify(feedback));
-    await setItem("done", JSON.stringify(done));
-  } catch (e) {
-    console.error("Loading error:", e);
-  }
-}
-
-//urgent button changes
-async function TaskButtonUrgent() {
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
-  buttonUrgent.style.backgroundColor = "#FF3D00";
-  buttonUrgent.style.filter = "contrast(1)";
-  buttonMedium.style.filter = "contrast(1)";
-  buttonLow.style.filter = "contrast(1)";
-  buttonMedium.style.backgroundColor = "white";
-  buttonLow.style.backgroundColor = "white";
-  buttonMedium.style.color = "black";
-  buttonUrgent.style.color = "white";
-  buttonLow.style.color = "black";
-
-  let imageMedium = document.getElementById("imgMedium");
-  imageMedium.style.filter = "none";
-
-  let imageLow = document.getElementById("imgLow");
-  imageLow.style.filter = "none";
-
-  let imageUrgent = document.getElementById("imgUrgent");
-  imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
-}
-
-//prio status
-function getPrioStatus(prioStatus) {
-  currentPrioStatus = prioStatus;
-}
-
-//set the priortiy of the task
-function setPrioStatus(prioStatus) {
-  let prioValue = document.getElementById("prioValue");
-  prioValue.innerText = prioStatus;
-}
-
-
-//Medium button changes
-async function TaskButtonMedium() {
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
-  buttonUrgent.style.backgroundColor = "white";
-  buttonMedium.style.backgroundColor = "#FFA800";
-  buttonUrgent.style.filter = "contrast(1)";
-  buttonMedium.style.filter = "contrast(1)";
-  buttonLow.style.filter = "contrast(1)";
-  buttonMedium.style.color = "white";
-  buttonUrgent.style.color = "black";
-  buttonLow.style.color = "black";
-  buttonLow.style.backgroundColor = "white";
-
-  let imageUrgent = document.getElementById("imgUrgent");
-  imageUrgent.style.filter = "none";
-
-  let imageLow = document.getElementById("imgLow");
-  imageLow.style.filter = "none";
-
-  let imageMedium = document.getElementById("imgMedium");
-  imageMedium.style.filter = "brightness(10000%) contrast(1000%)";
-}
-
-//low button changes
-async function TaskButtonLow() {
-  let buttonUrgent = document.getElementById("prioUrgent");
-  let buttonMedium = document.getElementById("prioMedium");
-  let buttonLow = document.getElementById("prioLow");
-  buttonUrgent.style.backgroundColor = "white";
-  buttonMedium.style.backgroundColor = "white";
-  buttonLow.style.backgroundColor = "#7AE229";
-  buttonUrgent.style.filter = "contrast(1)";
-  buttonMedium.style.filter = "contrast(1)";
-  buttonMedium.style.color = "black";
-  buttonUrgent.style.color = "black";
-  buttonLow.style.color = "white";
-
-  let imageUrgent = document.getElementById("imgUrgent");
-  imageUrgent.style.filter = "none";
-
-  let imageMedium = document.getElementById("imgMedium");
-  imageMedium.style.filter = "none";
-
-  let imageLow = document.getElementById("imgLow");
-  imageLow.style.filter = "brightness(10000%) contrast(1000%)";
-}
 
 function reloadPage() {
   location.reload();
@@ -360,19 +212,6 @@ function redirectToBoard() {
 
 function redirectToBoardFromPopup() {
   window.location.href = "../../board.html";
-}
-
-function showAddTaskPopUp() {
-  var overlay = document.getElementById("addTaskPopUp");
-  overlay.style.display = "block";
-}
-
-/**
- * Hide the "Add Task" popup.
- */
-function hideAddTaskPopUp() {
-  var overlay = document.getElementById("addTaskPopUp");
-  overlay.style.display = "none";
 }
 
 //save categories to local storage
@@ -420,19 +259,6 @@ function toggleDropdown() {
   if (!dropdownContent.classList.contains("show")) {
     hideSelectColor();
   }
-}
-
-/**
- * Show the edit task popup.
- */
-function showEditTaskPopUp() {
-  var overlay = document.getElementById("editTaskPopUp");
-  overlay.style.display = "block";
-}
-
-function hideEditTaskPopUp() {
-  var overlay = document.getElementById("editTaskPopUp");
-  overlay.style.display = "none";
 }
 
 async function renderAssignableContacts() {
@@ -491,28 +317,6 @@ function stopDropdown(event) {
   event.stopPropagation();
 }
 
-function clearSelections() {
-  renderNormalCategoryField();
-  renderCategoryList();
-  hideSelectColor();
-  hideErrorMessage();
-  hideCategoryDisplay();
-}
-
-
-function hideSelectColor() {
-  document.getElementById("select-color-category").classList.add("d-none");
-}
-
-function hideErrorMessage() {
-  document.getElementById("errorMessage").textContent = "";
-}
-
-function hideCategoryDisplay() {
-  document.getElementById("categoryDisplay").style.display = "none";
-  document.getElementById("categoryDisplay").textContent = "";
-}
-
 function renderNormalCategoryField() {
   document.getElementById("categoryDisplay").style.display = "none";
 
@@ -553,17 +357,6 @@ function validateAssignmentForm() {
     });
   }
   return selectedValues;
-}
-
-function clearCheckboxes() {
-  let checkboxes = document.querySelectorAll(
-    "#dropdownContent input[type=checkbox]:checked"
-  );
-
-  for (var i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].checked = false;
-  }
-  toggleDropdown();
 }
 
 function updateTaskCardIcons(id) {
@@ -623,42 +416,3 @@ function checkNewCategory() {
 }
 
 
-function displayCategory(category) {
-  const categoryDisplay = document.getElementById("categoryDisplay");
-  const selectedCategory = categoryDisplay.textContent;
-
-  if (selectedCategory !== category) {
-    hideCategoryDisplay(categoryDisplay);
-  }
-
-  categoryDisplay.style.display = "block";
-  categoryDisplay.textContent = category;
-}
-
-function displayErrorMessage(message) {
-  const errorMessage = document.createElement("span");
-  errorMessage.textContent = message;
-  document.getElementById("errorMessage").appendChild(errorMessage);
-}
-
-function hideLabel() {
-  document.getElementById("errorMessage").textContent = "";
-}
-
-function hideCategoryDisplay() {
-  const categoryDisplay = document.getElementById("categoryDisplay");
-  categoryDisplay.style.display = "none";
-  categoryDisplay.textContent = "";
-}
-
-function closePopupTask(){
-  let boardBody = document.querySelector('.body-board');
-  let boardMainContainer = document.querySelector('.board-main-container');
-  let popup = document.getElementById('addtask-popup');
-
-  if(window.location.pathname.includes("board.html")){
-      boardBody.classList.remove('hidden');
-  }
-  boardMainContainer.classList.remove('d-none');
-  popup.classList.add('d-none')
-}

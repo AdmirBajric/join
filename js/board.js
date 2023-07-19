@@ -171,30 +171,40 @@ function getUserColor(id) {
 }
 
 function showDetailCard(id) {
-  let overlay = document.getElementById("overlay");
-  let bodyBoard = document.getElementsByClassName("body-board")[0];
+  const overlay = document.getElementById("overlay");
+  const bodyBoard = document.getElementsByClassName("body-board")[0];
+  const boardContainer = document.getElementsByClassName("board-main-container")[0];
 
-  overlay.classList.remove("d-none");
-  bodyBoard.classList.add("hidden");
-
-  let boardContainer = document.getElementsByClassName(
-    "board-main-container"
-  )[0];
-  overlay.classList.remove("d-none");
-  bodyBoard.classList.add("hidden");
-  boardContainer.classList.add("zero-margin-top");
+  showOverlay(overlay, bodyBoard, boardContainer);
 
   overlay.innerHTML = "";
 
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].id === id) {
-      const task = tasks[i];
-      overlay.innerHTML += getTaskDetailCardHTML(task);
-      getTaskPrio(task);
-      getAssignedToDetailCard(task, id);
-      showSubtasks(task);
-    }
+  const task = findTaskById(id);
+  if (task) {
+    appendTaskDetails(overlay, task);
+    getTaskPrio(task);
+    getAssignedToDetailCard(task, id);
+    showSubtasks(task);
   }
+
+  addOverlayClickListener(overlay);
+}
+
+function showOverlay(overlay, bodyBoard, boardContainer) {
+  overlay.classList.remove("d-none");
+  bodyBoard.classList.add("hidden");
+  boardContainer.classList.add("zero-margin-top");
+}
+
+function findTaskById(id) {
+  return tasks.find(task => task.id === id);
+}
+
+function appendTaskDetails(overlay, task) {
+  overlay.innerHTML += getTaskDetailCardHTML(task);
+}
+
+function addOverlayClickListener(overlay) {
   overlay.addEventListener("click", function (event) {
     if (event.target === overlay) {
       overlay.classList.add("d-none");
@@ -202,6 +212,7 @@ function showDetailCard(id) {
     }
   });
 }
+
 
 async function getTaskPrio(task) {
   let prioContainer = document.getElementById("prioDetail");
@@ -350,40 +361,6 @@ function getCurrentDate() {
   return `${year}-${month}-${day}`;
 }
 
-async function deleteObjectById(id) {
-  for (var i = 0; i < toDo.length; i++) {
-    if (toDo[i] == id) {
-      toDo.splice(i, 1);
-      await setItem("toDo", JSON.stringify(toDo));
-      return;
-    }
-  }
-
-  for (var i = 0; i < inProgress.length; i++) {
-    if (inProgress[i] == id) {
-      inProgress.splice(i, 1);
-      await setItem("inProgress", JSON.stringify(inProgress));
-      return;
-    }
-  }
-
-  for (var i = 0; i < feedback.length; i++) {
-    if (feedback[i] == id) {
-      feedback.splice(i, 1);
-      await setItem("feedback", JSON.stringify(feedback));
-      return;
-    }
-  }
-
-  for (var i = 0; i < done.length; i++) {
-    if (done[i] == id) {
-      done.splice(i, 1);
-      await setItem("done", JSON.stringify(done));
-      return;
-    }
-  }
-}
-
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");
   let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -416,19 +393,6 @@ function searchForTaskByInput() {
   }
 }
 
-function hideTask(taskCardContainer) {
-  if (taskCardContainer) {
-    taskCardContainer.style.display = "none"; //Display property to none
-  }
-}
-
-function showTask(taskCardContainer) {
-  if (taskCardContainer) {
-    taskCardContainer.style.display = ""; // Resets the display property to its default value
-  }
-}
-
-
 async function showTickableSubtasks(currentTask) {
   let subtasksContainer = document.getElementById("subtaskContent");
   subtasksContainer.innerHTML = "";
@@ -450,31 +414,6 @@ async function showTickableSubtasks(currentTask) {
     div.insertBefore(checkbox, div.firstChild);
 
     subtasksContainer.appendChild(div);
-  }
-}
-
-function validateSubtasksForm(currentTask) {
-  currentTask["subtasksClosed"] = [];
-  currentTask["subtasksOpened"] = [];
-
-  let checkboxes = document.querySelectorAll(
-    "#subtaskContent input[type=checkbox]:checked"
-  );
-  let NullCheckboxes = document.querySelectorAll(
-    "#subtaskContent input[type=checkbox]:not(:checked)"
-  );
-
-  for (var i = 0; i < checkboxes.length; i++) {
-    const value = checkboxes[i].value;
-    currentTask["subtasksClosed"].push({
-      name: value,
-    });
-  }
-  for (var i = 0; i < NullCheckboxes.length; i++) {
-    const value = NullCheckboxes[i].value;
-    currentTask["subtasksOpened"].push({
-      name: value,
-    });
   }
 }
 
