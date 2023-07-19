@@ -55,13 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputDate = new Date();
   formatDate(inputDate);
 });
+// greeting day off
 
 //go to Board
 function toBoard() {
   window.location.href = "board.html";
 }
 
-// greet name
+// greet name on
 async function activeUser() {
   await usersName();
 }
@@ -79,7 +80,9 @@ async function usersName() {
     greetName.innerHTML = fullName;
   }
 }
+// greet name off
 
+// show all Summary numbers
 const loadTasks = async () => {
   await showAllTasksOnSummary("tasks", "tasks-board");
   await showAllTasksOnSummary("inProgress", "tasks-progress");

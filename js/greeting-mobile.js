@@ -8,6 +8,8 @@ async function mobile() {
   await greetSummaryAnimation();
 }
 
+// Greeting as animation for mobile
+
 async function greetSummaryAnimation() {
   if (window.innerWidth >= 1000) {
     mobileGreeting.style.display = "none";

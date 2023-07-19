@@ -2,7 +2,7 @@ async function includeLoad_mobile() {
   await includeHTMLmobile();
 }
 
-// includeHTML
+// includeHTML Mobile
 async function includeHTMLmobile() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
