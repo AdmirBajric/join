@@ -1,8 +1,13 @@
+/**
+ * Handles responsiveness-related tasks.
+ * Calls other functions to adjust the layout based on the screen size.
+ */
 const responsive = () => {
   contactsListMobile();
   checkImg();
 };
 
+// Add an event listener for the "resize" event on the window object
 window.addEventListener(
   "resize",
   (e) => {
@@ -16,6 +21,9 @@ window.addEventListener(
   true
 );
 
+/**
+ * Adjusts the image sources based on the window width.
+ */
 const checkImg = () => {
   const addFormCloseImg = document.querySelector(".add-form-close-img");
   const editFormCloseImg = document.querySelector(".edit-form-close-img");
@@ -29,6 +37,9 @@ const checkImg = () => {
   }
 };
 
+/**
+ * Adjusts the layout of the contacts list for mobile or larger screens.
+ */
 const contactsListMobile = () => {
   if (window.innerWidth <= 700) {
     contactsContainer.style.position = "absolute";

@@ -1,3 +1,6 @@
+/**
+ * Handles responsiveness-related tasks, including animations and element adjustments.
+ */
 const responsive = () => {
   const body = document.querySelector("body");
   const joinStartImg = document.querySelector("#join-start-img-responsive");

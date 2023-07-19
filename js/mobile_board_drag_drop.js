@@ -1,3 +1,8 @@
+/**
+ * Handles the event when a list is changed.
+ * Moves the task card from one container to another based on the selected status.
+ * @param {Event} e - The event object.
+ */
 const listChanged = async (e) => {
   const containerId = e.target.closest(".board-content-element").dataset.id;
   const taskId = e.target.closest(".board-task-card").id;
