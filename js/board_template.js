@@ -184,7 +184,6 @@ function getTaskDetailCardHTML(task) {
 }
 
 function getTaskCardHTML(currentTask, status) {
-  console.log(currentTask)
   const hasSubtasks = currentTask["taskSub"].length > 0;
   const subtasksBorderStyle = hasSubtasks ? "" : "d-none";
   const subtasksCounterStyle = hasSubtasks ? "" : "d-none";
