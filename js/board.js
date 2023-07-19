@@ -85,7 +85,7 @@ function renderTaskCardToDo() {
   for (let i = 0; i < toDo.length; i++) {
     let currentTask = tasks.find((task) => task.id === toDo[i]);
     if (currentTask && !renderedIDs[currentTask.id]) {
-      toDoContainer.innerHTML += getTaskCardHTML(currentTask,"toDo");
+      toDoContainer.innerHTML += getTaskCardHTML(currentTask, "toDo");
       renderedIDs[currentTask.id] = true;
       renderAvatars(currentTask);
     }
@@ -176,7 +176,9 @@ function getUserColor(id) {
 function showDetailCard(id) {
   const overlay = document.getElementById("overlay");
   const bodyBoard = document.getElementsByClassName("body-board")[0];
-  const boardContainer = document.getElementsByClassName("board-main-container")[0];
+  const boardContainer = document.getElementsByClassName(
+    "board-main-container"
+  )[0];
 
   showOverlay(overlay, bodyBoard, boardContainer);
 
@@ -200,7 +202,7 @@ function showOverlay(overlay, bodyBoard, boardContainer) {
 }
 
 function findTaskById(id) {
-  return tasks.find(task => task.id === id);
+  return tasks.find((task) => task.id === id);
 }
 
 function appendTaskDetails(overlay, task) {
@@ -281,7 +283,7 @@ function redirectToAddTaskPopupOne() {
 function closePopup() {
   let overlay = document.getElementById("overlay");
   let bodyBoard = document.getElementsByClassName("body-board")[0];
-  let popup = document.querySelector('.overlay-addtask-popup');
+  let popup = document.querySelector(".overlay-addtask-popup");
   bodyBoard.classList.remove("hidden");
   overlay.classList.add("d-none");
 }
@@ -380,7 +382,10 @@ function showSubtasks(task) {
 }
 
 function searchForTaskByInput() {
-  let search = document.getElementById("search-input").value.trim().toLowerCase(); //gets the value+ changes it to lower case
+  let search = document
+    .getElementById("search-input")
+    .value.trim()
+    .toLowerCase(); //gets the value+ changes it to lower case
 
   for (let i = 0; i < tasks.length; i++) {
     const task = tasks[i];
@@ -388,7 +393,11 @@ function searchForTaskByInput() {
     const description = task["description"] || "";
     const taskCardContainer = document.getElementById(task["id"]);
 
-    if (search === "" || title.toLowerCase().includes(search) || description.toLowerCase().includes(search)) {
+    if (
+      search === "" ||
+      title.toLowerCase().includes(search) ||
+      description.toLowerCase().includes(search)
+    ) {
       showTask(taskCardContainer);
     } else {
       hideTask(taskCardContainer);
@@ -435,8 +444,7 @@ function openAddTaskPopup(status) {
     const body = document.getElementsByTagName("body")[0];
     body.style.overflowY = "scroll";
   }
-  
-  
+
   popupOverlay.classList.remove("d-none");
   boardContent.classList.add("d-none");
 

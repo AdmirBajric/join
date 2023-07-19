@@ -14,6 +14,11 @@ const listChanged = async (e) => {
   await moveElement(containerId, statusId);
 };
 
+/**
+ * Moves an element from one container to another based on the provided containerId and statusId.
+ * @param {number} containerId - The ID of the container from which the element will be moved.
+ * @param {number} statusId - The ID of the destination container where the element will be moved.
+ */
 const moveElement = async (containerId, statusId) => {
   const elementsWithDataId = document.querySelector(
     `[data-id='${containerId}']`

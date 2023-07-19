@@ -7,6 +7,9 @@ function Logout() {
   }
 }
 
+/**
+ * Logs out the user by clearing the local storage and redirecting to the index.html page.
+ */
 function Logoutout() {
   localStorage.clear();
   window.location.href = "index.html";

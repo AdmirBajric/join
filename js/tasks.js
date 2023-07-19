@@ -4,26 +4,26 @@ let currentTaskID;
 let selectedCategory;
 let currentPrioStatus;
 let selectedColor;
-let categories = [  {
-  "name": "Sales",
-  "color": "pink"
-},
-{
-  "name": "Marketing",
-  "color": "blue"
-},
-{
-  "name": "Design",
-  "color": "orange"
-},
-{
-  "name":"code",
-  "color": 'red'
-}
+let categories = [
+  {
+    name: "Sales",
+    color: "pink",
+  },
+  {
+    name: "Marketing",
+    color: "blue",
+  },
+  {
+    name: "Design",
+    color: "orange",
+  },
+  {
+    name: "code",
+    color: "red",
+  },
 ];
 
-
-// initialize tasks, categoories 
+// initialize tasks, categoories
 async function initTasks() {
   await loadTasks();
   await loadUsers();
@@ -73,14 +73,14 @@ async function addNewTask(status) {
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none");
- // Store the tasks and status arrays in local storage
+  // Store the tasks and status arrays in local storage
   setTimeout(async () => {
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
     await setItem("inProgress", JSON.stringify(inProgress));
     await setItem("feedback", JSON.stringify(feedback));
     await setItem("done", JSON.stringify(done));
-    await setItem('category',JSON.stringify(categories))
+    await setItem("category", JSON.stringify(categories));
     taskAddedElement.classList.add("d-none");
     redirectToBoard();
   }, 500);
@@ -139,6 +139,10 @@ async function subTaskAddToJson() {
   task.value = "";
 }
 
+/**
+ * Adds a subtask to a task from the edit view.
+ * @param {string} id - The ID of the task.
+ */
 async function addSubtaskFromEdit(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let task = document.getElementById("subtask-input-content");
@@ -197,19 +201,31 @@ async function editTaskBoard(id) {
   await setItem("toDo", JSON.stringify(toDo));
 }
 
+/**
+ * Sets the category value for editing a task.
+ * @param {object} currentTask - The current task object.
+ */
 async function setCategoryForEdit(currentTask) {
   document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
 
-
+/**
+ * Reloads the current page.
+ */
 function reloadPage() {
   location.reload();
 }
 
+/**
+ * Redirects the user to the "board.html" page.
+ */
 function redirectToBoard() {
   window.location.href = "board.html";
 }
 
+/**
+ * Redirects the user to the "../../board.html" page from a popup or nested directory.
+ */
 function redirectToBoardFromPopup() {
   window.location.href = "../../board.html";
 }
@@ -261,6 +277,9 @@ function toggleDropdown() {
   }
 }
 
+/**
+ * Renders a list of assignable contacts in the dropdown container.
+ */
 async function renderAssignableContacts() {
   let assignableContactsContainer = document.getElementById("dropdownContent");
   for (let i = 0; i < users.length; i++) {
@@ -291,11 +310,18 @@ async function renderAssignableContacts() {
   }
 }
 
+/**
+ * Toggles the checkbox's checked state based on the provided checkbox ID.
+ * @param {string} checkboxId - The ID of the checkbox.
+ */
 function toggleCheckbox(checkboxId) {
   var checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;
 }
 
+/**
+ * Renders the category list in the dropdown container.
+ */
 function renderCategoryList() {
   let categoryListContainer = document.getElementById(
     "dropdownCategoryContent"
@@ -304,6 +330,9 @@ function renderCategoryList() {
   categoryListContainer.innerHTML += categoryListHTML();
 }
 
+/**
+ * Renders the new category field in the dropdown container.
+ */
 function renderNewCategoryField() {
   let dropdownField = document.getElementById("dropdownMinCategory");
   document.getElementById("select-color-category").classList.remove("d-none");
@@ -312,11 +341,17 @@ function renderNewCategoryField() {
   hideCategoryDisplay();
 }
 
-
+/**
+ * Stops event propagation for the provided event.
+ * @param {Event} event - The event object.
+ */
 function stopDropdown(event) {
   event.stopPropagation();
 }
 
+/**
+ * Renders a normal category field in the dropdown container.
+ */
 function renderNormalCategoryField() {
   document.getElementById("categoryDisplay").style.display = "none";
 
@@ -325,6 +360,11 @@ function renderNormalCategoryField() {
   dropdownField.innerHTML = normalCategoryFiledHTML();
 }
 
+/**
+ * Saves the selected category and updates the UI elements accordingly.
+ * @param {HTMLElement} element - The clicked element representing the selected category.
+ * @param {string} color - The color associated with the selected category.
+ */
 function saveSelectedCategory(element, color) {
   selectedCategory = element.innerText;
   let dataField = document.getElementById("categoryEdit");
@@ -335,6 +375,9 @@ function saveSelectedCategory(element, color) {
   toggleDropdownCategory();
 }
 
+/**
+ * Toggles the visibility of the category dropdown content and updates the dropdown toggle button.
+ */
 function toggleDropdownCategory() {
   let dropdownContent = document.getElementById("dropdownCategoryContent");
   let dropdownMin = document.getElementById("dropdownMinCategory");
@@ -342,6 +385,10 @@ function toggleDropdownCategory() {
   dropdownMin.classList.toggle("open");
 }
 
+/**
+ * Validates the assignment form and returns the selected values as an array of objects.
+ * @returns {Array} The selected values from the assignment form.
+ */
 function validateAssignmentForm() {
   let selectedValues = [];
   let checkboxes = document.querySelectorAll(
@@ -359,6 +406,10 @@ function validateAssignmentForm() {
   return selectedValues;
 }
 
+/**
+ * Updates the task card icons based on the provided ID.
+ * @param {string} id - The ID of the task priority.
+ */
 function updateTaskCardIcons(id) {
   const imgUrgentTask = document.getElementById("imgUrgentTask");
   const imgMediumTask = document.getElementById("imgMediumTask");
@@ -381,6 +432,10 @@ function updateTaskCardIcons(id) {
   }
 }
 
+/**
+ * Selects the color based on the provided ID and updates the UI accordingly.
+ * @param {number} id - The ID of the color.
+ */
 function selectColor(id) {
   for (let i = 1; i < 8; i++) {
     document.getElementById(`color${i}`).classList.remove("selected-color");
@@ -389,6 +444,11 @@ function selectColor(id) {
   selectedColor = document.getElementById(`color${id}`).style.backgroundColor;
 }
 
+/**
+ * Checks the new category input and handles the logic based on the input values.
+ * Updates the selected category, displays the category in the UI, and saves the category data.
+ * Displays an error message if the input values are invalid.
+ */
 function checkNewCategory() {
   const newCategoryInput = document.getElementById("new-category");
   const categoryDisplay = document.getElementById("categoryDisplay");
@@ -402,7 +462,7 @@ function checkNewCategory() {
     displayCategory(selectedCategory);
     categories.push({
       name: selectedCategory,
-      color: selectedColor
+      color: selectedColor,
     });
     renderCategoryList(); // Update the dropdownCategoryContent with the new category
     saveCategories(); // Store the updated categories in local storage
@@ -414,5 +474,3 @@ function checkNewCategory() {
     hideCategoryDisplay(categoryDisplay);
   }
 }
-
-

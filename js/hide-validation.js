@@ -1,3 +1,8 @@
+/**
+ * Displays the specified category in the category display element.
+ * If the category is already displayed, hides the category display element.
+ * @param {string} category - The category to display.
+ */
 function displayCategory(category) {
   const categoryDisplay = document.getElementById("categoryDisplay");
   const selectedCategory = categoryDisplay.textContent;
@@ -10,34 +15,52 @@ function displayCategory(category) {
   categoryDisplay.textContent = category;
 }
 
+/**
+ * Displays an error message by creating a new span element and appending it to the error message container.
+ * @param {string} message - The error message to display.
+ */
 function displayErrorMessage(message) {
   const errorMessage = document.createElement("span");
   errorMessage.textContent = message;
   document.getElementById("errorMessage").appendChild(errorMessage);
 }
 
+/**
+ * Hides the error label by clearing its content.
+ */
 function hideLabel() {
   document.getElementById("errorMessage").textContent = "";
 }
 
+/**
+ * Hides the category display by setting its display style to "none" and clearing its content.
+ */
 function hideCategoryDisplay() {
   const categoryDisplay = document.getElementById("categoryDisplay");
   categoryDisplay.style.display = "none";
   categoryDisplay.textContent = "";
 }
 
-function closePopupTask(){
-  let boardBody = document.querySelector('.body-board');
-  let boardMainContainer = document.querySelector('.board-main-container');
-  let popup = document.getElementById('addtask-popup');
+/**
+ * Closes the popup task by adjusting the visibility of related elements.
+ * If the current page is board.html, removes the "hidden" class from the board body element.
+ * Removes the "d-none" class from the board main container element and adds it to the popup element.
+ */
+function closePopupTask() {
+  let boardBody = document.querySelector(".body-board");
+  let boardMainContainer = document.querySelector(".board-main-container");
+  let popup = document.getElementById("addtask-popup");
 
-  if(window.location.pathname.includes("board.html")){
-      boardBody.classList.remove('hidden');
+  if (window.location.pathname.includes("board.html")) {
+    boardBody.classList.remove("hidden");
   }
-  boardMainContainer.classList.remove('d-none');
-  popup.classList.add('d-none')
+  boardMainContainer.classList.remove("d-none");
+  popup.classList.add("d-none");
 }
 
+/**
+ * Clears the checkboxes in the dropdown content by unchecking all the checked checkboxes.
+ */
 function clearCheckboxes() {
   let checkboxes = document.querySelectorAll(
     "#dropdownContent input[type=checkbox]:checked"
@@ -49,21 +72,33 @@ function clearCheckboxes() {
   toggleDropdown();
 }
 
+/**
+ * Hides the select color element by adding the "d-none" class to it.
+ */
 function hideSelectColor() {
   document.getElementById("select-color-category").classList.add("d-none");
 }
 
+/**
+ * Hides the error message by clearing its content.
+ */
 function hideErrorMessage() {
   document.getElementById("errorMessage").textContent = "";
 }
 
+/**
+ * Hides the category display by setting its display style to "none" and clearing its content.
+ */
 function hideCategoryDisplay() {
   document.getElementById("categoryDisplay").style.display = "none";
   document.getElementById("categoryDisplay").textContent = "";
 }
 
-
-
+/**
+ * Clears the selections and resets the UI elements related to category selection.
+ * Calls the necessary functions to render the normal category field, render the category list,
+ * hide the select color element, hide the error message, and hide the category display.
+ */
 function clearSelections() {
   renderNormalCategoryField();
   renderCategoryList();
@@ -133,7 +168,6 @@ function setPrioStatus(prioStatus) {
   let prioValue = document.getElementById("prioValue");
   prioValue.innerText = prioStatus;
 }
-
 
 //Medium button changes
 async function TaskButtonMedium() {

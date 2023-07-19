@@ -18,6 +18,10 @@ async function includeHTMLmobile() {
   }
 }
 
+/**
+ * Redirects the user to a specific page based on the provided locationHref.
+ * @param {string} locationHref - The location href of the target page.
+ */
 function goToPages(locationHref) {
   window.location.href = `${locationHref}.html`;
 }

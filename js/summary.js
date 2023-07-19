@@ -1,3 +1,7 @@
+/**
+ * Loads the necessary data upon page load.
+ * Calls the greetingDay and activeUser functions asynchronously.
+ */
 let fromLocalStorage;
 
 async function load() {
@@ -23,6 +27,11 @@ async function alldayGreeting() {
   }
 }
 
+/**
+ * Formats a date string into a localized date format.
+ * @param {string} dateString - The date string to format.
+ * @returns {string} The formatted date string in the format: "Month Day".
+ */
 function formatDate(dateString) {
   const months = [
     "Januar",
@@ -39,20 +48,29 @@ function formatDate(dateString) {
     "Dezember",
   ];
 
+  // Create a new Date object from the dateString
   const date = new Date(dateString);
+
+  // Get the month index, day, and year from the date object
   const monthIndex = date.getMonth();
   const day = date.getDate();
   const year = date.getFullYear();
 
+  // Format the date string using the localized month name, day, and year
   const formattedDate = `${months[monthIndex]} ${day}, ${year}`;
 
+  // Update the date container element with the formatted date
   document.getElementById(
     "dateContainer"
   ).innerHTML = `<strong>${formattedDate}</strong>`;
 }
 
+// Execute the following code when the DOM content is loaded
 document.addEventListener("DOMContentLoaded", function () {
+  // Create a new Date object with the current date
   const inputDate = new Date();
+
+  // Format the input date and update the date container element
   formatDate(inputDate);
 });
 // greeting day off
@@ -67,6 +85,10 @@ async function activeUser() {
   await usersName();
 }
 
+/**
+ * Retrieves the user's name from local storage and updates the greeting message in the UI.
+ * If the user is a guest, a generic greeting is displayed.
+ */
 async function usersName() {
   fromLocalStorage = JSON.parse(localStorage.getItem("user"));
 
@@ -92,6 +114,10 @@ const loadTasks = async () => {
   await showAllTasksOnSummary("done", "sum-done");
 };
 
+/**
+ * Retrieves all tasks from local storage and filters them by priority ("up").
+ * Updates the specified element on the board summary with the count of filtered tasks.
+ */
 const showAllTasksUrgent = async () => {
   const getAllTasks = JSON.parse(await getItem("tasks"));
   const filteredTasks = getAllTasks.filter((t) => t.prio === "up");
@@ -99,6 +125,12 @@ const showAllTasksUrgent = async () => {
   inBoard.innerHTML = filteredTasks.length;
 };
 
+/**
+ * Retrieves all items of a specific type from local storage.
+ * Updates the specified element on the board summary with the count of retrieved items.
+ * @param {string} item - The type of item to retrieve.
+ * @param {string} element - The ID of the element to update.
+ */
 const showAllTasksOnSummary = async (item, element) => {
   const getAllItems = JSON.parse(await getItem(item));
   const inBoard = document.querySelector(`#${element}`);
