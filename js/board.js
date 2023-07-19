@@ -82,7 +82,7 @@ function renderTaskCardToDo() {
   for (let i = 0; i < toDo.length; i++) {
     let currentTask = tasks.find((task) => task.id === toDo[i]);
     if (currentTask && !renderedIDs[currentTask.id]) {
-      toDoContainer.innerHTML += getTaskCardHTML(currentTask, "toDo");
+      toDoContainer.innerHTML += getTaskCardHTML(currentTask,"toDo");
       renderedIDs[currentTask.id] = true;
       renderAvatars(currentTask);
     }

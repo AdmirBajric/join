@@ -4,15 +4,38 @@ let currentTaskID;
 let selectedCategory;
 let currentPrioStatus;
 let selectedColor;
-let categories = [];
+let categories = [  {
+  "name": "Sales",
+  "color": "pink"
+},
+{
+  "name": "Marketing",
+  "color": "blue"
+},
+{
+  "name": "Design",
+  "color": "orange"
+},
+{
+  "name":"code",
+  "color": 'red'
+}
+];
 
+
+// initialize tasks, categoories 
 async function initTasks() {
   await loadTasks();
   await loadUsers();
+  loadCategories();
   renderAssignableContacts();
   renderCategoryList();
 }
 
+/**
+ * Validate the task form before adding a new task.
+ * @returns {boolean} - Returns true if the form is valid, false otherwise.
+ */
 async function validateTaskForm() {
   let taskTitle = document.getElementById("title");
   let taskDescription = document.getElementById("description");
@@ -48,6 +71,10 @@ async function validateTaskForm() {
   return true;
 }
 
+/**
+ * Add a new task.
+ * @param {string} status - The status of the task (e.g., "toDo", "inProgress", "feedback", "done").
+ */
 async function addNewTask(status) {
   const isValid = await validateTaskForm();
   if (!isValid) return;
@@ -72,7 +99,7 @@ async function addNewTask(status) {
     subtasksClosed: [],
     id: currentTaskID,
   });
-
+  // Update the status array based on the task status
   if (status === "toDo") {
     toDo.push(currentTaskID);
   } else if (status === "inProgress") {
@@ -85,23 +112,28 @@ async function addNewTask(status) {
 
   const taskAddedElement = document.getElementById("taskAdded");
   taskAddedElement.classList.remove("d-none");
-
+ // Store the tasks and status arrays in local storage
   setTimeout(async () => {
     await setItem("tasks", JSON.stringify(tasks));
     await setItem("toDo", JSON.stringify(toDo));
     await setItem("inProgress", JSON.stringify(inProgress));
     await setItem("feedback", JSON.stringify(feedback));
     await setItem("done", JSON.stringify(done));
+    await setItem('category',JSON.stringify(categories))
     taskAddedElement.classList.add("d-none");
     redirectToBoard();
   }, 500);
 }
 
+/**
+ * Disable the date input field for past dates.
+ */
 function disableDateinput() {
   var today = new Date().toISOString().split("T")[0];
   document.getElementsByName("input-date")[0].setAttribute("min", today);
 }
 
+//loads subtasks
 async function subTasksLoad() {
   subtasks = [];
   for (let i = 0; i < subtasks.length; i++) {
@@ -109,11 +141,11 @@ async function subTasksLoad() {
   }
 }
 
+//set a new Id to the added task
 async function setNewTaskID() {
   try {
     let res = JSON.parse(await getItem("currentTaskID"));
     currentTaskID = res + 1;
-    console.log(currentTaskID);
     await setItem("currentTaskID", JSON.stringify(currentTaskID));
   } catch (e) {
     currentTaskID = 1;
@@ -121,6 +153,7 @@ async function setNewTaskID() {
   }
 }
 
+//load task from localstorage
 async function loadTasks() {
   try {
     const storedTasks = JSON.parse(await getItem("tasks"));
@@ -130,7 +163,10 @@ async function loadTasks() {
   }
 }
 
-
+/**
+ * Add a subtask to the task with the specified ID.
+ * @param {number} id - The ID of the task.
+ */
 async function subTaskAddToJson() {
   let task = document.getElementById("subtask-input-content");
 
@@ -155,6 +191,7 @@ async function addSubtaskFromEdit(id) {
   task.value = "";
 }
 
+//new subtask to the element
 async function addNewSubTask() {
   let subtaskContent = document.getElementById("subtaskContent");
   subtaskContent.innerHTML = "";
@@ -166,6 +203,10 @@ async function addNewSubTask() {
   }
 }
 
+/**
+ * Edit the task on the board.
+ * @param {number} id - The ID of the task.
+ */
 async function editTaskBoard(id) {
   let currentTask = tasks.find((task) => task.id == id);
   let taskTitle = document.getElementById("title");
@@ -199,6 +240,7 @@ async function setCategoryForEdit(currentTask) {
   document.getElementById("categoryEdit").innerText = currentTask["category"];
 }
 
+//delete task permanently
 async function deleteAllTasksFromServer() {
   try {
     tasks = JSON.parse(await getItem("tasks"));
@@ -206,6 +248,7 @@ async function deleteAllTasksFromServer() {
     inProgress = JSON.parse(await getItem("inProgress"));
     feedback = JSON.parse(await getItem("feedback"));
     done = JSON.parse(await getItem("done"));
+
     tasks = [];
     toDo = [];
     inProgress = [];
@@ -221,6 +264,7 @@ async function deleteAllTasksFromServer() {
   }
 }
 
+//urgent button changes
 async function TaskButtonUrgent() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -245,15 +289,19 @@ async function TaskButtonUrgent() {
   imageUrgent.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
+//prio status
 function getPrioStatus(prioStatus) {
   currentPrioStatus = prioStatus;
 }
 
+//set the priortiy of the task
 function setPrioStatus(prioStatus) {
   let prioValue = document.getElementById("prioValue");
   prioValue.innerText = prioStatus;
 }
 
+
+//Medium button changes
 async function TaskButtonMedium() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -278,6 +326,7 @@ async function TaskButtonMedium() {
   imageMedium.style.filter = "brightness(10000%) contrast(1000%)";
 }
 
+//low button changes
 async function TaskButtonLow() {
   let buttonUrgent = document.getElementById("prioUrgent");
   let buttonMedium = document.getElementById("prioMedium");
@@ -318,11 +367,30 @@ function showAddTaskPopUp() {
   overlay.style.display = "block";
 }
 
+/**
+ * Hide the "Add Task" popup.
+ */
 function hideAddTaskPopUp() {
   var overlay = document.getElementById("addTaskPopUp");
   overlay.style.display = "none";
 }
 
+//save categories to local storage
+function saveCategories() {
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+//load from local storage
+function loadCategories() {
+  const storedCategories = JSON.parse(localStorage.getItem("categories"));
+  if (storedCategories) {
+    categories = storedCategories;
+  }
+}
+
+/**
+ * Check the screen width and perform actions accordingly.
+ */
 function checkScreenWidth() {
   document
     .getElementById("editTaskPopUp")
@@ -339,6 +407,9 @@ function checkScreenWidth() {
   }
 }
 
+/**
+ * Toggle the assignment dropdown.
+ */
 function toggleDropdown() {
   let dropdownContent = document.getElementById("dropdownContent");
   let dropdownMin = document.getElementById("dropdownMin");
@@ -351,6 +422,9 @@ function toggleDropdown() {
   }
 }
 
+/**
+ * Show the edit task popup.
+ */
 function showEditTaskPopUp() {
   var overlay = document.getElementById("editTaskPopUp");
   overlay.style.display = "block";
@@ -405,14 +479,13 @@ function renderCategoryList() {
 }
 
 function renderNewCategoryField() {
-  console.log(tasks);
   let dropdownField = document.getElementById("dropdownMinCategory");
   document.getElementById("select-color-category").classList.remove("d-none");
-  document.getElementById("dropdownCategoryContent").classList.add("d-none");
-
-  dropdownField.innerHTML = renderNewCategoryHTML();
-  toggleDropdownCategory();
+  document.getElementById("dropdownCategoryContent").classList.remove("d-none");
+  dropdownField.innerHTML = categoryFieldHTML();
+  hideCategoryDisplay();
 }
+
 
 function stopDropdown(event) {
   event.stopPropagation();
@@ -534,6 +607,12 @@ function checkNewCategory() {
     selectedCategory = newCategoryInput.value;
     dataField.innerText = newCategoryInput.value;
     displayCategory(selectedCategory);
+    categories.push({
+      name: selectedCategory,
+      color: selectedColor
+    });
+    renderCategoryList(); // Update the dropdownCategoryContent with the new category
+    saveCategories(); // Store the updated categories in local storage
   } else {
     displayErrorMessage("Please insert a category name and a color!");
   }
@@ -542,6 +621,7 @@ function checkNewCategory() {
     hideCategoryDisplay(categoryDisplay);
   }
 }
+
 
 function displayCategory(category) {
   const categoryDisplay = document.getElementById("categoryDisplay");

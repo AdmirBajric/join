@@ -46,41 +46,30 @@ function normalCategoryFiledHTML(){
     `
 }
 
-function categoryListHTML(){
-    return`
-    <div class="dropdown-object" onclick="renderNewCategoryField()">
-    <div id="newCategory">New category</div>  
-    </div>
-
-
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"red"}')">
-    <div class="flex-row">
-        <span>Backoffice</span>
-        <div class="category-color margin-left-10" style="background-color: red" id="backofficeField"></div>
-    </div>
-    </div>
-
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"pink"}')">
-    <div class="flex-row">
-        <span>Sales</span>
-        <div class="category-color margin-left-10" style="background-color: pink"></div>
-    </div>
-    </div>
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"blue"}')">
-    <div class="flex-row">
-        <span>Marketing</span>
-        <div class="category-color margin-left-10" style="background-color: blue"></div>
-    </div>
-    </div>
-    <div class="dropdown-object" onclick="saveSelectedCategory(this, '${"orange"}')">
-    <div class="flex-row">
-        <span>Design</span>
-        <div class="category-color margin-left-10" style="background-color: orange"></div>
-    </div>
-    </div>
-
-    `
-}
+function categoryListHTML() {
+    let categoryList = `
+        <div class="dropdown-object" onclick="renderNewCategoryField()">
+        <div id="newCategory">New category</div>  
+        </div>
+    `;
+    
+    for (let i = 0; i < categories.length; i++) {
+        const categoryName = categories[i].name;
+        const categoryColor = categories[i].color;
+    
+        categoryList += `
+        <div class="dropdown-object" onclick="saveSelectedCategory(this, '${categoryColor}')">
+            <div class="flex-row">
+            <span>${categoryName}</span>
+            <div class="category-color margin-left-10" style="background-color: ${categoryColor}"></div>
+            </div>
+        </div>
+        `;
+    }
+    
+    return categoryList;
+    }
+    
 
 function renderNewCategoryHTML(){
     return`
