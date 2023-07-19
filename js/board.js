@@ -484,12 +484,17 @@ function openAddTaskPopup(status) {
   const boardContent = document.getElementsByClassName(
     "board-main-container"
   )[0];
-  bodyBoard.classList.add("hidden");
+
+  if (window.location.pathname.includes("board.html")) {
+    bodyBoard.classList.add("hidden");
+  }
+  
   popupOverlay.classList.remove("d-none");
   boardContent.classList.add("d-none");
 
   popupOverlay.innerHTML = addTaskPopupHTML(status);
 }
+
 
 function countTasks(category) {
   let count = 0;

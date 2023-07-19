@@ -576,7 +576,9 @@ function closePopupTask(){
   let boardMainContainer = document.querySelector('.board-main-container');
   let popup = document.getElementById('addtask-popup');
 
-  boardBody.classList.remove('hidden');
+  if(window.location.pathname.includes("board.html")){
+      boardBody.classList.remove('hidden');
+  }
   boardMainContainer.classList.remove('d-none');
   popup.classList.add('d-none')
 }
